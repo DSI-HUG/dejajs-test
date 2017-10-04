@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/circular-picker/circular-picker.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/circular-picker</a> circular-picker.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.41% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>121/185</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>38/76</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">62.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">63.58% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>110/173</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/sampleTime';
+import 'rxjs/add/operator/takeUntil';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { Circle } from '../../common/core/graphics/circle';
+import { Position } from '../../common/core/graphics/position';
+&nbsp;
+const noop = () =&gt; { };
+&nbsp;
+export enum ClockwiseFactorEnum {
+    clockwise = -1,
+    counterClockwise = 1,
+}
+&nbsp;
+export interface ICircularValue {
+    position: Position;
+    value: number;
+}
+&nbsp;
+/**
+ * Circular-picker component for Angular
+ */
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'deja-circular-picker',
+    styleUrls: ['./circular-picker.component.scss'],
+    templateUrl: './circular-picker.component.html',
+})
+export class DejaCircularPickerComponent implements OnInit, ControlValueAccessor, OnDestroy {
+    /** ClockwiseFactor allows user to choose rotation direction of picker */
+    @Input() public clockwiseFactor: ClockwiseFactorEnum = ClockwiseFactorEnum.clockwise;
+    /** Diameter of circular picker in pixels. Default 310px */
+    @Input() public fullDiameter = 310;
+    /** Diameter of labels on circular picker */
+    @Input() public labelsDiameter = 43;
+    /**
+     * Allows user to choose labels position. If outerLabels is true, labels will come outside the circular picker
+     *
+     * With outerLabels = true, and ranges.length &gt; 1, labels will go outwards.
+     * With outerLabels = false, and ranges.length &gt; 1, labels will go inwards.
+     */
+    @Input() public outerLabels = false;
+    /** Ranges of circular picker */
+    @Input() public ranges: ICircularRange[];
+&nbsp;
+    /** Template for labels inside picker. Use it to customize labels */
+    @ContentChild('labelTemplate') public labelTemplate;
+    /** template for cursor inside picker. Use it to customize labels */
+    @ContentChild('cursorTemplate') public cursorTemplate;
+&nbsp;
+    /** disabled property setter. Can be string or empty so you can use it like : &lt;circular-picker disabled&gt;&lt;/circular-picker&gt; */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set disabled(</span>value: boolean | string) {
+<span class="cstat-no" title="statement not covered" >        this._disabled = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    /** To get disabled attribute. */
+    public get disabled() {
+        return this._disabled;
+    }
+&nbsp;
+    private _disabled = false;
+&nbsp;
+    private _value: number;
+    private TwoPI = Math.PI * 2;
+&nbsp;
+    private _radius = 0;
+    private configs: IConfig[] = [];
+    private selectedConfig: IConfig;
+&nbsp;
+    private _circularValues: ICircularValue[] = [];
+&nbsp;
+    private _cursor: ICircularValue;
+    private _cursorHand: {
+        width: number;
+        angle: number;
+    };
+    private cursorElement: HTMLElement;
+&nbsp;
+    private clickedTime: number;
+&nbsp;
+    private onTouchedCallback: () =&gt; void = noop;
+    private onChangeCallback: (_: any) =&gt; void = noop;
+&nbsp;
+    private mousedown$sub: Subscription;
+&nbsp;
+    @ViewChild('picker') private picker: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+&nbsp;
+    public get cursorHand() {
+        return this._cursorHand;
+    }
+&nbsp;
+    public get cursor() {
+        return this._cursor;
+    }
+&nbsp;
+    public get radius() {
+        return this._radius;
+    }
+&nbsp;
+    public get circularValues() {
+        return this._circularValues;
+    }
+&nbsp;
+    /**
+     * Constructor.
+     * Create MouseDown &amp; mouseMove Observables needed inside this control.
+     */
+    constructor(elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private changeDetectorRef: </span>ChangeDetectorRef<span class="branch-2 cbranch-no" title="branch not covered" >, @Self() @Optional() public _control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >) {</span>
+        const element = elementRef.nativeElement as HTMLElement;
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._control) {
+<span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
+        }
+&nbsp;
+        this.mousedown$sub = Observable.fromEvent(element, 'mousedown')
+            .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>!this.disabled)</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; <span class="cstat-no" title="statement not covered" >event.buttons === 1)</span>
+            .debounceTime(100)
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>mouseEvent: MouseEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.clickedTime = Date.now();</span>
+                const cursorElement = <span class="cstat-no" title="statement not covered" >this.getHTMLElement(mouseEvent.target as HTMLElement, 'cursor');</span>
+                const valueElement = <span class="cstat-no" title="statement not covered" >this.getHTMLElement(mouseEvent.target as HTMLElement, 'value');</span>
+<span class="cstat-no" title="statement not covered" >                if (cursorElement) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.cursorElement = cursorElement;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (valueElement) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.value = +valueElement.getAttribute('value');</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (cursorElement || valueElement) {</span>
+                    const kill$ = <span class="cstat-no" title="statement not covered" >new Subject();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (!element.ownerDocument.body.className.match(/noselect/)) {</span>
+<span class="cstat-no" title="statement not covered" >                        element.ownerDocument.body.className += 'noselect';</span>
+                    }
+&nbsp;
+                    const cancelMouse$ = <span class="cstat-no" title="statement not covered" >Observable.merge(kill$, Observable</span>
+                        .fromEvent(element.ownerDocument, 'mouseup'))
+                        .first()
+                        .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                            delete this.cursorElement;</span>
+<span class="cstat-no" title="statement not covered" >                            delete this.clickedTime;</span>
+<span class="cstat-no" title="statement not covered" >                            element.ownerDocument.body.className = element.ownerDocument.body.className.replace(/\bnoselect\b/, '');</span>
+                        });
+&nbsp;
+                    const pickerElem = <span class="cstat-no" title="statement not covered" >this.picker.nativeElement as HTMLElement;</span>
+                    const clientRect = <span class="cstat-no" title="statement not covered" >pickerElem.getBoundingClientRect();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    Observable</span>
+                        .fromEvent(element.ownerDocument, 'mousemove')
+                        .takeUntil(cancelMouse$)
+                        .sampleTime(10)
+                        .subscribe(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                            if (event.buttons !== 1) {</span>
+<span class="cstat-no" title="statement not covered" >                                kill$.next();</span>
+<span class="cstat-no" title="statement not covered" >                                return;</span>
+                            }
+&nbsp;
+                            let circle = <span class="cstat-no" title="statement not covered" >Circle.fromOuterRect(clientRect);</span>
+                            let contains = <span class="cstat-no" title="statement not covered" >false;</span>
+<span class="cstat-no" title="statement not covered" >                            if (this.outerLabels) {</span>
+<span class="cstat-no" title="statement not covered" >                                circle = circle.inflate(this.labelsDiameter);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                                for (const conf<span class="cstat-no" title="statement not covered" > of this.configs) {</span></span>
+<span class="cstat-no" title="statement not covered" >                                    contains = circle.containsPoint(new Position(event.pageX, event.pageY));</span>
+<span class="cstat-no" title="statement not covered" >                                    if (contains) {</span>
+<span class="cstat-no" title="statement not covered" >                                        this.selectedConfig = conf;</span>
+<span class="cstat-no" title="statement not covered" >                                        break;</span>
+                                    } else {
+<span class="cstat-no" title="statement not covered" >                                        circle = circle.inflate(this.labelsDiameter);</span>
+                                    }
+                                }
+                            } else {
+                                const x = <span class="cstat-no" title="statement not covered" >this.labelsDiameter * (this.configs.length - 1);</span>
+<span class="cstat-no" title="statement not covered" >                                circle = circle.inflate(-x);</span>
+<span class="cstat-no" title="statement not covered" >                                for (let i = this.configs.length; i &gt; 0; i--) {</span>
+<span class="cstat-no" title="statement not covered" >                                    contains = circle.containsPoint(new Position(event.pageX, event.pageY));</span>
+<span class="cstat-no" title="statement not covered" >                                    if (contains) {</span>
+<span class="cstat-no" title="statement not covered" >                                        this.selectedConfig = this.configs[i - 1];</span>
+<span class="cstat-no" title="statement not covered" >                                        break;</span>
+                                    } else {
+<span class="cstat-no" title="statement not covered" >                                        circle = circle.inflate(this.labelsDiameter);</span>
+                                    }
+                                }
+                            }
+&nbsp;
+                            const newValue = <span class="cstat-no" title="statement not covered" >this.pointToValue(event.pageX - clientRect.left, event.pageY - clientRect.top, this.selectedConfig);</span>
+<span class="cstat-no" title="statement not covered" >                            if (newValue !== this.value) {</span>
+<span class="cstat-no" title="statement not covered" >                                this.value = newValue;</span>
+                            }
+                        });
+                }
+            });
+&nbsp;
+    }
+&nbsp;
+    /** Unsubscribe to Observables when component is destroyed */
+    public ngOnDestroy() {
+        this.mousedown$sub.unsubscribe();
+    }
+&nbsp;
+    /**
+     * Init circular-picker configuration
+     */
+    public ngOnInit() {
+        /* max - width */
+        const diameter = this.fullDiameter - this.labelsDiameter; // Material standard button size
+        this._radius = diameter / 2;
+&nbsp;
+        this.ranges.forEach((range) =&gt; {
+            range.interval = (range.interval) ? range.interval : 1;
+            range.labelInterval = (range.labelInterval) ? range.labelInterval : 1;
+            range.beginOffset = (range.beginOffset) ? range.beginOffset : Math.PI / 2;
+            this.configs.push({
+                range: range,
+                stepAngle: this.TwoPI / Math.floor((range.max - range.min + 1) / range.interval),
+                steps: Math.floor((range.max - range.min + 1) / range.interval),
+            });
+        });
+&nbsp;
+        this.selectedConfig = this.configs[0];
+&nbsp;
+        this.bind();
+        this.updateCursor();
+    }
+&nbsp;
+    // ************* ControlValueAccessor Implementation **************
+    /** set accessor including call the onchange callback */
+    set value(v: number) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (v !== this._value) {
+            this.writeValue(v);
+            this.onChangeCallback(v);
+        }
+    }
+&nbsp;
+    /** get accessor */
+<span class="fstat-no" title="function not covered" >    get value(): number {</span>
+<span class="cstat-no" title="statement not covered" >        return this._value;</span>
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+    public writeValue(value: number) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (value !== this._value) {
+            this._value = value;
+            this.updateCursor();
+        }
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+<span class="fstat-no" title="function not covered" >    public registerOnChange(</span>fn: any) {
+<span class="cstat-no" title="statement not covered" >        this.onChangeCallback = fn;</span>
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+<span class="fstat-no" title="function not covered" >    public registerOnTouched(</span>fn: any) {
+<span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
+    }
+    // ************* End of ControlValueAccessor Implementation **************
+&nbsp;
+    /**
+     * Take a point in parameter and return corresponding value
+     *
+     * @param {number} x xPos of point
+     * @param {number} y yPos of point
+     * @param {IConfig} config config where the point is located
+     *
+     * @return {number} value
+     */
+<span class="fstat-no" title="function not covered" >    protected pointToValue(</span>x: number, y: number, config: IConfig) {
+        const angleAtPoint: number = <span class="cstat-no" title="statement not covered" >this.pointToAngle(x - this._radius, y - this._radius, config);</span>
+        let circleSegmentIndexAtPoint: number = <span class="cstat-no" title="statement not covered" >config.steps - Math.ceil(angleAtPoint / config.stepAngle);</span>
+        // By having pointToAngle() to compute using a half step below the actual angle,
+        // we can use Math.ceil() to get the upper circleSegmentIndex. We're working in
+        // counter-clockwise direction, thus we finally get a -1 index when we're just
+        // below the first circle segment. We can now simply wrap it to the 0 index,
+        // resulting in the user-expected behavior.
+<span class="cstat-no" title="statement not covered" >        if (circleSegmentIndexAtPoint &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            circleSegmentIndexAtPoint = config.steps;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return config.range.min + circleSegmentIndexAtPoint * config.range.interval;</span>
+    }
+&nbsp;
+    /**
+     * Take velue and returns its position
+     * @param value value to check
+     * @param radiusOffset Radius to ckeck (if outerLabels are on, the radius offset = fullDiameter + labelsDiameter)
+     * @param config the config where to check
+     *
+     * @returns {Position} the position of value
+     */
+    protected valueToPoint(value: number, radiusOffset: number, config: IConfig): Position {
+        const position = new Position();
+        const valueAngle: number = this.valueToAngle(value, config);
+&nbsp;
+        position.left = this._radius + (this._radius + radiusOffset) * Math.cos(valueAngle);
+        position.top = this._radius - (this._radius + radiusOffset) * Math.sin(valueAngle); // y axis is reversed in display
+&nbsp;
+        return position;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private pointToAngle(</span>x: number, y: number, config: IConfig): number {
+<span class="cstat-no" title="statement not covered" >        return (</span>
+            -Math.atan2(y, x)		    // Math.atan2() returns between -Ï€ and +Ï€, but in inverted trigonometrical order...
+            - config.range.beginOffset	// Correct the configured offset to compute in 'natural' trigonometrical circle
+            - (config.stepAngle / 2)	// Remove half a step angle to match value from both sides
+            + this.TwoPI			    // We want the returned value to be between 0 and 2Ï€ =&gt; (x + 2Ï€) % 2Ï€
+        ) % this.TwoPI;
+    }
+&nbsp;
+    private valueToAngle(value: number, config: IConfig): number {
+        const circleSegmentIndex: number = Math.floor((value - config.range.min) / config.range.interval);
+        return (circleSegmentIndex * config.stepAngle * this.clockwiseFactor) + config.range.beginOffset;
+    }
+&nbsp;
+    private bind() {
+        this._circularValues = [];
+        this.configs.forEach((config: IConfig, configNumber: number) =&gt; {
+            for (let i = config.range.min; i &lt;= config.range.max; i += (config.range.labelInterval * config.range.interval)) {
+                const val = { value: i } as ICircularValue;
+                const labelRadius = this.labelsDiameter / 2;
+                const configOffset = this.labelsDiameter * configNumber;
+                const labelPosition = this.valueToPoint(i, (this.outerLabels ? <span class="branch-0 cbranch-no" title="branch not covered" >labelRadius + configOffset </span>: -labelRadius - configOffset), config);
+&nbsp;
+                val.position = new Position((labelPosition.left - labelRadius), (labelPosition.top - labelRadius));
+                this._circularValues.push(val);
+            }
+        });
+    }
+&nbsp;
+    private updateCursor() {
+        if (!this._circularValues || !this._circularValues.length) {
+            return;
+        }
+        if (this._value === undefined || this._value === null) {
+            this._value = this._circularValues[0].value;
+        }
+        this.selectedConfig = this.configs.find((conf: IConfig) =&gt; {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (this._value &gt;= conf.range.min &amp;&amp; this._value &lt;= conf.range.max) {
+                return true;
+            }
+        });
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.selectedConfig) {
+<span class="cstat-no" title="statement not covered" >            this.selectedConfig = this.configs[0];</span>
+        }
+        const selectedConfigIndex = this.configs.indexOf(this.selectedConfig);
+        let cursorCenter: Position;
+        const cursorRadius: number = this.labelsDiameter / 2;
+&nbsp;
+        cursorCenter = this.valueToPoint(this._value, (this.outerLabels ? <span class="branch-0 cbranch-no" title="branch not covered" >cursorRadius + (this.labelsDiameter * selectedConfigIndex) </span>: -cursorRadius - (this.labelsDiameter * selectedConfigIndex)), this.selectedConfig);
+        this._cursor = {
+            position: new Position((cursorCenter.left - cursorRadius), (cursorCenter.top - cursorRadius)),
+            value: this._value,
+        };
+&nbsp;
+        this._cursorHand = {
+            angle: this.valueToAngle(this._value, this.selectedConfig),
+            width: (this.outerLabels) ? <span class="branch-0 cbranch-no" title="branch not covered" >this._radius + (this.labelsDiameter * selectedConfigIndex) </span>: this._radius - this.labelsDiameter - (this.labelsDiameter * selectedConfigIndex),
+        };
+&nbsp;
+        this.changeDetectorRef.markForCheck();
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private getHTMLElement(</span>element: HTMLElement, attr: string): HTMLElement {
+        let parentElement = <span class="cstat-no" title="statement not covered" >element;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (parentElement &amp;&amp; !parentElement.hasAttribute(attr)) {</span>
+<span class="cstat-no" title="statement not covered" >            element = parentElement;</span>
+<span class="cstat-no" title="statement not covered" >            parentElement = parentElement.parentElement;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (!parentElement) {</span>
+<span class="cstat-no" title="statement not covered" >            return undefined;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return parentElement;</span>
+    }
+}
+&nbsp;
+export interface IConfig {
+    range: ICircularRange;
+    steps: number;
+    stepAngle: number;
+}
+&nbsp;
+export interface ICircularRange {
+    min: number;
+    max: number;
+    interval?: number;
+    labelInterval?: number; // x*interval
+    beginOffset?: number;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

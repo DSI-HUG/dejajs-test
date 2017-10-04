@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/common/core/graphics/circle.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/common/core/graphics</a> circle.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.93% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.04% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/27</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Position } from './position';
+import { Rect } from './rect';
+&nbsp;
+export class Circle {
+    /**
+     * Return a circle from his outer rectangle.
+     *
+     * @param left      The left position of the circle center or a rectangle object.
+     * @param top       The top position of the circle center
+     * @param width     The width of the outer rectangle
+     * @param height    The height of the outer rectangle
+     * @return A circle contained end centered inside the passed ractangle
+     */
+<span class="fstat-no" title="function not covered" >    public static fromOuterRect(</span>left?: number | Object, top?: number, width?: number, height?: number) {
+<span class="cstat-no" title="statement not covered" >        if (typeof left === 'object') {</span>
+            const bounds = <span class="cstat-no" title="statement not covered" >left as any;</span>
+<span class="cstat-no" title="statement not covered" >            left = bounds.left;</span>
+<span class="cstat-no" title="statement not covered" >            top = bounds.top;</span>
+<span class="cstat-no" title="statement not covered" >            width = bounds.width;</span>
+<span class="cstat-no" title="statement not covered" >            height = bounds.height;</span>
+        }
+        const radius = <span class="cstat-no" title="statement not covered" >Math.min(width, height) / 2;</span>
+&nbsp;
+        const center = <span class="cstat-no" title="statement not covered" >new Position(+left + (width / 2), top + (height / 2));</span>
+<span class="cstat-no" title="statement not covered" >        return new Circle(center, radius);</span>
+    }
+&nbsp;
+    /** Create e new circle instance from the center position and the radius */
+<span class="fstat-no" title="function not covered" >    constructor(public <span class="cstat-no" title="statement not covered" ></span>center: Position,</span> public <span class="cstat-no" title="statement not covered" >radius: number)</span> {
+&nbsp;
+    }
+&nbsp;
+    /** Return the outer rectangle of the circle */
+<span class="fstat-no" title="function not covered" >    public get outerRect(): Rect {</span>
+<span class="cstat-no" title="statement not covered" >        return Rect.fromLTRB(this.center.left - this.radius, this.center.top - this.radius, this.center.left + this.radius, this.center.top + this.radius);</span>
+    }
+&nbsp;
+    /** Return a boolean indicate if the circle contains the passed circle */
+<span class="fstat-no" title="function not covered" >    public contains(</span>circle: Circle) {
+<span class="cstat-no" title="statement not covered" >        return this.outerRect.contains(circle.outerRect);</span>
+    }
+&nbsp;
+    /** Return a boolean indicate if the passed point is inside the circle */
+<span class="fstat-no" title="function not covered" >    public containsPoint(</span>point: Position): boolean {
+        const dx = <span class="cstat-no" title="statement not covered" >Math.abs(point.left - this.center.left);</span>
+        const dy = <span class="cstat-no" title="statement not covered" >Math.abs(point.top - this.center.top);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return dx * dx + dy * dy &lt;= this.radius * this.radius;</span>
+    }
+&nbsp;
+    /** Return a the cloned of the cirlce */
+<span class="fstat-no" title="function not covered" >    public clone() {</span>
+<span class="cstat-no" title="statement not covered" >        return new Circle(this.center, this.radius);</span>
+    }
+&nbsp;
+    /** Inflate the circle radius with the specified value */
+<span class="fstat-no" title="function not covered" >    public inflate(</span>radius: number) {
+<span class="cstat-no" title="statement not covered" >        return new Circle(this.center, this.radius + radius);</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

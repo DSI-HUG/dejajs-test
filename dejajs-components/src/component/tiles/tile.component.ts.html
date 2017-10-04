@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/tiles/tile.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/tiles</a> tile.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.74% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>15/69</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.21% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/56</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import 'rxjs/add/operator/delay';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { DejaTile } from './tile.class';
+&nbsp;
+@Component({
+    selector: 'deja-tile',
+    styleUrls: [
+        './tile.component.scss',
+    ],
+    templateUrl: './tile.component.html',
+})
+export class DejaTileComponent implements OnDestroy {
+    @Input() public template;
+    @Input() public designMode;
+    @Output() public <span class="cstat-no" title="statement not covered" >modelChanged = new EventEmitter();</span>
+    @Output() public <span class="cstat-no" title="statement not covered" >close = new EventEmitter&lt;Event&gt;();</span>
+&nbsp;
+    public element: HTMLElement;
+&nbsp;
+    private _tile: DejaTile;
+    private <span class="cstat-no" title="statement not covered" >subscriptions = [] as Subscription[];</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >    constructor(</span>el: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.element = el.nativeElement as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >        this.element.setAttribute('hidden', '0');</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    @Input()</span>
+<span class="fstat-no" title="function not covered" >    public set tile(</span>tile: DejaTile<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._tile = tile;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (tile) {</span>
+            const toogleAttribute = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>attribute: string, value: string | boolean) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (value) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.setAttribute(attribute, value.toString());</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    this.element.removeAttribute(attribute);</span>
+                }
+            };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (tile.fading) {</span>
+<span class="cstat-no" title="statement not covered" >                this.element.setAttribute('fading', '0');</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.pixelBounds$)</span>
+                .first()
+                .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>tile.fading)</span>
+                .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.element.setAttribute('fading', '1'))</span>
+                .delay(200)
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.removeAttribute('fading');</span>
+                }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.pixelBounds$)</span>
+                .subscribe(<span class="fstat-no" title="function not covered" >(</span>bounds) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    if (!tile.isHidden) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.element.removeAttribute('hidden');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    this.element.style.left = `${bounds.left}px`;</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.style.top = `${bounds.top}px`;</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.style.width = `${bounds.width}px`;</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.style.height = `${bounds.height}px`;</span>
+                }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.pressed$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('pressed', value))</span>);</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.selected$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('selected', value))</span>);</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.dragging$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('drag', value))</span>);</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.dropping$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('drop', value))</span>);</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.cutted$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('cutted', value))</span>);</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.expanded$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('expanded', value))</span>);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(tile.deleted$).subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.element.remove())</span>);</span>
+&nbsp;
+            const tooogleHide$ = <span class="cstat-no" title="statement not covered" >Observable.from(tile.hidden$)</span>
+                .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    toogleAttribute('hidden', value ? '1' : '2');</span>
+                });
+&nbsp;
+            // Hide
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(tooogleHide$</span>
+                .debounceTime(1000)
+                .filter(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >value)</span>
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.element.setAttribute('hidden', '0'))</span>);
+&nbsp;
+            // Show
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(tooogleHide$</span>
+                .debounceTime(1)
+                .filter(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >!value)</span>
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.element.removeAttribute('hidden'))</span>);
+&nbsp;
+        } else {
+<span class="cstat-no" title="statement not covered" >            this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+<span class="cstat-no" title="statement not covered" >            this.subscriptions = [];</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get tile() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._tile;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected onTitleChanged() {</span>
+<span class="cstat-no" title="statement not covered" >        this.modelChanged.emit();</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

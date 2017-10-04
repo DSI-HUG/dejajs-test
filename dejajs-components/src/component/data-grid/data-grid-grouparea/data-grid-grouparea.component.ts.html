@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/data-grid/data-grid-grouparea/data-grid-grouparea.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/data-grid/data-grid-grouparea</a> data-grid-grouparea.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.96% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>15/94</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.11% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.48% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } from '@angular/core';
+import { DejaClipboardService } from '../../../common/core/clipboard/clipboard.service';
+import { DejaChipsCloseEvent } from '../../chips/chips.component';
+import { IDejaDragEvent } from '../../dragdrop/draggable.directive';
+import { IDejaDropEvent } from '../../dragdrop/droppable.directive';
+import { IDejaGridColumn } from '../data-grid-column/data-grid-column';
+import { IDejaGridGroupsEvent } from './data-grid-group';
+&nbsp;
+/** Zone de regroupement des colonnes dans laquelle les colonnes peuvent être drag and droppée */
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'deja-grid-grouparea',
+    styleUrls: ['./data-grid-grouparea.component.scss'],
+    templateUrl: './data-grid-grouparea.component.html',
+})
+export class DejaGridGroupAreaComponent {
+    /** Cet évenement est levé lorsque le model de groupe est modifié */
+    @Output() public <span class="cstat-no" title="statement not covered" >groupsChanged = new EventEmitter&lt;IDejaGridGroupsEvent&gt;();</span>
+    /** Cet évenement est levé lorsqu'un group est supprimé du model */
+    @Output() public <span class="cstat-no" title="statement not covered" >groupRemoved = new EventEmitter&lt;DejaChipsCloseEvent&gt;();</span>
+    private <span class="cstat-no" title="statement not covered" >_groups = [] as IDejaGridColumn[];</span>
+    private <span class="cstat-no" title="statement not covered" >columnGroupKey = 'deja-grid-column';</span>
+    private <span class="cstat-no" title="statement not covered" >groupGroupKey = 'deja-grid-group';</span>
+&nbsp;
+    /** Revoie le modèle de groupe qui représente l'ensemble des colonnes déposées dans le composant */
+<span class="fstat-no" title="function not covered" >    public get groups() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._groups;</span>
+    }
+&nbsp;
+    @Input()
+    /** Définit le modèle de groupe qui représente l'ensemble des colonnes déposées dans le composant */
+<span class="fstat-no" title="function not covered" >    public set groups(</span>columns: IDejaGridColumn[]) {
+<span class="cstat-no" title="statement not covered" >        this._groups = columns || [];</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> { }</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    protected getDragContext(</span>group: IDejaGridColumn) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.clipboardService) {</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        }
+&nbsp;
+        // console.log(`getDragContext ` + group.column.name + ' ' + Date.now();
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            dragendcallback: <span class="fstat-no" title="function not covered" >(</span>event: IDejaDragEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!event.dragInfo.hasOwnProperty(this.columnGroupKey)) {</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+            },
+            dragstartcallback: <span class="fstat-no" title="function not covered" >(</span>event: IDejaDragEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                event.dragInfo[this.groupGroupKey] = group;</span>
+            },
+        };
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public getDropContext() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!this.clipboardService) {</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        }
+&nbsp;
+        const dragcallback = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>event: IDejaDropEvent) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (event.dragInfo.hasOwnProperty(this.columnGroupKey)) {</span>
+                const sourceColumn = <span class="cstat-no" title="statement not covered" >event.dragInfo[this.columnGroupKey] as IDejaGridColumn;</span>
+<span class="cstat-no" title="statement not covered" >                if (!this.groups.find(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; <span class="cstat-no" title="statement not covered" >column === sourceColumn)</span>) {</span>
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+                }
+&nbsp;
+            } else <span class="cstat-no" title="statement not covered" >if (event.dragInfo.hasOwnProperty(this.groupGroupKey)) {</span>
+                const targetElement = <span class="cstat-no" title="statement not covered" >this.getGroupElementFromHTMLElement(event.target as HTMLElement);</span>
+                const attrIndex = <span class="cstat-no" title="statement not covered" >(targetElement &amp;&amp; targetElement.getAttribute('index')) || null;</span>
+                const targetIndex = <span class="cstat-no" title="statement not covered" >attrIndex !== null ? +attrIndex : null;</span>
+<span class="cstat-no" title="statement not covered" >                if (targetIndex === null) {</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+&nbsp;
+                const sourceColumn = <span class="cstat-no" title="statement not covered" >event.dragInfo[this.groupGroupKey] as IDejaGridColumn;</span>
+                const sourceIndex = <span class="cstat-no" title="statement not covered" >this.groups.findIndex(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; <span class="cstat-no" title="statement not covered" >column === sourceColumn)</span>;</span>
+&nbsp;
+                // Dead zones
+<span class="cstat-no" title="statement not covered" >                if (sourceIndex === targetIndex) {</span>
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                this.groups.splice(sourceIndex, 1);</span>
+<span class="cstat-no" title="statement not covered" >                this.groups.splice(targetIndex, 0, sourceColumn);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                event.preventDefault();</span>
+&nbsp;
+            } else {
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            dragentercallback: dragcallback,
+            dragovercallback: dragcallback,
+            dropcallback: <span class="fstat-no" title="function not covered" >(</span>event: IDejaDropEvent) =&gt; {
+                const raiseEvent = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>group: IDejaGridColumn) =&gt; {</span>
+                    const e = <span class="cstat-no" title="statement not covered" >{</span>
+                        column: group,
+                        columns: this.groups,
+                        originalEvent: event,
+                    } as IDejaGridGroupsEvent;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    this.groupsChanged.emit(e);</span>
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (event.dragInfo.hasOwnProperty(this.columnGroupKey)) {</span>
+                    const sourceColumn = <span class="cstat-no" title="statement not covered" >event.dragInfo[this.columnGroupKey] as IDejaGridColumn;</span>
+&nbsp;
+                    const targetElement = <span class="cstat-no" title="statement not covered" >this.getGroupElementFromHTMLElement(event.target as HTMLElement);</span>
+                    const attrIndex = <span class="cstat-no" title="statement not covered" >(targetElement &amp;&amp; targetElement.getAttribute('index')) || null;</span>
+                    const targetIndex = <span class="cstat-no" title="statement not covered" >attrIndex !== null ? +attrIndex : null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (targetIndex !== null) {</span>
+                        const targetBounds = <span class="cstat-no" title="statement not covered" >targetElement.getBoundingClientRect();</span>
+<span class="cstat-no" title="statement not covered" >                        if (event.x &lt;= targetBounds.left + targetBounds.width / 2) {</span>
+<span class="cstat-no" title="statement not covered" >                            this.groups.splice(targetIndex, 0, sourceColumn);</span>
+                        } else <span class="cstat-no" title="statement not covered" >if (targetIndex &lt; this.groups.length - 1) {</span>
+<span class="cstat-no" title="statement not covered" >                            this.groups.splice(targetIndex + 1, 0, sourceColumn);</span>
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            this.groups.push(sourceColumn);</span>
+                        }
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.groups.push(sourceColumn);</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    raiseEvent(sourceColumn);</span>
+&nbsp;
+                } else <span class="cstat-no" title="statement not covered" >if (event.dragInfo.hasOwnProperty(this.groupGroupKey)) {</span>
+                    const sourceColumn = <span class="cstat-no" title="statement not covered" >event.dragInfo[this.groupGroupKey] as IDejaGridColumn;</span>
+<span class="cstat-no" title="statement not covered" >                    raiseEvent(sourceColumn);</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
+            },
+        };
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public removeGroup(</span>event: DejaChipsCloseEvent) {
+<span class="cstat-no" title="statement not covered" >        this.groupRemoved.emit(event);</span>
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected getGroupColumnFromHTMLElement(</span>element: HTMLElement): IDejaGridColumn {
+        const groupElement = <span class="cstat-no" title="statement not covered" >this.getGroupElementFromHTMLElement(element);</span>
+        const groupName = <span class="cstat-no" title="statement not covered" >groupElement &amp;&amp; groupElement.getAttribute('groupname');</span>
+<span class="cstat-no" title="statement not covered" >        return groupName &amp;&amp; this.groups.find(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; <span class="cstat-no" title="statement not covered" >column.name === groupName)</span>;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private getGroupElementFromHTMLElement(</span>element: HTMLElement): HTMLElement {
+        let parentElement = <span class="cstat-no" title="statement not covered" >element;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (parentElement &amp;&amp; !parentElement.hasAttribute('groupname')) {</span>
+<span class="cstat-no" title="statement not covered" >            element = parentElement;</span>
+<span class="cstat-no" title="statement not covered" >            parentElement = parentElement.parentElement;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (!parentElement) {</span>
+<span class="cstat-no" title="statement not covered" >            return undefined;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return parentElement;</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

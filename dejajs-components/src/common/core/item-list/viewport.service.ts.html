@@ -1,0 +1,1955 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/common/core/item-list/viewport.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/common/core/item-list</a> viewport.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">9.23% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>31/336</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.98% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/202</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.84% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">9.86% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>29/294</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Injectable, OnDestroy } from '@angular/core';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { IViewPort, IViewPortItem } from './viewport.service';
+&nbsp;
+export enum ViewportMode {
+    disabled,
+    fixed,
+    variable,
+    auto,
+}
+&nbsp;
+export enum ViewportDirection {
+    vertical,
+    horizontal,
+}
+&nbsp;
+/** Service de gestion du viewport d'une liste.
+ * Ce service permet la gestion du viewport verticalement ou horizontalement.
+ */
+@Injectable()
+export class ViewPortService implements OnDestroy {
+    public static itemDefaultSize = 40;
+&nbsp;
+    public viewPort$: Observable&lt;IViewPort&gt;;
+&nbsp;
+    public <span class="cstat-no" title="statement not covered" >mode$ = new BehaviorSubject&lt;ViewportMode | string&gt;(ViewportMode.fixed);</span>
+    public <span class="cstat-no" title="statement not covered" >items$ = new BehaviorSubject&lt;IViewPortItem[]&gt;([]);</span>
+    public <span class="cstat-no" title="statement not covered" >maxSize$ = new BehaviorSubject&lt;number | string&gt;(0);</span>
+    public <span class="cstat-no" title="statement not covered" >ensureItem$ = new BehaviorSubject&lt;IViewPortItem | number&gt;(null);</span>
+    public <span class="cstat-no" title="statement not covered" >scrollPosition$ = new BehaviorSubject&lt;number&gt;(0);</span>
+    public <span class="cstat-no" title="statement not covered" >element$ = new BehaviorSubject&lt;HTMLElement&gt;(null);</span>
+    public <span class="cstat-no" title="statement not covered" >itemsSize$ = new BehaviorSubject&lt;number&gt;(0);</span>
+    public <span class="cstat-no" title="statement not covered" >direction$ = new BehaviorSubject&lt;ViewportDirection | string&gt;(ViewportDirection.vertical);</span>
+    public ensureParams$: Observable&lt;IEnsureParams&gt;;
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >subscriptions = [] as Subscription[];</span>
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >refresh$ = new BehaviorSubject&lt;IViewPortRefreshParams&gt;(null);</span>
+    private <span class="cstat-no" title="statement not covered" >deleteSizeCache$ = new BehaviorSubject&lt;boolean&gt;(true);</span>
+    private lastCalculatedSize: number;
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >emptyViewPort = {</span>
+        beforeSize: 0,
+        afterSize: 0,
+        viewPortSize: 0,
+        listSize: 0,
+        visibleItems: [],
+        startIndex: 0,
+        endIndex: 0,
+        scrollPos: 0,
+        items: [],
+    } as IViewPort;
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >measureViewPort = {</span>
+        beforeSize: 0,
+        afterSize: 200000,
+        viewPortSize: 0,
+        listSize: 0,
+        visibleItems: [],
+        startIndex: 0,
+        endIndex: 0,
+        scrollPos: undefined, // Do not change the scroll pos in case of refresh is called when the list is scrolling (I.E. dynamic content loading)
+        items: [],
+    } as IViewPort;
+&nbsp;
+    public <span class="cstat-no" title="statement not covered" >viewPortResult$ = new BehaviorSubject&lt;IViewPort&gt;(this.emptyViewPort);</span>
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >_mode: ViewportMode = ViewportMode.fixed;</span>
+    private <span class="cstat-no" title="statement not covered" >_itemsSize = ViewPortService.itemDefaultSize;</span>
+    private <span class="cstat-no" title="statement not covered" >_direction = ViewportDirection.vertical;</span>
+    private <span class="cstat-no" title="statement not covered" >_scrollPosition = 0;</span>
+    private viewPort: IViewPort;
+    private <span class="cstat-no" title="statement not covered" >ignoreScrollCount = 0;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get mode() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._mode;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get itemsSize() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._itemsSize;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get direction() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._direction;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor() {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.viewPort$ = Observable.from(this.viewPortResult$);</span>
+&nbsp;
+        const consoleLog = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>_message: string) =&gt; {</span>
+            // console.log(_message);
+        };
+&nbsp;
+        const innerSize = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >            return this._direction === ViewportDirection.horizontal ? window.innerWidth : window.innerHeight;</span>
+        };
+&nbsp;
+        const clientSize = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>element: HTMLElement) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return Math.ceil(this._direction === ViewportDirection.horizontal ? element.clientWidth : element.clientHeight);</span>
+        };
+&nbsp;
+        const calcFixedSizeViewPort$ = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>items: IViewPortItem[], containerSize: number, scrollPos: number, itemDefaultSize: number, ensureParams: IEnsureParams): Observable&lt;IViewPort&gt; =&gt; {</span>
+            const maxCount = <span class="cstat-no" title="statement not covered" >Math.ceil(containerSize / itemDefaultSize) + 1;</span>
+            const startRow = <span class="cstat-no" title="statement not covered" >Math.floor(scrollPos / itemDefaultSize);</span>
+&nbsp;
+            const rowsCount = <span class="cstat-no" title="statement not covered" >Math.min(items.length - startRow, maxCount);</span>
+            let startIndex: number;
+            let endIndex: number;
+            let newScrollPos: number;
+<span class="cstat-no" title="statement not covered" >            if (!ensureParams || ensureParams.index === undefined || !ensureParams.atEnd) {</span>
+<span class="cstat-no" title="statement not covered" >                if (rowsCount &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                    endIndex = items.length - 1;</span>
+<span class="cstat-no" title="statement not covered" >                    startIndex = endIndex + 1 - Math.min(items.length, maxCount);</span>
+                } else <span class="cstat-no" title="statement not covered" >if (ensureParams.index !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    startIndex = ensureParams.index;</span>
+<span class="cstat-no" title="statement not covered" >                    endIndex = startIndex + rowsCount - 1;</span>
+<span class="cstat-no" title="statement not covered" >                    newScrollPos = startIndex * itemDefaultSize;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    startIndex = startRow;</span>
+<span class="cstat-no" title="statement not covered" >                    endIndex = startIndex + rowsCount - 1;</span>
+                }
+            } else {
+                // Ensure visible from the end
+<span class="cstat-no" title="statement not covered" >                startIndex = Math.max(0, ensureParams.index + 1 - Math.min(items.length, maxCount));</span>
+<span class="cstat-no" title="statement not covered" >                endIndex = Math.max(ensureParams.index, rowsCount - 1);</span>
+<span class="cstat-no" title="statement not covered" >                newScrollPos = (endIndex + 1) * itemDefaultSize - containerSize;</span>
+            }
+&nbsp;
+            const visibleItems = <span class="cstat-no" title="statement not covered" >items.slice(startIndex, endIndex + 1);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return Observable.of({</span>
+                beforeSize: startIndex * itemDefaultSize,
+                afterSize: (items.length - endIndex - 1) * itemDefaultSize,
+                listSize: containerSize,
+                viewPortSize: visibleItems.length * itemDefaultSize,
+                visibleItems: visibleItems,
+                startIndex: startIndex,
+                endIndex: endIndex,
+                scrollPos: newScrollPos,
+                items: items,
+            } as IViewPort);
+        };
+&nbsp;
+        const calcVariableSizeViewPort$ = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>items: IViewPortItem[], containerSize: number, scrollPos: number, itemDefaultSize: number, ensureParams: IEnsureParams): Observable&lt;IViewPort&gt; =&gt; {</span>
+            const visibleList = <span class="cstat-no" title="statement not covered" >[] as IViewPortItem[];</span>
+            let startIndex: number;
+            let endIndex;
+            let beforeSize = <span class="cstat-no" title="statement not covered" >0;</span>
+            let viewPortSize = <span class="cstat-no" title="statement not covered" >0;</span>
+            let afterSize = <span class="cstat-no" title="statement not covered" >0;</span>
+            let newScrollPos: number;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (!ensureParams || ensureParams.index === undefined || !ensureParams.atEnd) {</span>
+<span class="cstat-no" title="statement not covered" >                items.forEach(<span class="fstat-no" title="function not covered" >(</span>item: IViewPortItem, index: number) =&gt; {</span>
+                    const itemSize = <span class="cstat-no" title="statement not covered" >item.size || itemDefaultSize;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (ensureParams &amp;&amp; ensureParams.index === index) {</span>
+<span class="cstat-no" title="statement not covered" >                        startIndex = index;</span>
+<span class="cstat-no" title="statement not covered" >                        newScrollPos = beforeSize;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (startIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (beforeSize + itemSize &gt;= scrollPos) {</span>
+<span class="cstat-no" title="statement not covered" >                            startIndex = index;</span>
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            beforeSize += itemSize;</span>
+                        }
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (startIndex !== undefined &amp;&amp; endIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        viewPortSize += itemSize;</span>
+<span class="cstat-no" title="statement not covered" >                        visibleList.push(item);</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (endIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (beforeSize + viewPortSize &gt; (newScrollPos || scrollPos) + containerSize) {</span>
+<span class="cstat-no" title="statement not covered" >                            endIndex = index;</span>
+                        }
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        afterSize += itemSize;</span>
+                    }
+                });
+            } else {
+                // Ensure visible from the end
+                let index = <span class="cstat-no" title="statement not covered" >items.length;</span>
+<span class="cstat-no" title="statement not covered" >                while (--index &gt;= 0) {</span>
+                    const item = <span class="cstat-no" title="statement not covered" >items[index];</span>
+                    const itemSize = <span class="cstat-no" title="statement not covered" >(item.size &amp;&amp; item.size &gt; ViewPortService.itemDefaultSize) ? item.size : itemDefaultSize;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (ensureParams.index === index) {</span>
+<span class="cstat-no" title="statement not covered" >                        endIndex = index;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (endIndex !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (startIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                            viewPortSize += itemSize;</span>
+<span class="cstat-no" title="statement not covered" >                            visibleList.unshift(item);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                            if (viewPortSize &gt; containerSize) {</span>
+<span class="cstat-no" title="statement not covered" >                                startIndex = index;</span>
+<span class="cstat-no" title="statement not covered" >                                newScrollPos = viewPortSize - containerSize;</span>
+                            }
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            newScrollPos += itemSize;</span>
+<span class="cstat-no" title="statement not covered" >                            beforeSize += itemSize;</span>
+                        }
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        afterSize += itemSize;</span>
+                    }
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (ensureParams &amp;&amp; viewPortSize &lt; containerSize &amp;&amp; visibleList.length &lt; items.length) {</span>
+<span class="cstat-no" title="statement not covered" >                if (ensureParams.atEnd) {</span>
+<span class="cstat-no" title="statement not covered" >                    return calcVariableSizeViewPort$(items, containerSize, scrollPos, itemDefaultSize, {</span>
+                        index: 0,
+                        atEnd: false,
+                    } as IEnsureParams);
+                } else {
+<span class="cstat-no" title="statement not covered" >                    return calcVariableSizeViewPort$(items, containerSize, scrollPos, itemDefaultSize, {</span>
+                        index: items.length - 1,
+                        atEnd: true,
+                    } as IEnsureParams);
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return Observable.of({</span>
+                beforeSize: beforeSize,
+                afterSize: afterSize,
+                listSize: containerSize,
+                viewPortSize: viewPortSize,
+                visibleItems: visibleList,
+                startIndex: startIndex || 0,
+                endIndex: endIndex,
+                scrollPos: newScrollPos,
+                items: items,
+            } as IViewPort);
+        };
+&nbsp;
+        const calcAutoSizeViewPort$ = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>items: IViewPortItem[], containerSize: number, scrollPos: number, element: HTMLElement, itemDefaultSize: number, ensureParams: IEnsureParams, isCalculation?: boolean): Observable&lt;IViewPort&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return calcVariableSizeViewPort$(items, containerSize, scrollPos, itemDefaultSize, ensureParams)</span>
+                .switchMap(<span class="fstat-no" title="function not covered" >(</span>viewPort) =&gt; {
+                    const calculationRequired = <span class="cstat-no" title="statement not covered" >!isCalculation &amp;&amp; viewPort.visibleItems.find(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; <span class="cstat-no" title="statement not covered" >!item.size)</span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (!calculationRequired) {</span>
+<span class="cstat-no" title="statement not covered" >                        return Observable.of(viewPort);</span>
+                    } else {
+                        // Measure items size
+<span class="cstat-no" title="statement not covered" >                        this.viewPortResult$.next(viewPort);</span>
+<span class="cstat-no" title="statement not covered" >                        return Observable.timer(1)</span>
+                            .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+                                const elements = <span class="cstat-no" title="statement not covered" >element.getElementsByClassName('listitem');</span>
+                                // tslint:disable-next-line:prefer-for-of
+<span class="cstat-no" title="statement not covered" >                                for (let i = 0; i &lt; elements.length; i++) {</span>
+                                    const itemElement = <span class="cstat-no" title="statement not covered" >elements[i] as HTMLElement;</span>
+                                    const index = <span class="cstat-no" title="statement not covered" >+itemElement.getAttribute('flat');</span>
+                                    const item = <span class="cstat-no" title="statement not covered" >viewPort.visibleItems[index - viewPort.startIndex];</span>
+<span class="cstat-no" title="statement not covered" >                                    if (item) {</span>
+<span class="cstat-no" title="statement not covered" >                                        item.size = clientSize(itemElement);</span>
+                                    }
+                                }
+                            })
+                            .switchMap(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>calcVariableSizeViewPort$(items, containerSize, viewPort.scrollPos || scrollPos, itemDefaultSize, ensureParams))</span>;
+                    }
+                });
+        };
+&nbsp;
+        const calcDisabledViewPort$ = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>items: IViewPortItem[], containerSize: number, scrollPos: number, element: HTMLElement, ensureParams: IEnsureParams, bindIfAny: boolean): Observable&lt;IViewPort&gt; =&gt; {</span>
+            let viewPortSize = <span class="cstat-no" title="statement not covered" >0;</span>
+            let startIndex: number;
+            let endIndex: number;
+            let newScrollPos: number;
+            const elements = <span class="cstat-no" title="statement not covered" >element.getElementsByClassName('listitem');</span>
+&nbsp;
+            let viewPort = <span class="cstat-no" title="statement not covered" >{</span>
+                beforeSize: 0,
+                afterSize: 0,
+                listSize: containerSize,
+                viewPortSize: 0,
+                visibleItems: [],
+                startIndex: 0,
+                endIndex: 0,
+                scrollPos: 0,
+                items: items,
+            } as IViewPort;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (elements.length === 0 &amp;&amp; bindIfAny !== false) {</span>
+<span class="cstat-no" title="statement not covered" >                this.viewPortResult$.next(viewPort);</span>
+<span class="cstat-no" title="statement not covered" >                return Observable.timer(1).switchMap(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>calcDisabledViewPort$(items, containerSize, scrollPos, element, ensureParams, false))</span>;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (!ensureParams || ensureParams.index === undefined || !ensureParams.atEnd) {</span>
+<span class="cstat-no" title="statement not covered" >                for (let i = 0; i &lt; elements.length; i++) {</span>
+                    const itemElement = <span class="cstat-no" title="statement not covered" >elements[i] as HTMLElement;</span>
+                    const itemSize = <span class="cstat-no" title="statement not covered" >items[i].size = clientSize(itemElement);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (ensureParams &amp;&amp; ensureParams.index === i) {</span>
+<span class="cstat-no" title="statement not covered" >                        startIndex = i;</span>
+<span class="cstat-no" title="statement not covered" >                        newScrollPos = viewPortSize;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    viewPortSize += itemSize;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (startIndex === undefined &amp;&amp; viewPortSize &gt; scrollPos) {</span>
+<span class="cstat-no" title="statement not covered" >                        startIndex = i;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (endIndex === undefined &amp;&amp; viewPortSize &gt; (newScrollPos || scrollPos) + containerSize) {</span>
+<span class="cstat-no" title="statement not covered" >                        endIndex = i;</span>
+                    }
+                }
+            } else {
+                // Ensure visible from the end
+<span class="cstat-no" title="statement not covered" >                newScrollPos = 0;</span>
+                let listSize = <span class="cstat-no" title="statement not covered" >0;</span>
+                let i = <span class="cstat-no" title="statement not covered" >elements.length;</span>
+<span class="cstat-no" title="statement not covered" >                while (--i &gt;= 0) {</span>
+                    const itemElement = <span class="cstat-no" title="statement not covered" >elements[i] as HTMLElement;</span>
+                    const itemSize = <span class="cstat-no" title="statement not covered" >items[i].size = clientSize(itemElement);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (ensureParams.index === i) {</span>
+<span class="cstat-no" title="statement not covered" >                        endIndex = i;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (endIndex !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (startIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                            listSize += itemSize;</span>
+<span class="cstat-no" title="statement not covered" >                            if (listSize &gt; containerSize) {</span>
+<span class="cstat-no" title="statement not covered" >                                startIndex = i;</span>
+<span class="cstat-no" title="statement not covered" >                                newScrollPos = listSize - containerSize;</span>
+                            }
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            newScrollPos += itemSize;</span>
+                        }
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    viewPortSize += itemSize;</span>
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            startIndex = startIndex || 0;</span>
+<span class="cstat-no" title="statement not covered" >            endIndex = endIndex || 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            viewPort = {</span>
+                beforeSize: 0,
+                afterSize: 0,
+                listSize: containerSize,
+                viewPortSize: viewPortSize,
+                visibleItems: items.slice(startIndex, 1 + endIndex),
+                startIndex: startIndex,
+                endIndex: endIndex,
+                scrollPos: newScrollPos,
+                items: items,
+            } as IViewPort;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return Observable.of(viewPort);</span>
+        };
+&nbsp;
+        const calcViewPort$ = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>items: IViewPortItem[], maxSize: number, scrollPos: number, element: HTMLElement, itemDefaultSize: number, ensureParams: IEnsureParams) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            consoleLog(`calcViewPort`);</span>
+<span class="cstat-no" title="statement not covered" >            if (!items || !items.length) {</span>
+<span class="cstat-no" title="statement not covered" >                return Observable.of(this.emptyViewPort);</span>
+            }
+&nbsp;
+            let listSize = <span class="cstat-no" title="statement not covered" >maxSize || clientSize(element);</span>
+<span class="cstat-no" title="statement not covered" >            if (listSize &lt;= ViewPortService.itemDefaultSize) {</span>
+<span class="cstat-no" title="statement not covered" >                listSize = innerSize();</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return Observable.of(this.mode)</span>
+                .switchMap(<span class="fstat-no" title="function not covered" >(</span>mode) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    if (ensureParams.index !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.ignoreScrollCount++;</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.ignoreScrollCount = 0;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    switch (mode) {</span>
+                        case ViewportMode.disabled:
+<span class="cstat-no" title="statement not covered" >                            return calcDisabledViewPort$(items, listSize, scrollPos, element, ensureParams, true);</span>
+                        case ViewportMode.variable:
+<span class="cstat-no" title="statement not covered" >                            return calcVariableSizeViewPort$(items, listSize, scrollPos, itemDefaultSize, ensureParams);</span>
+                        case ViewportMode.auto:
+<span class="cstat-no" title="statement not covered" >                            return calcAutoSizeViewPort$(items, listSize, scrollPos, element, itemDefaultSize, ensureParams);</span>
+                        case ViewportMode.fixed:
+<span class="cstat-no" title="statement not covered" >                            return calcFixedSizeViewPort$(items, listSize, scrollPos, itemDefaultSize, ensureParams);</span>
+                        default:
+<span class="cstat-no" title="statement not covered" >                            throw new Error('ViewPortService, invalide mode. The value can be disabled, variable, auto and fixed.');</span>
+                    }
+                })
+                .switchMap(<span class="fstat-no" title="function not covered" >(</span>viewPort: IViewPort) =&gt; {
+                    const endScrollPos = <span class="cstat-no" title="statement not covered" >viewPort.beforeSize + viewPort.viewPortSize + viewPort.afterSize - viewPort.listSize;</span>
+<span class="cstat-no" title="statement not covered" >                    if (this.mode !== ViewportMode.disabled &amp;&amp; listSize &lt; 2 * ViewPortService.itemDefaultSize) {</span>
+                        // Measure again container and recalc viewport
+<span class="cstat-no" title="statement not covered" >                        this.viewPortResult$.next(this.measureViewPort);</span>
+<span class="cstat-no" title="statement not covered" >                        return Observable.timer(1).switchMap(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>calcViewPort$(items, maxSize, scrollPos, element, itemDefaultSize, ensureParams))</span>;</span>
+                    } else <span class="cstat-no" title="statement not covered" >if (items.length &amp;&amp; endScrollPos &gt; 0 &amp;&amp; (viewPort.scrollPos || scrollPos) &gt; endScrollPos) {</span>
+                        // Scroll position is over the last item
+                        // Ensure last item visible and recalc viewport
+<span class="cstat-no" title="statement not covered" >                        return calcViewPort$(items, maxSize, endScrollPos, element, itemDefaultSize, {} as IEnsureParams);</span>
+                    } else <span class="cstat-no" title="statement not covered" >if (this.mode === ViewportMode.auto &amp;&amp; viewPort.listSize &lt; listSize) {</span>
+                        // Rendered viewport is to small, render again to complete
+<span class="cstat-no" title="statement not covered" >                        return calcViewPort$(items, maxSize, 0, element, itemDefaultSize, {</span>
+                            index: items.length - 1,
+                            atEnd: true,
+                        } as IEnsureParams);
+                    } else {
+                        // Return calculated viewport
+<span class="cstat-no" title="statement not covered" >                        return Observable.of(viewPort);</span>
+                    }
+                })
+                .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>ensureParams.index = undefined)</span>;
+        };
+&nbsp;
+        const items$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.items$)</span>
+            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>consoleLog('items'))</span>;
+&nbsp;
+        // Ensure item visible by index or instance
+<span class="cstat-no" title="statement not covered" >        this.ensureParams$ = Observable.combineLatest(this.ensureItem$, items$)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >ensureItem,</span> <span class="cstat-no" title="statement not covered" >items]</span>) =&gt; {
+                const ensureParams = <span class="cstat-no" title="statement not covered" >{} as IEnsureParams;</span>
+<span class="cstat-no" title="statement not covered" >                if (ensureItem !== undefined &amp;&amp; ensureItem !== null &amp;&amp; items &amp;&amp; items.length) {</span>
+                    let ensureIndex = <span class="cstat-no" title="statement not covered" >ensureItem as number;</span>
+<span class="cstat-no" title="statement not covered" >                    if (isNaN(ensureIndex)) {</span>
+<span class="cstat-no" title="statement not covered" >                        ensureIndex = items.findIndex(<span class="fstat-no" title="function not covered" >(</span>itm) =&gt; <span class="cstat-no" title="statement not covered" >ensureItem === itm)</span>;</span>
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    if (ensureIndex &gt;= 0) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (this.viewPort &amp;&amp; ensureIndex &lt;= this.viewPort.startIndex) {</span>
+<span class="cstat-no" title="statement not covered" >                            ensureParams.index = ensureIndex;</span>
+<span class="cstat-no" title="statement not covered" >                            ensureParams.atEnd = false;</span>
+                        } else <span class="cstat-no" title="statement not covered" >if (!this.viewPort || ensureIndex &gt;= this.viewPort.endIndex) {</span>
+<span class="cstat-no" title="statement not covered" >                            ensureParams.index = ensureIndex;</span>
+<span class="cstat-no" title="statement not covered" >                            ensureParams.atEnd = true;</span>
+                        }
+                    }
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return ensureParams;</span>
+            })
+            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>consoleLog('ensureParams'))</span>;
+&nbsp;
+        const maxSize$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.maxSize$)</span>
+            .distinctUntilChanged()
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >consoleLog(`maxSize ${value}`))</span>;
+&nbsp;
+        const refresh$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.refresh$)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>params: IViewPortRefreshParams) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.ignoreScrollCount = 0;</span>
+<span class="cstat-no" title="statement not covered" >                if (params) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (params.clearMeasuredSize) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.lastCalculatedSize = undefined;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (params.items) {</span>
+<span class="cstat-no" title="statement not covered" >                        params.items.forEach(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; <span class="cstat-no" title="statement not covered" >item.size = undefined)</span>;</span>
+                    }
+                }
+            })
+            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>consoleLog('refresh'))</span>;
+&nbsp;
+        const scrollPos$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.scrollPosition$)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>scrollPos) =&gt; <span class="cstat-no" title="statement not covered" >this._scrollPosition = scrollPos || 0)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>scrollPos) =&gt; <span class="cstat-no" title="statement not covered" >Math.max(scrollPos, 0))</span>
+            .filter(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (this.ignoreScrollCount &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.ignoreScrollCount--;</span>
+<span class="cstat-no" title="statement not covered" >                    console.log(`ignoreScrollCount ${this.ignoreScrollCount}`);</span>
+<span class="cstat-no" title="statement not covered" >                    return false;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    return true;</span>
+                }
+            })
+            .distinctUntilChanged()
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >consoleLog(`scrollPos ${value}`))</span>;
+&nbsp;
+        const mode$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.mode$)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>mode) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this._mode = typeof mode === 'string' ? ViewportMode[mode] : mode;</span>
+<span class="cstat-no" title="statement not covered" >                return this._mode;</span>
+            })
+            .distinctUntilChanged()
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >consoleLog(`mode ${value}`))</span>;
+&nbsp;
+        const direction$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.direction$)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>direction) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this._direction = typeof direction === 'string' ? ViewportDirection[direction] : direction;</span>
+<span class="cstat-no" title="statement not covered" >                return this._direction;</span>
+            })
+            .distinctUntilChanged()
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >consoleLog(`direction ${value}`))</span>;
+&nbsp;
+        const itemsSize$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.itemsSize$)</span>
+            .distinctUntilChanged()
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >this._itemsSize = value)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >consoleLog(`itemsSize ${value}`))</span>;
+&nbsp;
+        const element$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.element$)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>element) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!element) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.viewPort = undefined;</span>
+<span class="cstat-no" title="statement not covered" >                    this.ignoreScrollCount = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    this.lastCalculatedSize = undefined;</span>
+                }
+            })
+            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>consoleLog(`element`))</span>;
+&nbsp;
+        // Reset items size when direction change in auto mode
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.combineLatest(direction$, items$, mode$, this.deleteSizeCache$)</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >_direction,</span> <span class="cstat-no" title="statement not covered" >items,</span> <span class="cstat-no" title="statement not covered" >mode]</span>) =&gt; <span class="cstat-no" title="statement not covered" >items &amp;&amp; items.length &amp;&amp; mode === ViewportMode.auto)</span>
+            .switchMap(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >_direction,</span> <span class="cstat-no" title="statement not covered" >items]</span>) =&gt; <span class="cstat-no" title="statement not covered" >items)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; {
+<span class="cstat-no" title="statement not covered" >                item.size = undefined;</span>
+            }));
+&nbsp;
+        // Calc view port observable
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.combineLatest(items$, maxSize$, itemsSize$, this.ensureParams$)</span>
+            .combineLatest(direction$, mode$, refresh$, element$)
+            .debounceTime(1)
+            .combineLatest(scrollPos$)
+            .filter(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >[<span class="cstat-no" title="statement not covered" >[<span class="cstat-no" title="statement not covered" >_items,</span> <span class="cstat-no" title="statement not covered" >_maxSize,</span> <span class="cstat-no" title="statement not covered" >_itemDefaultSize,</span> <span class="cstat-no" title="statement not covered" >_ensureParams]</span>,</span> <span class="cstat-no" title="statement not covered" >_direction,</span> <span class="cstat-no" title="statement not covered" >_mode,</span> <span class="cstat-no" title="statement not covered" >_refresh,</span> <span class="cstat-no" title="statement not covered" >element]</span>,</span> <span class="cstat-no" title="statement not covered" >_scrollPos]</span>) =&gt; <span class="cstat-no" title="statement not covered" >!!element)</span>
+            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>consoleLog(`combineLatest`))</span>
+            .switchMap(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >[<span class="cstat-no" title="statement not covered" >[<span class="cstat-no" title="statement not covered" >items,</span> <span class="cstat-no" title="statement not covered" >maxSize,</span> <span class="cstat-no" title="statement not covered" >itemDefaultSize,</span> <span class="cstat-no" title="statement not covered" >ensureParams]</span>,</span> <span class="cstat-no" title="statement not covered" >_direction,</span> <span class="cstat-no" title="statement not covered" >_mode,</span> <span class="cstat-no" title="statement not covered" >_refresh,</span> <span class="cstat-no" title="statement not covered" >element]</span>,</span> <span class="cstat-no" title="statement not covered" >_scrollPos]</span>) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!itemDefaultSize) {</span>
+<span class="cstat-no" title="statement not covered" >                    itemDefaultSize = ViewPortService.itemDefaultSize;</span>
+                }
+                const listSize = <span class="cstat-no" title="statement not covered" >this.lastCalculatedSize || maxSize || clientSize(element);</span>
+                const scrollPos = <span class="cstat-no" title="statement not covered" >this._scrollPosition;</span>
+                let maxSizeValue = <span class="cstat-no" title="statement not covered" >maxSize === 'auto' ? 0 : +maxSize;</span>
+<span class="cstat-no" title="statement not covered" >                if (items &amp;&amp; items.length &amp;&amp; (listSize === 'auto' || listSize &lt; 2 * ViewPortService.itemDefaultSize)) {</span>
+                    // Set the viewlist to the maximum height to measure the real max-height defined in the css
+                    // Use a blank div to do that
+<span class="cstat-no" title="statement not covered" >                    this.viewPortResult$.next(this.measureViewPort);</span>
+                    // Wait next life cycle for the result
+<span class="cstat-no" title="statement not covered" >                    return Observable.timer(1)</span>
+                        .map(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+                            // Get mx size from container
+<span class="cstat-no" title="statement not covered" >                            maxSizeValue = this.lastCalculatedSize = clientSize(element);</span>
+                            // Ensure that max size is not more than the items size
+<span class="cstat-no" title="statement not covered" >                            if (this.mode === ViewportMode.fixed) {</span>
+<span class="cstat-no" title="statement not covered" >                                if (items.length * itemDefaultSize &lt; maxSizeValue) {</span>
+<span class="cstat-no" title="statement not covered" >                                    maxSizeValue = items.length * itemDefaultSize;</span>
+                                }
+                            } else <span class="cstat-no" title="statement not covered" >if (this.mode === ViewportMode.variable) {</span>
+                                let maxItemsSize = <span class="cstat-no" title="statement not covered" >0;</span>
+<span class="cstat-no" title="statement not covered" >                                items.find(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                                    maxItemsSize += item.size || itemDefaultSize;</span>
+<span class="cstat-no" title="statement not covered" >                                    return maxItemsSize &gt; maxSizeValue;</span>
+                                });
+<span class="cstat-no" title="statement not covered" >                                if (maxItemsSize &lt; maxSizeValue) {</span>
+<span class="cstat-no" title="statement not covered" >                                    maxSizeValue = maxItemsSize;</span>
+                                }
+                            } else <span class="cstat-no" title="statement not covered" >if (this.mode === ViewportMode.auto) {</span>
+&nbsp;
+                            }
+<span class="cstat-no" title="statement not covered" >                            return { element, scrollPos, items, maxSizeValue, itemDefaultSize, ensureParams };</span>
+                        });
+                } else {
+<span class="cstat-no" title="statement not covered" >                    maxSizeValue = maxSizeValue || this.lastCalculatedSize;</span>
+<span class="cstat-no" title="statement not covered" >                    return Observable.of({ element, scrollPos, items, maxSizeValue, itemDefaultSize, ensureParams });</span>
+                }
+            })
+            .switchMap(<span class="fstat-no" title="function not covered" >(</span>{ <span class="cstat-no" title="statement not covered" >element,</span> <span class="cstat-no" title="statement not covered" >scrollPos,</span> <span class="cstat-no" title="statement not covered" >items,</span> <span class="cstat-no" title="statement not covered" >maxSizeValue,</span> <span class="cstat-no" title="statement not covered" >itemDefaultSize,</span> <span class="cstat-no" title="statement not covered" >ensureParams </span>}) =&gt; <span class="cstat-no" title="statement not covered" >calcViewPort$(items, maxSizeValue, scrollPos, element, itemDefaultSize, ensureParams))</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>viewPort: IViewPort) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.viewPortResult$.next(viewPort);</span>
+            }, (<span class="fstat-no" title="function not covered" >(</span>error) =&gt; {
+<span class="cstat-no" title="statement not covered" >                console.log(error);</span>
+            })));
+&nbsp;
+        // Cache last calculated viewport
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.viewPortResult$).subscribe(<span class="fstat-no" title="function not covered" >(</span>viewPort: IViewPort) =&gt; <span class="cstat-no" title="statement not covered" >this.viewPort = viewPort)</span>);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public deleteSizeCache() {</span>
+<span class="cstat-no" title="statement not covered" >        this.deleteSizeCache$.next(true);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public clear() {</span>
+<span class="cstat-no" title="statement not covered" >        this.viewPortResult$.next(this.emptyViewPort);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public refresh(</span>params?: IViewPortRefreshParams) {
+<span class="cstat-no" title="statement not covered" >        this.refresh$.next(params || null);</span>
+    }
+}
+&nbsp;
+export interface IEnsureParams {
+    index: number;
+    atEnd: boolean;
+}
+&nbsp;
+export interface IViewPort {
+    beforeSize: number;
+    afterSize: number;
+    visibleItems: IViewPortItem[];
+    startIndex: number;
+    endIndex: number;
+    viewPortSize: number;
+    listSize: number;
+    scrollPos: number;
+    items: IViewPortItem[];
+}
+&nbsp;
+export interface IViewPortItem { size?: number; }
+&nbsp;
+export interface IViewPortRefreshParams {
+    items: IViewPortItem[];
+    clearMeasuredSize: boolean;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

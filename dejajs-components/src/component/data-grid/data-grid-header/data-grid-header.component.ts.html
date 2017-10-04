@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/data-grid/data-grid-header/data-grid-header.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/data-grid/data-grid-header</a> data-grid-header.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20.39% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>31/152</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">17.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>13/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.03% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.17% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>29/137</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output } from '@angular/core';
+import 'rxjs/add/operator/timeout';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { DejaClipboardService } from '../../../common/core/clipboard/clipboard.service';
+import { ISortInfos } from '../../../common/core/sorting/sort-infos.model';
+import { IDejaDragEvent } from '../../dragdrop/draggable.directive';
+import { IDejaDropEvent } from '../../dragdrop/droppable.directive';
+import { IDejaGridColumn, IDejaGridColumnEvent, IDejaGridColumnLayoutEvent, IDejaGridColumnSizeEvent } from '../data-grid-column/data-grid-column';
+import { IDejaGridColumnLayout } from '../data-grid-column/data-grid-column-layout';
+&nbsp;
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'deja-grid-header',
+    styleUrls: ['./data-grid-header.component.scss'],
+    templateUrl: './data-grid-header.component.html',
+})
+export class DejaGridHeaderComponent implements OnDestroy {
+    /** Template d'entête de colonne si définit extérieurement à la grille */
+    @Input() public columnHeaderTemplateExternal;
+&nbsp;
+    /** Infos de tri à afficher dans les entêtes */
+    @Input() public sortInfos: <span class="branch-0 cbranch-no" title="branch not covered" >ISortInfos<span class="branch-0 cbranch-no" title="branch not covered" >;</span></span>
+&nbsp;
+    /** Cet évenement est levé lorsque la taille d'une colonne est modifiée */
+    @Output() public <span class="cstat-no" title="statement not covered" >columnSizeChanged = new EventEmitter&lt;IDejaGridColumnSizeEvent&gt;();</span>
+&nbsp;
+    /** Cet évenement est levé lorsque la position des colonnes est modifiée */
+    @Output() public <span class="cstat-no" title="statement not covered" >columnLayoutChanged = new EventEmitter&lt;IDejaGridColumnLayoutEvent&gt;();</span>
+&nbsp;
+    /** Cet évenement est levé lorsqu'une entête de colonne est cliquée */
+    @Output() public <span class="cstat-no" title="statement not covered" >columnHeaderClicked = new EventEmitter&lt;IDejaGridColumnEvent&gt;();</span>
+&nbsp;
+    /** Cet évenement est levé lorsqu'une colonne est drag and dropée */
+    @Output() public <span class="cstat-no" title="statement not covered" >columnDragEnd = new EventEmitter();</span>
+&nbsp;
+    /** Template d'entête de colonne par defaut définit dans le HTML de la grille */
+    @ContentChild('columnHeaderTemplate') protected columnHeaderTemplateInternal;
+&nbsp;
+    protected _sizedColumn: IDejaGridColumn;
+    private <span class="cstat-no" title="statement not covered" >_columnsDraggable = false;</span>
+    private <span class="cstat-no" title="statement not covered" >_columnsSortable = false;</span>
+    private <span class="cstat-no" title="statement not covered" >_columnsSizable = false;</span>
+    private <span class="cstat-no" title="statement not covered" >_columnLayout = {} as IDejaGridColumnLayout;</span>
+    private <span class="cstat-no" title="statement not covered" >backupColumnOrder = [] as IDejaGridColumn[];</span>
+    private <span class="cstat-no" title="statement not covered" >columnGroupKey = 'deja-grid-column';</span>
+    private <span class="cstat-no" title="statement not covered" >subscriptions = [] as Subscription[];</span>
+&nbsp;
+    /** Définit si toutes les colonnes peuvent être draggable vers un autre composant.
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set columnsDraggable(</span>value: boolean | string) {
+<span class="cstat-no" title="statement not covered" >        this._columnsDraggable = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    /** Retourne si toutes les colonnes peuvent être draggable vers un autre composant.
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+<span class="fstat-no" title="function not covered" >    public get columnsDraggable() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._columnsDraggable;</span>
+    }
+&nbsp;
+    /** Définit si toutes les colonnes peuvent être déplacées parmis les autres colonnes.
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set columnsSortable(</span>value: boolean | string) {
+<span class="cstat-no" title="statement not covered" >        this._columnsSortable = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    /** Retourne si toutes les colonnes peuvent être déplacées parmis les autres colonnes.
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+<span class="fstat-no" title="function not covered" >    public get columnsSortable() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._columnsSortable;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get sizedColumn() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._sizedColumn;</span>
+    }
+&nbsp;
+    /** Définit si toutes les colonnes peuvent être redimensionées
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set columnsSizable(</span>value: boolean | string) {
+<span class="cstat-no" title="statement not covered" >        this._columnsSizable = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    /** Retourne si toutes les colonnes peuvent être redimensionées
+     * Si une valeur spécifique à une colonne est spécifiée dans le modèle de la colonne, cette dernière sera prioritaire.
+     */
+<span class="fstat-no" title="function not covered" >    public get columnsSizable() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._columnsSizable;</span>
+    }
+&nbsp;
+    @Input()
+    /** Définit la structire de colonnes associée aux entêtes */
+<span class="fstat-no" title="function not covered" >    public set columnLayout(</span>layout: IDejaGridColumnLayout<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._columnLayout = layout || {</span>
+            columns: [],
+            scrollLeft: 0,
+            vpAfterWidth: 0,
+            vpBeforeWidth: 0,
+            refresh$: new Subject&lt;void&gt;(),
+        };
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+    /** Retourne la structire de colonnes associée aux entêtes */
+<span class="fstat-no" title="function not covered" >    public get columnLayout() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._columnLayout;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected get columnHeaderTemplate() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.columnHeaderTemplateExternal || this.columnHeaderTemplateInternal;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >changeDetectorRef: </span>ChangeDetectorRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+        const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.fromEvent(element, 'mousedown')</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; <span class="cstat-no" title="statement not covered" >event.buttons === 1)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>downEvent: MouseEvent) =&gt; {
+                const target = <span class="cstat-no" title="statement not covered" >downEvent.target as HTMLElement;</span>
+                const column = <span class="cstat-no" title="statement not covered" >this.getColumnFromHTMLElement(downEvent.target as HTMLElement);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (target.hasAttribute('separator')) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (this.columnsSizable &amp;&amp; column.sizeable !== false) {</span>
+                        // Size clicked column
+<span class="cstat-no" title="statement not covered" >                        this._sizedColumn = column;</span>
+                        const sizedOrigin = <span class="cstat-no" title="statement not covered" >downEvent.pageX;</span>
+&nbsp;
+                        const kill$ = <span class="cstat-no" title="statement not covered" >new Subject();</span>
+                        const mouseUp$ = <span class="cstat-no" title="statement not covered" >Observable.fromEvent(document, 'mouseup');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        mouseUp$.first().subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+                            const e = <span class="cstat-no" title="statement not covered" >{</span>
+                                column: null,
+                            } as IDejaGridColumnSizeEvent;
+<span class="cstat-no" title="statement not covered" >                            this.columnSizeChanged.emit(e);</span>
+<span class="cstat-no" title="statement not covered" >                            this.changeDetectorRef.markForCheck();</span>
+<span class="cstat-no" title="statement not covered" >                            this._sizedColumn = undefined;</span>
+                        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        Observable.fromEvent(element.ownerDocument, 'mousemove')</span>
+                            .takeUntil(Observable.merge(mouseUp$, kill$))
+                            .subscribe(<span class="fstat-no" title="function not covered" >(</span>moveEvent: MouseEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                                if (moveEvent.buttons === 1) {</span>
+                                    const e = <span class="cstat-no" title="statement not covered" >{</span>
+                                        column: this._sizedColumn,
+                                        offsetWidth: moveEvent.pageX - sizedOrigin,
+                                        originalEvent: moveEvent,
+                                    } as IDejaGridColumnSizeEvent;
+<span class="cstat-no" title="statement not covered" >                                    this.columnSizeChanged.emit(e);</span>
+<span class="cstat-no" title="statement not covered" >                                    this.changeDetectorRef.markForCheck();</span>
+                                } else {
+                                    // Mouse up
+<span class="cstat-no" title="statement not covered" >                                    kill$.next();</span>
+                                }
+                            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        downEvent.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >                        return false;</span>
+                    }
+                } else {
+                    const clickedColumn = <span class="cstat-no" title="statement not covered" >column;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    Observable.fromEvent(element, 'mouseup')</span>
+                        .first()
+                        .timeout(1000)
+                        .subscribe(<span class="fstat-no" title="function not covered" >(</span>upEvent: MouseEvent) =&gt; {
+                            const columnElement = <span class="cstat-no" title="statement not covered" >this.getColumnElementFromHTMLElement(upEvent.target as HTMLElement);</span>
+<span class="cstat-no" title="statement not covered" >                            if ((columnElement &amp;&amp; columnElement.getAttribute('colname')) === clickedColumn.name) {</span>
+                                const index = <span class="cstat-no" title="statement not covered" >+columnElement.getAttribute('index');</span>
+                                const e = <span class="cstat-no" title="statement not covered" >{</span>
+                                    column: clickedColumn,
+                                    originalEvent: upEvent,
+                                    index: index,
+                                } as IDejaGridColumnEvent;
+<span class="cstat-no" title="statement not covered" >                                this.columnHeaderClicked.emit(e);</span>
+<span class="cstat-no" title="statement not covered" >                                this.changeDetectorRef.markForCheck();</span>
+                            }
+                        }, <span class="fstat-no" title="function not covered" >(</span>_error) =&gt; { });
+                }
+            }));
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public refresh() {</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    protected getDragContext(</span>column: IDejaGridColumn) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.clipboardService || (!this.columnsDraggable &amp;&amp; !this.columnsSortable) || column.draggable === false) {</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        }
+&nbsp;
+        // console.log(`getDragContext ` + column.name + ' ' + Date.now());
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            dragendcallback: <span class="fstat-no" title="function not covered" >(</span>event: IDejaDragEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!event.dragInfo.hasOwnProperty(this.columnGroupKey)) {</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                column.dragged = false;</span>
+<span class="cstat-no" title="statement not covered" >                this.backupColumnOrder = [];</span>
+<span class="cstat-no" title="statement not covered" >                this.columnDragEnd.emit();</span>
+<span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
+            },
+            dragstartcallback: <span class="fstat-no" title="function not covered" >(</span>event: IDejaDragEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!this._sizedColumn) {</span>
+<span class="cstat-no" title="statement not covered" >                    event.dragInfo[this.columnGroupKey] = column;</span>
+<span class="cstat-no" title="statement not covered" >                    column.dragged = true;</span>
+&nbsp;
+                    // Backup column layout
+<span class="cstat-no" title="statement not covered" >                    this.backupColumnOrder = [];</span>
+<span class="cstat-no" title="statement not covered" >                    this._columnLayout.columns.forEach(<span class="fstat-no" title="function not covered" >(</span>col) =&gt; <span class="cstat-no" title="statement not covered" >this.backupColumnOrder.push(col))</span>;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+                }
+            },
+        };
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public getDropContext() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!this.clipboardService) {</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        }
+&nbsp;
+        const dragCallback = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>event: IDejaDropEvent) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.columnsSortable || !event.dragInfo.hasOwnProperty(this.columnGroupKey)) {</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+&nbsp;
+            const targetElement = <span class="cstat-no" title="statement not covered" >this.getColumnElementFromHTMLElement(event.target as HTMLElement);</span>
+            const targetBounds = <span class="cstat-no" title="statement not covered" >targetElement.getBoundingClientRect();</span>
+            const targetIndex = <span class="cstat-no" title="statement not covered" >targetElement &amp;&amp; +targetElement.getAttribute('index');</span>
+<span class="cstat-no" title="statement not covered" >            if (targetIndex === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+&nbsp;
+            const sourceColumn = <span class="cstat-no" title="statement not covered" >event.dragInfo[this.columnGroupKey] as IDejaGridColumn;</span>
+            const sourceIndex = <span class="cstat-no" title="statement not covered" >this._columnLayout.columns.findIndex(<span class="fstat-no" title="function not covered" >(</span>og) =&gt; <span class="cstat-no" title="statement not covered" >og === sourceColumn)</span>;</span>
+&nbsp;
+            // Dead zones
+<span class="cstat-no" title="statement not covered" >            if (sourceIndex === targetIndex) {</span>
+<span class="cstat-no" title="statement not covered" >                event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (targetIndex === sourceIndex + 1) {</span>
+<span class="cstat-no" title="statement not covered" >                if (event.x &lt;= targetBounds.left + targetBounds.width / 2) {</span>
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+            } else <span class="cstat-no" title="statement not covered" >if (targetIndex === sourceIndex - 1) {</span>
+<span class="cstat-no" title="statement not covered" >                if (event.x &gt;= targetBounds.left + targetBounds.width / 2) {</span>
+<span class="cstat-no" title="statement not covered" >                    event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                    return;</span>
+                }
+            }
+&nbsp;
+            const e = <span class="cstat-no" title="statement not covered" >{</span>
+                column: sourceColumn,
+                index: sourceIndex,
+                originalEvent: event,
+                target: this._columnLayout.columns[targetIndex],
+                targetIndex: targetIndex,
+            } as IDejaGridColumnLayoutEvent;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.columnLayoutChanged.emit(e);</span>
+<span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            dragleavecallback: <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                if (this.backupColumnOrder.length) {</span>
+                    // Restore original column layout
+<span class="cstat-no" title="statement not covered" >                    this._columnLayout.columns = [];</span>
+<span class="cstat-no" title="statement not covered" >                    this.backupColumnOrder.forEach(<span class="fstat-no" title="function not covered" >(</span>col) =&gt; <span class="cstat-no" title="statement not covered" >this._columnLayout.columns.push(col))</span>;</span>
+                }
+            },
+            dragentercallback: dragCallback,
+            dragovercallback: dragCallback,
+            dropcallback: dragCallback,
+        };
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private getColumnElementFromHTMLElement(</span>element: HTMLElement): HTMLElement {
+        let parentElement = <span class="cstat-no" title="statement not covered" >element;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (parentElement &amp;&amp; !parentElement.hasAttribute('colname')) {</span>
+<span class="cstat-no" title="statement not covered" >            element = parentElement;</span>
+<span class="cstat-no" title="statement not covered" >            parentElement = parentElement.parentElement;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (!parentElement) {</span>
+<span class="cstat-no" title="statement not covered" >            return undefined;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return parentElement;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private getColumnFromHTMLElement(</span>element: HTMLElement): IDejaGridColumn {
+        const columnElement = <span class="cstat-no" title="statement not covered" >this.getColumnElementFromHTMLElement(element);</span>
+        const colName = <span class="cstat-no" title="statement not covered" >columnElement &amp;&amp; columnElement.getAttribute('colname');</span>
+<span class="cstat-no" title="statement not covered" >        return colName &amp;&amp; this._columnLayout.columns.find(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; <span class="cstat-no" title="statement not covered" >column.name === colName)</span>;</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/mouse-dragdrop/mouse-draggable.directive.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/mouse-dragdrop</a> mouse-draggable.directive.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25.42% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>15/59</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.18% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.69% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.81% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/57</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Directive, ElementRef, Input, OnDestroy } from '@angular/core';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/takeUntil';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { Position } from '../../common/core/graphics/position';
+import { Rect } from '../../common/core/graphics/rect';
+import { DejaMouseDragDropService, IDragCursorInfos } from './mouse-dragdrop.service';
+&nbsp;
+@Directive({
+    selector: '[deja-mouse-draggable]',
+})
+export class DejaMouseDraggableDirective implements OnDestroy {
+    private _context: IDejaMouseDraggableContext;
+    private mouseenter$sub: Subscription;
+&nbsp;
+    @Input('deja-mouse-draggable')
+<span class="fstat-no" title="function not covered" >    public set context(</span>value: IDejaMouseDraggableContext) {
+<span class="cstat-no" title="statement not covered" >        this._context = value;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get context() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._context;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, dragDropService: </span>DejaMouseDragDropService<span class="branch-2 cbranch-no" title="branch not covered" >) {</span></span>
+        const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
+&nbsp;
+        const leave$ = <span class="cstat-no" title="statement not covered" >Observable.fromEvent(element, 'mouseleave');</span>
+&nbsp;
+        const mouseUp$ = <span class="cstat-no" title="statement not covered" >Observable.fromEvent(element.ownerDocument, 'mouseup');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.mouseenter$sub = Observable.fromEvent(element, 'mouseenter')</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                Observable.fromEvent(element, 'mousedown')</span>
+                    .takeUntil(leave$)
+                    .filter(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; <span class="cstat-no" title="statement not covered" >event.buttons === 1)</span>
+                    .subscribe(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; {
+                        const moveUp$ = <span class="cstat-no" title="statement not covered" >new Subject();</span>
+                        let target: HTMLElement;
+&nbsp;
+                        const match = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>el: HTMLElement) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                            return el.tagName === this.context.target.toUpperCase() || el.id === this.context.target.substr(1) || el.hasAttribute(this.context.target.substring(1, this.context.target.length - 1));</span>
+                        };
+&nbsp;
+                        const startDrag = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+                            const kill$ = <span class="cstat-no" title="statement not covered" >Observable.merge(mouseUp$, moveUp$)</span>
+                                .first()
+                                .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                                dragDropService.dragCursor$.next(undefined);</span>
+<span class="cstat-no" title="statement not covered" >                                dragDropService.dragging$.next(false);</span>
+                            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                            Observable.fromEvent(element.ownerDocument, 'mousemove')</span>
+                                .takeUntil(kill$)
+                                .subscribe(<span class="fstat-no" title="function not covered" >(</span>ev: MouseEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                                    if (target &amp;&amp; ev.buttons === 1) {</span>
+                                        const bounds = <span class="cstat-no" title="statement not covered" >new Rect(element.getBoundingClientRect());</span>
+                                        const position = <span class="cstat-no" title="statement not covered" >new Position(ev.pageX, ev.pageY);</span>
+                                        const html = <span class="cstat-no" title="statement not covered" >bounds.containsPoint(position) ? target.innerHTML : undefined;</span>
+&nbsp;
+                                        // Post cursor infos to service
+<span class="cstat-no" title="statement not covered" >                                        dragDropService.dragCursor$.next({</span>
+                                            position: position,
+                                            html: html,
+                                            width: target.offsetWidth,
+                                            height: target.offsetHeight,
+                                            className: this.context.className,
+                                            originalEvent: ev,
+                                        } as IDragCursorInfos);
+&nbsp;
+                                    } else {
+<span class="cstat-no" title="statement not covered" >                                        moveUp$.next();</span>
+                                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                                    ev.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                                    return false;</span>
+                                });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                            dragDropService.dragging$.next(true);</span>
+                        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        if (this.context) {</span>
+<span class="cstat-no" title="statement not covered" >                            if (this.context.target) {</span>
+<span class="cstat-no" title="statement not covered" >                                target = event.target as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >                                while (target &amp;&amp; !match(target)) {</span>
+<span class="cstat-no" title="statement not covered" >                                    target = target.parentElement;</span>
+                                }
+                            } else {
+<span class="cstat-no" title="statement not covered" >                                target = element;</span>
+                            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                            if (target &amp;&amp; this.context.dragStart) {</span>
+                                const dragContext = <span class="cstat-no" title="statement not covered" >this.context.dragStart(target);</span>
+<span class="cstat-no" title="statement not covered" >                                if (dragContext) {</span>
+<span class="cstat-no" title="statement not covered" >                                    if (dragContext.subscribe) {</span>
+                                        // Observable
+<span class="cstat-no" title="statement not covered" >                                        dragContext</span>
+                                            .first()
+                                            .subscribe(<span class="fstat-no" title="function not covered" >(</span>ddctx) =&gt; {
+<span class="cstat-no" title="statement not covered" >                                                dragDropService.context = ddctx;</span>
+<span class="cstat-no" title="statement not covered" >                                                if (ddctx) {</span>
+<span class="cstat-no" title="statement not covered" >                                                startDrag();</span>
+                                                }
+                                            });
+<span class="cstat-no" title="statement not covered" >                                        return;</span>
+                                    } else {
+<span class="cstat-no" title="statement not covered" >                                        dragDropService.context = dragContext;</span>
+<span class="cstat-no" title="statement not covered" >                                        startDrag();</span>
+                                    }
+                                }
+                            }
+                        }
+                    });
+            });
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.mouseenter$sub.unsubscribe();</span>
+    }
+}
+&nbsp;
+export interface IDejaMouseDraggableContext {
+    target?: string; // Tagname or #id or [attribute]
+    className?: string;
+    dragStart?(HTMLElement): any; // Return object or observable&lt;object&gt;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

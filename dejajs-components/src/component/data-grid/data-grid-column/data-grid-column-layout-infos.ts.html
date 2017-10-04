@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/data-grid/data-grid-column/data-grid-column-layout-infos.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/data-grid/data-grid-column</a> data-grid-column-layout-infos.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.12% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">9.38% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/32</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { UnitValue } from '../../../common/core/graphics/unit-value';
+import { IDejaGridColumn } from './data-grid-column';
+&nbsp;
+export class DejaGridColumnsLayoutInfos {
+    public percentColumns: IDejaGridColumn[];
+    public fixedColumns: IDejaGridColumn[];
+    public responsiveColumns: IDejaGridColumn[];
+    public totalFixedWidth: number;
+    public totalPercentWidth: number;
+    public columnsWidth: {
+        [name: string]: UnitValue;
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>columns: IDejaGridColumn[]) {</span>
+<span class="cstat-no" title="statement not covered" >        this.columnsWidth = {};</span>
+<span class="cstat-no" title="statement not covered" >        this.percentColumns = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.fixedColumns = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.responsiveColumns = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.totalFixedWidth = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.totalPercentWidth = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        columns.forEach(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; {</span>
+            let width = <span class="cstat-no" title="statement not covered" >new UnitValue(column.width);</span>
+<span class="cstat-no" title="statement not covered" >            if (width.value === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                width = new UnitValue(10, '%');</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (width.isInvalid()) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('Invalid column width unit can be for example: 11px or 23%');</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (width.unit &amp;&amp; width.unit !== 'px' &amp;&amp; width.unit !== '%') {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('Column width unit can be only px or %');</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (width.unit === '%') {</span>
+<span class="cstat-no" title="statement not covered" >                this.percentColumns.push(column);</span>
+<span class="cstat-no" title="statement not covered" >                this.totalPercentWidth += width.value;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                this.fixedColumns.push(column);</span>
+<span class="cstat-no" title="statement not covered" >                this.totalFixedWidth += width.value;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (typeof column.responsive === 'number' || column.responsive === true) {</span>
+<span class="cstat-no" title="statement not covered" >                this.responsiveColumns.push(column);</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.columnsWidth[column.name] = width;</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.responsiveColumns.sort(<span class="fstat-no" title="function not covered" >(</span>c1, c2) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (c1.responsive === true) {</span>
+<span class="cstat-no" title="statement not covered" >                return 1;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (c2.responsive === true) {</span>
+<span class="cstat-no" title="statement not covered" >                return -1;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                return +c1.responsive - +c2.responsive;</span>
+            }
+        });
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

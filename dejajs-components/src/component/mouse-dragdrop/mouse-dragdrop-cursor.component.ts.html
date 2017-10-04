@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/mouse-dragdrop/mouse-dragdrop-cursor.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/mouse-dragdrop</a> mouse-dragdrop-cursor.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.54% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/65</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.61% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/61</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Component, ElementRef, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import 'rxjs/add/operator/delay';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { Position } from './../../common/core/graphics/position';
+import { DejaMouseDragDropService, IDragCursorInfos, IDropCursorInfos } from './mouse-dragdrop.service';
+&nbsp;
+@Component({
+    encapsulation: ViewEncapsulation.None,
+    selector: 'deja-mouse-dragdrop-cursor',
+    styleUrls: [
+        './mouse-dragdrop-cursor.component.scss',
+    ],
+    templateUrl: './mouse-dragdrop-cursor.component.html',
+})
+export class DejaMouseDragDropCursorComponent implements OnDestroy {
+    @ViewChild('block') private icon: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild('content') private content: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    private <span class="cstat-no" title="statement not covered" >position$ = new BehaviorSubject&lt;Position&gt;(undefined);</span>
+    private <span class="cstat-no" title="statement not covered" >cursor$ = new BehaviorSubject&lt;IDragCursorInfos&gt;(undefined);</span>
+    private _dragCursor: IDragCursorInfos;
+    private _currentCursor: IDragCursorInfos;
+    private _dropCursor: IDropCursorInfos;
+    private <span class="cstat-no" title="statement not covered" >subscriptions: Subscription[] = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >dragDropService: </span>DejaMouseDragDropService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+        const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable</span>
+            .from(this.position$)
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>pos) =&gt; {
+<span class="cstat-no" title="statement not covered" >                element.style.left = pos ? `${pos.left}px` : '-1000px';</span>
+<span class="cstat-no" title="statement not covered" >                element.style.top = pos ? `${pos.top}px` : '-1000px';</span>
+            }));
+&nbsp;
+        const cursor$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.cursor$);</span>
+&nbsp;
+        // Hide
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(cursor$</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; <span class="cstat-no" title="statement not covered" >!dragCursor)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (this._currentCursor) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.contentElement.style.opacity = '0';</span>
+<span class="cstat-no" title="statement not covered" >                    this.iconElement.style.opacity = '0';</span>
+                }
+<span class="cstat-no" title="statement not covered" >                this._currentCursor = dragCursor;</span>
+            })
+            .delay(300)
+            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this.position$.next(null);</span>
+<span class="cstat-no" title="statement not covered" >                element.style.display = 'none';</span>
+            }));
+&nbsp;
+        // Show
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(cursor$</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; <span class="cstat-no" title="statement not covered" >!!dragCursor)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                element.style.display = '';</span>
+<span class="cstat-no" title="statement not covered" >                this.contentElement.style.opacity = '0';</span>
+<span class="cstat-no" title="statement not covered" >                this.iconElement.style.opacity = '0';</span>
+<span class="cstat-no" title="statement not covered" >                this._currentCursor = dragCursor;</span>
+            })
+            .filter(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; <span class="cstat-no" title="statement not covered" >!dragCursor.className || dragCursor.className !== 'hidden')</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!!dragCursor.html) {</span>
+<span class="cstat-no" title="statement not covered" >                this.contentElement.innerHTML = dragCursor.html;</span>
+<span class="cstat-no" title="statement not covered" >                element.className = dragCursor.className;</span>
+<span class="cstat-no" title="statement not covered" >                this.contentElement.style.width = `${dragCursor.width || 48}px`;</span>
+<span class="cstat-no" title="statement not covered" >                this.contentElement.style.height = `${dragCursor.height || 48}px`;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    this.iconElement.style.opacity = '1';</span>
+                }
+            })
+            .delay(1)
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!!dragCursor.html) {</span>
+<span class="cstat-no" title="statement not covered" >                this.contentElement.style.opacity = '1';</span>
+                }
+            }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.dragDropService.dragCursor$)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>dragCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!!dragCursor !== !!this._dragCursor) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._dragCursor = dragCursor;</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (this._dropCursor &amp;&amp; this._dragCursor) {</span>
+<span class="cstat-no" title="statement not covered" >                    dragCursor.className = this._dropCursor.className || this._dragCursor.className;</span>
+<span class="cstat-no" title="statement not covered" >                    dragCursor.html = this._dropCursor.html || this._dragCursor.html;</span>
+<span class="cstat-no" title="statement not covered" >                    dragCursor.width = this._dropCursor.width || this._dragCursor.width;</span>
+<span class="cstat-no" title="statement not covered" >                    dragCursor.height = this._dropCursor.height || this._dragCursor.height;</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (!!dragCursor !== !!this._currentCursor || (dragCursor &amp;&amp; !!dragCursor.html !== !!this._currentCursor.html)) {</span>
+                    // Update Content
+<span class="cstat-no" title="statement not covered" >                    this.cursor$.next(dragCursor);</span>
+                } else <span class="cstat-no" title="statement not covered" >if (dragCursor) {</span>
+                    // Update only Position
+<span class="cstat-no" title="statement not covered" >                    this.position$.next(dragCursor.position);</span>
+                }
+            }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.dragDropService.dropCursor$)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>dropCursor) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this._dropCursor = dropCursor;</span>
+            }));
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get iconElement() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.icon.nativeElement as HTMLElement;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get contentElement() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.content.nativeElement as HTMLElement;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

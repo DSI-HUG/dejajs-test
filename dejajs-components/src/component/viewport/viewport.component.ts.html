@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/viewport/viewport.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/viewport</a> viewport.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>42/175</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.38% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/91</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24.39% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>40/164</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+// TODO Key events
+&nbsp;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, HostBinding, Input, OnDestroy, ViewChild } from '@angular/core';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/takeUntil';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { IViewPort, IViewPortItem, IViewPortRefreshParams, ViewportDirection, ViewportMode, ViewPortService } from '../../common/core/item-list/viewport.service';
+&nbsp;
+export enum DejaViewPortScrollStyle {
+    scrollbar,
+    buttons,
+}
+&nbsp;
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ViewPortService],
+    selector: 'deja-viewport',
+    styleUrls: ['./viewport.component.scss'],
+    templateUrl: './viewport.component.html',
+})
+export class DejaViewPortComponent implements OnDestroy {
+&nbsp;
+    protected beforeSize: number;
+    protected afterSize: number;
+    protected vpItems: IDejaViewPortItem[];
+    protected vpStartIndex: number;
+    protected vpEndIndex: number;
+    protected startOffset: number;  // Buttons mode only
+    @HostBinding('attr.hasUpBtn') protected <span class="cstat-no" title="statement not covered" >hasUpButton = false;</span>
+    @HostBinding('attr.hasDownBtn') protected <span class="cstat-no" title="statement not covered" >hasDownButton = false;</span>
+    @HostBinding('attr.horizontal') protected <span class="cstat-no" title="statement not covered" >_isHorizontal = false;</span>
+    @HostBinding('attr.buttons') protected <span class="cstat-no" title="statement not covered" >_hasButtons = false;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get hasButtons() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._hasButtons;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get isHorizontal() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._isHorizontal;</span>
+    }
+&nbsp;
+    private _items: IDejaViewPortItem[];
+    private element: HTMLElement;
+    private <span class="cstat-no" title="statement not covered" >subscriptions: Subscription[] = [];</span>
+    private <span class="cstat-no" title="statement not covered" >hasButtons$ = new Subject&lt;boolean&gt;();</span>
+    private <span class="cstat-no" title="statement not covered" >buttonsStep = 20;</span>
+    private mouseDown$Sub: Subscription;
+    private mouseWheel$Sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >scrollPosition = 0;</span>
+    private scroll$Sub: Subscription;
+&nbsp;
+    /** Permet de définir un template d'élément par binding */
+    @Input() public itemTemplateExternal;
+&nbsp;
+    @ContentChild('itemTemplate') private itemTemplateInternal;
+    @ViewChild('down') private downButton: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild('up') private upButton: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+&nbsp;
+    /** Set the list of items to render inside the viewport control */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set items(</span>items: any[]) {
+<span class="cstat-no" title="statement not covered" >        this._items = items ? items.map(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; <span class="cstat-no" title="statement not covered" >({</span></span>
+            model: item,
+        } as IDejaViewPortItem)) : [];
+<span class="cstat-no" title="statement not covered" >        if (this.viewPort.mode === ViewportMode.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >            this.vpItems = this._items;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.viewPort.items$.next(this._items);</span>
+    }
+&nbsp;
+    /** Set the scrolling style
+      * scrollbar: Classic scrollbars
+      * buttons: A button before is placed at the top or at the left of the list, and a button after is placed at the right or the bottom of the list.
+      */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set scrollingStyle(</span>value: DejaViewPortScrollStyle | string) {
+        const scrollingStyle = <span class="cstat-no" title="statement not covered" >typeof value === 'string' ? DejaViewPortScrollStyle[value] : value;</span>
+<span class="cstat-no" title="statement not covered" >        this.hasButtons$.next(scrollingStyle === DejaViewPortScrollStyle.buttons);</span>
+    }
+&nbsp;
+    /** Set the direction of the items rendering
+     * vertical: The item are displayed vertically
+     * horizontal: The item are displayed horizontally
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set direction(</span>value: ViewportDirection | string) {
+        const direction = <span class="cstat-no" title="statement not covered" >typeof value === 'string' ? ViewportDirection[value] : value;</span>
+<span class="cstat-no" title="statement not covered" >        this.viewPort.direction$.next(direction);</span>
+<span class="cstat-no" title="statement not covered" >        this._isHorizontal = direction === ViewportDirection.horizontal;</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+    /** Set the item size in fixed mode or the default item size before rendering in auto mode */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set itemSize(</span>value: number | string) {
+<span class="cstat-no" title="statement not covered" >        if (value) {</span>
+<span class="cstat-no" title="statement not covered" >            this.viewPort.itemsSize$.next(+value);</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get itemSize() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.viewPort.itemsSize;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    @ViewChild('wrapper')</span>
+<span class="fstat-no" title="function not covered" >    private set wrapperElement(</span>element: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.element = element.nativeElement as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >        this.viewPort.element$.next(this.element);</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(this.scroll$Sub = Observable.fromEvent(this.element, 'scroll')</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>event: Event) =&gt; <span class="cstat-no" title="statement not covered" >event.target as HTMLElement)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>target) =&gt; <span class="cstat-no" title="statement not covered" >Math.round(this._isHorizontal ? target.scrollLeft : target.scrollTop))</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>scrollPos) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.viewPort.scrollPosition$.next(scrollPos);</span>
+            }));
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get itemTemplate() { <span class="cstat-no" title="statement not covered" ></span>return this.itemTemplateExternal || this.itemTemplateInternal; </span>}
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get clientSize() {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.element) {</span>
+<span class="cstat-no" title="statement not covered" >            return 0;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return this._isHorizontal ? this.element.clientWidth : this.element.clientHeight;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private set scrollPos(</span>value: number) {
+        const scrollPos = <span class="cstat-no" title="statement not covered" >Math.max(value, 0);</span>
+<span class="cstat-no" title="statement not covered" >        this.scrollPosition = scrollPos;</span>
+<span class="cstat-no" title="statement not covered" >        this.viewPort.scrollPosition$.next(scrollPos);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get scrollPos() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.scrollPosition;</span>
+    }
+&nbsp;
+    /**
+     * Définit la méthode de calcul de la taille des éléments. Les valuers acceptées sont
+     * disabled: Tous les éléments sont rendus. (&lt; 100 éléments)
+     * fixed: Seul les éléments visibles sont rendus. La taille des éléments est constante et définie par itemsSize. (performances ++)
+     * variable: Seul les éléments visibles sont rendus. La taille des éléments est variable et définie par item.size. (performances +-)
+     * auto: Seul les éléments visibles sont rendus. La taille des éléments est calculée automatiquement (performances --)
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set viewportMode(</span>mode: ViewportMode | string) {
+<span class="cstat-no" title="statement not covered" >        this.viewPort.mode$.next(mode);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get viewportMode() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.viewPort.mode;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >,</span> private <span class="cstat-no" title="statement not covered" >viewPort: </span>ViewPortService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.fromEvent(window, 'resize')</span>
+            .debounceTime(5)
+            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this.viewPort.deleteSizeCache();</span>
+<span class="cstat-no" title="statement not covered" >                this.viewPort.refresh();</span>
+<span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
+            }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(viewPort.viewPort$</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>viewPortResult: IViewPort) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (viewPort.mode !== ViewportMode.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.vpItems = viewPortResult.visibleItems as IDejaViewPortItem[];</span>
+<span class="cstat-no" title="statement not covered" >                    this.vpStartIndex = viewPortResult.startIndex;</span>
+<span class="cstat-no" title="statement not covered" >                    this.vpEndIndex = viewPortResult.endIndex;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    this.vpStartIndex = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    this.vpEndIndex = 0;</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (this.hasButtons) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.startOffset = this.scrollPos - viewPortResult.beforeSize;</span>
+<span class="cstat-no" title="statement not covered" >                    this.beforeSize = null;</span>
+<span class="cstat-no" title="statement not covered" >                    this.afterSize = null;</span>
+<span class="cstat-no" title="statement not covered" >                    this.hasUpButton = this.scrollPos &gt; 0;</span>
+<span class="cstat-no" title="statement not covered" >                    this.hasDownButton = this.scrollPos + viewPortResult.listSize &lt; viewPortResult.beforeSize + viewPortResult.viewPortSize + viewPortResult.afterSize;</span>
+&nbsp;
+                } else {
+<span class="cstat-no" title="statement not covered" >                    this.startOffset = 0;</span>
+<span class="cstat-no" title="statement not covered" >                    this.beforeSize = viewPortResult.beforeSize || null;</span>
+<span class="cstat-no" title="statement not covered" >                    this.afterSize = viewPortResult.afterSize || null;</span>
+<span class="cstat-no" title="statement not covered" >                    this.hasUpButton = false;</span>
+<span class="cstat-no" title="statement not covered" >                    this.hasDownButton = false;</span>
+                }
+&nbsp;
+                const scroll = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>vp: IViewPort) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    if (!this.hasButtons) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (this.element) {</span>
+<span class="cstat-no" title="statement not covered" >                            if (this._isHorizontal) {</span>
+<span class="cstat-no" title="statement not covered" >                                this.element.scrollLeft = vp.scrollPos;</span>
+                            } else {
+<span class="cstat-no" title="statement not covered" >                                this.element.scrollTop = vp.scrollPos;</span>
+                            }
+<span class="cstat-no" title="statement not covered" >                            this.scrollPosition = vp.scrollPos;</span>
+                        }
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.scrollPos = vp.scrollPos;</span>
+<span class="cstat-no" title="statement not covered" >                        this.startOffset = this.scrollPos - vp.beforeSize;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (viewPortResult.scrollPos !== undefined) {</span>
+                    const listItems = <span class="cstat-no" title="statement not covered" >this.element ? this.element.getElementsByClassName('listitem') : [];</span>
+                    const rebind = <span class="cstat-no" title="statement not covered" >listItems.length !== viewPortResult.visibleItems.length;</span>
+<span class="cstat-no" title="statement not covered" >                    if (!rebind) {</span>
+<span class="cstat-no" title="statement not covered" >                        scroll(viewPortResult);</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.changeDetectorRef.markForCheck();</span>
+<span class="cstat-no" title="statement not covered" >                        Observable.timer(1)</span>
+                            .first()
+                            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>scroll(viewPortResult))</span>;
+                    }
+                } else {
+<span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
+                }
+            }));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.hasButtons$)</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >this._hasButtons !== value)</span>
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >this._hasButtons = value)</span>
+            .delay(1)
+            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (value) {</span>
+                    const mousedown$ = <span class="cstat-no" title="statement not covered" >Observable.merge(</span>
+                        Observable.fromEvent(this.downButton.nativeElement, 'mousedown'),
+                        Observable.fromEvent(this.upButton.nativeElement, 'mousedown'));
+&nbsp;
+                    const mouseup$ = <span class="cstat-no" title="statement not covered" >Observable.merge(</span>
+                        Observable.fromEvent(this.downButton.nativeElement, 'mouseup'),
+                        Observable.fromEvent(this.upButton.nativeElement, 'mouseup'),
+                        Observable.fromEvent(this.downButton.nativeElement, 'mouseleave'),
+                        Observable.fromEvent(this.upButton.nativeElement, 'mouseleave'));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    this.mouseDown$Sub = mousedown$.subscribe(<span class="fstat-no" title="function not covered" >(</span>event: MouseEvent) =&gt; {</span>
+                        const target = <span class="cstat-no" title="statement not covered" >event.currentTarget as HTMLElement;</span>
+                        const direction = <span class="cstat-no" title="statement not covered" >target.id === 'up' ? -1 : +1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        mouseup$.first()</span>
+                            .subscribe(<span class="fstat-no" title="function not covered" >(</span>upEvent: MouseEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                                this.scrollPos += direction * (upEvent.ctrlKey ? this.clientSize : this.buttonsStep);</span>
+                            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        Observable.timer(750)</span>
+                            .takeUntil(mouseup$)
+                            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                                Observable.interval(50)</span>
+                                    .takeUntil(mouseup$)
+                                    .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                                        this.scrollPos += direction * (event.ctrlKey ? this.clientSize : this.buttonsStep * 2);</span>
+                                    });
+                            });
+                    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    this.mouseWheel$Sub = Observable</span>
+                        .fromEvent(this.element, 'mousewheel')
+                        .subscribe(<span class="fstat-no" title="function not covered" >(</span>event: MouseWheelEvent) =&gt; {
+<span class="cstat-no" title="statement not covered" >                            this.scrollPos = this.scrollPos + event.deltaY;</span>
+                        });
+&nbsp;
+                } else {
+<span class="cstat-no" title="statement not covered" >                    if (this.mouseDown$Sub) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.mouseDown$Sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >                        delete this.mouseDown$Sub;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (this.mouseWheel$Sub) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.mouseWheel$Sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >                        delete this.mouseWheel$Sub;</span>
+                    }
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                this.scrollPos = 0;</span>
+            })
+            .delay(1)
+            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.viewPort.refresh())</span>);
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+<span class="cstat-no" title="statement not covered" >        if (this.mouseDown$Sub) {</span>
+<span class="cstat-no" title="statement not covered" >            this.mouseDown$Sub.unsubscribe();</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (this.mouseWheel$Sub) {</span>
+<span class="cstat-no" title="statement not covered" >            this.mouseWheel$Sub.unsubscribe();</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public refresh() {</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+    /** Recalcule le viewport. */
+<span class="fstat-no" title="function not covered" >    public refreshViewPort(</span>item?: IViewPortItem, clearMeasuredHeight?: boolean) {
+        const refreshParams = <span class="cstat-no" title="statement not covered" >{} as IViewPortRefreshParams;</span>
+<span class="cstat-no" title="statement not covered" >        if (item) {</span>
+<span class="cstat-no" title="statement not covered" >            refreshParams.items = [item];</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (clearMeasuredHeight) {</span>
+<span class="cstat-no" title="statement not covered" >            refreshParams.clearMeasuredSize = clearMeasuredHeight;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.viewPort.refresh(refreshParams);</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ensureVisible(</span>item: any) {
+<span class="cstat-no" title="statement not covered" >        this.viewPort.ensureItem$.next(item);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected getCssSize(</span>item: IViewPortItem) {
+        const itemSize = <span class="cstat-no" title="statement not covered" >this.getItemSize(item);</span>
+<span class="cstat-no" title="statement not covered" >        return itemSize ? `${itemSize}px` : 'auto';</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected getItemSize(</span>item: IViewPortItem) {
+<span class="cstat-no" title="statement not covered" >        if (this.viewPort.mode === ViewportMode.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        } else <span class="cstat-no" title="statement not covered" >if (this.viewPort.mode === ViewportMode.fixed) {</span>
+<span class="cstat-no" title="statement not covered" >            return this.itemSize;</span>
+        } else <span class="cstat-no" title="statement not covered" >if (this.viewPort.mode === ViewportMode.auto) {</span>
+<span class="cstat-no" title="statement not covered" >            return item.size || null;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            return (item.size &amp;&amp; item.size &gt; ViewPortService.itemDefaultSize) ? item.size : this.itemSize;</span>
+        }
+    }
+}
+&nbsp;
+export interface IDejaViewPortItem extends IViewPortItem {
+    model: any;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

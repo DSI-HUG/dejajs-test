@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/tree-list/text-metrics/text-metrics.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/tree-list/text-metrics</a> text-metrics.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.73% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/59</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.22% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/delay';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+&nbsp;
+/**
+ * Service to measure the theorical size of a text inside a container
+ */
+@Injectable()
+export class DejaTextMetricsService {
+    private canvas;
+    private <span class="cstat-no" title="statement not covered" >element$: Subject&lt;HTMLElement&gt; = new Subject();</span>
+    private computedStyles: CSSStyleDeclaration;
+    private <span class="cstat-no" title="statement not covered" >charSize$ = new BehaviorSubject&lt;number[]&gt;(null);</span>
+&nbsp;
+    /**
+     * Constructor
+     * Add observable to wait for element to be set. And then take its properties to measure all ASCII char size.
+     */
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor() {</span></span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.element$)</span>
+            .delay(1)
+            .first()
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>element) =&gt; {
+                const charSize = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >                for (let i = 0; i &lt; 255; i++) {</span>
+                    const c = <span class="cstat-no" title="statement not covered" >String.fromCharCode(i);</span>
+<span class="cstat-no" title="statement not covered" >                    charSize[i] = this.getTextWidth(c, element);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                this.charSize$.next(charSize);</span>
+            });
+    }
+&nbsp;
+    /** Setter for base element */
+<span class="fstat-no" title="function not covered" >    public set metricsElem(</span>elem: HTMLElement) {
+<span class="cstat-no" title="statement not covered" >        this.element$.next(elem);</span>
+    }
+&nbsp;
+    /**
+     * Calcule la longeur (en pixels) d'une chaine de caractères
+     *
+     * @param {string} text Le texte à mesurer
+     * @param {HTMLElement} elem Le conteneur du texte
+     *
+     * @return {number} la largeur du texte donné
+     */
+<span class="fstat-no" title="function not covered" >    public getTextWidth(</span>text: string, elem: HTMLElement): number {
+<span class="cstat-no" title="statement not covered" >        this.computedStyles = window.getComputedStyle(elem);</span>
+        const font = `${<span class="cstat-no" title="statement not covered" >this.computedStyles.fontSize} ${this.computedStyles.fontFamily}`;</span>
+&nbsp;
+        const canvas = <span class="cstat-no" title="statement not covered" >this.canvas || (this.canvas = document.createElement('canvas'));</span>
+        const context = <span class="cstat-no" title="statement not covered" >canvas.getContext('2d');</span>
+<span class="cstat-no" title="statement not covered" >        context.font = font;</span>
+        const metrics = <span class="cstat-no" title="statement not covered" >context.measureText(text);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return metrics.width * 1.1; </span>// Correction for letter-spacing
+    }
+&nbsp;
+    /**
+     * Retourne la largeur maximum d'un tableau de strings.
+     *
+     * @param {string[]} texts les textes à comparer.
+     * @param {HTMLElement} elem Le conteneur du texte
+     *
+     * @return {number} la width du texte le plus long dans le tableau donné en param.
+     */
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public getTextMaxWidth(</span>texts: string[], elem: HTMLElement): number {</span>
+        let maxWidth = <span class="cstat-no" title="statement not covered" >0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        texts.forEach(<span class="fstat-no" title="function not covered" >(</span>text: string) =&gt; {</span>
+            const width = <span class="cstat-no" title="statement not covered" >this.getTextWidth(text, elem);</span>
+<span class="cstat-no" title="statement not covered" >            if (width &gt; maxWidth) {</span>
+<span class="cstat-no" title="statement not covered" >                maxWidth = width;</span>
+            }
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return maxWidth;</span>
+    }
+&nbsp;
+    /**
+     * Mesure la heuteur théorique d'un texte contenu dans un conteneur d'une taille donnée.
+     *
+     * @param {number} maxWidth taille du conteneur
+     * @param {string} text texte à mesurer
+     *
+     * @return {number} Hauteur théorique du conteneur.
+     */
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public getTextHeight(</span>maxWidth: number, text: string): Observable&lt;number&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return this.getNumberOfLines(maxWidth, text)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>numberOfLines: number) =&gt; {
+                const computedLineHeight = <span class="cstat-no" title="statement not covered" >parseInt(this.computedStyles.lineHeight.replace('px', ''), 10);</span>
+                const lineHeight = <span class="cstat-no" title="statement not covered" >(!isNaN(computedLineHeight)) ?</span>
+                    computedLineHeight :
+                    Math.floor(parseInt(this.computedStyles.fontSize.replace('px', ''), 10) * 1.5);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return lineHeight * +numberOfLines;</span>
+            });
+    }
+&nbsp;
+    /**
+     * Calcule le nombre de lignes qu'un texte va prendre en fonction de la largeur de son conteneur.
+     *
+     * @param {number} maxWidth taille du conteneur
+     * @param {string} text texte à mesurer
+     *
+     * @return {number} Nombre de lignes théoriques du conteneur.
+     */
+<span class="fstat-no" title="function not covered" >    private getNumberOfLines(</span>maxWidth: number, text: string): Observable&lt;number&gt; {
+<span class="cstat-no" title="statement not covered" >        return this.charSize$</span>
+            .filter(<span class="fstat-no" title="function not covered" >(</span>charSize) =&gt; <span class="cstat-no" title="statement not covered" >charSize !== null)</span>
+            .map(<span class="fstat-no" title="function not covered" >(</span>charSize) =&gt; {
+                const arr = <span class="cstat-no" title="statement not covered" >text.split(' ');</span>
+&nbsp;
+                let tmpSize = <span class="cstat-no" title="statement not covered" >0;</span>
+                let numberOfLines = <span class="cstat-no" title="statement not covered" >1;</span>
+<span class="cstat-no" title="statement not covered" >                arr.forEach(<span class="fstat-no" title="function not covered" >(</span>txt: string) =&gt; {</span>
+                    let w = <span class="cstat-no" title="statement not covered" >0;</span>
+<span class="cstat-no" title="statement not covered" >                    for (let j = 0; j &lt; txt.length; j++) {</span>
+                        const charCode = <span class="cstat-no" title="statement not covered" >txt.charCodeAt(j);</span>
+                        // Si le caractère fait partie de la table ascii qu'on a calculé dans this.getAllCharsize() on incrémente la taille du mot de sa taille.
+                        // Sinon, on ajoute la moyenne des tailles calculées (qui correspond théoriquement à la taille moyenne d'un caractère)
+<span class="cstat-no" title="statement not covered" >                        w += (charSize[charCode]) ? charSize[charCode] : charSize.reduce(<span class="fstat-no" title="function not covered" >(</span>a, b) =&gt; <span class="cstat-no" title="statement not covered" >a + b,</span> 0) / charSize.length;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (tmpSize + w &gt; maxWidth) {</span>
+<span class="cstat-no" title="statement not covered" >                        tmpSize = w;</span>
+<span class="cstat-no" title="statement not covered" >                        numberOfLines++;</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        tmpSize += w;</span>
+                    }
+                });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return numberOfLines;</span>
+            });
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

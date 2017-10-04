@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dejajs-components/src/component/chips/chips.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/chips</a> chips.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/64</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.43% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>20/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">76.47% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>13/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.96% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>49/57</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Component, ContentChild, EventEmitter, HostBinding, Input, Optional, Output, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+&nbsp;
+const noop = () =&gt; { };
+&nbsp;
+export class DejaChipsCloseEvent extends CustomEvent {
+    public item: any;
+    public index: number;
+&nbsp;
+    constructor(item: any, index: number) {
+        super('DejaChipsCloseEvent')<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+        this.item = item;
+        this.index = index;
+    }
+}
+&nbsp;
+@Component({
+    selector: 'deja-chips',
+    styleUrls: [
+        './chips.component.scss',
+    ],
+    templateUrl: './chips.component.html',
+})
+export class DejaChipsComponent implements ControlValueAccessor {
+    /** Retourne ou definit la liste des éléments. */
+    @Input() public _items: any[];
+&nbsp;
+    /** Retourne ou definit le champ à utiliser comme texte. */
+    @Input() public textField: string;
+&nbsp;
+    /** Template d'élément si définit extérieurement au composant */
+    @Input() public itemTemplateExternal;
+&nbsp;
+    /** Lecture seule */
+    @Input() public readonly = false;
+&nbsp;
+    @Output() public close = new EventEmitter&lt;DejaChipsCloseEvent&gt;();
+&nbsp;
+    protected onTouchedCallback: () =&gt; void = noop;
+    protected onChangeCallback: (_: any) =&gt; void = noop;
+&nbsp;
+    @HostBinding('attr.disabled') private _disabled = null;
+&nbsp;
+    @ContentChild('itemTemplate') private itemTemplateInternal;
+&nbsp;
+    constructor( @Self() @Optional() public _control: NgControl<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._control) {
+<span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
+        }
+    }
+&nbsp;
+    /** Retourne ou definit si le selecteur est desactivé. */
+    @Input()
+    public set disabled(value: boolean | string) {
+        this._disabled = coerceBooleanProperty(value) || null;
+    }
+&nbsp;
+    public get disabled() {
+        return this._disabled;
+    }
+&nbsp;
+    @Input()
+    public set items(value: any[]) {
+        this.writeValue(value);
+    }
+&nbsp;
+    public get items(): any[] {
+        return this._items;
+    }
+&nbsp;
+    // ************* ControlValueAccessor Implementation **************
+    // set accessor including call the onchange callback
+<span class="fstat-no" title="function not covered" >    public set value(</span>value: any[]) {
+<span class="cstat-no" title="statement not covered" >        this.writeValue(value);</span>
+<span class="cstat-no" title="statement not covered" >        this.onChangeCallback(value);</span>
+    }
+&nbsp;
+    // get accessor
+<span class="fstat-no" title="function not covered" >    public get value(): any[] {</span>
+<span class="cstat-no" title="statement not covered" >        return this._items;</span>
+    }
+&nbsp;
+    // From ControlValueAccessor interface
+    public writeValue(value: any[]) {
+        this._items = value;
+    }
+&nbsp;
+    // From ControlValueAccessor interface
+<span class="fstat-no" title="function not covered" >    public registerOnChange(</span>fn: any) {
+<span class="cstat-no" title="statement not covered" >        this.onChangeCallback = fn;</span>
+    }
+&nbsp;
+    // From ControlValueAccessor interface
+<span class="fstat-no" title="function not covered" >    public registerOnTouched(</span>fn: any) {
+<span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
+    }
+    // ************* End of ControlValueAccessor Implementation **************
+&nbsp;
+    public get itemTemplate() {
+        return this.itemTemplateExternal || this.itemTemplateInternal;
+    }
+&nbsp;
+    public getTextValue(value: any) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!value) {
+<span class="cstat-no" title="statement not covered" >            return '';</span>
+        } else {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (this.textField &amp;&amp; value.model &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >value.model[this.textField] !== undefined)</span> {
+<span class="cstat-no" title="statement not covered" >                return value.model[this.textField];</span>
+            } else if (this.textField &amp;&amp; value[this.textField] !== undefined) {
+                return value[this.textField];
+            } else if (value.displayName) {
+                return typeof value.displayName === 'string' ? value.displayName : <span class="branch-1 cbranch-no" title="branch not covered" >value.displayName();</span>
+            } else <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof value.toString === 'function') {
+                return value.toString();
+            }
+        }
+    }
+&nbsp;
+    public onClose(item: any, index: number) {
+        const event = new DejaChipsCloseEvent(item, index);
+        this.items.splice(index, 1);
+        this.onChangeCallback(this.items);
+        this.close.emit(event);
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>
