@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.12% </span>
+        <span class="strong">30.81% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>61/196</span>
+        <span class='fraction'>61/198</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.58% </span>
+        <span class="strong">19.51% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>12/77</span>
+        <span class='fraction'>16/82</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.59% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/63</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">32.96% </span>
+        <span class="strong">32.78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>59/179</span>
+        <span class='fraction'>59/180</span>
       </div>
     </div>
   </div>
@@ -423,7 +423,9 @@
 378
 379
 380
-381</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+381
+382
+383</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -449,6 +451,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -656,6 +659,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -812,7 +816,7 @@
  */
 &nbsp;
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, Self, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -831,6 +835,7 @@ import { IDejaTilesAddEvent, IDejaTilesEvent, IDejaTilesModelEvent, IDejaTilesRe
 const noop = <span class="fstat-no" title="function not covered" >() =&gt; { </span>};
 &nbsp;
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [DejaTilesLayoutProvider],
     selector: 'deja-tiles',
     styleUrls: [
@@ -898,7 +903,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 &nbsp;
     @ViewChild('tilesContainer') private tilesContainer: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>el: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >layoutProvider: </span>DejaTilesLayoutProvider<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>el: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >changeDetectorRef: </span>ChangeDetectorRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> private <span class="cstat-no" title="statement not covered" >layoutProvider: </span>DejaTilesLayoutProvider<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
 <span class="cstat-no" title="statement not covered" >        if (this._control) {</span>
 <span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
         }
@@ -1038,6 +1043,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 <span class="fstat-no" title="function not covered" >    public writeValue(</span>models: any) {
 <span class="cstat-no" title="statement not covered" >        this._models = models || [];</span>
 <span class="cstat-no" title="statement not covered" >        this._tiles$.next(this.layoutProvider.tiles = (this._models.map(<span class="fstat-no" title="function not covered" >(</span>tile) =&gt; <span class="cstat-no" title="statement not covered" >new DejaTile(tile))</span>));</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public registerOnChange(</span>fn: any) {
@@ -1189,7 +1195,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">59.46% </span>
+        <span class="strong">52.38% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>22/37</span>
+        <span class='fraction'>22/42</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/8</span>
+        <span class='fraction'>5/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">11.11% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>1/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">58.82% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/30</span>
+        <span class='fraction'>20/34</span>
       </div>
     </div>
   </div>
@@ -107,7 +107,10 @@
 62
 63
 64
-65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+65
+66
+67
+68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,10 +122,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,10 +144,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -156,10 +160,12 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,15 +186,15 @@
  */
 &nbsp;
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { Color } from '../../common/core/graphics/color';
 import { DejaEditableDirective } from '../content-editable/content-editable.directive';
 import { IDejaTile } from './tile.interface';
 &nbsp;
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'deja-tile-group',
     styleUrls: [
         './tile-group.component.scss',
@@ -205,12 +211,13 @@ export class DejaTileGroupComponent implements OnDestroy {
     @HostBinding('style.color') protected <span class="cstat-no" title="statement not covered" >foregroundColor = null;</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >edit$ = new Subject&lt;void&gt;();</span>
-    private edit$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
     @ViewChild(DejaEditableDirective) private title: DejaEditableDirective<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
     @HostBinding('attr.designMode') private <span class="cstat-no" title="statement not covered" >_designMode = false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor() {</span></span>
-<span class="cstat-no" title="statement not covered" >        this.edit$sub = Observable.from(this.edit$)</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.edit$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._designMode)</span>
             .debounceTime(100)
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.title.edit(true))</span>;
@@ -220,11 +227,13 @@ export class DejaTileGroupComponent implements OnDestroy {
 <span class="fstat-no" title="function not covered" >    public set color(</span>color: string) {
 <span class="cstat-no" title="statement not covered" >        this.backgroundColor = color || DejaTileGroupComponent.defaultColor;</span>
 <span class="cstat-no" title="statement not covered" >        this.foregroundColor = Color.parse(this.backgroundColor).bestTextColor.toHex();</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
     }
 &nbsp;
     @Input()
 <span class="fstat-no" title="function not covered" >    public set designMode(</span>value: boolean | string) {
 <span class="cstat-no" title="statement not covered" >        this._designMode = coerceBooleanProperty(value);</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public get designMode() {</span>
@@ -232,7 +241,7 @@ export class DejaTileGroupComponent implements OnDestroy {
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.edit$sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 }
 &nbsp;</pre></td></tr>
@@ -241,7 +250,7 @@ export class DejaTileGroupComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

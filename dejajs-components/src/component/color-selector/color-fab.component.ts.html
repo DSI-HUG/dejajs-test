@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.25% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/32</span>
+        <span class='fraction'>28/32</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">68.75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/16</span>
+        <span class='fraction'>11/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.09% </span>
+        <span class="strong">81.82% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/11</span>
+        <span class='fraction'>9/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">32% </span>
+        <span class="strong">88% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/25</span>
+        <span class='fraction'>22/25</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -130,43 +130,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -193,30 +193,30 @@ export class DejaColorFabComponent implements OnDestroy {
     public element: HTMLElement;
 &nbsp;
     private _colorFab: DejaColorFab;
-    private <span class="cstat-no" title="statement not covered" >subscriptions = [] as Subscription[];</span>
+    private subscriptions = [] as Subscription[];
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(</span>el: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
-<span class="cstat-no" title="statement not covered" >        this.element = el.nativeElement as HTMLElement;</span>
+    constructor(el: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+        this.element = el.nativeElement as HTMLElement;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    @Input()</span>
-<span class="fstat-no" title="function not covered" >    public set color(</span>colorFab: DejaColorFab<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
-<span class="cstat-no" title="statement not covered" >        this._colorFab = colorFab;</span>
+    @Input()
+    public set color(colorFab: DejaColorFab<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+        this._colorFab = colorFab;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (colorFab) {</span>
-            const toogleAttribute = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>attribute: string, value: string | boolean) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                    if (value) {</span>
-<span class="cstat-no" title="statement not covered" >                    this.element.setAttribute(attribute, value.toString());</span>
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (colorFab) {
+            const toogleAttribute = (attribute: string, value: string | boolean) =&gt; {
+                    if (value) {
+                    this.element.setAttribute(attribute, value.toString());
                     } else {
-<span class="cstat-no" title="statement not covered" >                    this.element.removeAttribute(attribute);</span>
+                    this.element.removeAttribute(attribute);
                     }
             };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.from(colorFab.active$).subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >toogleAttribute('active', value))</span>);</span>
+            this.subscriptions.push(Observable.from(colorFab.active$).subscribe((value) =&gt; toogleAttribute('active', value)));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.subscriptions.push(Observable.combineLatest(colorFab.color$, colorFab.disabled$)</span>
-                .map(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >color,</span> <span class="cstat-no" title="statement not covered" >disabled]</span>) =&gt; <span class="cstat-no" title="statement not covered" >color &amp;&amp; disabled ? color.grayScale : color)</span>
-                .subscribe(<span class="fstat-no" title="function not covered" >(</span>color) =&gt; <span class="cstat-no" title="statement not covered" >this.element.style.backgroundColor = color ? color.toHex() : '')</span>);
+            this.subscriptions.push(Observable.combineLatest(colorFab.color$, colorFab.disabled$)
+                .map(([color, disabled]) =&gt; color &amp;&amp; disabled ? <span class="branch-0 cbranch-no" title="branch not covered" >color.grayScale </span>: color)
+                .subscribe((color) =&gt; this.element.style.backgroundColor = color ? color.toHex() : <span class="branch-1 cbranch-no" title="branch not covered" >'')</span>);
 &nbsp;
         } else {
 <span class="cstat-no" title="statement not covered" >            this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
@@ -228,8 +228,8 @@ export class DejaColorFabComponent implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >        return this._colorFab;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+    public ngOnDestroy() {
+        this.subscriptions.forEach((subscription) =&gt; subscription.unsubscribe());
     }
 }
 &nbsp;</pre></td></tr>
@@ -238,7 +238,7 @@ export class DejaColorFabComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

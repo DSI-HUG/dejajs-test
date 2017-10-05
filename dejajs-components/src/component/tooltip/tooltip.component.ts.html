@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">26.47% </span>
+        <span class="strong">25.68% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>18/68</span>
+        <span class='fraction'>19/74</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">34.48% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/24</span>
+        <span class='fraction'>10/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.67% </span>
+        <span class="strong">5.56% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/15</span>
+        <span class='fraction'>1/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25.4% </span>
+        <span class="strong">24.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/63</span>
+        <span class='fraction'>17/69</span>
       </div>
     </div>
   </div>
@@ -200,7 +200,19 @@
 155
 156
 157
-158</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,7 +240,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,11 +247,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,6 +302,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -324,7 +345,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -355,6 +375,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -365,12 +389,12 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import { OverlayOrigin } from '@angular/cdk/overlay';
-import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import 'rxjs/add/observable/fromEvent';
 import { Observable } from 'rxjs/Observable';
 import { Position } from '../../common/core/graphics/position';
 import { Rect } from '../../common/core/graphics/rect';
+import { MediaService } from '../../common/core/media/media.service';
 import { DejaConnectionPositionPair } from '../../common/core/overlay/connection-position-pair';
 import { DejaTooltipService, ITooltipParams } from './tooltip.service';
 &nbsp;
@@ -379,13 +403,14 @@ import { DejaTooltipService, ITooltipParams } from './tooltip.service';
  */
 @Component({
     encapsulation: ViewEncapsulation.None,
+    providers: [MediaService],
     selector: 'deja-tooltip',
     templateUrl: 'tooltip.component.html',
     styleUrls: [
         './tooltip.component.scss',
     ],
 })
-export class DejaTooltipComponent implements OnInit {
+export class DejaTooltipComponent implements OnInit, OnDestroy {
     /** Tooltip name. Mandatory, and need to be unic */
     @Input() public name: string;
     /** Event Emmited when hide action is called */
@@ -395,9 +420,11 @@ export class DejaTooltipComponent implements OnInit {
 &nbsp;
     /** Parameters of the tooltip */
     public params: ITooltipParams;
-    public overlayOrigin: OverlayOrigin;
     public <span class="cstat-no" title="statement not covered" >overlayVisible = false;</span>
+    public ownerElement: HTMLElement;
     private _model: any;
+    private <span class="cstat-no" title="statement not covered" >isMobile = false;</span>
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
     /**
      * This position config ensures that the top "start" corner of the overlay
@@ -437,11 +464,17 @@ export class DejaTooltipComponent implements OnInit {
      * Constructor
      * Subscribe to mouseover to know when tooltip must disappear.
      */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >tooltipService: </span>DejaTooltipService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >tooltipService: </span>DejaTooltipService<span class="branch-2 cbranch-no" title="branch not covered" >,</span> mediaService: </span>MediaService<span class="branch-2 cbranch-no" title="branch not covered" >) {</span></span>
         const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
 &nbsp;
         const hide$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.hide)</span>
             .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._model = undefined)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        mediaService.isMobile$</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.isMobile = value;</span>
+            });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        Observable.fromEvent(element.ownerDocument, 'mousemove')</span>
             .takeUntil(hide$)
@@ -480,8 +513,7 @@ export class DejaTooltipComponent implements OnInit {
         }
 <span class="cstat-no" title="statement not covered" >        this.params = this.tooltipService.params[this.name];</span>
 &nbsp;
-        const ownerElement = (<span class="cstat-no" title="statement not covered" >this.params.ownerElement as ElementRef).nativeElement || this.params.ownerElement;</span>
-<span class="cstat-no" title="statement not covered" >        this.overlayOrigin = new OverlayOrigin(new ElementRef(ownerElement));</span>
+<span class="cstat-no" title="statement not covered" >        this.ownerElement = (this.params.ownerElement as ElementRef).nativeElement || this.params.ownerElement;</span>
 &nbsp;
         const model$ = <span class="cstat-no" title="statement not covered" >this.params.model as Observable&lt;any&gt;;</span>
 <span class="cstat-no" title="statement not covered" >        if (!model$) {</span>
@@ -513,6 +545,10 @@ export class DejaTooltipComponent implements OnInit {
             }
         }
     }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
+    }
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -520,7 +556,7 @@ export class DejaTooltipComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 07:43:38 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
