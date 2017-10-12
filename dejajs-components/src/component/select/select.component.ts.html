@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.03% </span>
+        <span class="strong">19.04% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>118/620</span>
+        <span class='fraction'>119/625</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12% </span>
+        <span class="strong">11.63% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>42/350</span>
+        <span class='fraction'>42/361</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.09% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/183</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.49% </span>
+        <span class="strong">19.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>115/590</span>
+        <span class='fraction'>116/595</span>
       </div>
     </div>
   </div>
@@ -1296,7 +1296,15 @@
 1251
 1252
 1253
-1254</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1254
+1255
+1256
+1257
+1258
+1259
+1260
+1261
+1262</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1347,6 +1355,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1442,8 +1452,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1639,6 +1647,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2614,6 +2630,8 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     @Input() public placeHolderTemplateExternal;
     /** Permet de définir un template pour l'élément de conseil ou d'affichage d'erreur. */
     @Input() public hintTemplateExternal;
+    /** Définit une valeur indiquant si en reactive form le model renvoyé doit être un obeject oue une valeur */
+    @Input() public modelIsValue: boolean;
     /** Exécuté lorsque le calcul du viewPort est terminé. */
     @Output() public <span class="cstat-no" title="statement not covered" >viewPortChanged = new EventEmitter&lt;IViewPort&gt;();</span>
     /** Exécuté lorsque l'utilisateur sélectionne ou désélectionne une ligne. */
@@ -2692,8 +2710,6 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     private <span class="cstat-no" title="statement not covered" >delaySearchTrigger$ = new BehaviorSubject&lt;number&gt;(250);</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >_selectedItemsPosition = DejaSelectSelectionPosition.above;</span>
-&nbsp;
-    private <span class="cstat-no" title="statement not covered" >modelIsValue = false;</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >_positions = DejaConnectionPositionPair.default;</span>
 &nbsp;
@@ -2890,8 +2906,16 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
             .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._isAlive)</span>
             .map(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >value]</span>) =&gt; <span class="cstat-no" title="statement not covered" >value)</span>
             .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; {
-                const modelType = <span class="cstat-no" title="statement not covered" >typeof value;</span>
-<span class="cstat-no" title="statement not covered" >                this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';</span>
+<span class="cstat-no" title="statement not covered" >                if (this.modelIsValue === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (value instanceof Array) {</span>
+                        const av = <span class="cstat-no" title="statement not covered" >value || [];</span>
+                        const modelType = <span class="cstat-no" title="statement not covered" >av.length &amp;&amp; typeof av[0];</span>
+<span class="cstat-no" title="statement not covered" >                        this.modelIsValue = modelType &amp;&amp; modelType === 'string' || modelType === 'number';</span>
+                    } else {
+                        const modelType = <span class="cstat-no" title="statement not covered" >typeof value;</span>
+<span class="cstat-no" title="statement not covered" >                        this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';</span>
+                    }
+                }
 <span class="cstat-no" title="statement not covered" >                if (this.modelIsValue) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.query = '';</span>
                 }
@@ -3808,7 +3832,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 12 2017 08:54:17 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

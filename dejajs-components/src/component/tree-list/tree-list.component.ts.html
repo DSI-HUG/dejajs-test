@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.31% </span>
+        <span class="strong">19.32% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>112/580</span>
+        <span class='fraction'>113/585</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.48% </span>
+        <span class="strong">9.17% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>31/327</span>
+        <span class='fraction'>31/338</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0.65% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">19.96% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>109/546</span>
+        <span class='fraction'>110/551</span>
       </div>
     </div>
   </div>
@@ -1196,7 +1196,15 @@
 1151
 1152
 1153
-1154</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1154
+1155
+1156
+1157
+1158
+1159
+1160
+1161
+1162</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1278,6 +1286,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1318,8 +1328,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1366,6 +1374,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2420,6 +2436,8 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     @Input() public searchSuffixTemplateExternal;
     /** Largeur des éléments par defaut si différent de 100% */
     @Input() public <span class="cstat-no" title="statement not covered" >itemsWidth = null;</span>
+    /** Définit une valeur indiquant si en reactive form le model renvoyé doit être un obeject oue une valeur */
+    @Input() public modelIsValue: boolean;
     /** Exécuté lorsque le déplacement d'une ligne est terminée. */
     @Output() public <span class="cstat-no" title="statement not covered" >itemDragEnd = new EventEmitter&lt;IDejaDragEvent&gt;();</span>
     /** Exécuté lorsque le déplacement d'une ligne commence. */
@@ -2470,8 +2488,6 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     private <span class="cstat-no" title="statement not covered" >selectItems$ = new Subject&lt;any&gt;();</span>
     private <span class="cstat-no" title="statement not covered" >contentInitialized$ = new Subject();</span>
 &nbsp;
-    private <span class="cstat-no" title="statement not covered" >modelIsValue = false;</span>
-&nbsp;
 <span class="fstat-no" title="function not covered" >    constructor(</span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >, public <span class="cstat-no" title="statement not covered" >viewPort: </span>ViewPortService<span class="branch-2 cbranch-no" title="branch not covered" >,</span> public <span class="cstat-no" title="statement not covered" >elementRef: </span>ElementRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span>
 <span class="cstat-no" title="statement not covered" >        super(changeDetectorRef, viewPort);</span>
 &nbsp;
@@ -2517,8 +2533,16 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 &nbsp;
         const selectModels$ = <span class="cstat-no" title="statement not covered" >Observable.combineLatest(this.writeValue$, this.contentInitialized$)</span>
             .map(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >value]</span>) =&gt; {
-                const modelType = <span class="cstat-no" title="statement not covered" >typeof value;</span>
-<span class="cstat-no" title="statement not covered" >                this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';</span>
+<span class="cstat-no" title="statement not covered" >                if (this.modelIsValue === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (value instanceof Array) {</span>
+                        const av = <span class="cstat-no" title="statement not covered" >value || [];</span>
+                        const modelType = <span class="cstat-no" title="statement not covered" >av.length &amp;&amp; typeof av[0];</span>
+<span class="cstat-no" title="statement not covered" >                        this.modelIsValue = modelType &amp;&amp; modelType === 'string' || modelType === 'number';</span>
+                    } else {
+                        const modelType = <span class="cstat-no" title="statement not covered" >typeof value;</span>
+<span class="cstat-no" title="statement not covered" >                        this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';</span>
+                    }
+                }
 <span class="cstat-no" title="statement not covered" >                if (this.modelIsValue) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.query = '';</span>
                 }
@@ -3508,7 +3532,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 18:59:49 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 12 2017 08:54:17 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
