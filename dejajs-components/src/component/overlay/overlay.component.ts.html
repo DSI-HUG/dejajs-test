@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.85% </span>
+        <span class="strong">95.88% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>91/93</span>
+        <span class='fraction'>93/97</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">82.69% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>43/52</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.3% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>21/23</span>
+        <span class='fraction'>21/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.56% </span>
+        <span class="strong">95.35% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>80/82</span>
+        <span class='fraction'>82/86</span>
       </div>
     </div>
   </div>
@@ -237,7 +237,12 @@
 192
 193
 194
-195</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+195
+196
+197
+198
+199
+200</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -320,6 +325,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">19x</span>
@@ -439,7 +449,7 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import {ConnectedOverlayDirective, OverlayContainer, OverlayOrigin} from '@angular/cdk/overlay';
+import { ConnectedOverlayDirective, OverlayContainer, OverlayOrigin } from '@angular/cdk/overlay';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -452,11 +462,11 @@ import {
     ViewChild,
     ViewEncapsulation
 } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { MediaService } from '../../common/core/media/media.service';
-import {DejaConnectionPositionPair} from '../../common/core/overlay/connection-position-pair';
+import { DejaConnectionPositionPair } from '../../common/core/overlay/connection-position-pair';
 &nbsp;
-    // providers: [ MediaService ],
+// providers: [ MediaService ],
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
@@ -513,7 +523,12 @@ export class DejaOverlayComponent implements OnDestroy {
     @ViewChild(ConnectedOverlayDirective) private overlay: ConnectedOverlayDirective<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
 &nbsp;
     constructor(private changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >, private elementRef: </span>ElementRef<span class="branch-2 cbranch-no" title="branch not covered" >, private overlayContainer: </span>OverlayContainer<span class="branch-2 cbranch-no" title="branch not covered" >, mediaService: </span>MediaService<span class="branch-2 cbranch-no" title="branch not covered" >) {</span>
-        this.overlayContainer.getContainerElement().classList.add('deja-overlay-container');
+        const containerElement = this.overlayContainer.getContainerElement() as HTMLElement;
+        containerElement.classList.add('deja-overlay-container');
+        containerElement.addEventListener('contextmenu', <span class="fstat-no" title="function not covered" >(</span>event: Event) =&gt; {
+<span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        });
 &nbsp;
         mediaService.isMobile$
             .takeWhile(() =&gt; this.isAlive)
@@ -557,7 +572,7 @@ export class DejaOverlayComponent implements OnDestroy {
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public get width() {</span>
-<span class="cstat-no" title="statement not covered" >       return this._width;</span>
+<span class="cstat-no" title="statement not covered" >        return this._width;</span>
     }
 &nbsp;
     @Input()
@@ -631,7 +646,7 @@ export class DejaOverlayComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 12 2017 12:35:24 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 25 2017 15:03:23 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
