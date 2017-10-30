@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.54% </span>
+        <span class="strong">40% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/65</span>
+        <span class='fraction'>26/65</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">20.59% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/34</span>
+        <span class='fraction'>7/34</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.67% </span>
+        <span class="strong">36.07% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/61</span>
+        <span class='fraction'>22/61</span>
       </div>
     </div>
   </div>
@@ -186,28 +186,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">236x</span>
+<span class="cline-any cline-yes">236x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">236x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -272,7 +272,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">236x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -308,28 +308,28 @@ import { UUID } from '../../common/core/UUID';
 })
 export class DejaDraggableDirective implements OnDestroy {
     @HostBinding('attr.dragdropid') private dragdropid;
-    @HostBinding('attr.draggable') private <span class="cstat-no" title="statement not covered" >draggable = null;</span>
-    private <span class="cstat-no" title="statement not covered" >draginfokey = 'draginfos';</span>
-    private <span class="cstat-no" title="statement not covered" >objectKey = 'object';</span>
-    private <span class="cstat-no" title="statement not covered" >elementKey = 'element';</span>
-    private <span class="cstat-no" title="statement not covered" >uuidKey = 'uuid';</span>
+    @HostBinding('attr.draggable') private draggable = null;
+    private draginfokey = 'draginfos';
+    private objectKey = 'object';
+    private elementKey = 'element';
+    private uuidKey = 'uuid';
     private _context: IDejaDragContext;
     private dragstart$sub: Subscription;
 &nbsp;
     @Input('deja-draggable')
-<span class="fstat-no" title="function not covered" >    public set context(</span>value: IDejaDragContext) {
-<span class="cstat-no" title="statement not covered" >        this._context = value;</span>
-<span class="cstat-no" title="statement not covered" >        this.draggable = !!value ? true : null;</span>
+    public set context(value: IDejaDragContext) {
+        this._context = value;
+        this.draggable = !!value ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: null;
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public get context() {</span>
 <span class="cstat-no" title="statement not covered" >        return this._context;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
-        const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
+    constructor(elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, @Optional() private clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >) {</span>
+        const element = elementRef.nativeElement as HTMLElement;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.dragstart$sub = Observable.fromEvent(element, 'dragstart')</span>
+        this.dragstart$sub = Observable.fromEvent(element, 'dragstart')
             .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>!!this.context)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >(</span>event: DragEvent) =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (!clipboardService) {</span>
@@ -393,8 +393,8 @@ export class DejaDraggableDirective implements OnDestroy {
             });
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.dragstart$sub.unsubscribe();</span>
+    public ngOnDestroy() {
+        this.dragstart$sub.unsubscribe();
     }
 }
 &nbsp;
@@ -415,7 +415,7 @@ export interface IDejaDragContext {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 25 2017 15:03:23 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 30 2017 13:20:00 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

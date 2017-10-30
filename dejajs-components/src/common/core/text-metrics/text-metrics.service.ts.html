@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for dejajs-components/src/component/tree-list/text-metrics/text-metrics.service.ts</title>
+    <title>Code coverage report for dejajs-components/src/common/core/text-metrics/text-metrics.service.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/component/tree-list/text-metrics</a> text-metrics.service.ts
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">dejajs-components/src/common/core/text-metrics</a> text-metrics.service.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.73% </span>
+        <span class="strong">42.37% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/59</span>
+        <span class='fraction'>25/59</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>2/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.14% </span>
+        <span class="strong">21.43% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/14</span>
+        <span class='fraction'>3/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.22% </span>
+        <span class="strong">42.59% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/54</span>
+        <span class='fraction'>23/54</span>
       </div>
     </div>
   </div>
@@ -207,16 +207,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,15 +243,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -351,16 +351,16 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class DejaTextMetricsService {
     private canvas;
-    private <span class="cstat-no" title="statement not covered" >element$: Subject&lt;HTMLElement&gt; = new Subject();</span>
+    private element$: Subject&lt;HTMLElement&gt; = new Subject();
     private computedStyles: CSSStyleDeclaration;
-    private <span class="cstat-no" title="statement not covered" >charSize$ = new BehaviorSubject&lt;number[]&gt;(null);</span>
+    private charSize$ = new BehaviorSubject&lt;number[]&gt;(null);
 &nbsp;
     /**
      * Constructor
      * Add observable to wait for element to be set. And then take its properties to measure all ASCII char size.
      */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor() {</span></span>
-<span class="cstat-no" title="statement not covered" >        Observable.from(this.element$)</span>
+    constructor() {
+        Observable.from(this.element$)
             .delay(1)
             .first()
             .subscribe(<span class="fstat-no" title="function not covered" >(</span>element) =&gt; {
@@ -386,16 +386,16 @@ export class DejaTextMetricsService {
      *
      * @return {number} la largeur du texte donné
      */
-<span class="fstat-no" title="function not covered" >    public getTextWidth(</span>text: string, elem: HTMLElement): number {
-<span class="cstat-no" title="statement not covered" >        this.computedStyles = window.getComputedStyle(elem);</span>
-        const font = `${<span class="cstat-no" title="statement not covered" >this.computedStyles.fontSize} ${this.computedStyles.fontFamily}`;</span>
+    public getTextWidth(text: string, elem: HTMLElement): number {
+        this.computedStyles = window.getComputedStyle(elem);
+        const font = `${this.computedStyles.fontSize} ${this.computedStyles.fontFamily}`;
 &nbsp;
-        const canvas = <span class="cstat-no" title="statement not covered" >this.canvas || (this.canvas = document.createElement('canvas'));</span>
-        const context = <span class="cstat-no" title="statement not covered" >canvas.getContext('2d');</span>
-<span class="cstat-no" title="statement not covered" >        context.font = font;</span>
-        const metrics = <span class="cstat-no" title="statement not covered" >context.measureText(text);</span>
+        const canvas = this.canvas || (this.canvas = document.createElement('canvas'));
+        const context = canvas.getContext('2d');
+        context.font = font;
+        const metrics = context.measureText(text);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return metrics.width * 1.1; </span>// Correction for letter-spacing
+        return metrics.width * 1.1; // Correction for letter-spacing
     }
 &nbsp;
     /**
@@ -481,7 +481,7 @@ export class DejaTextMetricsService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 25 2017 15:03:23 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 30 2017 13:20:00 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>
