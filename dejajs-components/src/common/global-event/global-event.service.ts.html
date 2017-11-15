@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.54% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/13</span>
+        <span class='fraction'>23/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/5</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>20/20</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -72,7 +72,22 @@
 27
 28
 29
-30</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -87,17 +102,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -116,18 +146,33 @@ import { GlobalEventEmmitter } from './global-event-emmitter';
 @Injectable()
 export class GlobalEventService {
     private globalEventEmmitter: GlobalEventEmmitter;
+    private listeners$ = {};
+    private listenersFn$ = {};
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor() {</span>
-<span class="cstat-no" title="statement not covered" >        this.globalEventEmmitter = GlobalEventEmmitter.instance;</span>
+    constructor() {
+        this.globalEventEmmitter = GlobalEventEmmitter.instance;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public register(</span>event: string) {</span>
-<span class="cstat-no" title="statement not covered" >        return new Observable&lt;any[]&gt;(<span class="fstat-no" title="function not covered" >observer =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >            this.globalEventEmmitter.on(event, <span class="fstat-no" title="function not covered" >(</span>params: any[]) =&gt; {</span>
-                // console.log('message received: ' + event + '  params: ' + params[0]);
-<span class="cstat-no" title="statement not covered" >                observer.next(params);</span>
+    public register(event: string) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.listeners$[event]) {
+            this.listeners$[event] = new Observable&lt;any[]&gt;(observer =&gt; {
+                this.listenersFn$[event] = (params: any[]) =&gt; {
+                    // console.log('message received: ' + event + '  params: ' + params[0]);
+                    observer.next(params);
+                };
+                this.globalEventEmmitter.on(event, this.listenersFn$[event]);
             });
-        });
+        }
+&nbsp;
+        return this.listeners$[event];
+    }
+&nbsp;
+    public unregister(event: string) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.listeners$[event]) {
+            this.globalEventEmmitter.off(event, this.listenersFn$[event]);
+            this.listeners$[event] = undefined;
+            this.listenersFn$[event] = undefined;
+        }
     }
 }
 &nbsp;</pre></td></tr>
@@ -136,7 +181,7 @@ export class GlobalEventService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 01 2017 10:37:06 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
