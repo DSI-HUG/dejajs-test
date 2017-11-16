@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.17% </span>
+        <span class="strong">23.85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>116/480</span>
+        <span class='fraction'>114/478</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">10.43% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>22/211</span>
+        <span class='fraction'>0/177</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0.91% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/110</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25.68% </span>
+        <span class="strong">25.34% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>114/444</span>
+        <span class='fraction'>112/442</span>
       </div>
     </div>
   </div>
@@ -964,7 +964,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -975,7 +975,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1868,15 +1868,15 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { DejaClipboardService } from '../../common/core/clipboard/clipboard.service';
-import { GroupingService, IGroupInfo } from '../../common/core/grouping';
+import { GroupingService, IGroupInfo } from '../../common/core/grouping/index';
 import { IItemBase } from '../../common/core/item-list/item-base';
 import { ItemListService } from '../../common/core/item-list/item-list.service';
 import { IItemTree } from '../../common/core/item-list/item-tree';
 import { IViewPort, ViewportMode } from '../../common/core/item-list/viewport.service';
 import { KeyCodes } from '../../common/core/keycodes.enum';
-import { SortingService } from '../../common/core/sorting';
+import { SortingService } from '../../common/core/sorting/index';
 import { DejaChipsCloseEvent } from '../chips/chips.component';
-import { IDejaDragEvent } from '../dragdrop';
+import { IDejaDragEvent } from '../dragdrop/draggable.directive';
 import { DejaTreeListScrollEvent } from '../tree-list/tree-list-scroll-event';
 import { DejaTreeListComponent } from '../tree-list/tree-list.component';
 import { ViewPortService } from './../../common/core/item-list/viewport.service';
@@ -1939,7 +1939,7 @@ export class DejaGridComponent implements OnDestroy {
      */
     @Input() public searchField: string;
     /** Ligne courant ou ligne active */
-    @Input() public currentRow: <span class="branch-0 cbranch-no" title="branch not covered" >IItemBase<span class="branch-0 cbranch-no" title="branch not covered" >;</span></span>
+    @Input() public currentRow: IItemBase;
     /** Liste des éléments sélectionnés en mode multiselect */
     @Input() public selectedItems: IItemBase[];
     /** Elément selectioné en mode single select */
@@ -1949,9 +1949,9 @@ export class DejaGridComponent implements OnDestroy {
     /** Model selectioné en mode single select */
     @Input() public selectedModel: any;
     /** Definit le service de tri utilisé par ce composant. */
-    @Input() public sortingService: SortingService<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @Input() public sortingService: SortingService;
     /** Definit le service de regroupement utilisé par ce composant. */
-    @Input() public groupingService: GroupingService<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @Input() public groupingService: GroupingService;
     /** Définit la largeur minimum que peut prendre une colonne en cas de redimensionement. */
     @Input() public <span class="cstat-no" title="statement not covered" >columnsMinWidth = 15;</span>
     /** Permet de définir un template de ligne par binding */
@@ -2000,8 +2000,8 @@ export class DejaGridComponent implements OnDestroy {
     @ContentChild('searchPrefixTemplate') private searchPrefixTemplateInternal;
     @ContentChild('searchSuffixTemplate') private searchSuffixTemplateInternal;
 &nbsp;
-    @ViewChild(DejaGridHeaderComponent) private header: DejaGridHeaderComponent<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
-    @ViewChild(DejaTreeListComponent) private treeListComponent: DejaTreeListComponent<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild(DejaGridHeaderComponent) private header: DejaGridHeaderComponent;
+    @ViewChild(DejaTreeListComponent) private treeListComponent: DejaTreeListComponent;
 &nbsp;
     private _rows: IItemBase[] | Promise&lt;IItemBase[]&gt; | Observable&lt;IItemBase[]&gt;;
     private _columns: IDejaGridColumn[];
@@ -2179,7 +2179,7 @@ export class DejaGridComponent implements OnDestroy {
 &nbsp;
     /** Définit la colonne en surbrillance. */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set currentColumn(</span>column: <span class="branch-0 cbranch-no" title="branch not covered" >IDejaGridColumn<span class="branch-0 cbranch-no" title="branch not covered" >)</span> {</span>
+<span class="fstat-no" title="function not covered" >    public set currentColumn(</span>column: IDejaGridColumn) {
 <span class="cstat-no" title="statement not covered" >        this.columns.forEach(<span class="fstat-no" title="function not covered" >(</span>c) =&gt; <span class="cstat-no" title="statement not covered" >c.isCurrent = false)</span>;</span>
 <span class="cstat-no" title="statement not covered" >        if (column) {</span>
 <span class="cstat-no" title="statement not covered" >            column.isCurrent = true;</span>
@@ -2197,7 +2197,7 @@ export class DejaGridComponent implements OnDestroy {
 &nbsp;
     /** Definit le service de liste utilisé par ce composant. Ce srevice permet de controller dynamiquement la liste, ou de faire du lazyloading. */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set itemListService(</span>value: ItemListService<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    public set itemListService(</span>value: ItemListService) {
 <span class="cstat-no" title="statement not covered" >        this._itemListService = value;</span>
     }
 &nbsp;
@@ -2258,7 +2258,7 @@ export class DejaGridComponent implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >        return this._columnLayout;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >,</span> private <span class="cstat-no" title="statement not covered" >elementRef: </span>ElementRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: </span>DejaClipboardService<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef,</span> private <span class="cstat-no" title="statement not covered" >elementRef: ElementRef,</span> @Optional() private <span class="cstat-no" title="statement not covered" >clipboardService: DejaClipboardService)</span> {</span>
         const element = <span class="cstat-no" title="statement not covered" >this.elementRef.nativeElement as HTMLElement;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.clearColumnLayout();</span>
@@ -2764,7 +2764,7 @@ export class DejaGridComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

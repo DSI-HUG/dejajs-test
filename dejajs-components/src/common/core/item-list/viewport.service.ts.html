@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.05% </span>
+        <span class="strong">85.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>273/321</span>
+        <span class='fraction'>275/323</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.1% </span>
+        <span class="strong">76.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>156/205</span>
+        <span class='fraction'>158/207</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90.74% </span>
+        <span class="strong">90.91% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>49/54</span>
+        <span class='fraction'>50/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.79% </span>
+        <span class="strong">83.85% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>243/290</span>
+        <span class='fraction'>244/291</span>
       </div>
     </div>
   </div>
@@ -701,7 +701,9 @@
 656
 657
 658
-659</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+659
+660
+661</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -876,14 +878,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">42820x</span>
+<span class="cline-any cline-yes">42825x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42820x</span>
+<span class="cline-any cline-yes">42825x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42820x</span>
+<span class="cline-any cline-yes">42825x</span>
 <span class="cline-any cline-yes">4471x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -891,17 +893,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42820x</span>
+<span class="cline-any cline-yes">42825x</span>
 <span class="cline-any cline-yes">731x</span>
 <span class="cline-any cline-yes">731x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42820x</span>
+<span class="cline-any cline-yes">42825x</span>
 <span class="cline-any cline-yes">5166x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">37654x</span>
+<span class="cline-any cline-yes">37659x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -984,6 +986,8 @@
 <span class="cline-any cline-yes">218x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">239x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1622,7 +1626,7 @@ export class ViewPortService implements OnDestroy {
         const calcAutoSizeViewPort$ = (items: IViewPortItem[], containerSize: number, scrollPos: number, element: HTMLElement, itemDefaultSize: number, ensureParams: IEnsureParams, isCalculation?: boolean): Observable&lt;IViewPort&gt; =&gt; {
             // consoleLog(`calcAutoSizeViewPort`);
             return calcVariableSizeViewPort$(items, containerSize, scrollPos, itemDefaultSize, ensureParams)
-                .switchMap((viewPort) =&gt; {
+                .switchMap((viewPort: IViewPort) =&gt; {
                     const calculationRequired = !isCalculation &amp;&amp; viewPort.visibleItems.find((item) =&gt; !item.size);
 &nbsp;
                     <span class="missing-if-branch" title="if path not taken" >I</span>if (!calculationRequired) {
@@ -1642,6 +1646,8 @@ export class ViewPortService implements OnDestroy {
                                         item.size = clientSize(itemElement);
                                     }
                                 }
+                                // Recalc Viewport size
+                                viewPort.viewPortSize = viewPort.visibleItems.reduce((size, item) =&gt; size += item.size || itemDefaultSize, 0);
                             })
                             .switchMap(() =&gt; calcVariableSizeViewPort$(items, containerSize, viewPort.scrollPos || scrollPos, itemDefaultSize, ensureParams));
                     }
@@ -1787,7 +1793,7 @@ export class ViewPortService implements OnDestroy {
                                 index: items.length - 1,
                                 atEnd: true,
                             } as IEnsureParams, true);
-                        } else <span class="missing-if-branch" title="if path not taken" >I</span>if (this.mode === ViewportMode.auto &amp;&amp; viewPort.listSize &lt; listSize) {
+                        } else <span class="missing-if-branch" title="if path not taken" >I</span>if (this.mode === ViewportMode.auto &amp;&amp; viewPort.viewPortSize &lt; listSize) {
                             // Rendered viewport is to small, render again to complete
 <span class="cstat-no" title="statement not covered" >                            return calcViewPort$(items, maxSize, 0, element, itemDefaultSize, {</span>
                                 index: items.length - 1,
@@ -2023,7 +2029,7 @@ export interface IViewPortRefreshParams {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

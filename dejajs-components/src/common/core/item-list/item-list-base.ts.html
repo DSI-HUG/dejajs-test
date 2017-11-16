@@ -1862,14 +1862,14 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Renvoie le modèle de tri appliqué à la liste.
-     * @param {ISortInfos} sortInfos Modèle de tri appliqué.
+     * @param sortInfos Modèle de tri appliqué.
      */
 <span class="fstat-no" title="function not covered" >    public get sortInfos() {</span>
 <span class="cstat-no" title="statement not covered" >        return this._sortInfos;</span>
     }
 &nbsp;
     /** Renvoie le modèle de regroupement appliqué à la liste.
-     * @param {IGroupInfos} sortInfos Modèle de regroupement appliqué.
+     * @param sortInfos Modèle de regroupement appliqué.
      */
 <span class="fstat-no" title="function not covered" >    public get groupInfos() {</span>
 <span class="cstat-no" title="statement not covered" >        return this._itemListService.groupInfos;</span>
@@ -1880,7 +1880,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit une valeur indiquant si les éléments selectionés doivent être masqué. Ce flag est principalement utilisé dans le cas d'un multi-select
-     * @param {boolean} value True si les éléments selectionés doivent être masqués
+     * @param value True si les éléments selectionés doivent être masqués
      */
 <span class="fstat-no" title="function not covered" >    public setHideSelected(</span>value: boolean) {
 <span class="cstat-no" title="statement not covered" >        this._hideSelected = value;</span>
@@ -1890,7 +1890,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit le champs utilisé comme collection pour les enfants d'un parent.
-     * @param {string} value Nom du champ à utiliser comme collection d'enfants
+     * @param value Nom du champ à utiliser comme collection d'enfants
      */
     public setChildrenField(value: string) {
         this._childrenField = value;
@@ -1900,7 +1900,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Renvoie l'index de l'élément sur la liste plate corespondant à l'élément HTML spécifié
-     * @return {number} Index sur la liste plate corespondant à l'élément HTML
+     * @return Index sur la liste plate corespondant à l'élément HTML
      */
     public getItemIndexFromHTMLElement(element: HTMLElement): number {
         while (element &amp;&amp; element.parentElement &amp;&amp; element.hasAttribute &amp;&amp; !element.hasAttribute('flat') &amp;&amp; element.parentElement.id !== this.listElementId) {
@@ -1924,7 +1924,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retourne le service de liste utilisé par ce composant.
-     * @return {ItemListService} Service de liste utilisé par ce composant.
+     * @return Service de liste utilisé par ce composant.
      */
     public getItemListService() {
         if (!this._itemListService) {
@@ -1934,14 +1934,14 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retourne la liste des éléments sélectionés.
-     * @return {IItemBase[]} Liste des éléments selectionés.
+     * @return Liste des éléments selectionés.
      */
     public getSelectedItems() {
         return this.getItemListService().getSelectedItems();
     }
 &nbsp;
     /** Définit la liste des éléments sélectionés.
-     * @param {IItemBase[]} items Liste des éléments a selectioner.
+     * @param items Liste des éléments a selectioner.
      */
     public setSelectedItems(value: IItemBase[]) {
         this.getItemListService().setSelectedItems(value);
@@ -1984,8 +1984,8 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Evalue le texte à afficher pour l'élément spécifié.
-     * @param {any} value  Model à évaluer.
-     * @return {string} Texte à afficher pour le modèle spécifié.
+     * @param value  Model à évaluer.
+     * @return Texte à afficher pour le modèle spécifié.
      */
     public getTextValue(value: any) {
         return this.getItemListService().getTextValue(value, this._textField);
@@ -1994,7 +1994,7 @@ export abstract class ItemListBase implements OnDestroy {
     /**
      * Set le viewport mode
      *
-     * @param {ViewportMode} mode Mode du viewport (sans viewport, avec un viewport tailles des rows fixes ou dynamiques)
+     * @param mode Mode du viewport (sans viewport, avec un viewport tailles des rows fixes ou dynamiques)
      */
     public setViewportMode(mode: ViewportMode | string) {
         this.viewPort.mode$.next(mode);
@@ -2026,8 +2026,8 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Groupe les éléments en fonction du modèle de groupe spécifié
-     * @param {IGroupInfo} groupInfos Modèle de groupe à appliquer.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param groupInfos Modèle de groupe à appliquer.
+     * @return Observable résolu par la fonction.
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public group$(</span>groups: IGroupInfo[]) {</span>
 <span class="cstat-no" title="statement not covered" >        return this.getItemListService().group$(groups)</span>
@@ -2035,8 +2035,8 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retire les groupe correspondants au modèle de groupe spécifié
-     * @param {IGroupInfo} groupInfos Modèle de groupe à retirer.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param groupInfos Modèle de groupe à retirer.
+     * @return Observable résolu par la fonction.
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ungroup$(</span>groupInfo: IGroupInfo) {</span>
 <span class="cstat-no" title="statement not covered" >        return this.getItemListService().ungroup$(groupInfo)</span>
@@ -2044,7 +2044,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Change l'état d'expansion de tous les éléments.
-     * @return {Observable} Observable résolu par la fonction.
+     * @return Observable résolu par la fonction.
      */
     public toggleAll$(collapsed?: boolean): Observable&lt;IItemTree[]&gt; {
         this.allCollapsed = (collapsed !== undefined) ? collapsed : !this.allCollapsed;
@@ -2062,9 +2062,9 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Change l'état d'expansion de l'élément spécifié par son index sur la liste des éléments visibles.
-     * @param {number} index  Index sur la liste des éléments visibles de l'élément à changer.
-     * @param {boolean} collapse  Etat de l'élément. True pour réduire l'élément.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param index  Index sur la liste des éléments visibles de l'élément à changer.
+     * @param collapse  Etat de l'élément. True pour réduire l'élément.
+     * @return Observable résolu par la fonction.
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public toggleCollapse$(</span>index: number, collapsed: boolean): Observable&lt;IItemTree&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return this.getItemListService().toggleCollapse$(index, collapsed)</span>
@@ -2072,7 +2072,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Déselectionne tous les éléments sélectionés.
-     * @return {Observable} Observable résolu par la fonction.
+     * @return Observable résolu par la fonction.
      */
     public unselectAll$() {
         const itemListService = this.getItemListService();
@@ -2111,8 +2111,8 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retrouve les informations du parent de l'élément spécifié
-     * @param {IItemTree} item Element enfant du parent à retrouver.
-     * @return {Observable&lt;IParentListInfoResult&gt;} Observable résolu par la fonction, qui retourne les informations sur le parent de l'élément spécifié
+     * @param item Element enfant du parent à retrouver.
+     * @return Observable résolu par la fonction, qui retourne les informations sur le parent de l'élément spécifié
      */
 <span class="fstat-no" title="function not covered" >    public getParentListInfos$(</span>item: IItemTree): Observable&lt;IParentListInfoResult&gt; {
 <span class="cstat-no" title="statement not covered" >        return this.getItemListService().getParentListInfos$(item, this._multiSelect);</span>
@@ -2140,9 +2140,9 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Trouve l'élément suivant répondant à la fonction de comparaison spécifiée.
-     * @param {Function} compare Function de comparaison pour la recherche de l'élément.
-     * @param {number} startIndex Index de départ sur la liste des éléments visibles.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param compare Function de comparaison pour la recherche de l'élément.
+     * @param startIndex Index de départ sur la liste des éléments visibles.
+     * @return Observable résolu par la fonction.
      */
     protected findNextMatch$(compare?: (item: IItemBase, index: number) =&gt; boolean, startIndex?: number): Observable&lt;IFindItemResult&gt; {
         return this.ensureListCaches$()
@@ -2153,7 +2153,7 @@ export abstract class ItemListBase implements OnDestroy {
      * Pour désactiver le viewport, mettre la hauteur de ligne à 0.
      * Attention, une désactivation du viewport dégrade considérablement les performances de la liste et ne doit pas être activée si la liste
      * est suceptible de contenir beaucoup d'éléments.
-     * @param {number} value Hauteur de ligne à utiliser pour le calcul du viewport.
+     * @param value Hauteur de ligne à utiliser pour le calcul du viewport.
      */
     protected setViewPortRowHeight(value: number) {
         this._viewPortRowHeight = value;
@@ -2167,7 +2167,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Definit le service de liste utilisé par ce composant.
-     * @param {ItemListService} value Service de liste utilisé par ce composant.
+     * @param value Service de liste utilisé par ce composant.
      */
     protected setItemListService(value: ItemListService) {
         if (this.waiter$sub) {
@@ -2189,7 +2189,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Definit le service de tri utilisé par ce composant.
-     * @param {SortingService} value Service de tri utilisé par ce composant.
+     * @param value Service de tri utilisé par ce composant.
      */
     protected setSortingService(value: SortingService) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!value &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!this._itemListService)</span> {
@@ -2199,7 +2199,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Definit le service de regroupement utilisé par ce composant.
-     * @param {GroupingService} value Service de regroupement utilisé par ce composant.
+     * @param value Service de regroupement utilisé par ce composant.
      */
     protected setGroupingService(value: GroupingService) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!value &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!this._itemListService)</span> {
@@ -2209,14 +2209,14 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit le texte à afficher dans la zone de conseil.
-     * @param {string} value Texte à afficher.
+     * @param value Texte à afficher.
      */
     protected setHintLabel(value: string) {
         this._hintLabel = value;
     }
 &nbsp;
     /** Définit le texte à afficher si la liste est vide.
-     * @param {string} value Texte à afficher.
+     * @param value Texte à afficher.
      */
 <span class="fstat-no" title="function not covered" >    protected setNodataLabel(</span>value: string) {
 <span class="cstat-no" title="statement not covered" >        this._nodataLabel = value;</span>
@@ -2232,7 +2232,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retourne l'élément courant (actif).
-     * @return {IItemBase} Elément courant.
+     * @return Elément courant.
      */
     public getCurrentItem() {
         if (!this._currentItem &amp;&amp; this._currentItemIndex &gt;= 0) {
@@ -2242,7 +2242,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit l'élément courant (actif).
-     * @param {IItemBase} item Elément courant.
+     * @param item Elément courant.
      */
     protected setCurrentItem(item: IItemBase) {
         this._currentItemIndex = item ? this.getItemListService().getItemIndex(item) : -1;
@@ -2250,22 +2250,22 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Retourne l'index correspondant à l'élément spéficié dans la liste des éléments visibles
-     * @param {IItemBase} item Element à chercher sur la liste des éléments visibles.
-     * @return {number} Index correspondant à l'élément recherché.
+     * @param item Element à chercher sur la liste des éléments visibles.
+     * @return Index correspondant à l'élément recherché.
      */
 <span class="fstat-no" title="function not covered" >    protected getItemIndex(</span>item: IItemBase) {
 <span class="cstat-no" title="statement not covered" >        return item &amp;&amp; this.getItemListService() ? this.getItemListService().getItemIndex(item) : -1;</span>
     }
 &nbsp;
     /** Définit si plusieurs éléments peuvent être sélectionés.
-     * @param {boolean} value True si plusieurs éléments peuvent être sélectionés.
+     * @param value True si plusieurs éléments peuvent être sélectionés.
      */
     protected setMultiSelect(value: boolean) {
         this._multiSelect = value;
     }
 &nbsp;
     /** Définit le modèle utilisé par la liste. Il est uniquement de type IItemBase. Ce model peut ètre hierarchique sans limitation de la profondeur ou une chargé en asynchrone par une promise ou un observable.
-     * @param {GroupingService}items Provider de la liste des éléments de la liste.
+     * @param items Provider de la liste des éléments de la liste.
      */
     protected setItems$(items: IItemBase[] | Promise&lt;IItemBase[]&gt; | Observable&lt;IItemBase[]&gt;) {
         if (!(items instanceof Array)) {
@@ -2275,7 +2275,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit le modèle utilisé par la liste. Il peut être de tout type d'objet. Ce model peut ètre hierarchique sans limitation de la profondeur ou une chargé en asynchrone par une promise ou un observable.
-     * @param {GroupingService}items Provider de la liste des éléments de la liste.
+     * @param items Provider de la liste des éléments de la liste.
      */
     protected setModels$(models: any[] | Observable&lt;any[]&gt;) {
         let models$: Observable&lt;any[]&gt;;
@@ -2321,9 +2321,9 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Sélectionne une plage d'éléments en fonction de l'index de début et l'index de fin sur la liste des éléments visibles.
-     * @param {number} indexFrom index sur la liste des éléments visibles du premier élément à sélectioner.
-     * @param {number} indexTo index sur la liste des éléments visibles du dernier élément à sélectioner.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param indexFrom index sur la liste des éléments visibles du premier élément à sélectioner.
+     * @param indexTo index sur la liste des éléments visibles du dernier élément à sélectioner.
+     * @return Observable résolu par la fonction.
      */
     protected selectRange$(indexFrom: number, indexTo?: number) {
         const itemListService = this.getItemListService();
@@ -2332,9 +2332,9 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Change l'état de selection de l'élément spécifié.
-     * @param {IItemBase[]} items Liste des éléments à modifier.
-     * @param {boolean} selected True si les éléments divent être sélectionés, False si ils doivent être déselectionés.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param items Liste des éléments à modifier.
+     * @param selected True si les éléments divent être sélectionés, False si ils doivent être déselectionés.
+     * @return Observable résolu par la fonction.
      */
     protected toggleSelect$(items: IItemBase[], selected: boolean) {
         const itemListService = this.getItemListService();
@@ -2342,23 +2342,23 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit si l'élément spécifié peut être réduit.
-     * @param {IItemTree} item Elément à analyser.
-     * @return {boolean} True si l'élément peut être réduit.
+     * @param item Elément à analyser.
+     * @return True si l'élément peut être réduit.
      */
     protected isCollapsible(item: IItemTree) {
         return item &amp;&amp; item.$items &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >item.collapsible !== false;</span>
     }
 &nbsp;
     /** Définit si l'élément spécifié est selectionable.
-     * @param {IItemBase} item Elément à analyser.
-     * @return {boolean} True si l'élément est selectionable.
+     * @param item Elément à analyser.
+     * @return True si l'élément est selectionable.
      */
     protected isSelectable(item: IItemBase) {
         return item &amp;&amp; item.selectable !== false;
     }
 &nbsp;
     /** Définit le champ à utiliser comme valeur d'affichage.
-     * @param {string} value Champ à utiliser comme valeur d'affichage.
+     * @param value Champ à utiliser comme valeur d'affichage.
      */
     protected setTextField(value: string) {
         this._textField = value;
@@ -2370,7 +2370,7 @@ export abstract class ItemListBase implements OnDestroy {
     }
 &nbsp;
     /** Définit le champ à utiliser comme valeur de comparaison.
-     * @param {string} value Champ à utiliser comme valeur de comparaison.
+     * @param value Champ à utiliser comme valeur de comparaison.
      */
     protected setValueField(value: string) {
         this._valueField = value;
@@ -2386,7 +2386,7 @@ export abstract class ItemListBase implements OnDestroy {
 &nbsp;
     /** Définit le champ à utiliser comme champ de recherche.
      * Ce champ peut indiquer, un champ contenant une valeur, un texte indexé, ou une fonction.
-     * @param {string} value Champ à utiliser comme champ de recherche.
+     * @param value Champ à utiliser comme champ de recherche.
      */
     protected setSearchField(value: string) {
         this._searchField = value;
@@ -2557,7 +2557,7 @@ export interface IItemTreeInfo {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

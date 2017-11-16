@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.33% </span>
+        <span class="strong">19.21% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>122/631</span>
+        <span class='fraction'>121/630</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.51% </span>
+        <span class="strong">0.65% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>42/365</span>
+        <span class='fraction'>2/308</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.07% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/187</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.8% </span>
+        <span class="strong">19.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>119/601</span>
+        <span class='fraction'>118/600</span>
       </div>
     </div>
   </div>
@@ -1343,7 +1343,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -2694,7 +2694,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     private _inputElement: ElementRef;
 &nbsp;
-    @ViewChild('inputElement') <span class="fstat-no" title="function not covered" >private set inputElement(</span>element: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+    @ViewChild('inputElement') <span class="fstat-no" title="function not covered" >private set inputElement(</span>element: ElementRef) {
 <span class="cstat-no" title="statement not covered" >        if (element) {</span>
 <span class="cstat-no" title="statement not covered" >            this._inputElement = element;</span>
 <span class="cstat-no" title="statement not covered" >            if (this._inputElement) {</span>
@@ -2708,7 +2708,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         }
     }
 &nbsp;
-    @ViewChild(MatInput) protected input: MatInput<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild(MatInput) protected input: MatInput;
 &nbsp;
     @HostBinding('attr.disabled') private <span class="cstat-no" title="statement not covered" >_disabled = null;</span>
     private <span class="cstat-no" title="statement not covered" >_type = 'select';</span>
@@ -2723,7 +2723,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     @HostBinding('attr.readonly') private <span class="cstat-no" title="statement not covered" >_readonly = null;</span>
 &nbsp;
     /** Overlay pane containing the options. */
-    @ViewChild(DejaOverlayComponent) private overlay: DejaOverlayComponent<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild(DejaOverlayComponent) private overlay: DejaOverlayComponent;
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >clearFilterExpression$ = new BehaviorSubject&lt;void&gt;(null);</span>
     private <span class="cstat-no" title="statement not covered" >filterListComplete$ = new Subject();</span>
@@ -2788,7 +2788,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         }
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(</span>changeDetectorRef: ChangeDetectorRef<span class="branch-1 cbranch-no" title="branch not covered" >, public <span class="cstat-no" title="statement not covered" >viewPort: </span>ViewPortService<span class="branch-2 cbranch-no" title="branch not covered" >,</span> private <span class="cstat-no" title="statement not covered" >elementRef: </span>ElementRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentForm: </span>NgForm<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentFormGroup: </span>FormGroupDirective<span class="branch-2 cbranch-no" title="branch not covered" >,</span> mediaService: </span>MediaService<span class="branch-2 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    constructor(</span>changeDetectorRef: ChangeDetectorRef, public <span class="cstat-no" title="statement not covered" >viewPort: ViewPortService,</span> private <span class="cstat-no" title="statement not covered" >elementRef: ElementRef,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: NgControl,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentForm: NgForm,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentFormGroup: FormGroupDirective,</span> mediaService: MediaService) {
 <span class="cstat-no" title="statement not covered" >        super(changeDetectorRef, viewPort);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.overlayOwnerElement = this.elementRef.nativeElement;</span>
@@ -3052,7 +3052,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     /** Définit la ligne courant ou ligne active */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set currentItem(</span>item: <span class="branch-0 cbranch-no" title="branch not covered" >IItemBase<span class="branch-0 cbranch-no" title="branch not covered" >)</span> {</span>
+<span class="fstat-no" title="function not covered" >    public set currentItem(</span>item: IItemBase) {
 <span class="cstat-no" title="statement not covered" >        super.setCurrentItem(item);</span>
 <span class="cstat-no" title="statement not covered" >        if (item) {</span>
 <span class="cstat-no" title="statement not covered" >            this.ensureItemVisible(item);</span>
@@ -3100,7 +3100,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
      * est suceptible de contenir beaucoup d'éléments.
      */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set viewportMode(</span>mode: ViewportMode<span class="branch-0 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    public set viewportMode(</span>mode: ViewportMode) {
 <span class="cstat-no" title="statement not covered" >        this.setViewportMode(mode);</span>
     }
 &nbsp;
@@ -3224,7 +3224,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     /** Définit l'éléments selectioné en mode single select */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set selectedItem(</span>value: <span class="branch-0 cbranch-no" title="branch not covered" >IItemBase<span class="branch-0 cbranch-no" title="branch not covered" >)</span> {</span>
+<span class="fstat-no" title="function not covered" >    public set selectedItem(</span>value: IItemBase) {
 <span class="cstat-no" title="statement not covered" >        this.setSelectedItems([value]);</span>
     }
 &nbsp;
@@ -3259,7 +3259,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     /** Definit le service de liste utilisé par ce composant. Ce srevice permet de controller dynamiquement la liste, ou de faire du lazyloading. */
     @Input()
-<span class="fstat-no" title="function not covered" >    public set itemListService(</span>value: ItemListService<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    public set itemListService(</span>value: ItemListService) {
 <span class="cstat-no" title="statement not covered" >        this.setItemListService(value);</span>
     }
 &nbsp;
@@ -3325,7 +3325,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     }
 &nbsp;
     @ViewChild(DejaChildValidatorDirective)
-<span class="fstat-no" title="function not covered" >    protected set inputValidatorDirective(</span>value: DejaChildValidatorDirective<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    protected set inputValidatorDirective(</span>value: DejaChildValidatorDirective) {
 <span class="cstat-no" title="statement not covered" >        if (value) {</span>
 <span class="cstat-no" title="statement not covered" >            value.parentControl = this._control;</span>
         }
@@ -3633,9 +3633,9 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     }
 &nbsp;
     /** Change l'état d'expansion de la ligne spécifiée
-     * @param {number} index  Index sur la liste des éléments visibles de l'élément à changer.
-     * @param {boolean} collapse  Etat de l'élément. True pour réduire l'élément.
-     * @return {Observable} Observable résolu par la fonction.
+     * @param index  Index sur la liste des éléments visibles de l'élément à changer.
+     * @param collapse  Etat de l'élément. True pour réduire l'élément.
+     * @return Observable résolu par la fonction.
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public toggleCollapse$(</span>index: number, collapsed: boolean): Observable&lt;IItemTree&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return super.toggleCollapse$(index, collapsed)</span>
@@ -3874,7 +3874,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

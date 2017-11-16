@@ -25,9 +25,9 @@
         <span class='fraction'>52/212</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.81% </span>
+        <span class="strong">2.44% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>26/114</span>
+        <span class='fraction'>2/82</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.89% </span>
@@ -954,7 +954,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** Disabled dates. It's an array of DaysOfWeek (number between 0 and 6) or a date. */
     @Input() public disableDates: Array&lt;DaysOfWeek | Date&gt;; // | ((d: Date) =&gt; boolean);
     /** Reference to DejaDateSelectorComponent inside thic control */
-    @ViewChild(DejaDateSelectorComponent) public dateSelectorComponent: DejaDateSelectorComponent<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild(DejaDateSelectorComponent) public dateSelectorComponent: DejaDateSelectorComponent;
     /** Template for MatHint inside mat-input-container */
     @ContentChild('hintTemplate') public matHint;
     /** Template for MatError inside mat-input-container */
@@ -973,7 +973,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** Internal use */
     public overlayOwnerElement: HTMLElement;
 &nbsp;
-    @ViewChild(DejaChildValidatorDirective) private inputValidatorDirective: DejaChildValidatorDirective<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
+    @ViewChild(DejaChildValidatorDirective) private inputValidatorDirective: DejaChildValidatorDirective;
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
     private _disabled: boolean;
@@ -997,7 +997,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     private <span class="cstat-no" title="statement not covered" >onChangeCallback: (_: any) =&gt; void = noop;</span>
 &nbsp;
     @ViewChild('inputelement')
-<span class="fstat-no" title="function not covered" >    private set inputElementRef(</span>element: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+<span class="fstat-no" title="function not covered" >    private set inputElementRef(</span>element: ElementRef) {
 <span class="cstat-no" title="statement not covered" >        if (element) {</span>
 <span class="cstat-no" title="statement not covered" >            this.inputElement = element.nativeElement;</span>
 <span class="cstat-no" title="statement not covered" >            if (this.inputElement) {</span>
@@ -1028,7 +1028,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
      * Constructor
      * subscribe on fifferent events needed inside this component
      */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >,</span> private <span class="cstat-no" title="statement not covered" >changeDetectorRef: </span>ChangeDetectorRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentForm: </span>NgForm<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentFormGroup: </span>FormGroupDirective<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>elementRef: ElementRef,</span> private <span class="cstat-no" title="statement not covered" >changeDetectorRef: ChangeDetectorRef,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: NgControl,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentForm: NgForm,</span> @Optional() private <span class="cstat-no" title="statement not covered" >_parentFormGroup: FormGroupDirective)</span> {</span>
 <span class="cstat-no" title="statement not covered" >        if (this._control) {</span>
 <span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
         }
@@ -1276,7 +1276,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
      * Called when user click on the input of this component.
      * If click is located on mat-icon 'calendar' who is in the matPrefix of mat-input-container, the picker show off.
      *
-     * @param {Event} event
+     * @param event
      */
 <span class="fstat-no" title="function not covered" >    protected toggleDateSelector(</span>event: Event) {
 <span class="cstat-no" title="statement not covered" >        if (this.disabled) {</span>
@@ -1296,7 +1296,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /**
      * ngModelChange of date-selector.
      *
-     * @param {Date} newDate Date to set.
+     * @param newDate Date to set.
      */
 <span class="fstat-no" title="function not covered" >    protected onDateChange(</span>newDate: Date) {
 <span class="cstat-no" title="statement not covered" >        this.value = newDate;</span>
@@ -1309,7 +1309,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /**
      * Called when input change. If it's a string it's because user set the date manually. So we need to convert it into date with MomentJs.
      *
-     * @param {string | Date} date new value of this model
+     * @param date new value of this model
      */
 <span class="fstat-no" title="function not covered" >    public updateModel(</span>date: string | Date) {
 <span class="cstat-no" title="statement not covered" >        if (typeof date === 'string' &amp;&amp; date.replace(/_/g, '').length === this._format.length) {</span>
@@ -1339,7 +1339,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

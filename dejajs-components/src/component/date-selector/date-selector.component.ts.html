@@ -25,9 +25,9 @@
         <span class='fraction'>52/237</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.45% </span>
+        <span class="strong">1.75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>12/127</span>
+        <span class='fraction'>2/114</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">4.76% </span>
@@ -1201,7 +1201,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 <span class="cstat-no" title="statement not covered" >        return this._disabled;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef<span class="branch-1 cbranch-no" title="branch not covered" >, private <span class="cstat-no" title="statement not covered" >changeDetectorRef: </span>ChangeDetectorRef<span class="branch-2 cbranch-no" title="branch not covered" >,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: </span>NgControl<span class="branch-2 cbranch-no" title="branch not covered" >)</span> {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(</span>elementRef: ElementRef, private <span class="cstat-no" title="statement not covered" >changeDetectorRef: ChangeDetectorRef,</span> @Self() @Optional() public <span class="cstat-no" title="statement not covered" >_control: NgControl)</span> {</span>
         const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (this._control) {</span>
@@ -1288,9 +1288,9 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
     // ************* End of ControlValueAccessor Implementation **************
 &nbsp;
     /**
-     * @param {number} month (attention : Janvier = 0, Décembre = 11)
-     * @param {number} year
-     * @return {IDateSelectorItem[]} Jours du mois au format IDateSelectorItem
+     * @param month (attention : Janvier = 0, Décembre = 11)
+     * @param year
+     * @return Jours du mois au format IDateSelectorItem
      */
 <span class="fstat-no" title="function not covered" >    public getAllDaysInMonth(</span>month: number, year: number): IDateSelectorItem[] {
         const days: IDateSelectorItem[] = <span class="cstat-no" title="statement not covered" >[];</span>
@@ -1475,11 +1475,11 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
     /**
      * Vérifie si la date passée en param est désactivée.
      *
-     * @param {Date} date
-     * @return {boolean} sera false si this.disableDates n'existe pas / n'est pas un tableau,
-     *                   si la date envoyée en param est valide,
-     *                   si la date est superieure a dateMax
-     *                   ou si la date est inférieure a dateMin
+     * @param date
+     * @return sera false si this.disableDates n'existe pas / n'est pas un tableau,
+     *         si la date envoyée en param est valide,
+     *         si la date est superieure a dateMax
+     *         ou si la date est inférieure a dateMin
      */
 <span class="fstat-no" title="function not covered" >    private isDisabledDate(</span>date: Date): boolean {
 <span class="cstat-no" title="statement not covered" >        if (this._disabled) {</span>
@@ -1509,8 +1509,8 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
      * Fonction récursive. Si le jour séléctionné + num est invalide, la fonction
      * se rappelle pour séléctionner le jour suivant (ou précédent)
      *
-     * @param {Date} date
-     * @param {number} num : nombre de jours à ajouter à date.
+     * @param date
+     * @param num : nombre de jours à ajouter à date.
      */
 <span class="fstat-no" title="function not covered" >    private setDateIfPossible(</span>date: Date, num: number): void {
         const d = <span class="cstat-no" title="statement not covered" >new Date(date);</span>
@@ -1531,8 +1531,8 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
      * Fonction récursive. Si le mois séléctionné + num est invalide, la fonction
      * se rappelle pour séléctionner le jour suivant (ou précédent)
      *
-     * @param {Date} date
-     * @param {number} num : nombre de mois à ajouter à date.
+     * @param date
+     * @param num : nombre de mois à ajouter à date.
      */
 <span class="fstat-no" title="function not covered" >    private setMonthIfPossible(</span>date: Date, num: number): void {
         const d = <span class="cstat-no" title="statement not covered" >new Date(date);</span>
@@ -1551,8 +1551,8 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
      * Fonction récursive. Si l'année séléctionné + num est invalide, la fonction
      * se rappelle pour séléctionner le jour suivant (ou précédent)
      *
-     * @param {Date} date
-     * @param {number} num : nombre de jours à ajouter à date.
+     * @param date
+     * @param num : nombre de jours à ajouter à date.
      */
 <span class="fstat-no" title="function not covered" >    private setYearIfPossible(</span>date: Date, num: number): void {
         const d = <span class="cstat-no" title="statement not covered" >new Date(date);</span>
@@ -1573,7 +1573,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 15 2017 14:23:03 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 16 2017 10:52:56 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
