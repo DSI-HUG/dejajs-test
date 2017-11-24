@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.18% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/17</span>
+        <span class='fraction'>17/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>13/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/16</span>
+        <span class='fraction'>16/16</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -95,30 +95,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -133,31 +133,31 @@ export class UnitValue {
     public value: number;
     public unit: string;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public static equals(</span>s1: UnitValue, s2: UnitValue) {
-<span class="cstat-no" title="statement not covered" >        return s1.value === s2.value &amp;&amp; s1.unit === s2.unit;</span>
+    public static equals(s1: UnitValue, s2: UnitValue) {
+        return s1.value === s2.value &amp;&amp; s1.unit === s2.unit;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(</span>value?: number | string, unit?: string) {
-<span class="cstat-no" title="statement not covered" >        if (typeof value === 'string') {</span>
-            const match = <span class="cstat-no" title="statement not covered" >value.match(/([0-9\.]+)(.*)/);</span>
-<span class="cstat-no" title="statement not covered" >            this.value = match.length &gt;= 2 &amp;&amp; parseInt(match[1], 10);</span>
-<span class="cstat-no" title="statement not covered" >            this.unit = match.length &gt;= 3 &amp;&amp;  match[2];</span>
+    constructor(value?: number | string, unit?: string) {
+        if (typeof value === 'string') {
+            const match = value.match(/([0-9\.]+)(.*)/);
+            this.value = match &amp;&amp; match.length &gt;= 2 &amp;&amp; parseInt(match[1], 10);
+            this.unit = match &amp;&amp; match.length &gt;= 3 &amp;&amp;  match[2];
         } else {
-<span class="cstat-no" title="statement not covered" >            this.value = value;</span>
-<span class="cstat-no" title="statement not covered" >            this.unit = unit;</span>
+            this.value = value;
+            this.unit = unit;
         }
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public clone() {</span>
-<span class="cstat-no" title="statement not covered" >        return new UnitValue(this.value, this.unit);</span>
+    public clone() {
+        return new UnitValue(this.value, this.unit);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public toString() {</span>
-<span class="cstat-no" title="statement not covered" >        return String(this.value) + this.unit;</span>
+    public toString() {
+        return String(this.value) + this.unit;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public isInvalid() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.value &amp;&amp; isNaN(this.value);</span>
+    public isInvalid() {
+        return this.value === undefined || this.value === null || isNaN(this.value);
     }
 }
 &nbsp;</pre></td></tr>
@@ -166,7 +166,7 @@ export class UnitValue {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 20 2017 13:40:39 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 24 2017 14:23:26 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

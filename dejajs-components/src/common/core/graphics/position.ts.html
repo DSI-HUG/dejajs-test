@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/15</span>
+        <span class='fraction'>15/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/10</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/7</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.29% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/14</span>
+        <span class='fraction'>14/14</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -96,31 +96,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">122x</span>
+<span class="cline-any cline-yes">122x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -135,8 +135,8 @@ export class Position {
     public left: number;
     public top: number;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public static equals(</span>p1: Position, p2: Position) {
-<span class="cstat-no" title="statement not covered" >        return p1.left === p2.left &amp;&amp; p1.top === p2.top;</span>
+    public static equals(p1: Position, p2: Position) {
+        return p1.left === p2.left &amp;&amp; p1.top === p2.top;
     }
 &nbsp;
     constructor(left?: number, top?: number) {
@@ -144,23 +144,23 @@ export class Position {
         this.top = top || 0;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public offset(</span>x: number, y: number): Position {
-<span class="cstat-no" title="statement not covered" >        return new Position(</span>
+    public offset(x: number, y: number): Position {
+        return new Position(
             this.left + x,
             this.top + y,
         );
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public clone() {</span>
-<span class="cstat-no" title="statement not covered" >        return new Position(this.left, this.top);</span>
+    public clone() {
+        return new Position(this.left, this.top);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public constrain(</span>xmin: number, xmax: number, ymin: number, ymax: number): Position {
-<span class="cstat-no" title="statement not covered" >        return new Position(Math.min(Math.max(xmin, this.left), xmax), Math.min(Math.max(ymin, this.top), ymax));</span>
+    public constrain(xmin: number, xmax: number, ymin: number, ymax: number): Position {
+        return new Position(Math.min(Math.max(xmin, this.left), xmax), Math.min(Math.max(ymin, this.top), ymax));
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public around(</span>x: number, y: number, xspan: number, yspan?: number): boolean {
-<span class="cstat-no" title="statement not covered" >        return Math.abs(this.left - x) &lt;= xspan &amp;&amp; Math.abs(this.top - y) &lt;= (yspan || xspan);</span>
+    public around(x: number, y: number, xspan: number, yspan?: number): boolean {
+        return Math.abs(this.left - x) &lt;= xspan &amp;&amp; Math.abs(this.top - y) &lt;= (yspan || xspan);
     }
 }
 &nbsp;</pre></td></tr>
@@ -169,7 +169,7 @@ export class Position {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 20 2017 13:40:39 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 24 2017 14:23:26 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>
