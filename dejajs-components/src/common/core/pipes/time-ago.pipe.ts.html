@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30% </span>
+        <span class="strong">30.19% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/50</span>
+        <span class='fraction'>16/53</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">12.5% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>2/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.09% </span>
+        <span class="strong">8.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/11</span>
+        <span class='fraction'>1/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.89% </span>
+        <span class="strong">29.17% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/45</span>
+        <span class='fraction'>14/48</span>
       </div>
     </div>
   </div>
@@ -130,7 +130,8 @@
 85
 86
 87
-88</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+88
+89</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,7 +143,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -154,8 +155,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,10 +228,10 @@
  */
 &nbsp;
 import { ChangeDetectorRef, NgZone, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/debounce';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 &nbsp;
 import * as moment_ from 'moment';
 const moment: (value?: any, format?: string) =&gt; moment_.Moment = (&lt;any&gt;moment_).default || moment_;
@@ -241,10 +243,11 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     private lastOmitSuffix: boolean;
     private lastText: string;
     private <span class="cstat-no" title="statement not covered" >createTimer$ = new Subject();</span>
-    private createTimer$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>cdRef: ChangeDetectorRef,</span> private <span class="cstat-no" title="statement not covered" >ngZone: NgZone)</span> {</span>
-<span class="cstat-no" title="statement not covered" >        this.createTimer$sub = Observable.from(this.createTimer$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.createTimer$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .debounce(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
                 const momentInstance = <span class="cstat-no" title="statement not covered" >moment(this.lastValue);</span>
                 const timeToUpdate = <span class="cstat-no" title="statement not covered" >this.getSecondsUntilUpdate(momentInstance) * 1000;</span>
@@ -259,7 +262,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.createTimer$sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public transform(</span>value: Date | moment_.Moment, omitSuffix?: boolean): string {
@@ -310,7 +313,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

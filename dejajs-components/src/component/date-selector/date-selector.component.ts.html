@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.94% </span>
+        <span class="strong">22.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>52/237</span>
+        <span class='fraction'>55/241</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.75% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>2/114</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">4.76% </span>
+        <span class="strong">4.65% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/42</span>
+        <span class='fraction'>2/43</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.03% </span>
+        <span class="strong">22.84% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>50/227</span>
+        <span class='fraction'>53/232</span>
       </div>
     </div>
   </div>
@@ -551,7 +551,12 @@
 506
 507
 508
-509</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+509
+510
+511
+512
+513
+514</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -564,7 +569,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -702,6 +709,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -710,6 +719,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1070,9 +1080,11 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { KeyCodes } from '../../common/core/keycodes.enum';
 import { IDateSelectorItem } from './date-selector-item.model';
 &nbsp;
@@ -1144,7 +1156,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
     public <span class="cstat-no" title="statement not covered" >onTouchedCallback: () =&gt; void = noop;</span>
     public <span class="cstat-no" title="statement not covered" >onChangeCallback: (_: any) =&gt; void = noop;</span>
 &nbsp;
-    private <span class="cstat-no" title="statement not covered" >subscriptions: Subscription[] = [];</span>
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
     private _currentDays: IDateSelectorItem[];
     private <span class="cstat-no" title="statement not covered" >_currentDate: Date = new Date();</span>
@@ -1208,17 +1220,20 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 <span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.fromEvent(element, 'click').subscribe(<span class="fstat-no" title="function not covered" >(</span>event: Event) =&gt; {</span>
-            const target = <span class="cstat-no" title="statement not covered" >event.target as HTMLElement;</span>
-<span class="cstat-no" title="statement not covered" >            if (target.hasAttribute('dateindex')) {</span>
-                const dateSelectorItem = <span class="cstat-no" title="statement not covered" >this._currentDays[+target.getAttribute('dateindex')];</span>
-<span class="cstat-no" title="statement not covered" >                if (!dateSelectorItem.disabled) {</span>
-<span class="cstat-no" title="statement not covered" >                    this.value = dateSelectorItem.date;</span>
+<span class="cstat-no" title="statement not covered" >        Observable.fromEvent(element, 'click')</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>event: Event) =&gt; {
+                const target = <span class="cstat-no" title="statement not covered" >event.target as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >                if (target.hasAttribute('dateindex')) {</span>
+                    const dateSelectorItem = <span class="cstat-no" title="statement not covered" >this._currentDays[+target.getAttribute('dateindex')];</span>
+<span class="cstat-no" title="statement not covered" >                    if (!dateSelectorItem.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >                        this.value = dateSelectorItem.date;</span>
+                    }
                 }
-            }
-        }));
+            });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this._keyboardNavigation$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this._keyboardNavigation$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this._keyboardNavigation = true;</span>
 <span class="cstat-no" title="statement not covered" >                Observable.fromEvent(element, 'mouseenter')</span>
@@ -1227,7 +1242,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 <span class="cstat-no" title="statement not covered" >                        this._keyboardNavigation = false;</span>
 <span class="cstat-no" title="statement not covered" >                        this.changeDetectorRef.markForCheck();</span>
                     });
-            }));
+            });
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnInit() {</span>
@@ -1238,7 +1253,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
     // ************* ControlValueAccessor Implementation **************
@@ -1573,7 +1588,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30.81% </span>
+        <span class="strong">31.86% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>61/198</span>
+        <span class='fraction'>65/204</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/61</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">1.59% </span>
+        <span class="strong">1.52% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/63</span>
+        <span class='fraction'>1/66</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">32.78% </span>
+        <span class="strong">33.87% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>59/180</span>
+        <span class='fraction'>63/186</span>
       </div>
     </div>
   </div>
@@ -425,7 +425,12 @@
 380
 381
 382
-383</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+383
+384
+385
+386
+387
+388</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,6 +438,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -509,9 +518,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -534,16 +541,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -679,8 +691,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -818,6 +828,10 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeWhile';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -891,9 +905,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
     private cut$sub: Subscription;
     private paste$sub: Subscription;
     private keyup$: Observable&lt;KeyboardEvent&gt;;
-    private resize$sub: Subscription;
-    private modelChanged$sub: Subscription;
-    private layoutChanged$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
     private <span class="cstat-no" title="statement not covered" >_tiles$ = new BehaviorSubject&lt;DejaTile[]&gt;([]);</span>
     private <span class="cstat-no" title="statement not covered" >hasFocus = false;</span>
 &nbsp;
@@ -914,19 +926,24 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 <span class="cstat-no" title="statement not covered" >        this.contentAdding = this.layoutProvider.contentAdding;</span>
 <span class="cstat-no" title="statement not covered" >        this.contentRemoving = this.layoutProvider.contentRemoving;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.modelChanged$sub = this.layoutProvider.modelChanged.subscribe(<span class="fstat-no" title="function not covered" >(</span>event) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            this.modelChanged.emit(event);</span>
-<span class="cstat-no" title="statement not covered" >            this.onChangeCallback(event.tiles);</span>
-        });
+<span class="cstat-no" title="statement not covered" >        this.layoutProvider.modelChanged</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>event) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.modelChanged.emit(event);</span>
+<span class="cstat-no" title="statement not covered" >                this.onChangeCallback(event.tiles);</span>
+            });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.layoutChanged$sub = this.layoutProvider.layoutChanged.subscribe(<span class="fstat-no" title="function not covered" >(</span>event) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            this.layoutChanged.emit(event);</span>
-<span class="cstat-no" title="statement not covered" >            this.onChangeCallback(event.tiles);</span>
-        });
+<span class="cstat-no" title="statement not covered" >        this.layoutProvider.layoutChanged</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>event) =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.layoutChanged.emit(event);</span>
+<span class="cstat-no" title="statement not covered" >                this.onChangeCallback(event.tiles);</span>
+            });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.keyup$ = Observable.fromEvent(element.ownerDocument, 'keyup');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.resize$sub = Observable.fromEvent(window, 'resize')</span>
+<span class="cstat-no" title="statement not covered" >        Observable.fromEvent(window, 'resize')</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .debounceTime(5)
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.refresh({ resetWidth: true }))</span>;
     }
@@ -1065,9 +1082,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 <span class="cstat-no" title="statement not covered" >        this.canCut = false;</span>
 <span class="cstat-no" title="statement not covered" >        this.canDelete = false;</span>
 <span class="cstat-no" title="statement not covered" >        this.canPaste = false;</span>
-<span class="cstat-no" title="statement not covered" >        this.resize$sub.unsubscribe();</span>
-<span class="cstat-no" title="statement not covered" >        this.modelChanged$sub.unsubscribe();</span>
-<span class="cstat-no" title="statement not covered" >        this.layoutChanged$sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public copySelection() {</span>
@@ -1195,7 +1210,7 @@ export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

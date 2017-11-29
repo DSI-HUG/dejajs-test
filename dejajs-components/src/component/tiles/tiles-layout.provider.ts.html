@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.78% </span>
+        <span class="strong">8.94% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>77/990</span>
+        <span class='fraction'>90/1007</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/449</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0.55% </span>
+        <span class="strong">0.54% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/182</span>
+        <span class='fraction'>1/186</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.15% </span>
+        <span class="strong">9.38% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>75/920</span>
+        <span class='fraction'>88/938</span>
       </div>
     </div>
   </div>
@@ -1734,7 +1734,25 @@
 1689
 1690
 1691
-1692</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1692
+1693
+1694
+1695
+1696
+1697
+1698
+1699
+1700
+1701
+1702
+1703
+1704
+1705
+1706
+1707
+1708
+1709
+1710</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1747,6 +1765,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1844,6 +1875,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1939,6 +1971,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1973,6 +2006,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1997,6 +2031,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -2081,6 +2116,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -3434,7 +3470,20 @@
  */
 &nbsp;
 import { EventEmitter, Injectable, OnDestroy, Optional } from '@angular/core';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/takeWhile';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -3529,12 +3578,13 @@ export class DejaTilesLayoutProvider implements OnDestroy {
     private currentTile: DejaTile;
     private hundredPercentWith: number;
     private dragTarget: Rect;
-    private <span class="cstat-no" title="statement not covered" >subscriptions: Subscription[] = [];</span>
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >selectedIds = [] as string[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor( @Optional() private <span class="cstat-no" title="statement not covered" ></span>clipboardService: DejaClipboardService)</span> {</span>
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.refreshTiles$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.refreshTiles$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .debounceTime(30)
             .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this.container.style.width = '';</span>
@@ -3622,7 +3672,7 @@ export class DejaTilesLayoutProvider implements OnDestroy {
                 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                this.selectedTiles = selectedTileIds;</span>
-            }));
+            });
 &nbsp;
         const ensureTile$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.ensureVisible$)</span>
             .delay(1)
@@ -3630,7 +3680,8 @@ export class DejaTilesLayoutProvider implements OnDestroy {
             .filter(<span class="fstat-no" title="function not covered" >(</span>tile) =&gt; <span class="cstat-no" title="statement not covered" >!!tile)</span>
             .map(<span class="fstat-no" title="function not covered" >(</span>tile) =&gt; <span class="cstat-no" title="statement not covered" >tile.percentBounds)</span>;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.merge(this.ensureBounds$, ensureTile$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.merge(this.ensureBounds$, ensureTile$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >(</span>percentBounds) =&gt; {
                 const <span class="cstat-no" title="statement not covered" >{ <span class="cstat-no" title="statement not covered" >left,</span> <span class="cstat-no" title="statement not covered" >right,</span> <span class="cstat-no" title="statement not covered" >top,</span> <span class="cstat-no" title="statement not covered" >bottom </span>} = this.getPixelBounds(percentBounds);</span>
 &nbsp;
@@ -3661,9 +3712,10 @@ export class DejaTilesLayoutProvider implements OnDestroy {
                 } else <span class="cstat-no" title="statement not covered" >if (bottom + containerBounds.top &gt; scrollBounds.bottom) {</span>
 <span class="cstat-no" title="statement not covered" >                    scrollContainer.scrollTop += bottom + containerBounds.top - scrollBounds.bottom;</span>
                 }
-            }));
+            });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.dragSelection$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.dragSelection$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >(</span>dragSelection) =&gt; {
                 const mouseUp$ = <span class="cstat-no" title="statement not covered" >Observable</span>
                     .fromEvent(this._container.ownerDocument, 'mouseup')
@@ -3683,11 +3735,12 @@ export class DejaTilesLayoutProvider implements OnDestroy {
                         const selection = <span class="cstat-no" title="statement not covered" >this.HitTest(dragSelection.selectedRect);</span>
 <span class="cstat-no" title="statement not covered" >                        this.selectedTiles = selection.map(<span class="fstat-no" title="function not covered" >(</span>tile) =&gt; <span class="cstat-no" title="statement not covered" >tile.id)</span>;</span>
                     });
-            }));
+            });
 &nbsp;
         const leave$ = <span class="cstat-no" title="statement not covered" >Observable.from(this.dragleave$);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.dragDropInfos$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.dragDropInfos$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >(</span>dragDropInfos) =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (!dragDropInfos || !dragDropInfos.tiles || !dragDropInfos.tiles.length) {</span>
 <span class="cstat-no" title="statement not covered" >                    return;</span>
@@ -3769,11 +3822,12 @@ export class DejaTilesLayoutProvider implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >                            this.drag(dragDropInfos.tiles, x, y);</span>
                         }
                     });
-            }));
+            });
 &nbsp;
         // Delete stream for clipboard
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.push(Observable.from(this.deleteTiles$)</span>
-            .subscribe(<span class="fstat-no" title="function not covered" >(</span>tilesToDelete) =&gt; <span class="cstat-no" title="statement not covered" >this.deleteTiles(tilesToDelete))</span>);
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.deleteTiles$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>tilesToDelete) =&gt; <span class="cstat-no" title="statement not covered" >this.deleteTiles(tilesToDelete))</span>;
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public set container(</span>container: HTMLElement) {</span>
@@ -3954,7 +4008,7 @@ export class DejaTilesLayoutProvider implements OnDestroy {
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.subscriptions.forEach(<span class="fstat-no" title="function not covered" >(</span>subscription: Subscription) =&gt; <span class="cstat-no" title="statement not covered" >subscription.unsubscribe())</span>;</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public copySelection() {</span>
@@ -5122,7 +5176,7 @@ export class DejaTilesLayoutProvider implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

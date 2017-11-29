@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.17% </span>
+        <span class="strong">53.85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/23</span>
+        <span class='fraction'>14/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">11.11% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>1/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">47.62% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/18</span>
+        <span class='fraction'>10/21</span>
       </div>
     </div>
   </div>
@@ -99,14 +99,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,12 +117,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,29 +145,29 @@
 &nbsp;
 import { AfterContentInit, Directive, HostListener, OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeWhile';
 &nbsp;
 @Directive({
     selector: '[pending-onfocus]',
 })
 export class PendingOnFocusDirective implements AfterContentInit, OnDestroy {
     private <span class="cstat-no" title="statement not covered" >hasFocus = false;</span>
-    private valueChanges$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >    constructor(public <span class="cstat-no" title="statement not covered" ></span>formControl: NgControl)</span> {
 &nbsp;
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngAfterContentInit() {</span></span>
-<span class="cstat-no" title="statement not covered" >        this.valueChanges$sub = this.formControl.control.valueChanges</span>
+<span class="cstat-no" title="statement not covered" >        this.formControl.control.valueChanges</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.hasFocus)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.formControl.control.markAsPending())</span>;
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        if (this.valueChanges$sub) {</span>
-<span class="cstat-no" title="statement not covered" >            this.valueChanges$sub.unsubscribe();</span>
-        }
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
     @HostListener('focus')
@@ -187,7 +187,7 @@ export class PendingOnFocusDirective implements AfterContentInit, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

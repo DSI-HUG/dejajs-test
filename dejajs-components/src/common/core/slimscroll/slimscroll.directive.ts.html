@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.54% </span>
+        <span class="strong">16.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>45/272</span>
+        <span class='fraction'>46/276</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/132</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">1.79% </span>
+        <span class="strong">1.75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/56</span>
+        <span class='fraction'>1/57</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.34% </span>
+        <span class="strong">16.48% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>42/257</span>
+        <span class='fraction'>43/261</span>
       </div>
     </div>
   </div>
@@ -672,7 +672,12 @@
 627
 628
 629
-630</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+630
+631
+632
+633
+634
+635</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -684,6 +689,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -804,7 +810,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1053,6 +1059,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1309,11 +1319,12 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
- /**
- * Licensed under MIT https://github.com/rd-dev-ukraine/angular-io-slimscroll/blob/master/LICENSE
- */
+/**
+* Licensed under MIT https://github.com/rd-dev-ukraine/angular-io-slimscroll/blob/master/LICENSE
+*/
 &nbsp;
 import { Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 &nbsp;
 interface SlimScrollOptions {
     // width in pixels of the visible scroll area
@@ -1433,7 +1444,7 @@ export class DejaSlimScrollDirective implements OnInit, OnDestroy {
     private <span class="cstat-no" title="statement not covered" >_releaseScroll = false;</span>
     private _options: SlimScrollOptions;
     private _previousHeight: number;
-    private _queueHide: number;
+    private <span class="cstat-no" title="statement not covered" >_queueHide = false;</span>
     private _changesTracker: number;
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public constructor(private <span class="cstat-no" title="statement not covered" ></span>_renderer: Renderer2,</span>
@@ -1656,7 +1667,7 @@ export class DejaSlimScrollDirective implements OnInit, OnDestroy {
 <span class="fstat-no" title="function not covered" >    private showBar(): void {</span>
         // recalculate bar height
 <span class="cstat-no" title="statement not covered" >        this.getBarHeight();</span>
-<span class="cstat-no" title="statement not covered" >        clearTimeout(this._queueHide);</span>
+<span class="cstat-no" title="statement not covered" >        this._queueHide = true;</span>
 &nbsp;
         // when bar reached top or bottom
         // tslint:disable-next-line:no-bitwise
@@ -1681,12 +1692,16 @@ export class DejaSlimScrollDirective implements OnInit, OnDestroy {
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    private hideBar(): void {</span></span>
         // only hide when options allow it
 <span class="cstat-no" title="statement not covered" >        if (!this._options.alwaysVisible) {</span>
-<span class="cstat-no" title="statement not covered" >            this._queueHide = window.setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >                if (!(this._options.disableFadeOut &amp;&amp; this._isOverPanel) &amp;&amp; !this._isOverBar &amp;&amp; !this._isDragg) {</span>
-<span class="cstat-no" title="statement not covered" >                    this._renderer.setStyle(this._bar, 'opacity', '0');</span>
-<span class="cstat-no" title="statement not covered" >                    this._renderer.setStyle(this._rail, 'opacity', '0');</span>
-                }
-            }, 1000);
+<span class="cstat-no" title="statement not covered" >            this._queueHide = false;</span>
+<span class="cstat-no" title="statement not covered" >            Observable.timer(1000)</span>
+                .first()
+                .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>!this._queueHide)</span>
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    if (!(this._options.disableFadeOut &amp;&amp; this._isOverPanel) &amp;&amp; !this._isOverBar &amp;&amp; !this._isDragg) {</span>
+<span class="cstat-no" title="statement not covered" >                        this._renderer.setStyle(this._bar, 'opacity', '0');</span>
+<span class="cstat-no" title="statement not covered" >                        this._renderer.setStyle(this._rail, 'opacity', '0');</span>
+                    }
+                });
         }
     }
 &nbsp;
@@ -1936,7 +1951,7 @@ export class DejaSlimScrollDirective implements OnInit, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

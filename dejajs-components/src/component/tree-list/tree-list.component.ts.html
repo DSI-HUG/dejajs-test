@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.1% </span>
+        <span class="strong">87.31% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>513/589</span>
+        <span class='fraction'>523/599</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">71.28% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>138/156</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.69% </span>
+        <span class="strong">86.93% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>482/556</span>
+        <span class='fraction'>492/566</span>
       </div>
     </div>
   </div>
@@ -1220,7 +1220,17 @@
 1175
 1176
 1177
-1178</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1178
+1179
+1180
+1181
+1182
+1183
+1184
+1185
+1186
+1187
+1188</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1228,6 +1238,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -2408,8 +2428,18 @@
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/merge';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/takeWhile';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -2485,10 +2515,10 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     @ViewChild('inputelement') public input: ElementRef;
 &nbsp;
     // NgModel implementation
-    protected onTouchedCallback: () =&gt; void = noop;
-    protected onChangeCallback: (_: any) =&gt; void = noop;
+    public onTouchedCallback: () =&gt; void = noop;
+    public onChangeCallback: (_: any) =&gt; void = noop;
 &nbsp;
-    protected _keyboardNavigation = false;
+    private _keyboardNavigation = false;
 &nbsp;
     // Templates
     @ContentChild('itemTemplate') private itemTemplateInternal;
@@ -2497,7 +2527,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     @ContentChild('headerTemplate') private headerTemplateInternal;
     @ContentChild('searchPrefixTemplate') private searchPrefixTemplateInternal;
     @ContentChild('searchSuffixTemplate') private searchSuffixTemplateInternal;
-    @ContentChildren(DejaItemComponent) protected options: DejaItemComponent[];
+    @ContentChildren(DejaItemComponent) public options: DejaItemComponent[];
 &nbsp;
     // protected _items: IItemBase[]; In the base class, correspond to the model
     private clickedItem: IItemBase;
@@ -2946,7 +2976,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     public get waiter() { return this._waiter; }
 &nbsp;
     @ViewChild(DejaChildValidatorDirective)
-    protected set inputValidatorDirective(value: DejaChildValidatorDirective) {
+    public set inputValidatorDirective(value: DejaChildValidatorDirective) {
         if (value) {
             value.parentControl = this._control;
         }
@@ -3392,7 +3422,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
             });
     }
 &nbsp;
-    protected getDragContext(index: number) {
+    public getDragContext(index: number) {
         <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.clipboardService || (<span class="branch-1 cbranch-no" title="branch not covered" >!this.sortable </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >!this.itemsDraggable)</span>) {
             return null;
         }
@@ -3480,7 +3510,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
         }
     }
 &nbsp;
-    protected onSelectionChange() {
+    public onSelectionChange() {
         let outputEmitter = null;
 &nbsp;
         let output = null;
@@ -3521,7 +3551,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
         this.selectedChange.emit(outputEmitter);
     }
 &nbsp;
-    protected selectRange$(indexFrom: number, indexTo?: number): Observable&lt;number&gt; {
+    public selectRange$(indexFrom: number, indexTo?: number): Observable&lt;number&gt; {
         return super.selectRange$(indexFrom, indexTo).do((selectedCount) =&gt; {
             <span class="missing-if-branch" title="else path not taken" >E</span>if (selectedCount) {
                 // Raise event
@@ -3531,7 +3561,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
         }).do(() =&gt; this.changeDetectorRef.markForCheck());
     }
 &nbsp;
-    protected toggleSelect$(items: IItemBase[], state: boolean): Observable&lt;IItemBase[]&gt; {
+    public toggleSelect$(items: IItemBase[], state: boolean): Observable&lt;IItemBase[]&gt; {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!this._multiSelect &amp;&amp; !items[0].selected === !state) {
 <span class="cstat-no" title="statement not covered" >            return Observable.of(items);</span>
         } else {
@@ -3543,12 +3573,12 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
         }
     }
 &nbsp;
-    protected calcViewList$(): Observable&lt;IViewListResult&gt; {
+    public calcViewList$(): Observable&lt;IViewListResult&gt; {
         return super.calcViewList$(this.query)
             .do(() =&gt; this.changeDetectorRef.markForCheck());
     }
 &nbsp;
-    protected getItemClass(item: IItemTree) {
+    public getItemClass(item: IItemTree) {
         const classNames = ['listitem'] as string[];
         if (item.className) {
             classNames.push(item.className);
@@ -3580,7 +3610,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

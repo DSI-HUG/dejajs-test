@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25.42% </span>
+        <span class="strong">29.23% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/59</span>
+        <span class='fraction'>19/65</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.69% </span>
+        <span class="strong">7.14% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/13</span>
+        <span class='fraction'>1/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.81% </span>
+        <span class="strong">26.98% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/57</span>
+        <span class='fraction'>17/63</span>
       </div>
     </div>
   </div>
@@ -180,7 +180,11 @@
 135
 136
 137
-138</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+138
+139
+140
+141
+142</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,17 +198,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -222,6 +229,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -328,10 +336,13 @@
 import { Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/takeWhile';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { Position } from '../../common/core/graphics/position';
 import { Rect } from '../../common/core/graphics/rect';
 import { DejaMouseDragDropService, IDragCursorInfos } from './mouse-dragdrop.service';
@@ -341,7 +352,7 @@ import { DejaMouseDragDropService, IDragCursorInfos } from './mouse-dragdrop.ser
 })
 export class DejaMouseDraggableDirective implements OnDestroy {
     private _context: IDejaMouseDraggableContext;
-    private mouseenter$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
     @Input('deja-mouse-draggable')
 <span class="fstat-no" title="function not covered" >    public set context(</span>value: IDejaMouseDraggableContext) {
@@ -359,7 +370,8 @@ export class DejaMouseDraggableDirective implements OnDestroy {
 &nbsp;
         const mouseUp$ = <span class="cstat-no" title="statement not covered" >Observable.fromEvent(element.ownerDocument, 'mouseup');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.mouseenter$sub = Observable.fromEvent(element, 'mouseenter')</span>
+<span class="cstat-no" title="statement not covered" >        Observable.fromEvent(element, 'mouseenter')</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                Observable.fromEvent(element, 'mousedown')</span>
                     .takeUntil(leave$)
@@ -376,9 +388,9 @@ export class DejaMouseDraggableDirective implements OnDestroy {
                             const kill$ = <span class="cstat-no" title="statement not covered" >Observable.merge(mouseUp$, moveUp$)</span>
                                 .first()
                                 .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                                dragDropService.dragCursor$.next(undefined);</span>
-<span class="cstat-no" title="statement not covered" >                                dragDropService.dragging$.next(false);</span>
-                            });
+<span class="cstat-no" title="statement not covered" >                                    dragDropService.dragCursor$.next(undefined);</span>
+<span class="cstat-no" title="statement not covered" >                                    dragDropService.dragging$.next(false);</span>
+                                });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                            Observable.fromEvent(element.ownerDocument, 'mousemove')</span>
                                 .takeUntil(kill$)
@@ -429,7 +441,7 @@ export class DejaMouseDraggableDirective implements OnDestroy {
                                             .subscribe(<span class="fstat-no" title="function not covered" >(</span>ddctx) =&gt; {
 <span class="cstat-no" title="statement not covered" >                                                dragDropService.context = ddctx;</span>
 <span class="cstat-no" title="statement not covered" >                                                if (ddctx) {</span>
-<span class="cstat-no" title="statement not covered" >                                                startDrag();</span>
+<span class="cstat-no" title="statement not covered" >                                                    startDrag();</span>
                                                 }
                                             });
 <span class="cstat-no" title="statement not covered" >                                        return;</span>
@@ -445,7 +457,7 @@ export class DejaMouseDraggableDirective implements OnDestroy {
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.mouseenter$sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 }
 &nbsp;
@@ -460,7 +472,7 @@ export interface IDejaMouseDraggableContext {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

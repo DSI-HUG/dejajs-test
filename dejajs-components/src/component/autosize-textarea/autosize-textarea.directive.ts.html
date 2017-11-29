@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44% </span>
+        <span class="strong">46.88% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/25</span>
+        <span class='fraction'>15/32</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">10% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>1/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">39.13% </span>
+        <span class="strong">44.83% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/23</span>
+        <span class='fraction'>13/29</span>
       </div>
     </div>
   </div>
@@ -103,7 +103,11 @@
 58
 59
 60
-61</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+61
+62
+63
+64
+65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,6 +115,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -123,25 +131,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,9 +181,12 @@
 &nbsp;
 import { AfterViewInit, Directive, ElementRef, forwardRef, OnDestroy } from '@angular/core';
 import { NG_VALIDATORS, Validator } from '@angular/forms';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 &nbsp;
 /**
  * Directive pour rendre un textarea material redimensioné automatiquement au contenu.
@@ -190,9 +201,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, OnDestroy {
     private <span class="cstat-no" title="statement not covered" >resize$ = new Subject&lt;void&gt;();</span>
-    private resize$sub: Subscription;
+    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>elementRef: ElementRef)</span> {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>elementRef: ElementRef)</span> {</span>
         const textAreaElement = <span class="cstat-no" title="statement not covered" >this.elementRef.nativeElement as HTMLTextAreaElement;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        Observable.from(this.resize$)</span>
@@ -202,7 +213,8 @@ export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, 
 <span class="cstat-no" title="statement not covered" >                textAreaElement.style.overflowY = 'hidden';</span>
             });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.resize$sub = Observable.from(this.resize$)</span>
+<span class="cstat-no" title="statement not covered" >        Observable.from(this.resize$)</span>
+            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .debounceTime(5)
             .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>textAreaElement.style.height = '18px')</span>
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
@@ -211,7 +223,7 @@ export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, 
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.resize$sub.unsubscribe();</span>
+<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public ngAfterViewInit() {</span>
@@ -229,7 +241,7 @@ export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 11:24:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:09:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
