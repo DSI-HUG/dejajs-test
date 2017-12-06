@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.35% </span>
+        <span class="strong">97.3% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>19/37</span>
+        <span class='fraction'>36/37</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">48.57% </span>
+        <span class="strong">97.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/35</span>
+        <span class='fraction'>34/35</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -174,49 +174,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">288x</span>
+<span class="cline-any cline-yes">288x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">288x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">288x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">624x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">528x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -266,49 +266,49 @@ export class DejaGridParentRowComponent {
     /** Template de cellule par defaut  définit dans le HTML de la grille */
     @ContentChild('cellTemplate') protected cellTemplateInternal;
 &nbsp;
-    private <span class="cstat-no" title="statement not covered" >_columnLayout = {} as IDejaGridParentRowColumnLayout;</span>
+    private _columnLayout = {} as IDejaGridParentRowColumnLayout;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public get columnLayoutOfColumn0() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._columnLayout.column0;</span>
+    public get columnLayoutOfColumn0() {
+        return this._columnLayout.column0;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public get columnLayoutOfColumns() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._columnLayout.columns;</span>
+    public get columnLayoutOfColumns() {
+        return this._columnLayout.columns;
     }
 &nbsp;
     /** Définit la structure de colonnes a appliquer sur cette ligne */
-<span class="cstat-no" title="statement not covered" >    @Input()</span>
-<span class="fstat-no" title="function not covered" >    public set columns(</span>columns: IDejaGridColumn[]) {
-        let left = <span class="cstat-no" title="statement not covered" >0;</span>
-<span class="cstat-no" title="statement not covered" >        this._columnLayout.columns = [];</span>
-<span class="cstat-no" title="statement not covered" >        columns.forEach(<span class="fstat-no" title="function not covered" >(</span>column) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            if (this.getCellText(this.row, column.name)) {</span>
-<span class="cstat-no" title="statement not covered" >                if (this._columnLayout.column0 === 0) {</span>
+    @Input()
+    public set columns(columns: IDejaGridColumn[]) {
+        let left = 0;
+        this._columnLayout.columns = [];
+        columns.forEach((column) =&gt; {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (this.getCellText(this.row, column.name)) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (this._columnLayout.column0 === 0) {
 <span class="cstat-no" title="statement not covered" >                    this._columnLayout.column0 = left;</span>
                 }
-<span class="cstat-no" title="statement not covered" >                this._columnLayout.columns.push({</span>
+                this._columnLayout.columns.push({
                     column: column,
                     left: left,
                 });
             }
-<span class="cstat-no" title="statement not covered" >            left += column.w;</span>
+            left += column.w;
         });
-<span class="cstat-no" title="statement not covered" >        this._columnLayout.column0 = left;</span>
-<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+        this._columnLayout.column0 = left;
+        this.changeDetectorRef.markForCheck();
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    protected get cellTemplate() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.cellTemplateExternal || this.cellTemplateInternal;</span>
+    protected get cellTemplate() {
+        return this.cellTemplateExternal || <span class="branch-1 cbranch-no" title="branch not covered" >this.cellTemplateInternal;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    protected get parentTitleTemplate() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.parentTitleTemplateExternal || this.parentTitleTemplateInternal;</span>
+    protected get parentTitleTemplate() {
+        return this.parentTitleTemplateExternal || this.parentTitleTemplateInternal;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef)</span> { }
+    constructor(private changeDetectorRef: ChangeDetectorRef) { }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public getCellText(</span>row, textField) {
-<span class="cstat-no" title="statement not covered" >        return ItemListService.getItemText(row, textField);</span>
+    public getCellText(row, textField) {
+        return ItemListService.getItemText(row, textField);
     }
 }
 &nbsp;
@@ -325,7 +325,7 @@ export interface IDejaGridParentRowColumnLayout {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:48:43 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 06 2017 15:56:20 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

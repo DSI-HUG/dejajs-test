@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30.77% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/13</span>
+        <span class='fraction'>13/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/12</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -89,24 +89,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">186x</span>
+<span class="cline-any cline-yes">186x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">186x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -121,25 +121,25 @@
 export class UUID {
     private uuid: string;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor() {</span>
-        let d = <span class="cstat-no" title="statement not covered" >new Date().getTime();</span>
-<span class="cstat-no" title="statement not covered" >        if (window.performance !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >            if (typeof window.performance.now === 'function') {</span>
-<span class="cstat-no" title="statement not covered" >                d += performance.now();</span>
+    constructor() {
+        let d = new Date().getTime();
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (window.performance !== undefined) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof window.performance.now === 'function') {
+                d += performance.now();
             }
         }
-<span class="cstat-no" title="statement not covered" >        this.uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, <span class="fstat-no" title="function not covered" >(</span>c) =&gt; {</span>
+        this.uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) =&gt; {
             // tslint:disable-next-line:no-bitwise
-            const r = <span class="cstat-no" title="statement not covered" >(d + Math.random() * 16) % 16 | 0;</span>
-<span class="cstat-no" title="statement not covered" >            d = Math.floor(d / 16);</span>
+            const r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
             // tslint:disable-next-line:no-bitwise
-<span class="cstat-no" title="statement not covered" >            return (c === 'x' ? r : (r &amp; 0x3 | 0x8)).toString(16);</span>
+            return (c === 'x' ? r : (r &amp; 0x3 | 0x8)).toString(16);
         });
     }
 &nbsp;
     /** Le renoive le guid sous format string. */
-<span class="fstat-no" title="function not covered" >    public toString() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.uuid;</span>
+    public toString() {
+        return this.uuid;
     }
 }
 &nbsp;</pre></td></tr>
@@ -148,7 +148,7 @@ export class UUID {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 16:48:43 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 06 2017 15:56:20 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
