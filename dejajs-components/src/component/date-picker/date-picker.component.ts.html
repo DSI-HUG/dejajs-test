@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.25% </span>
+        <span class="strong">27.23% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>63/223</span>
+        <span class='fraction'>64/235</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">2.44% </span>
+        <span class="strong">2.06% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/82</span>
+        <span class='fraction'>2/97</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">1.89% </span>
+        <span class="strong">1.82% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/53</span>
+        <span class='fraction'>1/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">29.76% </span>
+        <span class="strong">28.57% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>61/205</span>
+        <span class='fraction'>62/217</span>
       </div>
     </div>
   </div>
@@ -486,7 +486,34 @@
 441
 442
 443
-444</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -498,6 +525,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -517,6 +545,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -765,6 +794,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -800,9 +836,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -937,9 +991,12 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, OnInit, Optional, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { DateComponentLayout, DaysOfWeek, DejaDateSelectorComponent } from '../date-selector/date-selector.component';
+import { formatToMask, formatToUnitOfTime } from './format-to-mask';
+&nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import * as moment_ from 'moment';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/from';
@@ -958,8 +1015,7 @@ import { Subject } from 'rxjs/Subject';
 import { KeyCodes } from '../../common/core/keycodes.enum';
 import { DejaConnectionPositionPair } from '../../common/core/overlay/connection-position-pair';
 import { DejaChildValidatorDirective } from '../../common/core/validation/child-validator.directive';
-import { DaysOfWeek, DejaDateSelectorComponent } from '../date-selector/date-selector.component';
-import { formatToMask, formatToUnitOfTime } from './format-to-mask';
+&nbsp;
 const moment: (value?: any, format?: string) =&gt; moment_.Moment = (&lt;any&gt;moment_).default || moment_;
 &nbsp;
 const noop = <span class="fstat-no" title="function not covered" >() =&gt; { </span>};
@@ -1206,8 +1262,15 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** Init mask */
 <span class="fstat-no" title="function not covered" >    public ngOnInit() {</span>
 <span class="cstat-no" title="statement not covered" >        if (!this._format) {</span>
-            const time = <span class="cstat-no" title="statement not covered" >this.time ? ' HH:mm' : '';</span>
-<span class="cstat-no" title="statement not covered" >            this.format = `YYYY-MM-DD${time}`;</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.layout || this.layout === DateComponentLayout.dateonly || this.layout === 'dateonly') {</span>
+<span class="cstat-no" title="statement not covered" >                this.format = 'YYYY-MM-DD';</span>
+            } else <span class="cstat-no" title="statement not covered" >if (this.layout === DateComponentLayout.datetime || this.layout === 'datetime') {</span>
+<span class="cstat-no" title="statement not covered" >                this.format = 'YYYY-MM-DD HH:mm';</span>
+            } else <span class="cstat-no" title="statement not covered" >if (this.layout === DateComponentLayout.timeonly || this.layout === 'timeonly') {</span>
+<span class="cstat-no" title="statement not covered" >                this.format = 'HH:mm';</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                this.format = 'YYYY-MM-DD';</span>
+            }
         }
     }
 &nbsp;
@@ -1240,12 +1303,30 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     }
 &nbsp;
     /**
+     * Component Layout
+     */
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set layout(</span>value: DateComponentLayout | string) {
+<span class="cstat-no" title="statement not covered" >        if (value) {</span>
+<span class="cstat-no" title="statement not covered" >            this._layout = value;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+    public _layout: number | string;
+<span class="fstat-no" title="function not covered" >    public get layout() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._layout;</span>
+    }
+&nbsp;
+    /**
      * Time property setter. Can be string or empty so you can use it like : &lt;deja-date-picker time&gt;&lt;/deja-date-picker&gt;
      * Used to add time selector next to calendar
      */
     @Input()
 <span class="fstat-no" title="function not covered" >    public set time(</span>value: boolean | string) {
 <span class="cstat-no" title="statement not covered" >        this._time = coerceBooleanProperty(value) ? true : null;</span>
+<span class="cstat-no" title="statement not covered" >        if (this._time) {</span>
+<span class="cstat-no" title="statement not covered" >            this.layout = DateComponentLayout.datetime;</span>
+        }
 <span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
     }
 &nbsp;
@@ -1378,7 +1459,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 13 2017 11:18:17 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 15 2017 16:25:54 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
