@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.42% </span>
+        <span class="strong">97.06% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/33</span>
+        <span class='fraction'>33/34</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.86% </span>
+        <span class="strong">96.55% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/28</span>
+        <span class='fraction'>28/29</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -111,7 +111,8 @@
 66
 67
 68
-69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+69
+70</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,41 +140,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,42 +208,43 @@ import * as Showdown from 'showdown';
 export class DejaMarkdownComponent implements OnInit, AfterViewChecked {
 &nbsp;
     @Input()
-<span class="fstat-no" title="function not covered" >    set value(</span>value: string) {
-<span class="cstat-no" title="statement not covered" >        if (value) {</span>
-            const tmp = <span class="cstat-no" title="statement not covered" >this._converter.makeHtml(value);</span>
-<span class="cstat-no" title="statement not covered" >            this._html = this.sanitized.bypassSecurityTrustHtml(tmp);</span>
-<span class="cstat-no" title="statement not covered" >            this.changeDetectorRef.markForCheck();</span>
+    set value(value: string) {
+        if (value) {
+            const tmp = this._converter.makeHtml(value);
+            this._html = this.sanitized.bypassSecurityTrustHtml(tmp);
+        } else {
+            this._html = '';
         }
+        this.changeDetectorRef.markForCheck();
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    @Input()</span>
-<span class="fstat-no" title="function not covered" >    set url(</span>url: string) {
-<span class="cstat-no" title="statement not covered" >        this._http.get(url, { responseType: ResponseContentType.Text }).subscribe(<span class="fstat-no" title="function not covered" >(</span>response) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            this.value = response.text();</span>
-<span class="cstat-no" title="statement not covered" >            this.changeDetectorRef.markForCheck();</span>
-        });
+    @Input()
+    set url(url: string) {
+        this._http.get(url, { responseType: ResponseContentType.Text }).subscribe((response) =&gt; {
+            this.value = response.text();
+        }, (error) =&gt; this.value = `${error}`);
     }
 &nbsp;
-    private <span class="cstat-no" title="statement not covered" >_initialised = false;</span>
+    private _initialised = false;
     private _html: SafeHtml;
     private _converter: any;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public get html() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._html;</span>
+    public get html() {
+        return this._html;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef,</span> protected <span class="cstat-no" title="statement not covered" >_http: Http,</span> private <span class="cstat-no" title="statement not covered" >sanitized: DomSanitizer)</span> {
-<span class="cstat-no" title="statement not covered" >        this._converter = new Showdown.Converter();</span>
-<span class="cstat-no" title="statement not covered" >        this._converter.setOption('tables', true);</span>
+    constructor(private changeDetectorRef: ChangeDetectorRef, protected _http: Http, private sanitized: DomSanitizer) {
+        this._converter = new Showdown.Converter();
+        this._converter.setOption('tables', true);
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngOnInit() {</span>
+    public ngOnInit() {
 &nbsp;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngAfterViewChecked() {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (!this._initialised) {</span>
-<span class="cstat-no" title="statement not covered" >            Prism.highlightAll(false, <span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+    public ngAfterViewChecked() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!this._initialised) {
+            Prism.highlightAll(false, <span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this._initialised = true;</span>
             });
         }
@@ -253,7 +256,7 @@ export class DejaMarkdownComponent implements OnInit, AfterViewChecked {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 22 2017 14:16:17 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 10 2018 08:52:34 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

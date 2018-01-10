@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45.83% </span>
+        <span class="strong">95.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/24</span>
+        <span class='fraction'>23/24</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>7/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40.91% </span>
+        <span class="strong">95.45% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/22</span>
+        <span class='fraction'>21/22</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -124,29 +124,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,29 +185,29 @@ import { Position } from '../../common/core/graphics/position';
 &nbsp;
 @Injectable()
 export class DejaMouseDragDropService {
-    private <span class="cstat-no" title="statement not covered" >_context = {} as IDragDropContext;</span>
-    private <span class="cstat-no" title="statement not covered" >_isDragging = false;</span>
-    public <span class="cstat-no" title="statement not covered" >dragCursor$ = new BehaviorSubject&lt;IDragCursorInfos&gt;(undefined);</span>
-    public <span class="cstat-no" title="statement not covered" >dropCursor$ = new Subject&lt;IDropCursorInfos&gt;();</span>
-    public <span class="cstat-no" title="statement not covered" >dragging$ = new BehaviorSubject&lt;boolean&gt;(false);</span>
+    private _context = {} as IDragDropContext;
+    private _isDragging = false;
+    public dragCursor$ = new BehaviorSubject&lt;IDragCursorInfos&gt;(undefined);
+    public dropCursor$ = new Subject&lt;IDropCursorInfos&gt;();
+    public dragging$ = new BehaviorSubject&lt;boolean&gt;(false);
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor() {</span></span>
-<span class="cstat-no" title="statement not covered" >        this.dragging$</span>
-            .do(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >this._isDragging = value)</span>
-            .filter(<span class="fstat-no" title="function not covered" >(</span>value) =&gt; <span class="cstat-no" title="statement not covered" >!value)</span>
-            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._context = {})</span>;
+    constructor() {
+        this.dragging$
+            .do((value) =&gt; this._isDragging = value)
+            .filter((value) =&gt; !value)
+            .subscribe(() =&gt; this._context = {});
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public get isDragging() {</span>
 <span class="cstat-no" title="statement not covered" >        return this._isDragging;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public set context(</span>value: IDragDropContext) {
-<span class="cstat-no" title="statement not covered" >        this._context = value;</span>
+    public set context(value: IDragDropContext) {
+        this._context = value;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public get context() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._context;</span>
+    public get context() {
+        return this._context;
     }
 }
 &nbsp;
@@ -232,7 +232,7 @@ export interface IDragCursorInfos extends IDropCursorInfos {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 22 2017 14:16:17 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 10 2018 08:52:34 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

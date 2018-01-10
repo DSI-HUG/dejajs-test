@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">93.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/45</span>
+        <span class='fraction'>42/45</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.16% </span>
+        <span class="strong">91.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>23/37</span>
+        <span class='fraction'>34/37</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -151,13 +151,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,23 +166,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -216,19 +216,19 @@ import { IDejaTile } from './tile.interface';
 export class DejaTileGroupComponent implements OnDestroy {
     public static defaultColor = 'rgb(38, 50, 56)';
     @Input() public model: IDejaTile;
-    @Output() public <span class="cstat-no" title="statement not covered" >close = new EventEmitter&lt;void&gt;();</span>
-    @Output() public <span class="cstat-no" title="statement not covered" >titleChanged = new EventEmitter&lt;string&gt;();</span>
+    @Output() public close = new EventEmitter&lt;void&gt;();
+    @Output() public titleChanged = new EventEmitter&lt;string&gt;();
 &nbsp;
-    @HostBinding('style.background-color') protected <span class="cstat-no" title="statement not covered" >backgroundColor = DejaTileGroupComponent.defaultColor;</span>
-    @HostBinding('style.color') protected <span class="cstat-no" title="statement not covered" >foregroundColor = null;</span>
+    @HostBinding('style.background-color') protected backgroundColor = DejaTileGroupComponent.defaultColor;
+    @HostBinding('style.color') protected foregroundColor = null;
 &nbsp;
-    private <span class="cstat-no" title="statement not covered" >edit$ = new Subject&lt;void&gt;();</span>
-    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
+    private edit$ = new Subject&lt;void&gt;();
+    private isAlive = true;
     @ViewChild(DejaEditableDirective) private title: DejaEditableDirective;
-    @HostBinding('attr.designMode') private <span class="cstat-no" title="statement not covered" >_designMode = false;</span>
+    @HostBinding('attr.designMode') private _designMode = false;
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef)</span> {</span>
-<span class="cstat-no" title="statement not covered" >        Observable.from(this.edit$)</span>
+    constructor(private changeDetectorRef: ChangeDetectorRef) {
+        Observable.from(this.edit$)
             .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
             .filter(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._designMode)</span>
             .debounceTime(100)
@@ -236,24 +236,24 @@ export class DejaTileGroupComponent implements OnDestroy {
     }
 &nbsp;
     @Input()
-<span class="fstat-no" title="function not covered" >    public set color(</span>color: string) {
-<span class="cstat-no" title="statement not covered" >        this.backgroundColor = color || DejaTileGroupComponent.defaultColor;</span>
-<span class="cstat-no" title="statement not covered" >        this.foregroundColor = Color.parse(this.backgroundColor).bestTextColor.toHex();</span>
-<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    public set color(color: string) {
+        this.backgroundColor = color || <span class="branch-1 cbranch-no" title="branch not covered" >DejaTileGroupComponent.defaultColor;</span>
+        this.foregroundColor = Color.parse(this.backgroundColor).bestTextColor.toHex();
+        this.changeDetectorRef.markForCheck();
     }
 &nbsp;
     @Input()
-<span class="fstat-no" title="function not covered" >    public set designMode(</span>value: boolean | string) {
-<span class="cstat-no" title="statement not covered" >        this._designMode = coerceBooleanProperty(value);</span>
-<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    public set designMode(value: boolean | string) {
+        this._designMode = coerceBooleanProperty(value);
+        this.changeDetectorRef.markForCheck();
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public get designMode() {</span>
-<span class="cstat-no" title="statement not covered" >        return this._designMode;</span>
+    public get designMode() {
+        return this._designMode;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
+    public ngOnDestroy() {
+        this.isAlive = false;
     }
 }
 &nbsp;</pre></td></tr>
@@ -262,7 +262,7 @@ export class DejaTileGroupComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 22 2017 14:16:17 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 10 2018 08:52:34 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

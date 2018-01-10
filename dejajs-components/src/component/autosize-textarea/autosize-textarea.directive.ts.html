@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">48.48% </span>
+        <span class="strong">93.94% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/33</span>
+        <span class='fraction'>31/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">10% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/10</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.67% </span>
+        <span class="strong">93.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/30</span>
+        <span class='fraction'>28/30</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -133,39 +133,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -198,39 +198,39 @@ import { Subject } from 'rxjs/Subject';
  */
 @Directive({
     providers: [
-        { provide: NG_VALIDATORS, useExisting: forwardRef(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>DejaAutosizeTextAreaDirective)</span>, multi: true },
+        { provide: NG_VALIDATORS, useExisting: forwardRef(() =&gt; DejaAutosizeTextAreaDirective), multi: true },
     ],
     selector: 'textarea[deja-autosize]',
 })
 export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, OnDestroy {
-    private <span class="cstat-no" title="statement not covered" >resize$ = new Subject&lt;void&gt;();</span>
-    private <span class="cstat-no" title="statement not covered" >isAlive = true;</span>
+    private resize$ = new Subject&lt;void&gt;();
+    private isAlive = true;
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>elementRef: ElementRef)</span> {</span>
-        const textAreaElement = <span class="cstat-no" title="statement not covered" >this.elementRef.nativeElement as HTMLTextAreaElement;</span>
+    constructor(private elementRef: ElementRef) {
+        const textAreaElement = this.elementRef.nativeElement as HTMLTextAreaElement;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        Observable.from(this.resize$)</span>
+        Observable.from(this.resize$)
             .first()
-            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                textAreaElement.setAttribute('rows', '1');</span>
-<span class="cstat-no" title="statement not covered" >                textAreaElement.style.overflowY = 'hidden';</span>
+            .subscribe(() =&gt; {
+                textAreaElement.setAttribute('rows', '1');
+                textAreaElement.style.overflowY = 'hidden';
             });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        Observable.from(this.resize$)</span>
-            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.isAlive)</span>
+        Observable.from(this.resize$)
+            .takeWhile(() =&gt; this.isAlive)
             .debounceTime(5)
-            .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>textAreaElement.style.height = '18px')</span>
-            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                textAreaElement.style.height = `${textAreaElement.scrollHeight}px`;</span>
+            .do(() =&gt; textAreaElement.style.height = '18px')
+            .subscribe(() =&gt; {
+                textAreaElement.style.height = `${textAreaElement.scrollHeight}px`;
             });
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
-<span class="cstat-no" title="statement not covered" >        this.isAlive = false;</span>
+    public ngOnDestroy() {
+        this.isAlive = false;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public ngAfterViewInit() {</span>
-<span class="cstat-no" title="statement not covered" >        this.resize$.next();</span>
+    public ngAfterViewInit() {
+        this.resize$.next();
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public validate(): { [key: string]: any } {</span>
@@ -244,7 +244,7 @@ export class DejaAutosizeTextAreaDirective implements AfterViewInit, Validator, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 22 2017 14:16:17 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 10 2018 08:52:34 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
