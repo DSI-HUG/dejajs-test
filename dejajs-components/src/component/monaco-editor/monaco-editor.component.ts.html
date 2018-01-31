@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.7% </span>
+        <span class="strong">40.34% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>93/223</span>
+        <span class='fraction'>94/233</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/39</span>
+        <span class='fraction'>0/47</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">4.76% </span>
+        <span class="strong">4.35% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/21</span>
+        <span class='fraction'>1/23</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.86% </span>
+        <span class="strong">40.63% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>90/215</span>
+        <span class='fraction'>91/224</span>
       </div>
     </div>
   </div>
@@ -676,7 +676,28 @@
 631
 632
 633
-634</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -688,6 +709,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1033,7 +1055,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1088,6 +1120,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1123,6 +1157,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1139,6 +1177,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1155,6 +1196,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1318,6 +1360,7 @@
  */
 &nbsp;
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ResizeSensor } from 'css-element-queries';
 import { MonacoEditorService } from './monaco-editor.service';
 import { EditorOptions } from './options/editor-options.model';
 import { EditorScrollbarOptions } from './options/editor-scrollbar-options.model';
@@ -1666,7 +1709,17 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
     /**
      * Content language
      */
-    @Input() public language: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml';
+    @Input()
+<span class="fstat-no" title="function not covered" >    public set language(</span>val: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml') {
+<span class="cstat-no" title="statement not covered" >        if(val) {</span>
+<span class="cstat-no" title="statement not covered" >            this._language = val;</span>
+<span class="cstat-no" title="statement not covered" >            if(this._editor) {</span>
+<span class="cstat-no" title="statement not covered" >                this.ngAfterViewInit();</span>
+            }
+        }
+    }
+    // @Input() public language: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml';
+&nbsp;
     /**
      * Value to compare with the Value input
      * Used only when `isDiffEditor` is set to `true`
@@ -1716,6 +1769,8 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
     private _editor: any;
     private <span class="cstat-no" title="statement not covered" >_value = '';</span>
     private <span class="cstat-no" title="statement not covered" >_valueToCompare = '';</span>
+    private _language: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml';
+    private resizeSensor: ResizeSensor;
 &nbsp;
     /**
      * Constructor
@@ -1754,8 +1809,12 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
      */
 <span class="fstat-no" title="function not covered" >    public dispose() {</span>
         const myDiv: HTMLDivElement = <span class="cstat-no" title="statement not covered" >this.editorContent.nativeElement;</span>
+<span class="cstat-no" title="statement not covered" >        if(this.resizeSensor) {</span>
+<span class="cstat-no" title="statement not covered" >            this.resizeSensor = null;</span>
+        }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        if (this._editor) {</span>
-<span class="cstat-no" title="statement not covered" >            this._editor.dispose();</span>
+            // this._editor.dispose();
 <span class="cstat-no" title="statement not covered" >            while (myDiv.hasChildNodes()) {</span>
 <span class="cstat-no" title="statement not covered" >                myDiv.removeChild(myDiv.firstChild);</span>
             }
@@ -1768,10 +1827,13 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
      * Resize the component
      */
     @HostListener('window:resize', ['$event'])
-<span class="fstat-no" title="function not covered" >    protected onResize() {</span>
+<span class="fstat-no" title="function not covered" >    public onResize() {</span>
         // Manually set monaco size because MonacoEditor doesn't work with Flexbox css
         const myDiv: HTMLDivElement = <span class="cstat-no" title="statement not covered" >this.editorContent.nativeElement;</span>
-<span class="cstat-no" title="statement not covered" >        myDiv.setAttribute('style', `height: ${myDiv.parentElement.offsetHeight}px; width:100%;`);</span>
+<span class="cstat-no" title="statement not covered" >        myDiv.setAttribute('style', `height: 100%; width: 100%;`);</span>
+<span class="cstat-no" title="statement not covered" >        if(this._editor) {</span>
+<span class="cstat-no" title="statement not covered" >            this._editor.layout();</span>
+        }
     }
 &nbsp;
     /**
@@ -1788,8 +1850,9 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 <span class="cstat-no" title="statement not covered" >            this._editor = this.initDiffEditor(myDiv, options);</span>
         }
 &nbsp;
-        // Manually set monaco size because MonacoEditor doesn't work with Flexbox css
-<span class="cstat-no" title="statement not covered" >        myDiv.setAttribute('style', `height: ${myDiv.parentElement.offsetHeight}px; width:100%;`);</span>
+<span class="cstat-no" title="statement not covered" >        this.onResize();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.resizeSensor = new ResizeSensor(myDiv, <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.onResize())</span>;</span>
 &nbsp;
         // Trigger on change event for simple editor
 <span class="cstat-no" title="statement not covered" >        this.getOriginalModel().onDidChangeContent(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
@@ -1900,7 +1963,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 <span class="cstat-no" title="statement not covered" >        options.lineHeight = this.lineHeight;</span>
 <span class="cstat-no" title="statement not covered" >        options.formatOnPaste = this.formatOnPaste;</span>
 <span class="cstat-no" title="statement not covered" >        options.value = this._value;</span>
-<span class="cstat-no" title="statement not covered" >        options.language = this.language;</span>
+<span class="cstat-no" title="statement not covered" >        options.language = this._language;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        Object.keys(options).forEach(<span class="fstat-no" title="function not covered" >(</span>key) =&gt; <span class="cstat-no" title="statement not covered" >options[key] === undefined &amp;&amp; delete options[key])</span>; </span>// Remove all undefined properties
 <span class="cstat-no" title="statement not covered" >        return options;</span>
@@ -1948,7 +2011,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jan 29 2018 10:47:14 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 31 2018 08:29:09 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
