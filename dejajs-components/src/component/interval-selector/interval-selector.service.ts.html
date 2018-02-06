@@ -400,14 +400,7 @@
 355
 356
 357
-358
-359
-360
-361
-362
-363
-364
-365</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+358</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -430,8 +423,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -441,11 +432,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -645,7 +632,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -797,22 +783,16 @@ export class IntervalSelectorService {
 &nbsp;
     /**
      * boundary selection changes are notified throught this subject.
-     *
-     * @type {Subject&lt;IntervalBoundary&gt;}
      */
     public <span class="cstat-no" title="statement not covered" >intervalSelectionChanged$:Subject&lt;IntervalBoundary&gt; = new Subject&lt;IntervalBoundary&gt;();</span>
 &nbsp;
     /**
      * for internal usage by the DejaIntervalSelectorBoundaryComponent component.
-     *
-     * @type {Subject&lt;IntervalSelectorEventData&gt;}
      */
     public <span class="cstat-no" title="statement not covered" >displayModelBoundaries$:Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
 &nbsp;
     /**
      * for internal usage by the DejaIntervalSelectorBoundaryComponent component.
-     *
-     * @type {Subject&lt;IntervalSelectorEventData&gt;}
      */
     public <span class="cstat-no" title="statement not covered" >hideModelBoundaries$:Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
 &nbsp;
@@ -825,8 +805,8 @@ export class IntervalSelectorService {
     /**
      * adds the interval identified by an unique idenfifier and a compare function.
      *
-     * @param {string} intervalId the interval unique identifier
-     * @param {Function} compareFunction ther interval compare Function used to determinate the order of model.
+     * @param intervalId the interval unique identifier
+     * @param compareFunction ther interval compare Function used to determinate the order of model.
      */
 <span class="fstat-no" title="function not covered" >    public addInterval(</span>intervalId: string, compareFunction: ModelCompareFunction) {
         const interval: Interval = <span class="cstat-no" title="statement not covered" >new Interval(intervalId, compareFunction);</span>
@@ -836,7 +816,7 @@ export class IntervalSelectorService {
     /**
      * removes the interval for the given interval id.
      *
-     * @param {string} intervalId the interval id
+     * @param intervalId the interval id
      */
 <span class="fstat-no" title="function not covered" >    public removeInterval(</span>intervalId: string) {
 <span class="cstat-no" title="statement not covered" >        if (intervalId) {</span>
@@ -847,8 +827,8 @@ export class IntervalSelectorService {
     /**
      * enable or disable selection for the given interval.
      *
-     * @param {string} intervalId
-     * @param {boolean} enabled
+     * @param intervalId
+     * @param enabled
      */
 <span class="fstat-no" title="function not covered" >    public changeIntervalEnabledStatus(</span>intervalId: string, enabled: boolean) {
         const interval: Interval = <span class="cstat-no" title="statement not covered" >this._intervalMap.get(intervalId);</span>
@@ -863,9 +843,9 @@ export class IntervalSelectorService {
     /**
      * use this method to change the selected status of the given boundary to true.
      *
-     * @param {string} intervalId
+     * @param intervalId
      * @param model
-     * @param {boolean} openingBoundary
+     * @param openingBoundary
      */
 <span class="fstat-no" title="function not covered" >    public selectBoundary(</span>intervalId: string, model: any, openingBoundary: boolean): void {
         const boundary: IntervalBoundary = <span class="cstat-no" title="statement not covered" >new IntervalBoundary(intervalId, model, openingBoundary, true);</span>
@@ -875,9 +855,9 @@ export class IntervalSelectorService {
     /**
      * use this method to change the selected status of the given boundary to false.
      *
-     * @param {string} intervalId
+     * @param intervalId
      * @param model
-     * @param {boolean} openingBoundary
+     * @param openingBoundary
      */
 <span class="fstat-no" title="function not covered" >    public deselectBoundary(</span>intervalId: string, model: any, openingBoundary: boolean): void {
         const boundary: IntervalBoundary = <span class="cstat-no" title="statement not covered" >new IntervalBoundary(intervalId, model, openingBoundary, false);</span>
@@ -887,7 +867,7 @@ export class IntervalSelectorService {
     /**
      * use this method to indicate that a data model has been clicked.
      *
-     * @param {string} intervalId
+     * @param intervalId
      * @param model
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public modelClicked(</span>intervalId: string, model: any): void {</span>
@@ -962,8 +942,8 @@ export class IntervalSelectorService {
      * use this method to display both boundaries for the given modem, but without selecting it.
      * It will act like the mouse is over the boundary.
      *
-     * @param {string} intervalId
-     * @param {data} model
+     * @param intervalId
+     * @param model
      */
 <span class="fstat-no" title="function not covered" >    public displayBoundary(</span>intervalId: string, model: any) {
         const boundary: IntervalSelectorEventData = <span class="cstat-no" title="statement not covered" >new IntervalSelectorEventData(intervalId, model, false, false);</span>
@@ -973,8 +953,8 @@ export class IntervalSelectorService {
     /**
      * use this method to hide a boundary that has been displayed using the method {@link displayBoundary(any, string)}.
      *
-     * @param {string} intervalId
-     * @param {data} model
+     * @param intervalId
+     * @param model
      */
 <span class="fstat-no" title="function not covered" >    public hideBoundary(</span>intervalId: string, model: any) {
         const boundary: IntervalSelectorEventData = <span class="cstat-no" title="statement not covered" >new IntervalSelectorEventData(intervalId, model, false, false);</span>
@@ -984,9 +964,9 @@ export class IntervalSelectorService {
     /**
      * use this method to restore the selected status of a given boundary.
      *
-     * @param {string} intervalId
+     * @param intervalId
      * @param model
-     * @param {boolean} openingBoundary
+     * @param openingBoundary
      */
 <span class="fstat-no" title="function not covered" >    public restoreSelectedBoundaryState(</span>intervalId: string, model: any, openingBoundary: boolean): void {
         const interval: Interval = <span class="cstat-no" title="statement not covered" >this._intervalMap.get(intervalId);</span>
@@ -1004,7 +984,7 @@ export class IntervalSelectorService {
     /**
      * reset interval selection for a given interval id.
      *
-     * @param {string} intervalId the interval unique identifier
+     * @param intervalId the interval unique identifier
      */
 <span class="fstat-no" title="function not covered" >    public resetIntervalSelectionById(</span>intervalId: string) {
         const interval: Interval = <span class="cstat-no" title="statement not covered" >this._intervalMap.get(intervalId);</span>
@@ -1014,8 +994,7 @@ export class IntervalSelectorService {
     /**
      * returns the enabled status for the given items list id.
      *
-     * @param {string} intervalId
-     * @returns {boolean}
+     * @param intervalId
      */
 <span class="fstat-no" title="function not covered" >    public isIntervalEnabled(</span>intervalId: string): boolean {
         const interval: Interval = <span class="cstat-no" title="statement not covered" >this._intervalMap.get(intervalId);</span>
@@ -1028,7 +1007,7 @@ export class IntervalSelectorService {
     /**
      * use this method to define both the lower and upper boundaries.
      *
-     * @param {string} intervalId
+     * @param intervalId
      * @param model1
      * @param model2
      */
@@ -1066,7 +1045,7 @@ export class IntervalSelectorService {
     /**
      * reset interval selection for a given interval.
      *
-     * @param {Interval} interval
+     * @param interval
      */
 <span class="fstat-no" title="function not covered" >    private resetIntervalSelection(</span>interval: Interval) {
 <span class="cstat-no" title="statement not covered" >        if (!interval) {</span>
@@ -1141,7 +1120,7 @@ export class IntervalSelectorService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 06 2018 09:15:54 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 06 2018 10:04:11 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
