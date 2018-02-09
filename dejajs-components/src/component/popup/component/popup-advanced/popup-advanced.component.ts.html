@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.62% </span>
+        <span class="strong">21.98% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>19/84</span>
+        <span class='fraction'>20/91</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/36</span>
+        <span class='fraction'>0/38</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.69% </span>
+        <span class="strong">7.14% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/13</span>
+        <span class='fraction'>1/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">20.25% </span>
+        <span class="strong">19.77% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/79</span>
+        <span class='fraction'>17/86</span>
       </div>
     </div>
   </div>
@@ -206,7 +206,19 @@
 161
 162
 163
-164</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,6 +248,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -265,6 +279,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,6 +306,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -351,6 +374,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -398,6 +422,8 @@ export class DejaPopupAdvancedComponent extends DejaPopupBase implements AfterVi
     public <span class="cstat-no" title="statement not covered" >lastEvent = null;</span>
     public componentPortal: Portal&lt;any&gt;;
     private subKeyEvent: Subscription;
+    private timer: number;
+    private readonly <span class="cstat-no" title="statement not covered" >clickTreshold = 600;</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >    constructor(</span>
         public <span class="cstat-no" title="statement not covered" >dialogRef: MatDialogRef&lt;DejaPopupBase&gt;,</span>
@@ -427,6 +453,14 @@ export class DejaPopupAdvancedComponent extends DejaPopupBase implements AfterVi
         }
     }
 &nbsp;
+<span class="fstat-no" title="function not covered" >    public onMouseUp(</span>e: any) {
+<span class="cstat-no" title="statement not covered" >        console.log('onMouseUp', e);</span>
+        const now = <span class="cstat-no" title="statement not covered" >Date.now();</span>
+<span class="cstat-no" title="statement not covered" >        if (now - this.timer &gt; this.clickTreshold) {</span>
+<span class="cstat-no" title="statement not covered" >            this.freeze();</span>
+        }
+    }
+&nbsp;
 <span class="fstat-no" title="function not covered" >    public doAction(</span>action: DejaPopupAction) {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.actionSelected = action;</span>
@@ -447,6 +481,7 @@ export class DejaPopupAdvancedComponent extends DejaPopupBase implements AfterVi
 <span class="cstat-no" title="statement not covered" >                break;</span>
 &nbsp;
             case 'toolbar-move':
+<span class="cstat-no" title="statement not covered" >                this.timer = Date.now();</span>
 <span class="cstat-no" title="statement not covered" >                this.dragstart = !this.dragstart;</span>
 <span class="cstat-no" title="statement not covered" >                this.lastEvent = null;</span>
 <span class="cstat-no" title="statement not covered" >                this.listen();</span>
@@ -515,6 +550,7 @@ export class DejaPopupAdvancedComponent extends DejaPopupBase implements AfterVi
 <span class="cstat-no" title="statement not covered" >        if (this.subKeyEvent) {</span>
 <span class="cstat-no" title="statement not covered" >            this.subKeyEvent.unsubscribe();</span>
         }
+&nbsp;
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    private move(</span>me: MouseEvent) {
@@ -538,7 +574,7 @@ export class DejaPopupAdvancedComponent extends DejaPopupBase implements AfterVi
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 07 2018 08:34:54 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Feb 09 2018 14:51:39 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../../prettify.js"></script>
