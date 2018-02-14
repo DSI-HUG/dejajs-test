@@ -238,6 +238,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -327,11 +332,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -381,11 +381,11 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Input, OnDestroy} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {IntervalBoundary} from './interval-selector-boundary.model';
-import {IntervalSelectorEventData} from './interval-selector-event-data.model';
-import {IntervalSelectorService} from './interval-selector.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Input, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { IntervalBoundary } from './interval-selector-boundary.model';
+import { IntervalSelectorEventData } from './interval-selector-event-data.model';
+import { IntervalSelectorService } from './interval-selector.service';
 &nbsp;
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -398,30 +398,35 @@ export class DejaIntervalSelectorBoundaryComponent implements OnDestroy {
 &nbsp;
     private _intervalId: string;
     private _model: any;
-    private _openingBoundary;
+    private _openingBoundary: boolean;
     private <span class="cstat-no" title="statement not covered" >_selected = false;</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >_isAlive = true;</span>
 &nbsp;
+    // internal usage
+    public <span class="cstat-no" title="statement not covered" >isVisible = false;</span>
+    public <span class="cstat-no" title="statement not covered" >charToDisplay = '&amp;nbsp;';</span>
+    private <span class="cstat-no" title="statement not covered" >boundaryChar = '[';</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" ></span>changeDetectorRef: ChangeDetectorRef,</span> public <span class="cstat-no" title="statement not covered" >intervalSelectorService: IntervalSelectorService)</span> {</span>
 <span class="cstat-no" title="statement not covered" >        Observable.from(intervalSelectorService.intervalSelectionChanged$).takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._isAlive)</span></span>
-            .subscribe(<span class="fstat-no" title="function not covered" >(</span>boundary:IntervalBoundary) =&gt; {
-<span class="cstat-no" title="statement not covered" >                if ( (boundary.intervalId === this._intervalId &amp;&amp; boundary.model === this._model &amp;&amp; boundary.openingBoundary === this._openingBoundary) ) {</span>
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>boundary: IntervalBoundary) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if ((boundary.intervalId === this._intervalId &amp;&amp; boundary.model === this._model &amp;&amp; boundary.openingBoundary === this._openingBoundary)) {</span>
 <span class="cstat-no" title="statement not covered" >                    this._selected = boundary.selected;</span>
                     // console.log(`DejaIntervalSelectorBoundaryComponent: intervalSelectionChanged$(): date=${DateUtils.formatSystem(boundary.model.date)}, opening=${boundary.openingBoundary}`);
 <span class="cstat-no" title="statement not covered" >                    this.updateState();</span>
                 }
-        });
+            });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        Observable.from(intervalSelectorService.displayModelBoundaries$).takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._isAlive)</span></span>
-            .subscribe(<span class="fstat-no" title="function not covered" >(</span>eventData:IntervalSelectorEventData) =&gt; {
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>eventData: IntervalSelectorEventData) =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (eventData.model === this._model &amp;&amp; eventData.intervalId === this._intervalId) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.mouseOver();</span>
                 }
-        });
+            });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        Observable.from(intervalSelectorService.hideModelBoundaries$).takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this._isAlive)</span></span>
-            .subscribe(<span class="fstat-no" title="function not covered" >(</span>eventData:IntervalSelectorEventData) =&gt; {
+            .subscribe(<span class="fstat-no" title="function not covered" >(</span>eventData: IntervalSelectorEventData) =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (eventData.model === this._model &amp;&amp; eventData.intervalId === this._intervalId) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.mouseLeave();</span>
                 }
@@ -493,13 +498,8 @@ export class DejaIntervalSelectorBoundaryComponent implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >        return this._intervalId;</span>
     }
 &nbsp;
-    // internal usage
-    public <span class="cstat-no" title="statement not covered" >isVisible = false;</span>
-    public <span class="cstat-no" title="statement not covered" >charToDisplay = '&amp;nbsp;';</span>
-    private <span class="cstat-no" title="statement not covered" >boundaryChar = '[';</span>
-&nbsp;
     @HostListener('click', ['$event'])
-<span class="fstat-no" title="function not covered" >    public clickHandler(</span>_event) {
+<span class="fstat-no" title="function not covered" >    public clickHandler(</span>_event: Event) {
 <span class="cstat-no" title="statement not covered" >        _event.stopPropagation();</span>
 <span class="cstat-no" title="statement not covered" >        this.selected = !this.selected;</span>
     }
@@ -544,7 +544,7 @@ export class DejaIntervalSelectorBoundaryComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.06% </span>
+        <span class="strong">90.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>58/63</span>
+        <span class='fraction'>60/66</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.47% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>13/17</span>
+        <span class='fraction'>13/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.07% </span>
+        <span class="strong">89.83% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>51/56</span>
+        <span class='fraction'>53/59</span>
       </div>
     </div>
   </div>
@@ -186,7 +186,14 @@
 141
 142
 143
-144</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+144
+145
+146
+147
+148
+149
+150
+151</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,6 +203,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -269,6 +278,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -300,6 +310,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -338,12 +352,14 @@
  */
 &nbsp;
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, Optional, Output, Self, ViewChild,
-    ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, Optional, Output, Self, ViewChild,
+    ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Color } from '../../common/core/graphics/color';
 import { DejaConnectionPositionPair } from '../../common/core/overlay/connection-position-pair';
-import {DejaOverlayComponent} from '../overlay/overlay.component';
+import { DejaOverlayComponent } from '../overlay/overlay.component';
 &nbsp;
 const noop = () =&gt; { };
 &nbsp;
@@ -376,7 +392,7 @@ export class DejaColorPickerComponent implements ControlValueAccessor {
 &nbsp;
     private _small = false;
     private _value: Color;
-    @HostBinding('attr.disabled') private _disabled = null;
+    @HostBinding('attr.disabled') private _disabled: boolean = null;
 &nbsp;
     /** Overlay pane containing the options. */
     @ViewChild(DejaOverlayComponent) private dejaOverlayCmp: DejaOverlayComponent;
@@ -413,6 +429,7 @@ export class DejaColorPickerComponent implements ControlValueAccessor {
     @Input()
     public set disabled(value: boolean | string) {
         this._disabled = coerceBooleanProperty(value);
+        this.changeDetectorRef.markForCheck();
     }
 &nbsp;
     public get disabled() {
@@ -448,6 +465,10 @@ export class DejaColorPickerComponent implements ControlValueAccessor {
 <span class="fstat-no" title="function not covered" >    public registerOnTouched(</span>fn: any) {
 <span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
     }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public setDisabledState(</span>isDisabled: boolean) {
+<span class="cstat-no" title="statement not covered" >        this.disabled = isDisabled;</span>
+    }
     // ************* End of ControlValueAccessor Implementation **************
 &nbsp;
     /** Affiche le color picker. */
@@ -478,7 +499,7 @@ export class DejaColorPickerComponent implements ControlValueAccessor {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

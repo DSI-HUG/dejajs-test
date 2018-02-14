@@ -765,13 +765,13 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {IntervalBoundary} from './interval-selector-boundary.model';
-import {ModelCompareFunction} from './interval-selector-compare-function.model';
-import {IntervalSelectorEventData} from './interval-selector-event-data.model';
-import {Interval} from './interval-selector-interval.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { IntervalBoundary } from './interval-selector-boundary.model';
+import { ModelCompareFunction } from './interval-selector-compare-function.model';
+import { IntervalSelectorEventData } from './interval-selector-event-data.model';
+import { Interval } from './interval-selector-interval.model';
 &nbsp;
 @Injectable()
 /**
@@ -784,17 +784,17 @@ export class IntervalSelectorService {
     /**
      * boundary selection changes are notified throught this subject.
      */
-    public <span class="cstat-no" title="statement not covered" >intervalSelectionChanged$:Subject&lt;IntervalBoundary&gt; = new Subject&lt;IntervalBoundary&gt;();</span>
+    public <span class="cstat-no" title="statement not covered" >intervalSelectionChanged$: Subject&lt;IntervalBoundary&gt; = new Subject&lt;IntervalBoundary&gt;();</span>
 &nbsp;
     /**
      * for internal usage by the DejaIntervalSelectorBoundaryComponent component.
      */
-    public <span class="cstat-no" title="statement not covered" >displayModelBoundaries$:Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
+    public <span class="cstat-no" title="statement not covered" >displayModelBoundaries$: Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
 &nbsp;
     /**
      * for internal usage by the DejaIntervalSelectorBoundaryComponent component.
      */
-    public <span class="cstat-no" title="statement not covered" >hideModelBoundaries$:Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
+    public <span class="cstat-no" title="statement not covered" >hideModelBoundaries$: Subject&lt;IntervalSelectorEventData&gt; = new Subject&lt;IntervalSelectorEventData&gt;();</span>
 &nbsp;
     private <span class="cstat-no" title="statement not covered" >_intervalMap: Map&lt;string, Interval&gt; = new Map&lt;string, Interval&gt;();</span>
     private _lastSelectBoundariesCall: Date;
@@ -872,12 +872,12 @@ export class IntervalSelectorService {
      */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public modelClicked(</span>intervalId: string, model: any): void {</span>
         // console.log('modelClicked()');
-        const timer$:Observable&lt;any&gt; = <span class="cstat-no" title="statement not covered" >Observable.timer(150);</span>
-        const now:Date = <span class="cstat-no" title="statement not covered" >new Date();</span>
-<span class="cstat-no" title="statement not covered" >        timer$.subscribe(<span class="fstat-no" title="function not covered" >()=&gt; {</span></span>
+        const timer$: Observable&lt;any&gt; = <span class="cstat-no" title="statement not covered" >Observable.timer(150);</span>
+        const now: Date = <span class="cstat-no" title="statement not covered" >new Date();</span>
+<span class="cstat-no" title="statement not covered" >        timer$.subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
             // console.log('modelClicked() after timer');
             const _lastSelectBoundariesCall = <span class="cstat-no" title="statement not covered" >this._lastSelectBoundariesCall;</span>
-<span class="cstat-no" title="statement not covered" >            if (_lastSelectBoundariesCall &amp;&amp; _lastSelectBoundariesCall.getTime() &gt; (now.getTime()-300) ) {</span>
+<span class="cstat-no" title="statement not covered" >            if (_lastSelectBoundariesCall &amp;&amp; _lastSelectBoundariesCall.getTime() &gt; (now.getTime() - 300)) {</span>
                 // il y a eu un appel à selectBoundaries() moins de 150 ms. On ignore ce click.
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
@@ -894,7 +894,7 @@ export class IntervalSelectorService {
 <span class="cstat-no" title="statement not covered" >            if (openingBoundary &amp;&amp; closingBoundary) {</span>
                 // un interval est déjà sélectionné
 <span class="cstat-no" title="statement not covered" >                modelCompareResult = interval.compare(openingBoundary.model, model);</span>
-<span class="cstat-no" title="statement not covered" >                if (modelCompareResult&lt;0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (modelCompareResult &lt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, false);</span>
 <span class="cstat-no" title="statement not covered" >                    openingBoundary = new IntervalBoundary(intervalId, model, true, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, true);</span>
@@ -908,23 +908,23 @@ export class IntervalSelectorService {
             } else <span class="cstat-no" title="statement not covered" >if (openingBoundary &amp;&amp; openingBoundary.model !== model) {</span>
                 // seul la borne d'ouverture est présente
 <span class="cstat-no" title="statement not covered" >                modelCompareResult = interval.compare(openingBoundary.model, model);</span>
-<span class="cstat-no" title="statement not covered" >                if (modelCompareResult&lt;0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (modelCompareResult &lt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, false);</span>
 <span class="cstat-no" title="statement not covered" >                    closingBoundary = new IntervalBoundary(intervalId, openingBoundary.model, false, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(closingBoundary, true);</span>
 <span class="cstat-no" title="statement not covered" >                    openingBoundary = new IntervalBoundary(intervalId, model, true, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, true);</span>
-                } else <span class="cstat-no" title="statement not covered" >if (modelCompareResult&gt;0) {</span>
+                } else <span class="cstat-no" title="statement not covered" >if (modelCompareResult &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    closingBoundary = new IntervalBoundary(intervalId, model, false, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(closingBoundary, true);</span>
                 }
             } else <span class="cstat-no" title="statement not covered" >if (closingBoundary &amp;&amp; closingBoundary.model !== model) {</span>
                 // seul la borne de fermeture est présente
 <span class="cstat-no" title="statement not covered" >                modelCompareResult = interval.compare(closingBoundary.model, model);</span>
-<span class="cstat-no" title="statement not covered" >                if (modelCompareResult&lt;0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (modelCompareResult &lt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    openingBoundary = new IntervalBoundary(intervalId, model, true, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, true);</span>
-                } else <span class="cstat-no" title="statement not covered" >if (modelCompareResult&gt;0) {</span>
+                } else <span class="cstat-no" title="statement not covered" >if (modelCompareResult &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(closingBoundary, false);</span>
 <span class="cstat-no" title="statement not covered" >                    openingBoundary = new IntervalBoundary(intervalId, closingBoundary.model, true, true);</span>
 <span class="cstat-no" title="statement not covered" >                    this.updateIntervalSelection(openingBoundary, true);</span>
@@ -1092,13 +1092,13 @@ export class IntervalSelectorService {
             }
 <span class="cstat-no" title="statement not covered" >            if (openingBoundary &amp;&amp; interval.closingBoundary) {</span>
 <span class="cstat-no" title="statement not covered" >                modelCompareResult = interval.compare(boundary.model, interval.closingBoundary.model);</span>
-<span class="cstat-no" title="statement not covered" >                if (modelCompareResult&lt;0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (modelCompareResult &lt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    interval.closingBoundary.selected = false;</span>
                 }
             }
 <span class="cstat-no" title="statement not covered" >            if (!openingBoundary &amp;&amp; interval.openingBoundary) {</span>
 <span class="cstat-no" title="statement not covered" >                modelCompareResult = interval.compare(boundary.model, interval.openingBoundary.model);</span>
-<span class="cstat-no" title="statement not covered" >                if (modelCompareResult&gt;0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (modelCompareResult &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                    interval.openingBoundary.selected = false;</span>
                 }
             }
@@ -1120,7 +1120,7 @@ export class IntervalSelectorService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

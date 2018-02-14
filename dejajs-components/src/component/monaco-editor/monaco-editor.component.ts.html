@@ -697,7 +697,12 @@
 652
 653
 654
-655</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+655
+656
+657
+658</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -709,6 +714,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1359,11 +1365,14 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
+/// &lt;reference path="typings/css-element-queries.d.ts" /&gt;
+&nbsp;
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ResizeSensor } from 'css-element-queries';
 import { MonacoEditorService } from './monaco-editor.service';
 import { EditorOptions } from './options/editor-options.model';
 import { EditorScrollbarOptions } from './options/editor-scrollbar-options.model';
+&nbsp;
+import * as CssMediaQueries from 'css-element-queries';
 &nbsp;
 declare const monaco: any;
 &nbsp;
@@ -1711,9 +1720,9 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
      */
     @Input()
 <span class="fstat-no" title="function not covered" >    public set language(</span>val: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml') {
-<span class="cstat-no" title="statement not covered" >        if(val) {</span>
+<span class="cstat-no" title="statement not covered" >        if (val) {</span>
 <span class="cstat-no" title="statement not covered" >            this._language = val;</span>
-<span class="cstat-no" title="statement not covered" >            if(this._editor) {</span>
+<span class="cstat-no" title="statement not covered" >            if (this._editor) {</span>
 <span class="cstat-no" title="statement not covered" >                this.ngAfterViewInit();</span>
             }
         }
@@ -1770,7 +1779,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
     private <span class="cstat-no" title="statement not covered" >_value = '';</span>
     private <span class="cstat-no" title="statement not covered" >_valueToCompare = '';</span>
     private _language: 'bat' | 'c' | 'cpp' | 'csharp' | 'css' | 'dockerfile' | 'fsharp' | 'go' | 'handlebars' | 'html' | 'ini' | 'jade' | 'javascript' | 'json' | 'less' | 'lua' | 'markdown' | 'objective-c' | 'php' | 'csharp' | 'plaintext' | 'postiats' | 'powershell' | 'python' | 'r' | 'razor' | 'ruby' | 'scss' | 'sql' | 'swift' | 'typescript' | 'vb' | 'xml' | 'yaml';
-    private resizeSensor: ResizeSensor;
+    private resizeSensor: CssMediaQueries.ResizeSensor;
 &nbsp;
     /**
      * Constructor
@@ -1809,7 +1818,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
      */
 <span class="fstat-no" title="function not covered" >    public dispose() {</span>
         const myDiv: HTMLDivElement = <span class="cstat-no" title="statement not covered" >this.editorContent.nativeElement;</span>
-<span class="cstat-no" title="statement not covered" >        if(this.resizeSensor) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.resizeSensor) {</span>
 <span class="cstat-no" title="statement not covered" >            this.resizeSensor = null;</span>
         }
 &nbsp;
@@ -1831,7 +1840,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
         // Manually set monaco size because MonacoEditor doesn't work with Flexbox css
         const myDiv: HTMLDivElement = <span class="cstat-no" title="statement not covered" >this.editorContent.nativeElement;</span>
 <span class="cstat-no" title="statement not covered" >        myDiv.setAttribute('style', `height: 100%; width: 100%;`);</span>
-<span class="cstat-no" title="statement not covered" >        if(this._editor) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this._editor) {</span>
 <span class="cstat-no" title="statement not covered" >            this._editor.layout();</span>
         }
     }
@@ -1852,7 +1861,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.onResize();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.resizeSensor = new ResizeSensor(myDiv, <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.onResize())</span>;</span>
+<span class="cstat-no" title="statement not covered" >        this.resizeSensor = new CssMediaQueries.ResizeSensor(myDiv, <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>this.onResize())</span>;</span>
 &nbsp;
         // Trigger on change event for simple editor
 <span class="cstat-no" title="statement not covered" >        this.getOriginalModel().onDidChangeContent(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
@@ -1965,7 +1974,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 <span class="cstat-no" title="statement not covered" >        options.value = this._value;</span>
 <span class="cstat-no" title="statement not covered" >        options.language = this._language;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        Object.keys(options).forEach(<span class="fstat-no" title="function not covered" >(</span>key) =&gt; <span class="cstat-no" title="statement not covered" >options[key] === undefined &amp;&amp; delete options[key])</span>; </span>// Remove all undefined properties
+<span class="cstat-no" title="statement not covered" >        Object.keys(options).forEach(<span class="fstat-no" title="function not covered" >(</span>key) =&gt; <span class="cstat-no" title="statement not covered" >(&lt;any&gt;options)[key] === undefined &amp;&amp; delete (&lt;any&gt;options)[key])</span>; </span>// Remove all undefined properties
 <span class="cstat-no" title="statement not covered" >        return options;</span>
     }
 &nbsp;
@@ -2011,7 +2020,7 @@ export class DejaMonacoEditorComponent implements OnDestroy, AfterViewInit, OnCh
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

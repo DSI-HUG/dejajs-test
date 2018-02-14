@@ -1404,7 +1404,9 @@
 1359
 1360
 1361
-1362</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1362
+1363
+1364</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1519,6 +1521,7 @@
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2640,6 +2643,7 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -2840,15 +2844,15 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     /** Offset de position horizontal de la zone de dropdown */
     @Input() public overlayOffsetX = 0;
     /** Permet de définir un template de ligne par binding */
-    @Input() public itemTemplateExternal;
+    @Input() public itemTemplateExternal: any;
     /** Permet de définir un template de ligne parente par binding. */
-    @Input() public parentItemTemplateExternal;
+    @Input() public parentItemTemplateExternal: any;
     /** Permet de définir un template pour la zone de texte d'information. */
-    @Input() public placeHolderTemplateExternal;
+    @Input() public placeHolderTemplateExternal: any;
     /** Permet de définir un template pour l'élément de conseil ou d'affichage d'erreur. */
-    @Input() public hintTemplateExternal;
+    @Input() public hintTemplateExternal: any;
     /** Permet de définir un template pour le MatError à l'intérieur du mat-input-container. */
-    @Input() public errorTemplateExternal;
+    @Input() public errorTemplateExternal: any;
     /** Définit une valeur indiquant si en reactive form le model renvoyé doit être un obeject oue une valeur */
     @Input() public modelIsValue: boolean;
     /** Exécuté lorsque le calcul du viewPort est terminé. */
@@ -2858,14 +2862,14 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     /** For test only. */
     @Output() public dropDownVisibleChange = new EventEmitter&lt;boolean&gt;();
 &nbsp;
-    @ContentChild('hintTemplate') public hintTemplateInternal;
-    @ContentChild('placeHolderTemplate') public placeHolderTemplateInternal;
-    @ContentChild('itemTemplate') public itemTemplateInternal;
-    @ContentChild('parentItemTemplate') public parentItemTemplateInternal;
-    @ContentChild('selectedTemplate') public selectedTemplate;
-    @ContentChild('suffixTemplate') public _matSuffix;
+    @ContentChild('hintTemplate') public hintTemplateInternal: any;
+    @ContentChild('placeHolderTemplate') public placeHolderTemplateInternal: any;
+    @ContentChild('itemTemplate') public itemTemplateInternal: any;
+    @ContentChild('parentItemTemplate') public parentItemTemplateInternal: any;
+    @ContentChild('selectedTemplate') public selectedTemplate: any;
+    @ContentChild('suffixTemplate') public _matSuffix: any;
     /** Template for MatError inside mat-input-container */
-    @ContentChild('errorTemplate') public errorTemplateInternal;
+    @ContentChild('errorTemplate') public errorTemplateInternal: any;
 &nbsp;
     /** Internal use */
     public overlayOwnerElement: HTMLElement;
@@ -2885,7 +2889,8 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     private _inputElement: ElementRef;
 &nbsp;
-    @ViewChild('inputElement') private set inputElement(element: ElementRef) {
+    @ViewChild('inputElement')
+    public set inputElement(element: ElementRef) {
         <span class="missing-if-branch" title="else path not taken" >E</span>if (element) {
             this._inputElement = element;
             <span class="missing-if-branch" title="else path not taken" >E</span>if (this._inputElement) {
@@ -2901,7 +2906,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     @ViewChild(MatInput) protected input: MatInput;
 &nbsp;
-    @HostBinding('attr.disabled') private _disabled = null;
+    @HostBinding('attr.disabled') private _disabled: boolean = null;
     private _type = 'select';
     private selectingItemIndex: number;
     private dropDownQuery = '';
@@ -2911,7 +2916,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     private _selectionClearable = false;
     private _dropDownWidth: string;
     private _query = '';
-    @HostBinding('attr.readonly') private _readonly = null;
+    @HostBinding('attr.readonly') private _readonly: boolean = null;
 &nbsp;
     /** Overlay pane containing the options. */
     @ViewChild(DejaOverlayComponent) private overlay: DejaOverlayComponent;
@@ -2964,7 +2969,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
     @ContentChildren(DejaItemComponent)
     public set options(options: DejaItemComponent[]) {
         if (!this.items &amp;&amp; options &amp;&amp; options.length) {
-            const selectedModels = [];
+            const selectedModels = [] as any[];
             this.valueField = 'value';
             this.textField = 'text';
             const models = options.map((option) =&gt; {
@@ -3247,7 +3252,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 &nbsp;
     @Input()
     public set selectedItemsPosition(value: string | DejaSelectSelectionPosition) {
-        this._selectedItemsPosition = typeof value === 'string' ? <span class="branch-0 cbranch-no" title="branch not covered" >DejaSelectSelectionPosition[value] </span>: value;
+        this._selectedItemsPosition = typeof value === 'string' ? (&lt;any&gt;<span class="branch-0 cbranch-no" title="branch not covered" >DejaSelectSelectionPosition)[value] </span>: value;
     }
 &nbsp;
     public get selectedItemsPosition() {
@@ -3578,7 +3583,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         return this.placeHolderTemplateExternal || this.placeHolderTemplateInternal;
     }
 &nbsp;
-    private get itemTemplate() {
+    public get itemTemplate() {
         return this.itemTemplateExternal || this.itemTemplateInternal;
     }
 &nbsp;
@@ -3590,7 +3595,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         return this.errorTemplateExternal || this.errorTemplateInternal;
     }
 &nbsp;
-    private get parentItemTemplate() {
+    public get parentItemTemplate() {
         return this.parentItemTemplateExternal || this.parentItemTemplateInternal;
     }
 &nbsp;
@@ -3625,7 +3630,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         this.onTouchedCallback = fn;
     }
 &nbsp;
-    public setDisabledState?(isDisabled: boolean) {
+    public setDisabledState(isDisabled: boolean) {
         this.disabled = isDisabled;
     }
     // ************* End of ControlValueAccessor Implementation **************
@@ -3683,7 +3688,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         Observable.fromEvent(this.htmlInputElement, 'keydown')
             .takeWhile(() =&gt; this._isAlive)
             .filter((event: KeyboardEvent) =&gt; {
-                const keyCode = event.keyCode || KeyCodes[event.code];
+                const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
                 return keyCode === KeyCodes.Home ||
                     keyCode === KeyCodes.End ||
                     keyCode === KeyCodes.PageUp ||
@@ -3709,7 +3714,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
                     }
                 };
 &nbsp;
-                const keyCode = event.keyCode || KeyCodes[event.code];
+                const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
                 switch (keyCode) {
                     case KeyCodes.Home:
                         <span class="missing-if-branch" title="if path not taken" >I</span>if (event.altKey || this._multiSelect &amp;&amp; !this.dropdownVisible) {
@@ -3802,7 +3807,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         const keyUp$ = Observable
             .fromEvent(this.htmlInputElement, 'keyup')
             .filter(<span class="fstat-no" title="function not covered" >(</span>event: KeyboardEvent) =&gt; {
-                const keyCode = <span class="cstat-no" title="statement not covered" >event.keyCode || KeyCodes[event.code];</span>
+                const keyCode = <span class="cstat-no" title="statement not covered" >event.keyCode || (&lt;any&gt;KeyCodes)[event.code];</span>
 <span class="cstat-no" title="statement not covered" >                return keyCode &gt;= KeyCodes.Key0 ||</span>
                     keyCode === KeyCodes.Backspace ||
                     keyCode === KeyCodes.Space ||
@@ -4001,6 +4006,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
         let outputEmitter = null;
 &nbsp;
         let output = null;
+&nbsp;
         if (items) {
             if (Array.isArray(items)) {
                 const models = items.map((itm) =&gt; itm.model !== undefined ? itm.model : <span class="branch-1 cbranch-no" title="branch not covered" >itm)</span>;
@@ -4132,7 +4138,7 @@ export class DejaSelectComponent extends ItemListBase implements ControlValueAcc
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

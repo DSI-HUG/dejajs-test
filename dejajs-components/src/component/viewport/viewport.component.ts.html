@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.79% </span>
+        <span class="strong">82.11% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>178/215</span>
+        <span class='fraction'>179/218</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">71% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>38/53</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.95% </span>
+        <span class="strong">81.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>168/205</span>
+        <span class='fraction'>169/208</span>
       </div>
     </div>
   </div>
@@ -460,7 +460,11 @@
 415
 416
 417
-418</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+418
+419
+420
+421
+422</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -702,6 +706,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
@@ -949,17 +957,17 @@ export class DejaViewPortComponent implements OnDestroy {
     private scrollPosition = 0;
 &nbsp;
     /** Permet de définir un template d'élément par binding */
-    @Input() public itemTemplateExternal;
+    @Input() public itemTemplateExternal: any;
 &nbsp;
-    @ContentChild('itemTemplate') private itemTemplateInternal;
+    @ContentChild('itemTemplate') private itemTemplateInternal: any;
 &nbsp;
     @ViewChild('down')
-    private set downButton(element: ElementRef) {
+    public set downButton(element: ElementRef) {
         this.downButton$.next((element &amp;&amp; element.nativeElement) || null);
     }
 &nbsp;
     @ViewChild('up')
-    private set upButton(element: ElementRef) {
+    public set upButton(element: ElementRef) {
         this.upButton$.next((element &amp;&amp; element.nativeElement) || null);
     }
 &nbsp;
@@ -987,7 +995,7 @@ export class DejaViewPortComponent implements OnDestroy {
       */
     @Input()
     public set scrollingStyle(value: DejaViewPortScrollStyle | string) {
-        const scrollingStyle = typeof value === 'string' ? DejaViewPortScrollStyle[value] : <span class="branch-1 cbranch-no" title="branch not covered" >value;</span>
+        const scrollingStyle = typeof value === 'string' ? DejaViewPortScrollStyle[value as any] : <span class="branch-1 cbranch-no" title="branch not covered" >value;</span>
         this._hasButtons = scrollingStyle === DejaViewPortScrollStyle.buttons;
     }
 &nbsp;
@@ -997,7 +1005,7 @@ export class DejaViewPortComponent implements OnDestroy {
      */
     @Input()
     public set direction(value: ViewportDirection | string) {
-        const direction = typeof value === 'string' ? ViewportDirection[value] : <span class="branch-1 cbranch-no" title="branch not covered" >value;</span>
+        const direction = typeof value === 'string' ? ViewportDirection[value as any] : <span class="branch-1 cbranch-no" title="branch not covered" >value;</span>
         this.viewPort.direction$.next(direction);
         this._isHorizontal = direction === ViewportDirection.horizontal;
         this.changeDetectorRef.markForCheck();
@@ -1016,7 +1024,7 @@ export class DejaViewPortComponent implements OnDestroy {
     }
 &nbsp;
     @ViewChild('wrapper')
-    private set wrapperElement(element: ElementRef) {
+    public set wrapperElement(element: ElementRef) {
         this.element = element.nativeElement as HTMLElement;
         this.viewPort.element$.next(this.element);
         Observable.fromEvent(this.element, 'scroll')
@@ -1028,7 +1036,7 @@ export class DejaViewPortComponent implements OnDestroy {
             });
     }
 &nbsp;
-    private get itemTemplate() { return this.itemTemplateExternal || this.itemTemplateInternal; }
+    public get itemTemplate() { return this.itemTemplateExternal || this.itemTemplateInternal; }
 &nbsp;
     private get clientSize() {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.element) {
@@ -1118,8 +1126,12 @@ export class DejaViewPortComponent implements OnDestroy {
                 };
 &nbsp;
                 if (viewPortResult.scrollPos !== undefined) {
-                    const listItems = this.element ? <span class="branch-0 cbranch-no" title="branch not covered" >this.element.getElementsByClassName('listitem') </span>: [];
-                    const rebind = listItems.length !== viewPortResult.visibleItems.length;
+                    let length = 0;
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.element) {
+                        const listItems = <span class="cstat-no" title="statement not covered" >this.element.getElementsByClassName('listitem');</span>
+<span class="cstat-no" title="statement not covered" >                        length = listItems.length;</span>
+                    }
+                    const rebind = length !== viewPortResult.visibleItems.length;
                     <span class="missing-if-branch" title="else path not taken" >E</span>if (!rebind) {
                         scroll(viewPortResult);
                     } else {
@@ -1300,7 +1312,7 @@ export interface IDejaViewPortItem extends IViewPortItem {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

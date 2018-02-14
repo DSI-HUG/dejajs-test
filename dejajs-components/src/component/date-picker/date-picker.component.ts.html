@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25.59% </span>
+        <span class="strong">25.78% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>65/254</span>
+        <span class='fraction'>66/256</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">1.79% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>2/112</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">1.85% </span>
+        <span class="strong">1.82% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/54</span>
+        <span class='fraction'>1/55</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">26.92% </span>
+        <span class="strong">27.12% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>63/234</span>
+        <span class='fraction'>64/236</span>
       </div>
     </div>
   </div>
@@ -530,7 +530,13 @@
 485
 486
 487
-488</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+488
+489
+490
+491
+492
+493
+494</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -579,6 +585,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -924,6 +932,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1067,6 +1079,8 @@ const noop = <span class="fstat-no" title="function not covered" >() =&gt; { </s
 export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, AfterContentInit, OnDestroy {
     private static formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;
 &nbsp;
+    public _layout: number | string;
+&nbsp;
     /** Maximum date avaliable inside date-picker */
     @Input() public dateMax: Date;
     /** Minimum date avaliable inside date-picker */
@@ -1083,9 +1097,9 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** Reference to DejaDateSelectorComponent inside thic control */
     @ViewChild(DejaDateSelectorComponent) public dateSelectorComponent: DejaDateSelectorComponent;
     /** Template for MatHint inside mat-input-container */
-    @ContentChild('hintTemplate') public matHint;
+    @ContentChild('hintTemplate') public matHint: any;
     /** Template for MatError inside mat-input-container */
-    @ContentChild('errorTemplate') public matError;
+    @ContentChild('errorTemplate') public matError: any;
     /** Offset de position horizontal de la zone de dropdown */
     @Input() public <span class="cstat-no" title="statement not covered" >overlayOffsetX = 0;</span>
     /** Offset de position verticale de la zone de dropdown */
@@ -1121,7 +1135,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     private <span class="cstat-no" title="statement not covered" >_showDropDown = false;</span>
     private <span class="cstat-no" title="statement not covered" >_positions = DejaConnectionPositionPair.default;</span>
 &nbsp;
-    private _inputModel;
+    private _inputModel: string;
     private cursorPosition: number;
     private <span class="cstat-no" title="statement not covered" >formatChanged$ = new Subject&lt;string&gt;();</span>
     private <span class="cstat-no" title="statement not covered" >dateChanged$ = new Subject&lt;Date&gt;();</span>
@@ -1245,7 +1259,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 &nbsp;
         const valueUpdated$ = <span class="cstat-no" title="statement not covered" >Observable.combineLatest(this.formatChanged$, this.dateChanged$)</span>
             .do(<span class="fstat-no" title="function not covered" >(</span>[<span class="cstat-no" title="statement not covered" >format]</span>) =&gt; {
-                let mask = <span class="cstat-no" title="statement not covered" >[];</span>
+                let mask = <span class="cstat-no" title="statement not covered" >[] as string[];</span>
                 const array = <span class="cstat-no" title="statement not covered" >format.match(DejaDatePickerComponent.formattingTokens);</span>
 <span class="cstat-no" title="statement not covered" >                array.forEach(<span class="fstat-no" title="function not covered" >(</span>val: string) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                    if (formatToMask[val]) {</span>
@@ -1350,7 +1364,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
         }
 <span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
     }
-    public _layout: number | string;
+&nbsp;
 <span class="fstat-no" title="function not covered" >    public get layout() {</span>
 <span class="cstat-no" title="statement not covered" >        return this._layout;</span>
     }
@@ -1415,6 +1429,10 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** From ControlValueAccessor interface */
 <span class="fstat-no" title="function not covered" >    public registerOnTouched(</span>fn: any) {
 <span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public setDisabledState(</span>isDisabled: boolean) {
+<span class="cstat-no" title="statement not covered" >        this.disabled = isDisabled;</span>
     }
     // ************* End of ControlValueAccessor Implementation **************
 &nbsp;
@@ -1510,7 +1528,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 09:17:30 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 14 2018 14:07:52 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
