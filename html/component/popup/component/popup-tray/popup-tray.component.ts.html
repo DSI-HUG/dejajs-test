@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/popup/component/popup-tray/popup-tray.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">component/popup/component/popup-tray/</a> popup-tray.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">32.26% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>20/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.58% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>18/57</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/merge';
+import { Observable } from 'rxjs/Observable';
+import { DejaPopupAction } from '../../model/popup-action.model';
+import { DejaPopupBase } from '../../model/popup-base.class';
+import { DejaPopupService } from '../../service/popup.service';
+&nbsp;
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'deja-popup-tray',
+    template: require('./popup-tray.component.html'),
+    styles: [require('./popup-tray.component.scss')]
+})
+export class DejaPopupTrayComponent implements OnInit {
+&nbsp;
+    public dialogs$: Observable&lt;MatDialogRef&lt;DejaPopupBase&gt;[]&gt;;
+&nbsp;
+    constructor(
+        public <span class="cstat-no" title="statement not covered" >dialogSrv: DejaPopupService<span class="fstat-no" title="function not covered" >,</span></span>
+    ) { }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngOnInit() {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.dialogs$ = Observable.from(this.dialogSrv.afterOpen)</span>
+            .merge(this.dialogSrv.dejaPopupCom$
+                .filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!!action &amp;&amp; action.target === 'popup-tray')</span></span>
+                .map((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    if (action.name === 'do-minify') {</span>
+<span class="cstat-no" title="statement not covered" >                        this.minify(action);</span>
+<span class="cstat-no" title="statement not covered" >                        action.refreshDrawer = false;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    return action;</span>
+                })
+                .filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >action.refreshDrawer)</span></span>
+            )
+            .debounceTime(500)
+            .map(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+                const dialogs = <span class="cstat-no" title="statement not covered" >this.dialogSrv.openDialogs;</span>
+<span class="cstat-no" title="statement not covered" >                return dialogs;</span>
+            });
+&nbsp;
+    }
+&nbsp;
+    public minify(action: DejaPopupAction<span class="fstat-no" title="function not covered" >) {</span>
+        const el = <span class="cstat-no" title="statement not covered" >document.querySelector(action.panelClass) as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >        if (!el) {</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        el.style.display = 'none';</span>
+<span class="cstat-no" title="statement not covered" >        this.refresh();</span>
+    }
+&nbsp;
+    public maxify(action: DejaPopupAction<span class="fstat-no" title="function not covered" >) {</span>
+        const el = <span class="cstat-no" title="statement not covered" >document.querySelector(action.panelClass) as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >        if (!el) {</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        el.style.display = 'initial';</span>
+<span class="cstat-no" title="statement not covered" >        this.refresh();</span>
+    }
+&nbsp;
+    public doAction(action: DejaPopupAction<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        if (action.name === 'toolbar-minify') {</span>
+<span class="cstat-no" title="statement not covered" >            this.minify(action);</span>
+        } else <span class="cstat-no" title="statement not covered" >if (action.name === 'toolbar-fullscreen') {</span>
+<span class="cstat-no" title="statement not covered" >            this.maxify(action);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            this.dialogSrv.dejaPopupCom$.next(action);</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public closeAll() {</span>
+<span class="cstat-no" title="statement not covered" >        this.dialogSrv.closeAll();</span>
+<span class="cstat-no" title="statement not covered" >        this.refresh();</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public minimizeAll() {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.dialogSrv.openDialogs.forEach((d: MatDialogRef&lt;DejaPopupBase&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+            const a = <span class="cstat-no" title="statement not covered" >new DejaPopupAction('minify-all', 'popup-tray');</span>
+<span class="cstat-no" title="statement not covered" >            d.componentInstance.isMinified = true;</span>
+<span class="cstat-no" title="statement not covered" >            a.panelClass = d.componentInstance.config.dialogPanelId;</span>
+<span class="cstat-no" title="statement not covered" >            this.minify(a);</span>
+        });
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public showAll() {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.dialogSrv.openDialogs.forEach((d: MatDialogRef&lt;DejaPopupBase&gt;<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+            const a = <span class="cstat-no" title="statement not covered" >new DejaPopupAction('show-all', 'popup-tray');</span>
+<span class="cstat-no" title="statement not covered" >            d.componentInstance.isMinified = false;</span>
+<span class="cstat-no" title="statement not covered" >            a.panelClass = d.componentInstance.config.dialogPanelId;</span>
+<span class="cstat-no" title="statement not covered" >            this.maxify(a);</span>
+        });
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private refresh() {</span>
+        const a = <span class="cstat-no" title="statement not covered" >new DejaPopupAction('tray-refresh', 'popup-tray');</span>
+<span class="cstat-no" title="statement not covered" >        this.dialogSrv.dejaPopupCom$.next(a);</span>
+    }
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 11:57:10 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for common/core/grouping/grouping.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">common/core/grouping/</a> grouping.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.52% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>69/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>35/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.48% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>19/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.31% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>61/64</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-yes">645×</span>
+<span class="cline-any cline-yes">645×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">840×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">645×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-yes">24189×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">645×</span>
+<span class="cline-any cline-yes">645×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">88×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/reduce';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import { IItemTree } from '../item-list/item-tree';
+import { SortingService } from '../sorting/sorting.service';
+import { IGroupInfo } from './group-infos';
+&nbsp;
+/** Service de regroupement d'un tableau de modèles */
+export class GroupingService {
+    /** Groupe les éléments de la liste hierarchique spécifiée à partir du niveau spécifié, et en fonction du modèle de groupe spécifié
+     * @param tree Liste à trier.
+     * @param groupInfos Modèle de groupe à appliquer.
+     * @param childrenField Champs à utiliser comme collection des enfants d'un parent.
+     * @param depth Niveau à partir duquel le modèle de regroupement doit être appliqué.
+     * @return Observable résolu par la fonction.
+     */
+    public group$(tree: any[], groupInfos: IGroupInfo[] | IGroupInfo, childrenField = 'items'): Observable&lt;any[]&gt; {
+        if (!tree || tree.length === 0 || !groupInfos) {
+            return Observable.of(tree);
+        }
+&nbsp;
+        if (groupInfos instanceof Array) {
+            // Create a observable stream with a sequence for each groupinfos.
+            let result$ = Observable.of(tree);
+            groupInfos.forEach((groupInfo) =&gt; result$ = result$.switchMap((t) =&gt; this.group$(t, groupInfo, childrenField)));
+            return result$;
+        } else {
+            // Group the tree with the current groupInfo
+            const groupInfo = groupInfos as IGroupInfo;
+            if (!tree[0][childrenField]) {
+                // No children, group the tree
+                return this.groupChildren$(tree, groupInfo, 0, childrenField);
+            }
+&nbsp;
+            const groupTree$: any = (t: any[], curDepth: number) =&gt; {
+                return Observable.from(t)
+                    .switchMap((treeItem) =&gt; {
+                        const children = treeItem[childrenField];
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (children[0] &amp;&amp; children[0][childrenField]) {
+<span class="cstat-no" title="statement not covered" >                            return groupTree$(children, curDepth + 1).map(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >treeItem)</span></span>;</span>
+                        } else {
+                            return this.groupChildren$(children, groupInfo, curDepth, childrenField).map((groupedChildren) =&gt; {
+                                treeItem[childrenField] = groupedChildren;
+                                return treeItem;
+                            });
+                        }
+                    })
+                    .reduce((acc: any[], cur) =&gt; {
+                        // Return the array
+                        acc.push(cur);
+                        return acc;
+                    }, []);
+            };
+&nbsp;
+            // If the tree has chidren, group only the last level items
+            return groupTree$(tree, 1);
+        }
+    }
+&nbsp;
+    /**
+     * @deprecated &gt; 06.11.2017
+     */
+    public group(tree: any[], groupInfos: IGroupInfo[] | IGroupInfo, childrenField?: string<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.group$(tree, groupInfos, childrenField).toPromise();</span>
+    }
+&nbsp;
+    protected groupChildren$(list: any[], groupInfo: IGroupInfo, _depth: number, childrenField: string): Observable&lt;any[]&gt; {
+        return Observable.of(list)
+            .switchMap((l) =&gt; l)
+            .reduce((groups: { [groupby: string]: IItemTree }, item) =&gt; {
+                let groupedBy = typeof groupInfo.groupByField === 'function' ? groupInfo.groupByField(item) : item[groupInfo.groupByField];
+&nbsp;
+                if (typeof item[groupedBy] === 'function') {
+                    groupedBy = item[groupedBy]();
+                }
+&nbsp;
+                if (!groupedBy) {
+                    groupedBy = this.getTextValue(item);
+                }
+&nbsp;
+                let parent = groups[groupedBy];
+&nbsp;
+                if (!parent) {
+                    const groupLabel = groupInfo.groupTextField ? (typeof groupInfo.groupTextField === 'function' ? <span class="branch-0 cbranch-no" title="branch not covered" >groupInfo.groupTextField(item) </span>: item[groupInfo.groupTextField]) : groupedBy;
+                    parent = groups[groupedBy] = {
+                        depth: _depth,
+                        toString: () =&gt; groupLabel,
+                        $text: groupLabel,
+                    } as IItemTree;
+                    (&lt;any&gt;parent)[childrenField] = [];
+                }
+&nbsp;
+                (&lt;any&gt;parent)[childrenField].push(item);
+                return groups;
+            }, {})
+            .map((grps: { [groupby: string]: any }) =&gt; Object.keys(grps).map((key) =&gt; grps[key]))
+            .do((groupedChildren) =&gt; groupedChildren.forEach((parent) =&gt; parent.sortField = (groupInfo.sortInfos &amp;&amp; groupInfo.sortInfos.name) || 'toString'))
+            .switchMap((groupedChildren) =&gt; {
+                if (groupInfo.sortInfos) {
+                    const sortingService = new SortingService();
+                    return sortingService.sort$(groupedChildren, groupInfo.sortInfos);
+                } else {
+                    return Observable.of(groupedChildren);
+                }
+            });
+    }
+&nbsp;
+    private getTextValue(value: any) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!value) {
+<span class="cstat-no" title="statement not covered" >            return '';</span>
+        } else {
+            if (value.displayName) {
+                return typeof value.displayName === 'string' ? value.displayName : <span class="branch-1 cbranch-no" title="branch not covered" >value.displayName();</span>
+            } else <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof value.toString === 'function') {
+                return value.toString();
+            }
+        }
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 11:57:10 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

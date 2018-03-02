@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/splitter/splitter.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">component/splitter/</a> splitter.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">17.2% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>32/186</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/69</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">2.27% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/44</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.11% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>30/157</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, Output, Renderer, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { IAreaData } from './area-data.model';
+import { Point } from './point.model';
+import { SplitAreaDirective } from './split-area.directive';
+&nbsp;
+const gutterSize = 'gutterSize';
+const disabled = 'disabled';
+&nbsp;
+/**
+ * Splitter Component for Angular
+ *
+ * The splitter component allows to split horizontally or vertically, a container in N resizable part.
+ */
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    selector: 'deja-splitter',
+    styles: [require('./splitter.component.scss')],
+    template: require('./splitter.component.html'),
+})
+export class DejaSplitterComponent implements OnChanges, OnDestroy {
+    /**
+     * Direction of the split
+     * Can be `horizontal` or `vertical`
+     */
+    @Input() public <span class="cstat-no" title="statement not covered" >direction = 'horizontal';</span>
+    /**
+     * Width in percent of the component
+     * By default `100%`
+     */
+    @Input() public width: number;
+    /**
+     * Height in percent of the component
+     * By default `100%`
+     */
+    @Input() public height: number;
+    /**
+     * Separator width
+     */
+    @Input() public <span class="cstat-no" title="statement not covered" >gutterSize = 10;</span>
+    /**
+     * Disable the component
+     */
+    @Input() public <span class="cstat-no" title="statement not covered" >disabled = false;</span>
+    /**
+     * Event triggered when the user start to drag the cursor
+     */
+    @Output() public <span class="cstat-no" title="statement not covered" >dragStart = new EventEmitter&lt;number[]&gt;(false);</span>
+    /**
+     * Event triggered during the cursor's drag
+     */
+    @Output() public <span class="cstat-no" title="statement not covered" >dragProgress = new EventEmitter&lt;number[]&gt;(false);</span>
+    /**
+     * Event triggered when the user stop to drag the cursor
+     */
+    @Output() public <span class="cstat-no" title="statement not covered" >dragEnd = new EventEmitter&lt;number[]&gt;(false);</span>
+&nbsp;
+    /**
+     * Host Binding
+     */
+    @HostBinding('style.flex-direction') <span class="fstat-no" title="function not covered" >get styleFlexDirection() {</span>
+<span class="cstat-no" title="statement not covered" >        return this.direction === 'horizontal' ? 'row' : 'column';</span>
+    }
+&nbsp;
+    /**
+     * Host Binding
+     */
+    @HostBinding('style.width') <span class="fstat-no" title="function not covered" >get styleWidth() {</span>
+<span class="cstat-no" title="statement not covered" >        return (this.width &amp;&amp; !isNaN(this.width) &amp;&amp; this.width &gt; 0) ? `${this.width}px` : '100%';</span>
+    }
+&nbsp;
+    /**
+     * Host Binding
+     */
+    @HostBinding('style.height') <span class="fstat-no" title="function not covered" >get styleHeight() {</span>
+<span class="cstat-no" title="statement not covered" >        return (this.height &amp;&amp; !isNaN(this.height) &amp;&amp; this.height &gt; 0) ? `${this.height}px` : '100%';</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private get nbGutters(): number {</span>
+<span class="cstat-no" title="statement not covered" >        return this._areas.length - 1;</span>
+    }
+&nbsp;
+    private <span class="cstat-no" title="statement not covered" >minPercent = 0.3;</span>
+    private <span class="cstat-no" title="statement not covered" >_areas: IAreaData[] = [];</span>
+    private <span class="cstat-no" title="statement not covered" >isDragging = false;</span>
+    private <span class="cstat-no" title="statement not covered" >containerSize = 0;</span>
+    private <span class="cstat-no" title="statement not covered" >areaASize = 0;</span>
+    private <span class="cstat-no" title="statement not covered" >areaBSize = 0;</span>
+    private <span class="cstat-no" title="statement not covered" >eventsDragFct: Function[] = [];</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get areas() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._areas;</span>
+    }
+&nbsp;
+    /**
+     * Constructor
+     */
+    constructor(private <span class="cstat-no" title="statement not covered" >cdRef: ChangeDetectorRef,</span>
+        private <span class="cstat-no" title="statement not covered" >elementRef: ElementRef,</span>
+        private <span class="cstat-no" title="statement not covered" >renderer: Renderer<span class="fstat-no" title="function not covered" >)</span> {</span>
+    }
+&nbsp;
+    /**
+     * Lifecycle hook that is called when any data-bound property of a directive changes.
+     */
+    public ngOnChanges(changes: SimpleChanges<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        if (changes[gutterSize] || changes[disabled]) {</span>
+<span class="cstat-no" title="statement not covered" >            this.refresh();</span>
+        }
+    }
+&nbsp;
+    /**
+     * Lifecycle hook that is called when a directive, pipe or service is destroyed.
+     */
+<span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span>
+<span class="cstat-no" title="statement not covered" >        this.stopDragging();</span>
+    }
+&nbsp;
+    /**
+     * Add a new area into the component
+     * @param component Area to add
+     * @param orderUser Position of the new area into the component
+     * @param sizeUser Size of the new area
+     * @param minPixel Min size of the new area
+     */
+    public addArea(component: SplitAreaDirective, orderUser: number | null, sizeUser: number | null, minPixel: number<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._areas.push({</span>
+            component,
+            orderUser,
+            order: -1,
+            sizeUser,
+            size: -1,
+            minPixel,
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.refresh();</span>
+    }
+&nbsp;
+    /**
+     * Update an existing area into the component
+     * @param component Area to update
+     * @param orderUser Position of the area into the component
+     * @param sizeUser Size of the area
+     * @param minPixel  Min size of the area
+     */
+    public updateArea(component: SplitAreaDirective, orderUser: number | null, sizeUser: number | null, minPixel: number<span class="fstat-no" title="function not covered" >) {</span>
+        const item = <span class="cstat-no" title="statement not covered" >this._areas.find((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.component === component)</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (item) {</span>
+<span class="cstat-no" title="statement not covered" >            item.orderUser = orderUser;</span>
+<span class="cstat-no" title="statement not covered" >            item.sizeUser = sizeUser;</span>
+<span class="cstat-no" title="statement not covered" >            item.minPixel = minPixel;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.refresh();</span>
+        }
+    }
+&nbsp;
+    /**
+     * Delete an existing area into the component
+     * @param area Area to delete
+     */
+    public removeArea(area: SplitAreaDirective<span class="fstat-no" title="function not covered" >) {</span>
+        const item = <span class="cstat-no" title="statement not covered" >this._areas.find((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.component === area)</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (item) {</span>
+            const index = <span class="cstat-no" title="statement not covered" >this._areas.indexOf(item);</span>
+<span class="cstat-no" title="statement not covered" >            this._areas.splice(index, 1);</span>
+<span class="cstat-no" title="statement not covered" >            this._areas.forEach((a, i<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.order = i * 2)</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            this.refresh();</span>
+        }
+    }
+&nbsp;
+    /**
+     * Function called when the user start to drag the cursor
+     * @param startEvent drag event
+     * @param gutterOrder separator number
+     */
+<span class="cstat-no" title="statement not covered" >    public startDragging(startEvent: MouseEvent, gutterOrder: number<span class="fstat-no" title="function not covered" >) {</span></span>
+<span class="cstat-no" title="statement not covered" >        startEvent.preventDefault();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (this.disabled) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        const areaA = <span class="cstat-no" title="statement not covered" >this._areas.find((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.order === gutterOrder - 1)</span></span>;</span>
+        const areaB = <span class="cstat-no" title="statement not covered" >this._areas.find((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.order === gutterOrder + 1)</span></span>;</span>
+<span class="cstat-no" title="statement not covered" >        if (!areaA || !areaB) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        const prop = <span class="cstat-no" title="statement not covered" >(this.direction === 'horizontal') ? 'offsetWidth' : 'offsetHeight';</span>
+<span class="cstat-no" title="statement not covered" >        this.containerSize = this.elementRef.nativeElement[prop];</span>
+<span class="cstat-no" title="statement not covered" >        this.areaASize = this.containerSize * areaA.size / 100;</span>
+<span class="cstat-no" title="statement not covered" >        this.areaBSize = this.containerSize * areaB.size / 100;</span>
+&nbsp;
+        const start: Point = <span class="cstat-no" title="statement not covered" >{</span>
+            x: startEvent.screenX,
+            y: startEvent.screenY,
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.eventsDragFct.push(this.renderer.listenGlobal('document', 'mousemove', (e: MouseEvent<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.dragEvent(e, start, areaA, areaB))</span></span>);</span>
+<span class="cstat-no" title="statement not covered" >        this.eventsDragFct.push(this.renderer.listenGlobal('document', 'touchmove', (e: MouseEvent<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.dragEvent(e, start, areaA, areaB))</span></span>);</span>
+<span class="cstat-no" title="statement not covered" >        this.eventsDragFct.push(this.renderer.listenGlobal('document', 'mouseup', <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.stopDragging())</span></span>);</span>
+<span class="cstat-no" title="statement not covered" >        this.eventsDragFct.push(this.renderer.listenGlobal('document', 'touchend', <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.stopDragging())</span></span>);</span>
+<span class="cstat-no" title="statement not covered" >        this.eventsDragFct.push(this.renderer.listenGlobal('document', 'touchcancel', <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.stopDragging())</span></span>);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        areaA.component.lockEvents();</span>
+<span class="cstat-no" title="statement not covered" >        areaB.component.lockEvents();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.isDragging = true;</span>
+<span class="cstat-no" title="statement not covered" >        this.notify('start');</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public refresh() {</span>
+<span class="cstat-no" title="statement not covered" >        this.stopDragging();</span>
+&nbsp;
+        // ORDERS: Set css 'order' property depending on user input or added order
+        const nbCorrectOrder = <span class="cstat-no" title="statement not covered" >this._areas.filter((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.orderUser !== null &amp;&amp; !isNaN(a.orderUser))</span></span>.length;</span>
+<span class="cstat-no" title="statement not covered" >        if (nbCorrectOrder === this._areas.length) {</span>
+<span class="cstat-no" title="statement not covered" >            this._areas.sort((a, b<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >+a.orderUser - +b.orderUser)</span></span>;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this._areas.forEach((a, i<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >            a.order = i * 2;</span>
+<span class="cstat-no" title="statement not covered" >            a.component.setStyle('order', a.order);</span>
+        });
+&nbsp;
+        // SIZES: Set css 'flex-basis' property depending on user input or equal sizes
+        const totalSize = <span class="cstat-no" title="statement not covered" >this._areas.map((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.sizeUser)</span></span>.reduce((acc, s<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >acc + s,</span></span> 0);</span>
+        const toBeDefined = <span class="cstat-no" title="statement not covered" >this._areas.filter((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!a.sizeUser || isNaN(a.sizeUser))</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if ((totalSize &lt; 99.99 || totalSize &gt; 100.01) &amp;&amp; this._areas.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >            if (toBeDefined.length === 0) {</span>
+                // Map to 100%
+<span class="cstat-no" title="statement not covered" >                this._areas.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+                    const adjustedSize = <span class="cstat-no" title="statement not covered" >Number(a.sizeUser) * 100 / totalSize;</span>
+<span class="cstat-no" title="statement not covered" >                    a.size = adjustedSize;</span>
+                });
+            } else <span class="cstat-no" title="statement not covered" >if (totalSize &lt; 99.99) {</span>
+                // Share the remaining size to the undefined areas
+                let remain = (<span class="cstat-no" title="statement not covered" >100 - totalSize)</span>;
+                let toBeDefinedLength = <span class="cstat-no" title="statement not covered" >toBeDefined.length;</span>
+<span class="cstat-no" title="statement not covered" >                toBeDefined.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+                    const size = <span class="cstat-no" title="statement not covered" >remain / toBeDefinedLength--;</span>
+<span class="cstat-no" title="statement not covered" >                    a.size = size;</span>
+<span class="cstat-no" title="statement not covered" >                    remain -= size;</span>
+                });
+<span class="cstat-no" title="statement not covered" >                this._areas</span>
+                    .filter((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.sizeUser &amp;&amp; !isNaN(a.sizeUser))</span></span>
+                    .forEach((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.size = Number(a.sizeUser))</span></span>;
+            } else {
+                const size = <span class="cstat-no" title="statement not covered" >Number((100 / this._areas.length).toFixed(3));</span>
+<span class="cstat-no" title="statement not covered" >                this._areas.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.size = size)</span></span>;</span>
+            }
+        } else <span class="cstat-no" title="statement not covered" >if (totalSize === 0 &amp;&amp; this._areas.length === 1) {</span>
+<span class="cstat-no" title="statement not covered" >            this._areas[0].size = 100;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            this._areas.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.size = Number(a.sizeUser))</span></span>;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.refreshStyleSizes();</span>
+<span class="cstat-no" title="statement not covered" >        this.cdRef.markForCheck();</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private refreshStyleSizes() {</span>
+        const f = <span class="cstat-no" title="statement not covered" >this.gutterSize * this.nbGutters / this._areas.length;</span>
+<span class="cstat-no" title="statement not covered" >        this._areas.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.component.setStyle('flex-basis', `calc( ${a.size}% - ${f}px )`))</span></span>;</span>
+    }
+&nbsp;
+    private dragEvent(event: MouseEvent, start: Point, areaA: IAreaData, areaB: IAreaData<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.isDragging) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        const end: Point = <span class="cstat-no" title="statement not covered" >{</span>
+            x: event.screenX,
+            y: event.screenY,
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.drag(start, end, areaA, areaB);</span>
+    }
+&nbsp;
+    private drag(start: Point, end: Point, areaA: IAreaData, areaB: IAreaData<span class="fstat-no" title="function not covered" >) {</span>
+        const offsetPixel = <span class="cstat-no" title="statement not covered" >(this.direction === 'horizontal') ? (start.x - end.x) : (start.y - end.y);</span>
+&nbsp;
+        const newSizePixelA = <span class="cstat-no" title="statement not covered" >this.areaASize - offsetPixel;</span>
+        const newSizePixelB = <span class="cstat-no" title="statement not covered" >this.areaBSize + offsetPixel;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (newSizePixelA &lt;= areaA.minPixel &amp;&amp; newSizePixelB &lt; areaB.minPixel) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        let newSizePercentA = <span class="cstat-no" title="statement not covered" >newSizePixelA / this.containerSize * 100;</span>
+        let newSizePercentB = <span class="cstat-no" title="statement not covered" >newSizePixelB / this.containerSize * 100;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (newSizePercentA &lt;= this.minPercent) {</span>
+<span class="cstat-no" title="statement not covered" >            newSizePercentA = this.minPercent;</span>
+<span class="cstat-no" title="statement not covered" >            newSizePercentB = areaA.size + areaB.size - this.minPercent;</span>
+        } else <span class="cstat-no" title="statement not covered" >if (newSizePercentB &lt;= this.minPercent) {</span>
+<span class="cstat-no" title="statement not covered" >            newSizePercentB = this.minPercent;</span>
+<span class="cstat-no" title="statement not covered" >            newSizePercentA = areaA.size + areaB.size - this.minPercent;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            newSizePercentA = Number(newSizePercentA.toFixed(3));</span>
+<span class="cstat-no" title="statement not covered" >            newSizePercentB = Number((areaA.size + areaB.size - newSizePercentA).toFixed(3));</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        areaA.size = newSizePercentA;</span>
+<span class="cstat-no" title="statement not covered" >        areaB.size = newSizePercentB;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.refreshStyleSizes();</span>
+<span class="cstat-no" title="statement not covered" >        this.notify('progress');</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private stopDragging() {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.isDragging) {</span>
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this._areas.forEach((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.component.unlockEvents())</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (this.eventsDragFct.length &gt; 0) {</span>
+            const fct = <span class="cstat-no" title="statement not covered" >this.eventsDragFct.pop();</span>
+<span class="cstat-no" title="statement not covered" >            if (fct) {</span>
+<span class="cstat-no" title="statement not covered" >                fct();</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.containerSize = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.areaASize = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.areaBSize = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.isDragging = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.notify('end');</span>
+    }
+&nbsp;
+    private notify(type: string<span class="fstat-no" title="function not covered" >) {</span>
+        const data: number[] = <span class="cstat-no" title="statement not covered" >this._areas.map((a<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >a.size)</span></span>;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        switch (type) {</span>
+            case 'start':
+<span class="cstat-no" title="statement not covered" >                return this.dragStart.emit(data);</span>
+            case 'progress':
+<span class="cstat-no" title="statement not covered" >                return this.dragProgress.emit(data);</span>
+            case 'end':
+<span class="cstat-no" title="statement not covered" >                return this.dragEnd.emit(data);</span>
+            default:
+<span class="cstat-no" title="statement not covered" >                return null;</span>
+        }
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 11:57:10 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/dragdrop/draggable.directive.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">component/dragdrop/</a> draggable.directive.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.71% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>67/70</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.08% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>19/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.45% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>63/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">952×</span>
+<span class="cline-any cline-yes">952×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">507×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { Directive, ElementRef, HostBinding, Input, OnDestroy, Optional } from '@angular/core';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/takeWhile';
+import { Observable } from 'rxjs/Observable';
+import { DejaClipboardService } from '../../common/core/clipboard/clipboard.service';
+import { UUID } from '../../common/core/UUID';
+&nbsp;
+@Directive({
+    selector: '[deja-draggable]',
+})
+export class DejaDraggableDirective implements OnDestroy {
+    @HostBinding('attr.draggable') public draggable: boolean = null;
+    @HostBinding('attr.dragdropid') private dragdropid: string;
+    private draginfokey = 'draginfos';
+    private objectKey = 'object';
+    private elementKey = 'element';
+    private uuidKey = 'uuid';
+    private _context: IDejaDragContext;
+    private isAlive = true;
+&nbsp;
+    @Input('deja-draggable')
+    public set context(value: IDejaDragContext) {
+        this._context = value;
+        this.draggable = !!value ? true : null;
+    }
+&nbsp;
+    public get context() {
+        return this._context;
+    }
+&nbsp;
+    constructor(elementRef: ElementRef, @Optional() private clipboardService: DejaClipboardService) {
+        const element = elementRef.nativeElement as HTMLElement;
+&nbsp;
+        Observable.fromEvent(element, 'dragstart')
+            .takeWhile(() =&gt; this.isAlive)
+            .filter(() =&gt; !!this.context)
+            .subscribe((event: DragEvent) =&gt; {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (!clipboardService) {
+<span class="cstat-no" title="statement not covered" >                    throw new Error('To use the DejaDraggableDirective, please import and provide the DejaClipboardService in your application.');</span>
+                }
+&nbsp;
+                // console.log('dragstart');
+                const dragInfos = {} as { [key: string]: any };
+                this.dragdropid = new UUID().toString();
+                dragInfos[this.uuidKey] = this.dragdropid;
+&nbsp;
+                const object = (this.context &amp;&amp; this.context.object) || element;
+                dragInfos[this.objectKey] = object;
+                dragInfos[this.elementKey] = element;
+&nbsp;
+                this.clipboardService.set(this.draginfokey, dragInfos);
+&nbsp;
+                let data = 'notavailable';
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (object) {
+                    object.dragged = true;
+                    data = JSON.stringify(data);
+                }
+&nbsp;
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (this.context &amp;&amp; this.context.dragstartcallback) {
+                    const e = event as IDejaDragEvent;
+                    e.dragInfo = dragInfos;
+                    e.dragObject = this.context.object;
+                    e.dragElement = element;
+                    this.context.dragstartcallback(e);
+                    event.dataTransfer.setData('text/plain', data);
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (e.defaultPrevented) {
+<span class="cstat-no" title="statement not covered" >                        event.preventDefault();</span>
+                    }
+                }
+&nbsp;
+                Observable.fromEvent(element, 'dragend')
+                    .takeWhile(() =&gt; this.isAlive)
+                    .first()
+                    .subscribe((evt: DragEvent) =&gt; {
+                        // console.log('dragend');
+                        const dragEndInfos = this.clipboardService.get(this.draginfokey) as { [key: string]: any };
+                        const obj = dragEndInfos &amp;&amp; dragEndInfos[this.objectKey];
+                        <span class="missing-if-branch" title="else path not taken" >E</span>if (obj) {
+                            delete obj.dragged;
+                        }
+&nbsp;
+                        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.context &amp;&amp; this.context.dragendcallback &amp;&amp; dragEndInfos) {
+                            const e = evt as IDejaDragEvent;
+                            e.dragInfo = dragEndInfos;
+                            e.dragObject = obj;
+                            e.dragElement = dragEndInfos[this.elementKey];
+                            this.context.dragendcallback(e);
+&nbsp;
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (e.defaultPrevented) {
+<span class="cstat-no" title="statement not covered" >                                evt.stopPropagation();</span>
+                            }
+                        }
+&nbsp;
+                        this.clipboardService.clear();
+                        this.dragdropid = undefined;
+                    });
+            });
+    }
+&nbsp;
+    public ngOnDestroy() {
+        this.isAlive = false;
+    }
+}
+&nbsp;
+export interface IDejaDragEvent extends DragEvent {
+    dragInfo: { [key: string]: any };
+    dragObject: any;
+    dragElement: HTMLElement;
+}
+&nbsp;
+export interface IDejaDragContext {
+    object?: any;
+    dragstartcallback?(event: IDejaDragEvent): void;
+    dragendcallback?(event: IDejaDragEvent): void;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 11:57:10 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
