@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/tiles/tiles.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">component/tiles/</a> tiles.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.95% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>211/227</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.16% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>56/69</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>63/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.79% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>193/208</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">106×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">85×</span>
+<span class="cline-any cline-yes">85×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">40×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1102×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">57×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">76×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">229×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, Self, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeWhile';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { Rect } from '../../common/core/graphics/rect';
+import { KeyCodes } from '../../common/core/keycodes.enum';
+import { IDropCursorInfos } from '../mouse-dragdrop/mouse-dragdrop.service';
+import { IDejaMouseDroppableContext } from '../mouse-dragdrop/mouse-droppable.directive';
+import { DejaTileGroupComponent } from './tile-group.component';
+import { DejaTile } from './tile.class';
+import { IDejaTile } from './tile.interface';
+import { DejaTilesLayoutProvider, IDejaTilesRefreshParams } from './tiles-layout.provider';
+import { IDejaTilesAddEvent, IDejaTilesEvent, IDejaTilesModelEvent, IDejaTilesRemoveEvent } from './tiles.event';
+&nbsp;
+const noop = () =&gt; { };
+&nbsp;
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [DejaTilesLayoutProvider],
+    selector: 'deja-tiles',
+    styles: [
+        require('./tiles.component.scss'),
+    ],
+    template: require('./tiles.component.html'),
+})
+export class DejaTilesComponent implements AfterViewInit, ControlValueAccessor, OnDestroy {
+    /**
+     * Raised when the selected items has changed
+     */
+    @Output() public selectionChanged = new EventEmitter&lt;IDejaTilesEvent&gt;();
+&nbsp;
+    /**
+     * Raised when the layout has changed with a drag and drop
+     */
+    @Output() public layoutChanged = new EventEmitter&lt;IDejaTilesEvent&gt;();
+&nbsp;
+    /**
+     * Raised when the layout is completed and all tiles are binded
+     */
+    @Output() public layoutCompleted = new EventEmitter&lt;IDejaTilesEvent&gt;();
+&nbsp;
+    /**
+     * Raised before some tiles will be added to the data model with a paste
+     */
+    @Output() public contentAdding = new EventEmitter&lt;IDejaTilesAddEvent&gt;();
+&nbsp;
+    /**
+     * Raised before some tiles will be removed from the data model with a delete
+     */
+    @Output() public contentRemoving = new EventEmitter&lt;IDejaTilesRemoveEvent&gt;();
+&nbsp;
+    /**
+     * Raised when some tiles model has changed
+     */
+    @Output() public modelChanged = new EventEmitter&lt;IDejaTilesModelEvent&gt;();
+&nbsp;
+    /**
+     * Raised when some tiles are copied in the clipboard service. Can result from a copy or paste operation on the tiles.
+     */
+    @Output() public contentCopied = new EventEmitter&lt;IDejaTilesEvent&gt;();
+&nbsp;
+    /**
+     * Tab index of the focusable element
+     */
+    @Input() public tabIndex = 0;
+&nbsp;
+    @ContentChild('tileTemplate')
+    protected tileTemplate: any;
+&nbsp;
+    // NgModel implementation
+    protected onTouchedCallback: () =&gt; void = noop;
+    protected onChangeCallback: (_: any) =&gt; void = noop;
+&nbsp;
+    private _models = [] as IDejaTile[];
+    private delete$sub: Subscription;
+    private copy$sub: Subscription;
+    private cut$sub: Subscription;
+    private paste$sub: Subscription;
+    private keyup$: Observable&lt;KeyboardEvent&gt;;
+    private isAlive = true;
+    private _tiles$ = new BehaviorSubject&lt;DejaTile[]&gt;([]);
+    private hasFocus = false;
+&nbsp;
+    public get tiles$(): BehaviorSubject&lt;DejaTile[]&gt; {
+        return this._tiles$;
+    }
+&nbsp;
+    @ViewChild('tilesContainer') private tilesContainer: ElementRef;
+&nbsp;
+    constructor(el: ElementRef, private changeDetectorRef: ChangeDetectorRef, private layoutProvider: DejaTilesLayoutProvider, @Self() @Optional() public _control: NgControl) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this._control) {
+<span class="cstat-no" title="statement not covered" >            this._control.valueAccessor = this;</span>
+        }
+&nbsp;
+        const element = el.nativeElement as HTMLElement;
+&nbsp;
+        Observable.from(this.layoutProvider.selectionChanged)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((e) =&gt; this.selectionChanged.emit(e));
+&nbsp;
+        Observable.from(this.layoutProvider.contentAdding)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((e) =&gt; this.contentAdding.emit(e));
+&nbsp;
+        Observable.from(this.layoutProvider.contentRemoving)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((e) =&gt; this.contentRemoving.emit(e));
+&nbsp;
+        Observable.from(this.layoutProvider.modelChanged)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((event) =&gt; {
+                this.modelChanged.emit(event);
+                this.onChangeCallback(event.tiles);
+            });
+&nbsp;
+        Observable.from(this.layoutProvider.layoutChanged)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((event) =&gt; {
+                this.layoutChanged.emit(event);
+                this.onChangeCallback(event.tiles);
+            });
+&nbsp;
+        Observable.from(this.layoutProvider.layoutCompleted)
+            .takeWhile(() =&gt; this.isAlive)
+            .subscribe((event) =&gt; this.layoutCompleted.emit(event));
+&nbsp;
+        this.keyup$ = Observable.fromEvent(element.ownerDocument, 'keyup');
+&nbsp;
+        Observable.fromEvent(window, 'resize')
+            .takeWhile(() =&gt; this.isAlive)
+            .debounceTime(5)
+            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.refresh({ resetWidth: true }))</span></span>;
+&nbsp;
+        Observable.from(this._tiles$)
+            .subscribe((tiles) =&gt; this.layoutProvider.tiles = tiles);
+    }
+&nbsp;
+    // provide a public acccess
+    public get selectionRect$(): Subject&lt;Rect&gt; {
+        return this.layoutProvider.selectionRect$;
+    }
+&nbsp;
+    @Input()
+    public set tileminwidth(value: string) {
+        this.layoutProvider.tileminwidth = value;
+    }
+&nbsp;
+    @Input()
+    public set tilemaxwidth(value: string) {
+        this.layoutProvider.tilemaxwidth = value;
+    }
+&nbsp;
+    @Input()
+    public set tileminheight(value: string) {
+        this.layoutProvider.tileminheight = value;
+    }
+&nbsp;
+    @Input()
+    public set tilemaxheight(value: string) {
+        this.layoutProvider.tilemaxheight = value;
+    }
+&nbsp;
+    @Input()
+    public set maxwidth(value: string) {
+        this.layoutProvider.maxwidth = value;
+    }
+&nbsp;
+    @Input()
+    public set designMode(value: boolean | string) {
+        this.layoutProvider.designMode = coerceBooleanProperty(value);
+    }
+&nbsp;
+    public get designMode() {
+        return this.layoutProvider.designMode;
+    }
+&nbsp;
+    @Input()
+    public set models(models: IDejaTile[]) {
+        this.writeValue(models);
+    }
+&nbsp;
+    @Input()
+    public set canDelete(value: boolean) {
+        if (coerceBooleanProperty(value) &amp;&amp; !this.delete$sub) {
+            this.delete$sub = this.keyup$
+                .filter(() =&gt; this.layoutProvider.designMode)
+                .filter((event: KeyboardEvent) =&gt; {
+                    const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
+                    return keyCode === KeyCodes.Delete &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >this.hasFocus;</span>
+                })
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.layoutProvider.deleteSelection())</span></span>;
+&nbsp;
+        } else if (this.delete$sub) {
+            this.delete$sub.unsubscribe();
+            this.delete$sub = undefined;
+        }
+    }
+&nbsp;
+    @Input()
+    public set canCopy(value: boolean) {
+        if (coerceBooleanProperty(value) &amp;&amp; !this.copy$sub) {
+            this.copy$sub = this.keyup$
+                .filter((event: KeyboardEvent) =&gt; {
+                    const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
+                    return keyCode === KeyCodes.KeyC &amp;&amp; event.ctrlKey &amp;&amp; this.hasFocus;
+                })
+                .subscribe(() =&gt; {
+                    this.copySelection();
+                });
+&nbsp;
+        } else if (this.copy$sub) {
+            this.copy$sub.unsubscribe();
+            this.copy$sub = undefined;
+        }
+    }
+&nbsp;
+    @Input()
+    public set canCut(value: boolean) {
+        if (coerceBooleanProperty(value) &amp;&amp; !this.cut$sub) {
+            this.cut$sub = this.keyup$
+                .filter(() =&gt; this.layoutProvider.designMode)
+                .filter((event: KeyboardEvent) =&gt; {
+                    const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
+                    return keyCode === KeyCodes.KeyX &amp;&amp; event.ctrlKey &amp;&amp; this.hasFocus;
+                })
+                .subscribe(() =&gt; {
+                    this.cutSelection();
+                });
+&nbsp;
+        } else if (this.cut$sub) {
+            this.cut$sub.unsubscribe();
+            this.cut$sub = undefined;
+        }
+    }
+&nbsp;
+    @Input()
+    public set canPaste(value: boolean) {
+        if (coerceBooleanProperty(value) &amp;&amp; !this.paste$sub) {
+            this.paste$sub = this.keyup$
+                .filter(() =&gt; this.layoutProvider.designMode)
+                .filter((event: KeyboardEvent) =&gt; {
+                    const keyCode = event.keyCode || (&lt;any&gt;KeyCodes)[event.code];
+                    return keyCode === KeyCodes.KeyV &amp;&amp; event.ctrlKey &amp;&amp; this.hasFocus;
+                })
+                .subscribe(() =&gt; this.paste());
+&nbsp;
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (this.paste$sub) {
+            this.paste$sub.unsubscribe();
+            this.paste$sub = undefined;
+        }
+    }
+&nbsp;
+    @Input()
+    public set selectedTiles(selectedIds: string[]) {
+        this.layoutProvider.selectedTiles = selectedIds;
+    }
+&nbsp;
+    // ************* ControlValueAccessor Implementation **************
+    public writeValue(models: any) {
+        this._models = models || <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+        const tiles = this._models.map((tile) =&gt; new DejaTile(tile));
+        this._tiles$.next(tiles);
+        this.changeDetectorRef.markForCheck();
+    }
+&nbsp;
+    public registerOnChange(fn: any<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.onChangeCallback = fn;</span>
+    }
+&nbsp;
+    public registerOnTouched(fn: any<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
+    }
+    // ************* End of ControlValueAccessor Implementation **************
+&nbsp;
+    public ngAfterViewInit() {
+        this.layoutProvider.container = this.tilesContainer.nativeElement;
+        this.refresh({ resetWidth: true });
+    }
+&nbsp;
+    public ngOnDestroy() {
+        this.layoutProvider.ngOnDestroy();
+        this.canCopy = false;
+        this.canCut = false;
+        this.canDelete = false;
+        this.canPaste = false;
+        this.isAlive = false;
+    }
+&nbsp;
+    public copySelection() {
+        const tiles = this.layoutProvider.copySelection();
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (tiles &amp;&amp; tiles.length) {
+            const event = new CustomEvent('DejaTilesCopied', { cancelable: true }) as IDejaTilesEvent;
+            event.tiles = tiles.map((tile) =&gt; tile.toTileModel());
+            this.contentCopied.emit(event);
+        }
+    }
+&nbsp;
+    public cutSelection() {
+        const tiles = this.layoutProvider.cutSelection();
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (tiles &amp;&amp; tiles.length) {
+            const event = new CustomEvent('DejaTilesCutted', { cancelable: true }) as IDejaTilesEvent;
+            event.tiles = tiles.map((tile) =&gt; tile.toTileModel());
+            this.contentCopied.emit(event);
+        }
+    }
+&nbsp;
+    public deleteSelection() {
+        const tiles = this.layoutProvider.deleteSelection();
+        this.changeDetectorRef.markForCheck();
+        return tiles;
+    }
+&nbsp;
+    public paste() {
+        const tiles = this.layoutProvider.paste();
+        this.changeDetectorRef.markForCheck();
+        return tiles;
+    }
+&nbsp;
+    public ensureVisible(id: string<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.layoutProvider.ensureVisible$.next(id);</span>
+    }
+&nbsp;
+    public expandTile(tile: IDejaTile, pixelheight: number) {
+        this.layoutProvider.expandTile(tile, pixelheight);
+    }
+&nbsp;
+    public cancelExpand() {
+        this.layoutProvider.cancelExpand();
+    }
+&nbsp;
+    public refresh(params?: IDejaTilesRefreshParams) {
+        this.layoutProvider.refreshTiles$.next(params);
+    }
+&nbsp;
+    public addTiles(tiles: IDejaTile[]) {
+        this.layoutProvider.addTiles(tiles.map((tile) =&gt; new DejaTile(tile)));
+    }
+&nbsp;
+    public removeTiles(tileIds: string[]) {
+        this.layoutProvider.removeTiles(tileIds);
+    }
+&nbsp;
+    public addGroup(title?: string, bounds?: Rect) {
+        const tile = {
+            type: 'group',
+            bounds: bounds || <span class="branch-1 cbranch-no" title="branch not covered" >this.getFreePlace(0, 0, 15, 5),</span>
+            color: DejaTileGroupComponent.defaultColor,
+            templateModel: {
+                title: title || <span class="branch-1 cbranch-no" title="branch not covered" >'New Group',</span>
+            },
+        } as IDejaTile;
+&nbsp;
+        this.layoutProvider.createTiles([tile]);
+&nbsp;
+        return tile;
+    }
+&nbsp;
+    public getFreePlace(pageX?: number, pageY?: number, width?: number, height?: number) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this._models || this._models.length === 0) {
+<span class="cstat-no" title="statement not covered" >            return new Rect(0, 0, width, height);</span>
+        }
+&nbsp;
+        // Check if we drag on a tile
+        const containerElement = this.tilesContainer.nativeElement as HTMLElement;
+        const containerBounds = containerElement.getBoundingClientRect();
+&nbsp;
+        const x = pageX ? (<span class="branch-0 cbranch-no" title="branch not covered" >pageX - containerBounds.left)</span> : 0;
+        const y = pageY ? (<span class="branch-0 cbranch-no" title="branch not covered" >pageY - containerBounds.top)</span> : 0;
+&nbsp;
+        const percentBounds = new Rect(this.layoutProvider.getPercentSize(x), this.layoutProvider.getPercentSize(y), width, height);
+        return this.layoutProvider.getFreePlace(percentBounds);
+    }
+&nbsp;
+    public moveTile(id: string, bounds: Rect<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.layoutProvider.moveTile(id, bounds);</span>
+    }
+&nbsp;
+    public getDropContext() {
+        return {
+            dragEnter: (dragContext, dragCursor<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                return this.layoutProvider.dragEnter(dragContext, dragCursor) &amp;&amp; {</span>
+                    className: 'hidden', // Hide drag cusror
+                } as IDropCursorInfos;
+            },
+            dragOver: (_dragContext, dragCursor<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this.layoutProvider.dragover$.next(dragCursor);</span>
+            },
+            dragLeave: (_dragContext<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                this.layoutProvider.dragleave$.next();</span>
+            },
+        } as IDejaMouseDroppableContext;
+    }
+&nbsp;
+    public onTileClosed(tile: DejaTile<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.layoutProvider.removeTiles([tile.id]);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public onTileModelChanged() {</span>
+        const event = <span class="cstat-no" title="statement not covered" >new CustomEvent('DejaTilesModelEvent', { cancelable: false }) as IDejaTilesModelEvent;</span>
+<span class="cstat-no" title="statement not covered" >        event.tiles = this.layoutProvider.tiles.map((t<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >t.toTileModel())</span></span>;</span>
+<span class="cstat-no" title="statement not covered" >        this.modelChanged.emit(event);</span>
+    }
+&nbsp;
+    public onFocus() {
+        this.hasFocus = true;
+    }
+&nbsp;
+    public onBlur() {
+        this.hasFocus = false;
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 17:10:13 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/tiles/tile.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">component/tiles/</a> tile.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.32% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>92/103</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.35% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>28/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.11% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>40/47</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.89% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>88/99</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">1732×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1672×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">470×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">529×</span>
+<span class="cline-any cline-yes">529×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-yes">294×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">503×</span>
+<span class="cline-any cline-yes">503×</span>
+<span class="cline-any cline-yes">503×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-yes">253×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-yes">237×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2741×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">235×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/takeWhile';
+import { Observable } from 'rxjs/Observable';
+import { DejaTile } from './tile.class';
+&nbsp;
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'deja-tile',
+    styles: [
+        require('./tile.component.scss'),
+    ],
+    template: require('./tile.component.html'),
+})
+export class DejaTileComponent implements OnDestroy {
+    @Input() public template: any;
+    @Input() public designMode: boolean;
+    @Output() public modelChanged = new EventEmitter();
+    @Output() public close = new EventEmitter&lt;Event&gt;();
+&nbsp;
+    public element: HTMLElement;
+    public progressDiameter = 100;
+&nbsp;
+    private _tile: DejaTile;
+    private isAlive = true;
+&nbsp;
+    constructor(el: ElementRef, private changeDetectorRef: ChangeDetectorRef) {
+        this.element = el.nativeElement as HTMLElement;
+        this.element.setAttribute('hidden', '0');
+    }
+&nbsp;
+    @Input()
+    public set tile(tile: DejaTile) {
+        this._tile = tile;
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (tile) {
+            const toogleAttribute = (attribute: string, value: string | boolean) =&gt; {
+                if (value) {
+                    this.element.setAttribute(attribute, value.toString());
+                } else {
+                    this.element.removeAttribute(attribute);
+                }
+            };
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (tile.fading) {
+<span class="cstat-no" title="statement not covered" >                this.element.setAttribute('fading', '0');</span>
+<span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
+            }
+&nbsp;
+            Observable.from(tile.pixelBounds$)
+                .filter((bounds) =&gt; !!bounds)
+                .first()
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .filter(() =&gt; tile.fading)
+                .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.setAttribute('fading', '1');</span>
+<span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
+                })
+                .delay(200)
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    this.element.removeAttribute('fading');</span>
+<span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
+                });
+&nbsp;
+            Observable.from(tile.pixelBounds$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .filter((bounds) =&gt; !!bounds)
+                .subscribe((bounds) =&gt; {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (!tile.isHidden) {
+                        this.element.removeAttribute('hidden');
+                    }
+                    this.element.style.left = `${bounds.left}px`;
+                    this.element.style.top = `${bounds.top}px`;
+                    this.element.style.width = `${bounds.width}px`;
+                    this.element.style.height = `${bounds.height}px`;
+                    this.progressDiameter = Math.min(100, Math.round(Math.max(bounds.width * 0.4, bounds.height * 0.4)));
+                    this.changeDetectorRef.markForCheck();
+                });
+&nbsp;
+            Observable.from(tile.pressed$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('pressed', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.selected$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('selected', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.dragging$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('drag', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.dropping$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('drop', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.cutted$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('cutted', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.expanded$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do((value) =&gt; toogleAttribute('expanded', value))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            Observable.from(tile.deleted$)
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .do(() =&gt; this.element.remove())
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            const tooogleHide$ = Observable.from(tile.hidden$)
+                .do((value) =&gt; toogleAttribute('hidden', value ? '1' : <span class="branch-1 cbranch-no" title="branch not covered" >'2')</span>);
+&nbsp;
+            // Hide
+            tooogleHide$
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .debounceTime(1000)
+                .filter((value) =&gt; value)
+                .do(() =&gt; this.element.setAttribute('hidden', '0'))
+                .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
+&nbsp;
+            // Show
+            tooogleHide$
+                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
+                .debounceTime(1)
+                .filter((value) =&gt; !value)
+                .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.element.removeAttribute('hidden'))</span></span>
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.changeDetectorRef.markForCheck())</span></span>;
+&nbsp;
+            // Refresh
+            Observable.from(tile.refresh$)
+                .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive &amp;&amp; !!this._tile)</span></span>
+                .debounceTime(1)
+                .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.changeDetectorRef.markForCheck())</span></span>;
+        }
+    }
+&nbsp;
+    public get tile() {
+        return this._tile;
+    }
+&nbsp;
+    public ngOnDestroy() {
+        this.isAlive = false;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected onTitleChanged() {</span>
+<span class="cstat-no" title="statement not covered" >        this.modelChanged.emit();</span>
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Mar 02 2018 17:10:13 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
