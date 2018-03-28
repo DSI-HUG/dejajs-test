@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.11% </span>
+        <span class="strong">88.51% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>540/606</span>
+        <span class='fraction'>539/609</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.08% </span>
+        <span class="strong">73.42% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>226/301</span>
+        <span class='fraction'>221/301</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.95% </span>
+        <span class="strong">92.41% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>145/156</span>
+        <span class='fraction'>146/158</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.85% </span>
+        <span class="strong">88.21% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>510/574</span>
+        <span class='fraction'>509/577</span>
       </div>
     </div>
   </div>
@@ -1242,7 +1242,16 @@
 1197
 1198
 1199
-1200</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1200
+1201
+1202
+1203
+1204
+1205
+1206
+1207
+1208
+1209</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1324,8 +1333,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26×</span>
@@ -1356,6 +1363,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-yes">26×</span>
@@ -1424,13 +1432,13 @@
 <span class="cline-any cline-yes">26×</span>
 <span class="cline-any cline-yes">17×</span>
 <span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">17×</span>
@@ -1479,6 +1487,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">359×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2522,8 +2540,6 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     @Input() public searchSuffixTemplateExternal: any;
     /** Largeur des éléments par defaut si différent de 100% */
     @Input() public itemsWidth: number = null;
-    /** Définit une valeur indiquant si en reactive form le model renvoyé doit être un obeject oue une valeur */
-    @Input() public modelIsValue: boolean;
     /** Exécuté lorsque le déplacement d'une ligne est terminée. */
     @Output() public itemDragEnd = new EventEmitter&lt;IDejaDragEvent&gt;();
     /** Exécuté lorsque le déplacement d'une ligne commence. */
@@ -2562,6 +2578,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
     private _itemsDraggable = false;
     private hasCustomService = false;
     private hasLoadingEvent = false;
+    private _modelIsValue = false;
     @HostBinding('attr.disabled') private _disabled: boolean = null;
 &nbsp;
     private keyboardNavigation$ = new Subject();
@@ -2622,14 +2639,14 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 &nbsp;
         const selectModels$ = Observable.combineLatest(this.writeValue$, this.contentInitialized$)
             .map(([value]) =&gt; {
-                if (this.modelIsValue === undefined) {
-                    <span class="missing-if-branch" title="if path not taken" >I</span>if (value instanceof Array) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (this.modelIsValue === undefined) {
+<span class="cstat-no" title="statement not covered" >                    if (value instanceof Array) {</span>
                         const av = <span class="cstat-no" title="statement not covered" >value || [];</span>
                         const modelType = <span class="cstat-no" title="statement not covered" >av.length &amp;&amp; typeof av[0];</span>
 <span class="cstat-no" title="statement not covered" >                        this.modelIsValue = modelType &amp;&amp; modelType === 'string' || modelType === 'number';</span>
                     } else {
-                        const modelType = typeof value;
-                        this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';
+                        const modelType = <span class="cstat-no" title="statement not covered" >typeof value;</span>
+<span class="cstat-no" title="statement not covered" >                        this.modelIsValue = value === '' || modelType === 'string' || modelType === 'number';</span>
                     }
                 }
                 <span class="missing-if-branch" title="if path not taken" >I</span>if (this.modelIsValue) {
@@ -2678,6 +2695,16 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 &nbsp;
     public get searchArea() {
         return this._searchArea || this.minSearchlength &gt; 0;
+    }
+&nbsp;
+    /** Définit une valeur indiquant si en reactive form le model renvoyé doit être un obeject oue une valeur */
+    @Input()
+    public set modelIsValue(value: boolean | string<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._modelIsValue = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    public get modelIsValue() {
+        return this._modelIsValue;
     }
 &nbsp;
     /** Retourne ou définit une valeur indiquant si les lignes de la liste peuvent être déplacées manuelement par l'utilisateur */
@@ -3646,7 +3673,7 @@ export class DejaTreeListComponent extends ItemListBase implements AfterViewInit
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 21 2018 11:14:11 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 28 2018 08:13:30 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
