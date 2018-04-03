@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97% </span>
+        <span class="strong">96.23% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>97/100</span>
+        <span class='fraction'>102/106</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">87.1% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>27/31</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.67% </span>
+        <span class="strong">88.46% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>22/24</span>
+        <span class='fraction'>23/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.63% </span>
+        <span class="strong">95.79% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>86/89</span>
+        <span class='fraction'>91/95</span>
       </div>
     </div>
   </div>
@@ -233,7 +233,18 @@
 188
 189
 190
-191</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -241,6 +252,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -267,6 +279,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
 <span class="cline-any cline-yes">23×</span>
 <span class="cline-any cline-yes">23×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,7 +289,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">33×</span>
 <span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">33×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">41×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -301,6 +322,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">33×</span>
 <span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -431,6 +453,7 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ConnectedOverlayDirective, OverlayContainer, OverlayOrigin } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import 'rxjs/add/observable/timer';
@@ -456,18 +479,27 @@ export class DejaOverlayComponent implements OnDestroy {
         return this._isVisible;
     }
     @Input() public set isVisible(value: boolean) {
-        if (this._isVisible !== value) {
-            this._isVisible = value;
+        const isVisible = coerceBooleanProperty(value);
+        if (this._isVisible !== isVisible) {
+            this._isVisible = isVisible;
             this.visibleChange.emit(this.isVisible);
         }
     }
 &nbsp;
     @Input() public overlayBackdropClass = 'cdk-overlay-transparent-backdrop';
 &nbsp;
+    private _hasBackdrop = true;
     private _width: string = null;
     private _widthForMobile = '100%';
-&nbsp;
     private _ownerElement: HTMLElement;
+&nbsp;
+    @Input() public set hasBackdrop(value: boolean<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._hasBackdrop = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+    public get hasBackdrop() {
+        return this._hasBackdrop;
+    }
 &nbsp;
     /** Renvoie ou définit l'élement sur lequel le menu devra s'aligner */
     @Input() public set ownerElement(value: HTMLElement) {
@@ -491,6 +523,7 @@ export class DejaOverlayComponent implements OnDestroy {
 &nbsp;
     private _isMobile = false;
     private isAlive = true;
+&nbsp;
     /** Overlay pane containing the options. */
     @ViewChild(ConnectedOverlayDirective) private overlay: ConnectedOverlayDirective;
 &nbsp;
@@ -539,7 +572,7 @@ export class DejaOverlayComponent implements OnDestroy {
 &nbsp;
     @Input()
     public set isMobile(value: boolean) {
-        this._isMobile = value;
+        this._isMobile = coerceBooleanProperty(value);
         this.updateOriginOverlay();
     }
 &nbsp;
@@ -619,7 +652,7 @@ export class DejaOverlayComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 28 2018 08:13:30 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 03 2018 14:57:42 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
