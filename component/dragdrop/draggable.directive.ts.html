@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.71% </span>
+        <span class="strong">77.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>67/70</span>
+        <span class='fraction'>54/70</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.08% </span>
+        <span class="strong">42.31% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>19/26</span>
+        <span class='fraction'>11/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>10/10</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.45% </span>
+        <span class="strong">75.76% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>63/66</span>
+        <span class='fraction'>50/66</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -201,12 +201,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">952×</span>
-<span class="cline-any cline-yes">952×</span>
+<span class="cline-any cline-yes">901×</span>
+<span class="cline-any cline-yes">901×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">42×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">507×</span>
@@ -254,26 +254,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -378,28 +378,28 @@ export class DejaDraggableDirective implements OnDestroy {
                 Observable.fromEvent(element, 'dragend')
                     .takeWhile(() =&gt; this.isAlive)
                     .first()
-                    .subscribe((evt: DragEvent) =&gt; {
+                    .subscribe((evt: DragEvent<span class="fstat-no" title="function not covered" >) =&gt; {</span>
                         // console.log('dragend');
-                        const dragEndInfos = this.clipboardService.get(this.draginfokey) as { [key: string]: any };
-                        const obj = dragEndInfos &amp;&amp; dragEndInfos[this.objectKey];
-                        <span class="missing-if-branch" title="else path not taken" >E</span>if (obj) {
-                            delete obj.dragged;
+                        const dragEndInfos = <span class="cstat-no" title="statement not covered" >this.clipboardService.get(this.draginfokey) as { [key: string]: any };</span>
+                        const obj = <span class="cstat-no" title="statement not covered" >dragEndInfos &amp;&amp; dragEndInfos[this.objectKey];</span>
+<span class="cstat-no" title="statement not covered" >                        if (obj) {</span>
+<span class="cstat-no" title="statement not covered" >                            delete obj.dragged;</span>
                         }
 &nbsp;
-                        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.context &amp;&amp; this.context.dragendcallback &amp;&amp; dragEndInfos) {
-                            const e = evt as IDejaDragEvent;
-                            e.dragInfo = dragEndInfos;
-                            e.dragObject = obj;
-                            e.dragElement = dragEndInfos[this.elementKey];
-                            this.context.dragendcallback(e);
+<span class="cstat-no" title="statement not covered" >                        if (this.context &amp;&amp; this.context.dragendcallback &amp;&amp; dragEndInfos) {</span>
+                            const e = <span class="cstat-no" title="statement not covered" >evt as IDejaDragEvent;</span>
+<span class="cstat-no" title="statement not covered" >                            e.dragInfo = dragEndInfos;</span>
+<span class="cstat-no" title="statement not covered" >                            e.dragObject = obj;</span>
+<span class="cstat-no" title="statement not covered" >                            e.dragElement = dragEndInfos[this.elementKey];</span>
+<span class="cstat-no" title="statement not covered" >                            this.context.dragendcallback(e);</span>
 &nbsp;
-                            <span class="missing-if-branch" title="if path not taken" >I</span>if (e.defaultPrevented) {
+<span class="cstat-no" title="statement not covered" >                            if (e.defaultPrevented) {</span>
 <span class="cstat-no" title="statement not covered" >                                evt.stopPropagation();</span>
                             }
                         }
 &nbsp;
-                        this.clipboardService.clear();
-                        this.dragdropid = undefined;
+<span class="cstat-no" title="statement not covered" >                        this.clipboardService.clear();</span>
+<span class="cstat-no" title="statement not covered" >                        this.dragdropid = undefined;</span>
                     });
             });
     }
@@ -427,7 +427,7 @@ export interface IDejaDragContext {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Apr 26 2018 08:56:42 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 07 2018 14:21:29 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
