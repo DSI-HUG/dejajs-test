@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">65.38% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/26</span>
+        <span class='fraction'>26/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68.18% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/22</span>
+        <span class='fraction'>22/22</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -114,29 +114,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -163,29 +163,29 @@ import { DejaTooltipService } from './tooltip.service';
     selector: '[deja-tooltip]',
 })
 export class DejaTooltipDirective {
-    @Input('tooltip-delay') public <span class="cstat-no" title="statement not covered" >delay = 600;</span>
+    @Input('tooltip-delay') public delay = 600;
     @Input('tooltip-model') public model: any;
     @Input('deja-tooltip') public name: string;
     @Input('tooltip-positions') public positions: DejaConnectionPositionPair | string;
 &nbsp;
     // tslint:disable-next-line:no-output-rename
-    @Output('tooltip-show') public <span class="cstat-no" title="statement not covered" >show = new EventEmitter();</span>
+    @Output('tooltip-show') public show = new EventEmitter();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    constructor(elementRef: ElementRef, tooltipService: DejaTooltipService<span class="fstat-no" title="function not covered" >) {</span></span>
-        const element = <span class="cstat-no" title="statement not covered" >elementRef.nativeElement as HTMLElement;</span>
+    constructor(elementRef: ElementRef, tooltipService: DejaTooltipService) {
+        const element = elementRef.nativeElement as HTMLElement;
 &nbsp;
-        const leave$ = <span class="cstat-no" title="statement not covered" >Observable.fromEvent(element, 'mouseleave');</span>
+        const leave$ = Observable.fromEvent(element, 'mouseleave');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        Observable.fromEvent(element, 'mouseenter')</span>
-            .switchMap((e<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >Observable.of(e).delay(this.delay).takeUntil(leave$))</span></span>
-            .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                tooltipService.params[this.name] = {</span>
+        Observable.fromEvent(element, 'mouseenter')
+            .switchMap((e) =&gt; Observable.of(e).delay(this.delay).takeUntil(leave$))
+            .subscribe(() =&gt; {
+                tooltipService.params[this.name] = {
                     model: this.model,
                     ownerElement: elementRef,
                     positions: this.positions,
                 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                this.show.emit();</span>
+                this.show.emit();
             });
     }
 }
@@ -196,7 +196,7 @@ export class DejaTooltipDirective {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 18 2018 09:26:52 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 23 2018 14:21:20 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
