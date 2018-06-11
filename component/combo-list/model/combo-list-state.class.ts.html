@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/combo-list/model/combo-list-state.class.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">component/combo-list/model/</a> combo-list-state.class.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.98% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>97/98</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.43% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>20/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>22/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.77% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>80/81</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+import { EventEmitter } from '@angular/core';
+import { IDejaComboListAction, noop } from '../model/combo-list-action.interface';
+&nbsp;
+export class DejaComboListState&lt;T&gt; {
+&nbsp;
+    public selectable: T[] = [];
+    public selectableBuffer: T[] = [];
+    public selected: T[] = [];
+    public selectedBuffer: T[] = [];
+&nbsp;
+    public labelFieldName = 'label';
+    public sortDirection: 'asc' | 'desc' | null;
+&nbsp;
+    public action = new EventEmitter&lt;IDejaComboListAction&lt;T&gt;&gt;();
+&nbsp;
+    public onChangeCallback: (_: any) =&gt; void = noop;
+&nbsp;
+    public toggleSelectable(item: T, <span class="missing-if-branch" title="else path not taken" >E</span>add = true) {
+        const index = this.selectableBuffer.indexOf(item, 0);
+        if (index &gt; -1) {
+            this.selectableBuffer = this.selectableBuffer.filter((_, idx) =&gt; idx !== index);
+            this.emit('selectable_deselected', item);
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (add) {
+            this.selectableBuffer = this.selectableBuffer.concat([item]);
+            this.emit('selectable_selected', item);
+        }
+    }
+&nbsp;
+    public toggleSelected(item: T, <span class="missing-if-branch" title="else path not taken" >E</span>add = true) {
+        const index = this.selectedBuffer.indexOf(item, 0);
+        if (index &gt; -1) {
+            this.selectedBuffer = this.selectedBuffer.filter((_, idx) =&gt; idx !== index);
+            this.emit('selected_deselected', item);
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (add) {
+            this.selectedBuffer = this.selectedBuffer.concat([item]);
+            this.emit('selected_selected', item);
+        }
+    }
+&nbsp;
+    public raiseBuffer() {
+        this.selectable = this.selectable.filter((i: T) =&gt; this.selectableBuffer.indexOf(i, 0) === -1);
+        this.selected = this.selectableBuffer.concat(this.selected);
+        this.selectableBuffer = [];
+        this.sortAll();
+        this.emit('selectable_raised');
+    }
+&nbsp;
+    public dropBuffer() {
+        this.selected = this.selected.filter((i: T) =&gt; this.selectedBuffer.indexOf(i, 0) === -1);
+        this.selectable = this.selectedBuffer.concat(this.selectable);
+        this.selectedBuffer = [];
+        this.sortAll();
+        this.emit('selected_dropped');
+    }
+&nbsp;
+    public raiseOne(item: T) {
+        this.selectable = this.selectable.filter((i: T) =&gt; i !== item);
+        this.selectableBuffer = this.selectableBuffer.filter((i: T) =&gt; i !== item);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.selected.indexOf(item, 0) === -1) {
+            this.selected = [item].concat(this.selected);
+        }
+        this.sortAll();
+        this.emit('raised_one', item);
+    }
+&nbsp;
+    public dropOne(item: T) {
+        this.selected = this.selected.filter((i: T) =&gt; i !== item);
+        this.selectedBuffer = this.selectedBuffer.filter((i: T) =&gt; i !== item);
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.selectable.indexOf(item, 0) === -1) {
+            this.selectable = [item].concat(this.selectable);
+        }
+        this.sortAll();
+        this.emit('dropped_one', item);
+    }
+&nbsp;
+    public raiseAll() {
+        this.selected = this.selectable.concat(this.selected);
+        this.selectable = [];
+        this.selectableBuffer = [];
+        this.sortAll();
+        this.emit('raised_all');
+    }
+&nbsp;
+    public dropAll() {
+        this.selectable = this.selected.concat(this.selectable);
+        this.selected = [];
+        this.selectedBuffer = [];
+        this.sortAll();
+        this.emit('dropped_all');
+    }
+&nbsp;
+    public sortAll() {
+        this.sort(this.selectable);
+        this.sort(this.selected);
+        this.onChangeCallback(this.selected);
+    }
+&nbsp;
+    private sort(aItem: T[]): T[] {
+        if (!this.sortDirection) {
+            return aItem;
+        }
+        const fieldname = this.labelFieldName;
+        const coeff = this.sortDirection === 'asc' ? 1 : -1;
+        return aItem.sort((a, b) =&gt; {
+            if (a[fieldname] &lt; b[fieldname]) { return -1 * coeff; }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (a[fieldname] &gt; b[fieldname]) { return 1 * coeff; }
+<span class="cstat-no" title="statement not covered" >            return 0;</span>
+        });
+    }
+&nbsp;
+    private emit(type: string, currentItem: T = null, <span class="missing-if-branch" title="else path not taken" >E</span>selectedItems = this.selected) {
+        const action: IDejaComboListAction&lt;T&gt; = {
+            type,
+            payload: {
+                currentItem,
+                selectedItems,
+            }
+        };
+        this.action.emit(action);
+    }
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 14:00:27 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

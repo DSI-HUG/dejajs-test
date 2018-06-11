@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/combo-list/model/combo-list.base.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">component/combo-list/model/</a> combo-list.base.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">78.43% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>40/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">62.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">77.08% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>37/48</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { EventEmitter, Input, Output } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { IDejaComboListAction, noop } from '../model/combo-list-action.interface';
+import { DejaComboListState } from './combo-list-state.class';
+&nbsp;
+export abstract class DejaComboListBase&lt;T&gt; implements ControlValueAccessor {
+&nbsp;
+    @Input() public set itemsSelected(aItem: T[]) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!!aItem &amp;&amp; Array.isArray(aItem)) {
+            this.state.selected = aItem;
+        }
+    }
+    public get itemsSelected(): T[] {
+        return this.state.selected;
+    }
+&nbsp;
+    @Input() public set itemsToSelect(aItem: T[]) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!!aItem &amp;&amp; Array.isArray(aItem)) {
+            this.state.selectable = aItem;
+        }
+    }
+&nbsp;
+    @Input() public disableFastActions = false;
+&nbsp;
+    @Input() public set labelFieldName(fieldName: string) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (fieldName) {
+            this.state.labelFieldName = fieldName;
+            this.state.sortAll();
+        }
+    }
+<span class="fstat-no" title="function not covered" >    public get labelFieldName(): string {</span>
+<span class="cstat-no" title="statement not covered" >        return this.state.labelFieldName;</span>
+    }
+&nbsp;
+    @Input() public set sortDirection(direction: null | 'asc' | 'desc') {
+        this.state.sortDirection = direction || <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
+        this.state.sortAll();
+    }
+&nbsp;
+    private _disabled = false;
+&nbsp;
+    @Input()
+    public set disabled(value: boolean<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._disabled = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get disabled() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._disabled;</span>
+    }
+&nbsp;
+    @Output() public action = new EventEmitter&lt;IDejaComboListAction&lt;T&gt;&gt;();
+&nbsp;
+    public onTouchedCallback: () =&gt; void = noop;
+&nbsp;
+    private _state: DejaComboListState&lt;T&gt;;
+    public get state() {
+        if (!this._state) {
+            this._state = new DejaComboListState();
+        }
+        return this._state;
+    }
+&nbsp;
+    constructor() {
+        this.itemsSelected = [];
+        this.state.selectable = [];
+        this.state.action = this.action;
+    }
+&nbsp;
+    // ************* ControlValueAccessor Implementation **************
+&nbsp;
+    /** get accessor */
+<span class="fstat-no" title="function not covered" >    public get value(): T[] {</span>
+<span class="cstat-no" title="statement not covered" >        return this.itemsSelected;</span>
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+    public writeValue(value: T[]<span class="fstat-no" title="function not covered" >): void {</span>
+<span class="cstat-no" title="statement not covered" >        if (value !== this.itemsSelected) {</span>
+<span class="cstat-no" title="statement not covered" >            this.itemsSelected = value;</span>
+<span class="cstat-no" title="statement not covered" >            this.state.onChangeCallback(this.value);</span>
+<span class="cstat-no" title="statement not covered" >            this.state.sortAll();</span>
+        }
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+    public registerOnChange(fn: any<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.state.onChangeCallback = fn;</span>
+    }
+&nbsp;
+    /** From ControlValueAccessor interface */
+    public registerOnTouched(fn: any<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.onTouchedCallback = fn;</span>
+    }
+&nbsp;
+    // Allows Angular to disable the input.
+    public setDisabledState(isDisabled: boolean<span class="fstat-no" title="function not covered" >): void {</span>
+<span class="cstat-no" title="statement not covered" >        this.disabled = isDisabled;</span>
+    }
+&nbsp;
+    // ************* End of ControlValueAccessor Implementation **************
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 11 2018 14:00:27 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
