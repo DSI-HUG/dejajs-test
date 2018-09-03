@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.18% </span>
+        <span class="strong">62.54% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>181/282</span>
+        <span class='fraction'>182/291</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.09% </span>
+        <span class="strong">35.56% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>48/133</span>
+        <span class='fraction'>48/135</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.9% </span>
+        <span class="strong">54.84% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>33/58</span>
+        <span class='fraction'>34/62</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.46% </span>
+        <span class="strong">62.08% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>165/260</span>
+        <span class='fraction'>167/269</span>
       </div>
     </div>
   </div>
@@ -574,7 +574,25 @@
 529
 530
 531
-532</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -655,7 +673,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -677,6 +700,7 @@
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -765,7 +789,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1103,6 +1126,19 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
@@ -1186,7 +1222,12 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
     /** Offset de position verticale de la zone de dropdown */
     @Input() public overlayOffsetY = 6;
     /** Afficher un bouton raccourcis permettant de sélectionner la date courante */
-    @Input() public showCurrentDateButton = false;
+    @Input() public set showCurrentDateButton(value: boolean | string<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this.showCurrentDateButton = coerceBooleanProperty(value);</span>
+    }
+    public get showCurrentDateButton() {
+        return this._showCurrentDateButton;
+    }
     /** Permettre la saisie de texte libre */
     @Input() public allowFreeEntry = false;
 &nbsp;
@@ -1209,6 +1250,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 &nbsp;
     @ViewChild(DejaChildValidatorDirective) private inputValidatorDirective: DejaChildValidatorDirective;
 &nbsp;
+    private _showCurrentDateButton: boolean;
     private isAlive = true;
     private _disabled: boolean;
     private _required: boolean;
@@ -1298,8 +1340,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
                     case (KeyCodes.KeyD):
 <span class="cstat-no" title="statement not covered" >                        if (!this.allowFreeEntry) {</span>
 <span class="cstat-no" title="statement not covered" >                            event.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >                            this.value = new Date();</span>
-<span class="cstat-no" title="statement not covered" >                            this.inputElement.value = moment(this.value).format(this.format);</span>
+<span class="cstat-no" title="statement not covered" >                            this.setToCurrentDate();</span>
                         }
 <span class="cstat-no" title="statement not covered" >                        break;</span>
 &nbsp;
@@ -1633,6 +1674,19 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 &nbsp;
 <span class="fstat-no" title="function not covered" >    public setToCurrentDate(): void {</span>
 <span class="cstat-no" title="statement not covered" >        this.value = new Date();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.selectHours();</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    private selectHours() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (this.layout === DateComponentLayout.datetime) {</span>
+<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+                const hoursTemplate = <span class="cstat-no" title="statement not covered" >moment(this.date).format('HH:mm');</span>
+                const stringDate = <span class="cstat-no" title="statement not covered" >this.inputElement.value;</span>
+                const hoursPosition = <span class="cstat-no" title="statement not covered" >stringDate.indexOf(hoursTemplate);</span>
+<span class="cstat-no" title="statement not covered" >                this.inputElement.setSelectionRange(hoursPosition, stringDate.length);</span>
+            });
+        }
     }
 }
 &nbsp;
@@ -1642,7 +1696,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 31 2018 07:17:34 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 14:24:49 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
