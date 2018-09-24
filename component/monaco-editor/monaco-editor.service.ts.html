@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">29.17% </span>
+        <span class="strong">96% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/24</span>
+        <span class='fraction'>24/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.81% </span>
+        <span class="strong">95.45% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/21</span>
+        <span class='fraction'>21/22</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -108,7 +108,8 @@
 63
 64
 65
-66</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+66
+67</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,32 +141,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,40 +199,41 @@ export class MonacoEditorService {
     /**
      * Constructor
      */
-<span class="fstat-no" title="function not covered" >    constructor() { }</span>
+    constructor() { }
 &nbsp;
     /**
      * Load the Monaco Editor Library
      *
      * @return Resolved promise when the library is loaded
      */
-<span class="fstat-no" title="function not covered" >    public initMonacoLib(): Promise&lt;any&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (!this._loading) {</span>
-<span class="cstat-no" title="statement not covered" >            this.init();</span>
+    public initMonacoLib(): Promise&lt;any&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!this._loading) {
+            this.init();
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return this._loader;</span>
+        return this._loader;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    private init() {</span></span>
-<span class="cstat-no" title="statement not covered" >        this._loader = new Promise((resolve<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >            this._loading = true;</span>
+    private init() {
+        this._loader = new Promise((resolve) =&gt; {
+            this._loading = true;
+            const basePath = (&lt;any&gt;window).MONACOEDITOR_BASEPATH || <span class="branch-1 cbranch-no" title="branch not covered" >'/assets/monaco/vs';</span>
 &nbsp;
-            const onGotAmdLoader = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+            const onGotAmdLoader = () =&gt; {
                 // Load monaco
-                (&lt;any&gt;<span class="cstat-no" title="statement not covered" >window).require.config({ paths: { 'vs': 'assets/monaco/vs' } });</span>
-                (&lt;any&gt;<span class="cstat-no" title="statement not covered" >window).require(['vs/editor/editor.main'], <span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >                    resolve();</span>
+                (&lt;any&gt;window).require.config({ paths: { 'vs': basePath } });
+                (&lt;any&gt;window).require(['vs/editor/editor.main'], () =&gt; {
+                    resolve();
                 });
             };
 &nbsp;
             // Load AMD loader if necessary
-<span class="cstat-no" title="statement not covered" >            if (!(&lt;any&gt;window).require &amp;&amp; !(&lt;any&gt;window).monaco) {</span>
-                const loaderScript = <span class="cstat-no" title="statement not covered" >document.createElement('script');</span>
-<span class="cstat-no" title="statement not covered" >                loaderScript.type = 'text/javascript';</span>
-<span class="cstat-no" title="statement not covered" >                loaderScript.src = 'assets/monaco/vs/loader.js';</span>
-<span class="cstat-no" title="statement not covered" >                loaderScript.addEventListener('load', onGotAmdLoader);</span>
-<span class="cstat-no" title="statement not covered" >                document.body.appendChild(loaderScript);</span>
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!(&lt;any&gt;window).require &amp;&amp; !(&lt;any&gt;window).monaco) {
+                const loaderScript = document.createElement('script');
+                loaderScript.type = 'text/javascript';
+                loaderScript.src = `${basePath}/loader.js`;
+                loaderScript.addEventListener('load', onGotAmdLoader);
+                document.body.appendChild(loaderScript);
             } else {
 <span class="cstat-no" title="statement not covered" >                onGotAmdLoader();</span>
             }
@@ -244,7 +247,7 @@ export class MonacoEditorService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 04 2018 13:55:39 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
