@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.23% </span>
+        <span class="strong">88.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>58/65</span>
+        <span class='fraction'>52/59</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">52% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>13/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">87.72% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>56/63</span>
+        <span class='fraction'>50/57</span>
       </div>
     </div>
   </div>
@@ -179,13 +179,7 @@
 134
 135
 136
-137
-138
-139
-140
-141
-142
-143</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+137</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,13 +187,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -216,7 +203,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">8×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -295,6 +282,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,15 +324,8 @@
  */
 &nbsp;
 import { Directive, ElementRef, Input, OnDestroy } from '@angular/core';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/takeWhile';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { fromEvent as observableFromEvent, merge as observableMerge, Observable, Subject } from 'rxjs';
+import { filter, first, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { Position } from '../../common/core/graphics/position';
 import { Rect } from '../../common/core/graphics/rect';
 import { DejaMouseDragDropService, IDragCursorInfos, IDragDropContext } from './mouse-dragdrop.service';
@@ -368,16 +349,16 @@ export class DejaMouseDraggableDirective implements OnDestroy {
     constructor(elementRef: ElementRef, dragDropService: DejaMouseDragDropService) {
         const element = elementRef.nativeElement as HTMLElement;
 &nbsp;
-        const leave$ = Observable.fromEvent(element, 'mouseleave');
+        const leave$ = observableFromEvent(element, 'mouseleave');
 &nbsp;
-        const mouseUp$ = Observable.fromEvent(element.ownerDocument, 'mouseup');
+        const mouseUp$ = observableFromEvent(element.ownerDocument, 'mouseup');
 &nbsp;
-        Observable.fromEvent(element, 'mouseenter')
-            .takeWhile(() =&gt; this.isAlive)
+        observableFromEvent(element, 'mouseenter').pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe(() =&gt; {
-                Observable.fromEvent(element, 'mousedown')
-                    .takeUntil(leave$)
-                    .filter((event: MouseEvent) =&gt; event.buttons === 1)
+                observableFromEvent(element, 'mousedown').pipe(
+                    takeUntil(leave$),
+                    filter((event: MouseEvent) =&gt; event.buttons === 1))
                     .subscribe((event: MouseEvent) =&gt; {
                         const moveUp$ = new Subject();
                         let target: HTMLElement;
@@ -387,15 +368,15 @@ export class DejaMouseDraggableDirective implements OnDestroy {
                         };
 &nbsp;
                         const startDrag = () =&gt; {
-                            const kill$ = Observable.merge(mouseUp$, moveUp$)
-                                .first()
-                                .do(() =&gt; {
+                            const kill$ = observableMerge(mouseUp$, moveUp$).pipe(
+                                first(),
+                                tap(() =&gt; {
                                     dragDropService.dragCursor$.next(undefined);
                                     dragDropService.dragging$.next(false);
-                                });
+                                }));
 &nbsp;
-                            Observable.fromEvent(element.ownerDocument, 'mousemove')
-                                .takeUntil(kill$)
+                            observableFromEvent(element.ownerDocument, 'mousemove').pipe(
+                                takeUntil(kill$))
                                 .subscribe((ev: MouseEvent) =&gt; {
                                     <span class="missing-if-branch" title="else path not taken" >E</span>if (target &amp;&amp; ev.buttons === 1) {
                                         const bounds = new Rect(element.getBoundingClientRect());
@@ -437,15 +418,16 @@ export class DejaMouseDraggableDirective implements OnDestroy {
                                 const dragContext = this.context.dragStart(target);
                                 <span class="missing-if-branch" title="else path not taken" >E</span>if (dragContext) {
                                     <span class="missing-if-branch" title="else path not taken" >E</span>if (dragContext.subscribe) {
+                                        const context = dragContext as Observable&lt;any&gt;;
                                         // Observable
-                                        dragContext
-                                            .first()
-                                            .subscribe((ddctx: IDragDropContext) =&gt; {
-                                                dragDropService.context = ddctx;
-                                                <span class="missing-if-branch" title="else path not taken" >E</span>if (ddctx) {
-                                                    startDrag();
-                                                }
-                                            });
+                                        context.pipe(
+                                            first()
+                                        ).subscribe((ddctx: IDragDropContext) =&gt; {
+                                            dragDropService.context = ddctx;
+                                            <span class="missing-if-branch" title="else path not taken" >E</span>if (ddctx) {
+                                                startDrag();
+                                            }
+                                        });
                                         return;
                                     } else {
 <span class="cstat-no" title="statement not covered" >                                        dragDropService.context = dragContext;</span>
@@ -475,7 +457,7 @@ export interface IDejaMouseDraggableContext {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

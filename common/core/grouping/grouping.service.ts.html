@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.44% </span>
+        <span class="strong">93.85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>68/72</span>
+        <span class='fraction'>61/65</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">87.5% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>19/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.24% </span>
+        <span class="strong">94.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/63</span>
+        <span class='fraction'>53/56</span>
       </div>
     </div>
   </div>
@@ -166,17 +166,7 @@
 121
 122
 123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+124</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,12 +174,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,11 +220,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">63×</span>
-<span class="cline-any cline-yes">63×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -317,14 +297,8 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/reduce';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs/Observable';
+import { from as observableFrom ,  Observable ,  of as observableOf } from 'rxjs';
+import { map ,  reduce ,  switchMap ,  tap } from 'rxjs/operators';
 import { IItemTree } from '../item-list/item-tree';
 import { SortingService } from '../sorting/sorting.service';
 import { IGroupInfo } from './group-infos';
@@ -340,13 +314,13 @@ export class GroupingService {
      */
     public group$(tree: any[], groupInfos: IGroupInfo[] | IGroupInfo, childrenField = 'items'): Observable&lt;any[]&gt; {
         if (!tree || tree.length === 0 || !groupInfos) {
-            return Observable.of(tree);
+            return observableOf(tree);
         }
 &nbsp;
         if (groupInfos instanceof Array) {
             // Create a observable stream with a sequence for each groupinfos.
-            let result$ = Observable.of(tree);
-            groupInfos.forEach((groupInfo) =&gt; result$ = result$.switchMap((t) =&gt; this.group$(t, groupInfo, childrenField)));
+            let result$ = observableOf(tree);
+            groupInfos.forEach((groupInfo) =&gt; result$ = result$.pipe(switchMap((t) =&gt; this.group$(t, groupInfo, childrenField))));
             return result$;
         } else {
             // Group the tree with the current groupInfo
@@ -357,23 +331,19 @@ export class GroupingService {
             }
 &nbsp;
             const groupTree$: any = (t: any[], curDepth: number) =&gt; {
-                return Observable.from(t)
-                    .switchMap((treeItem) =&gt; {
+                return observableFrom(t).pipe(
+                    switchMap((treeItem) =&gt; {
                         const children = treeItem[childrenField];
                         <span class="missing-if-branch" title="if path not taken" >I</span>if (children[0] &amp;&amp; children[0][childrenField]) {
 <span class="cstat-no" title="statement not covered" >                            return groupTree$(children, curDepth + 1).map(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >treeItem)</span></span>;</span>
                         } else {
-                            return this.groupChildren$(children, groupInfo, curDepth, childrenField).map((groupedChildren) =&gt; {
+                            return this.groupChildren$(children, groupInfo, curDepth, childrenField).pipe(map((groupedChildren) =&gt; {
                                 treeItem[childrenField] = groupedChildren;
                                 return treeItem;
-                            });
+                            }));
                         }
-                    })
-                    .reduce((acc: any[], cur) =&gt; {
-                        // Return the array
-                        acc.push(cur);
-                        return acc;
-                    }, []);
+                    }),
+                    reduce((acc: any[], cur: any) =&gt; [...acc, cur], []));
             };
 &nbsp;
             // If the tree has chidren, group only the last level items
@@ -389,9 +359,9 @@ export class GroupingService {
     }
 &nbsp;
     protected groupChildren$(list: any[], groupInfo: IGroupInfo, _depth: number, childrenField: string): Observable&lt;any[]&gt; {
-        return Observable.of(list)
-            .switchMap((l) =&gt; l)
-            .reduce((groups: { [groupby: string]: IItemTree }, item) =&gt; {
+        return observableOf(list).pipe(
+            switchMap((l) =&gt; l),
+            reduce((groups: { [groupby: string]: IItemTree }, item) =&gt; {
                 let groupedBy = typeof groupInfo.groupByField === 'function' ? groupInfo.groupByField(item) : item[groupInfo.groupByField];
 &nbsp;
                 if (typeof item[groupedBy] === 'function') {
@@ -416,17 +386,17 @@ export class GroupingService {
 &nbsp;
                 (&lt;any&gt;parent)[childrenField].push(item);
                 return groups;
-            }, {})
-            .map((grps: { [groupby: string]: any }) =&gt; Object.keys(grps).map((key) =&gt; grps[key]))
-            .do((groupedChildren) =&gt; groupedChildren.forEach((parent) =&gt; parent.sortField = (groupInfo.sortInfos &amp;&amp; groupInfo.sortInfos.name) || 'toString'))
-            .switchMap((groupedChildren) =&gt; {
+            }, {}),
+            map((grps: { [groupby: string]: any }) =&gt; Object.keys(grps).map((key) =&gt; grps[key])),
+            tap((groupedChildren) =&gt; groupedChildren.forEach((parent) =&gt; parent.sortField = (groupInfo.sortInfos &amp;&amp; groupInfo.sortInfos.name) || 'toString')),
+            switchMap((groupedChildren) =&gt; {
                 if (groupInfo.sortInfos) {
                     const sortingService = new SortingService();
                     return sortingService.sort$(groupedChildren, groupInfo.sortInfos);
                 } else {
-                    return Observable.of(groupedChildren);
+                    return observableOf(groupedChildren);
                 }
-            });
+            }));
     }
 &nbsp;
     private getTextValue(value: any) {
@@ -448,7 +418,7 @@ export class GroupingService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

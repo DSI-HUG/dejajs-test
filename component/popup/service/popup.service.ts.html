@@ -210,12 +210,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -368,13 +368,13 @@
  *  Use of this source code is governed by an Apache-2.0 license that can be
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
+&nbsp;
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { TemplateRef } from '@angular/core/src/linker/template_ref';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import 'rxjs/add/operator/map';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DejaPopupActionsComponent } from '../component/popup-actions/popup-actions.component';
 import { DejaPopupAdvancedComponent } from '../component/popup-advanced/popup-advanced.component';
 import { DejaPopupComponent } from '../component/popup/popup.component';
@@ -419,10 +419,10 @@ export class DejaPopupService extends MatDialog {
 &nbsp;
         const dialogRef: MatDialogRef&lt;DejaPopupBase&gt; = <span class="cstat-no" title="statement not covered" >this.open(DejaPopupComponent, config);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed()</span>
-            .map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed().pipe(</span>
+            map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                return new DejaPopupReponse(resp, dialogRef.componentInstance);</span>
-            });
+            }));
     }
 &nbsp;
     public openCustom(
@@ -432,10 +432,10 @@ export class DejaPopupService extends MatDialog {
 &nbsp;
         const dialogRef: MatDialogRef&lt;DejaPopupBase&gt; = <span class="cstat-no" title="statement not covered" >this.open(customComponent, config);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed()</span>
-            .map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed().pipe(</span>
+            map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                return new DejaPopupReponse(resp, dialogRef.componentInstance);</span>
-            });
+            }));
     }
 &nbsp;
     public openUrl(
@@ -448,10 +448,10 @@ export class DejaPopupService extends MatDialog {
 &nbsp;
         const dialogRef: MatDialogRef&lt;DejaPopupAdvancedComponent&gt; = <span class="cstat-no" title="statement not covered" >this.open(DejaPopupAdvancedComponent, config);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed()</span>
-            .map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed().pipe(</span>
+            map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                return new DejaPopupReponse(resp, dialogRef.componentInstance);</span>
-            });
+            }));
     }
 &nbsp;
     public openAdvanced(
@@ -468,10 +468,10 @@ export class DejaPopupService extends MatDialog {
     ): Observable&lt;DejaPopupReponse&gt; {
 &nbsp;
         const dialogRef = <span class="cstat-no" title="statement not covered" >this.openAdvanced(config);</span>
-<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed()</span>
-            .map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return dialogRef.afterClosed().pipe(</span>
+            map((resp: any<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                return new DejaPopupReponse(resp, dialogRef.componentInstance);</span>
-            });
+            }));
 &nbsp;
     }
 &nbsp;
@@ -526,7 +526,7 @@ export class DejaPopupService extends MatDialog {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

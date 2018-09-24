@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.69% </span>
+        <span class="strong">80.77% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>43/52</span>
+        <span class='fraction'>42/52</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">46.15% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/12</span>
+        <span class='fraction'>6/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.85% </span>
+        <span class="strong">78.72% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>38/47</span>
+        <span class='fraction'>37/47</span>
       </div>
     </div>
   </div>
@@ -138,7 +138,9 @@
 93
 94
 95
-96</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,9 +155,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,7 +164,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,7 +175,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -183,7 +186,8 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -241,16 +245,13 @@
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
 &nbsp;
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/takeUntil';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { from as observableFrom, Subject } from 'rxjs';
+import { filter, map, mergeMap, takeUntil } from 'rxjs/operators';
 import { MediaService } from '../../common/core/media/media.service';
+import { DejaSidenavService } from './sidenav.service';
 &nbsp;
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -259,6 +260,11 @@ import { MediaService } from '../../common/core/media/media.service';
     styles: [require('./sidenav.component.scss')]
 })
 export class DejaSidenavComponent implements OnInit, OnDestroy {
+    @Input()
+    public set showToolbar(value: boolean | string<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._showToolbar = coerceBooleanProperty(value);</span>
+    }
+&nbsp;
     @Input()
     public headerText = 'TITLE';
 &nbsp;
@@ -270,26 +276,26 @@ export class DejaSidenavComponent implements OnInit, OnDestroy {
     /** If not null, will be used in place of headerIcon. */
     public headerSvgIcon: string;
 &nbsp;
-    public hidden = false;
     public title: string;
-    public opened = false;
     public mode = 'side';
+    public _showToolbar = false;
 &nbsp;
     private ngUnsubscribe: Subject&lt;void&gt; = new Subject&lt;void&gt;();
 &nbsp;
     constructor(
-        mediaService: MediaService,
+        public sidenavService: DejaSidenavService,
+        private mediaService: MediaService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private changeDetectorRef: ChangeDetectorRef,
     ) {
 &nbsp;
-        Observable.from(mediaService.mediaChanged$)
-            .takeUntil(this.ngUnsubscribe)
+        observableFrom(this.mediaService.mediaChanged$).pipe(
+            takeUntil(this.ngUnsubscribe))
             .subscribe((alias) =&gt; {
-                this.hidden = alias === 'xs';
-                this.opened = alias === 'lg';
-                this.mode = alias === 'xs' ? <span class="branch-0 cbranch-no" title="branch not covered" >'over' </span>: 'side';
+                this.sidenavService.hidden = alias === 'xs';
+                this.sidenavService.opened = alias === 'lg';
+                this.sidenavService.mode = alias === 'xs' ? <span class="branch-0 cbranch-no" title="branch not covered" >'over' </span>: 'side';
                 this.changeDetectorRef.markForCheck();
             });
     }
@@ -299,18 +305,18 @@ export class DejaSidenavComponent implements OnInit, OnDestroy {
         this.title = this.getActivatedRouteLastChild().data[`title`];
 &nbsp;
         // Listen for future route changes
-        this.router.events
-            .takeUntil(this.ngUnsubscribe)
-            .filter((event<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >event instanceof NavigationEnd)</span></span>
-            .map(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.activatedRoute)</span></span>
-            .map((route<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+        this.router.events.pipe(
+            takeUntil(this.ngUnsubscribe),
+            filter((event<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >event instanceof NavigationEnd)</span></span>,
+            map(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.activatedRoute)</span></span>,
+            map((route<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                while (route.firstChild) {</span>
 <span class="cstat-no" title="statement not covered" >                    route = route.firstChild;</span>
                 }
 <span class="cstat-no" title="statement not covered" >                return route;</span>
-            })
-            .filter((route<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >route.outlet === 'primary')</span></span>
-            .mergeMap((route<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >route.data)</span></span>
+            }),
+            filter((route<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >route.outlet === 'primary')</span></span>,
+            mergeMap((route<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >route.data)</span></span>)
             .subscribe((event<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.title = event[`title`])</span></span>;
     }
 &nbsp;
@@ -334,7 +340,7 @@ export class DejaSidenavComponent implements OnInit, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

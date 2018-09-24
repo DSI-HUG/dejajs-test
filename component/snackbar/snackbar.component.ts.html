@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.82% </span>
+        <span class="strong">15.85% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/170</span>
+        <span class='fraction'>26/164</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/39</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.83% </span>
+        <span class="strong">15.54% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>29/154</span>
+        <span class='fraction'>23/148</span>
       </div>
     </div>
   </div>
@@ -498,14 +498,7 @@
 453
 454
 455
-456
-457
-458
-459
-460
-461
-462
-463</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+456</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -516,13 +509,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -976,15 +962,8 @@
  */
 &nbsp;
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/debounce';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/first';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { from as observableFrom, Subject, Subscription, timer as observableTimer } from 'rxjs';
+import { debounce, delay, first, tap } from 'rxjs/operators';
 &nbsp;
 interface IAnimation {
     before: CSSStyleDeclaration;
@@ -1128,17 +1107,17 @@ export class DejaSnackbarComponent implements OnInit, AfterViewInit, OnDestroy {
                 });
         };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.animate$sub = Observable.from(this.animate$)</span>
-            .do((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >applyParams(animation.before))</span></span>
-            .delay(1)
-            .do((animation<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.animate$sub = observableFrom(this.animate$).pipe(</span>
+            tap((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >applyParams(animation.before))</span></span>,
+            delay(1),
+            tap((animation<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this.host.style.transitionDuration = `${animation.duration}ms`;</span>
 <span class="cstat-no" title="statement not covered" >                this.host.style.transitionTimingFunction = animation.easing;</span>
 <span class="cstat-no" title="statement not covered" >                this.host.style.transitionProperty = Object.keys(animation.before).join(',');</span>
-            })
-            .debounce((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >Observable.timer(animation.delay || 1))</span></span>
-            .do((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >applyParams(animation.after))</span></span>
-            .debounce((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >Observable.timer(animation.duration))</span></span>
+            }),
+            debounce((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >observableTimer(animation.delay || 1))</span></span>,
+            tap((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >applyParams(animation.after))</span></span>,
+            debounce((animation<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >observableTimer(animation.duration))</span></span>)
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this.host.style.transitionDuration = '';</span>
 <span class="cstat-no" title="statement not covered" >                this.host.style.transitionTimingFunction = '';</span>
@@ -1200,14 +1179,14 @@ export class DejaSnackbarComponent implements OnInit, AfterViewInit, OnDestroy {
 <span class="cstat-no" title="statement not covered" >        this.launchEnterAnimation();</span>
 &nbsp;
         // if a duration has been been specified, launch the 'leave' animation after snackbar's lifetime flow, then emit amination done
-<span class="cstat-no" title="statement not covered" >        Observable.timer(this.duration + this.delay)</span>
-            .first()
-            .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        observableTimer(this.duration + this.delay).pipe(</span>
+            first(),
+            tap(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                if (!!this.duration) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.launchLeaveAnimation();</span>
                 }
-            })
-            .delay(this.leaveAnimationDuration)
+            }),
+            delay(this.leaveAnimationDuration))
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.onAnimationDone.emit())</span></span>;
     }
 &nbsp;
@@ -1435,7 +1414,7 @@ export class DejaSnackbarComponent implements OnInit, AfterViewInit, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

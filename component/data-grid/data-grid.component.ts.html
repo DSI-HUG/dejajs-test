@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.6% </span>
+        <span class="strong">87.4% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>445/508</span>
+        <span class='fraction'>437/500</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">70.95% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>127/179</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.7% </span>
+        <span class="strong">87.8% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>107/122</span>
+        <span class='fraction'>108/123</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.62% </span>
+        <span class="strong">86.39% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>408/471</span>
+        <span class='fraction'>400/463</span>
       </div>
     </div>
   </div>
@@ -993,13 +993,7 @@
 948
 949
 950
-951
-952
-953
-954
-955
-956
-957</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+951</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1007,16 +1001,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -1212,6 +1196,10 @@
 <span class="cline-any cline-yes">61×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
@@ -1378,7 +1366,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1476,7 +1464,7 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11×</span>
-<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">12×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1882,14 +1870,14 @@
 <span class="cline-any cline-yes">104×</span>
 <span class="cline-any cline-yes">104×</span>
 <span class="cline-any cline-yes">104×</span>
-<span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">86×</span>
-<span class="cline-any cline-yes">86×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">89×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">86×</span>
+<span class="cline-any cline-yes">89×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1965,18 +1953,8 @@
 &nbsp;
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/takeWhile';
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
+import { combineLatest as observableCombineLatest, from as observableFrom, fromEvent as observableFromEvent, Observable, ReplaySubject, Subject, timer as observableTimer } from 'rxjs';
+import { debounceTime, filter, first, map, switchMap, takeWhile, tap } from 'rxjs/operators';
 import { DejaClipboardService } from '../../common/core/clipboard/clipboard.service';
 import { IGroupInfo } from '../../common/core/grouping/group-infos';
 import { GroupingService } from '../../common/core/grouping/grouping.service';
@@ -2164,6 +2142,10 @@ export class DejaGridComponent implements OnDestroy {
         return this._sortable;
     }
 &nbsp;
+    public get columnGroups() {
+        return this._columnGroups;
+    }
+&nbsp;
     public get noHorizontalScroll() {
         return this._noHorizontalScroll;
     }
@@ -2276,12 +2258,12 @@ export class DejaGridComponent implements OnDestroy {
                 let observable = <span class="cstat-no" title="statement not covered" >this._rows as Observable&lt;IItemBase[]&gt;;</span>
 <span class="cstat-no" title="statement not covered" >                if (!observable.subscribe) {</span>
                     const promise = <span class="cstat-no" title="statement not covered" >this._rows as Promise&lt;IItemBase[]&gt;;</span>
-<span class="cstat-no" title="statement not covered" >                    observable = Observable.fromPromise(promise);</span>
+<span class="cstat-no" title="statement not covered" >                    observable = observableFrom(promise);</span>
                 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                this.viewPortChanged</span>
-                    .filter((vp<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >vp &amp;&amp; vp.items &amp;&amp; vp.items.length &gt; 0)</span></span>
-                    .first()
+<span class="cstat-no" title="statement not covered" >                this.viewPortChanged.pipe(</span>
+                    filter((vp<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >vp &amp;&amp; vp.items &amp;&amp; vp.items.length &gt; 0)</span></span>,
+                    first())
                     .subscribe((vp<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.calcColumnsLayout(vp.items))</span></span>;
             }
         }
@@ -2370,7 +2352,7 @@ export class DejaGridComponent implements OnDestroy {
         return this.columnHeaderTemplateExternal || this._columnHeaderTemplate;
     }
 &nbsp;
-    private get columnLayout() {
+    public get columnLayout() {
         return this._columnLayout;
     }
 &nbsp;
@@ -2379,17 +2361,17 @@ export class DejaGridComponent implements OnDestroy {
 &nbsp;
         this.clearColumnLayout();
 &nbsp;
-        Observable.combineLatest(this.columns$, this.columnGroups$)
-            .takeWhile(() =&gt; this.isAlive)
-            .map(([columns, columnGroups]) =&gt; {
+        observableCombineLatest(this.columns$, this.columnGroups$).pipe(
+            takeWhile(() =&gt; this.isAlive),
+            map(([columns, columnGroups]) =&gt; {
                 if (typeof columnGroups === 'string') {
                     const groups = columnGroups.split(',').map((v) =&gt; v.trim());
                     return this._columnGroups = groups.map((group) =&gt; columns.find((column) =&gt; column.name === group));
                 } else {
                     return this._columnGroups = columnGroups;
                 }
-            })
-            .map((columnGroups) =&gt; {
+            }),
+            map((columnGroups) =&gt; {
                 const groupInfos = [] as IGroupInfo[];
                 const sortInfos = this.treeListComponent.sortInfos;
                 columnGroups.forEach((column) =&gt; {
@@ -2402,22 +2384,22 @@ export class DejaGridComponent implements OnDestroy {
                     groupInfos.push(groupInfo);
                 });
                 return groupInfos;
-            })
-            .switchMap((groupInfos) =&gt; this.treeListComponent.group$(groupInfos).map(() =&gt; groupInfos))
+            }),
+            switchMap((groupInfos) =&gt; this.treeListComponent.group$(groupInfos).pipe(map(() =&gt; groupInfos))))
             .subscribe((groupInfos) =&gt; {
                 this.groupChanged.emit(groupInfos);
                 this.changeDetectorRef.markForCheck();
             });
 &nbsp;
-        Observable.from(this.columns$)
-            .takeWhile(() =&gt; this.isAlive)
-            .do((columns) =&gt; this._columns = columns)
-            .debounceTime(1)
+        observableFrom(this.columns$).pipe(
+            takeWhile(() =&gt; this.isAlive),
+            tap((columns) =&gt; this._columns = columns),
+            debounceTime(1))
             .subscribe(() =&gt; this.calcColumnsLayout());
 &nbsp;
-        Observable.from(this.printColumnLayout$)
-            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive)</span></span>
-            .debounceTime(1000)
+        observableFrom(this.printColumnLayout$).pipe(
+            takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive)</span></span>,
+            debounceTime(1000))
             .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                console.log('');</span>
 <span class="cstat-no" title="statement not covered" >                console.log('Auto columns layout:');</span>
@@ -2425,22 +2407,22 @@ export class DejaGridComponent implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >                console.log('');</span>
             });
 &nbsp;
-        Observable.from(this.disableUserSelection$)
-            .takeWhile(() =&gt; this.isAlive)
-            .do(() =&gt; element.setAttribute('disableselection', ''))
-            .debounceTime(1000)
+        observableFrom(this.disableUserSelection$).pipe(
+            takeWhile(() =&gt; this.isAlive),
+            tap(() =&gt; element.setAttribute('disableselection', '')),
+            debounceTime(1000))
             .subscribe(() =&gt; element.removeAttribute('disableselection'));
 &nbsp;
-        Observable.fromEvent(window, 'resize')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter(() =&gt; this.hasPercentageColumns)
-            .debounceTime(5)
+        observableFromEvent(window, 'resize').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter(() =&gt; this.hasPercentageColumns),
+            debounceTime(5))
             .subscribe(() =&gt; {
                 this.calcColumnsLayout();
             });
 &nbsp;
-        Observable.fromEvent(element, 'keydown')
-            .takeWhile(() =&gt; this.isAlive)
+        observableFromEvent(element, 'keydown').pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((event: KeyboardEvent) =&gt; {
                 const findPrev = (index: number) =&gt; {
                     <span class="missing-if-branch" title="if path not taken" >I</span>if (index === -1) {
@@ -2482,15 +2464,15 @@ export class DejaGridComponent implements OnDestroy {
                 }
             });
 &nbsp;
-        Observable.fromEvent(element, 'mousedown')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter((downEvent: MouseEvent) =&gt; downEvent.buttons === 1)
+        observableFromEvent(element, 'mousedown').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter((downEvent: MouseEvent) =&gt; downEvent.buttons === 1))
             .subscribe((downEvent: MouseEvent) =&gt; {
                 const clickedColumn = this.getColumnFromHTMLElement(downEvent.target as HTMLElement);
 &nbsp;
-                Observable.fromEvent(element, 'mouseup')
-                    .first()
-                    .filter(() =&gt; !!clickedColumn)
+                observableFromEvent(element, 'mouseup').pipe(
+                    first(),
+                    filter(() =&gt; !!clickedColumn))
                     .subscribe((upEvent: MouseEvent) =&gt; {
                         const columnElement = this.getColumnElementFromHTMLElement(upEvent.target as HTMLElement);
                         <span class="missing-if-branch" title="else path not taken" >E</span>if ((columnElement &amp;&amp; columnElement.getAttribute('colname')) === clickedColumn.name) {
@@ -2619,9 +2601,9 @@ export class DejaGridComponent implements OnDestroy {
         event.column.sorting = true;
         this.changeDetectorRef.markForCheck();
 &nbsp;
-        Observable.timer(1)
-            .first()
-            .switchMap(() =&gt; this.sort$(event.column.name))
+        observableTimer(1).pipe(
+            first(),
+            switchMap(() =&gt; this.sort$(event.column.name)))
             .subscribe(() =&gt; {
                 hideSpinner();
                 this.sortChanged.emit(this.treeListComponent.sortInfos);
@@ -2705,8 +2687,8 @@ export class DejaGridComponent implements OnDestroy {
             groupTextField: column.groupTextField || column.name,
         } as IGroupInfo;
 &nbsp;
-        this.treeListComponent.ungroup$(groupInfo)
-            .first()
+        this.treeListComponent.ungroup$(groupInfo).pipe(
+            first())
             .subscribe(noop);
     }
 &nbsp;
@@ -2917,7 +2899,7 @@ export class DejaGridComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

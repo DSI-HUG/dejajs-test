@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.15% </span>
+        <span class="strong">92.65% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>68/73</span>
+        <span class='fraction'>63/68</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">62.16% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>21/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.86% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>65/70</span>
+        <span class='fraction'>60/65</span>
       </div>
     </div>
   </div>
@@ -175,12 +175,7 @@
 130
 131
 132
-133
-134
-135
-136
-137
-138</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+133</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,11 +183,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -326,13 +316,8 @@
  */
 &nbsp;
 import { Component, ElementRef, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/takeWhile';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, from as observableFrom } from 'rxjs';
+import { delay, filter, takeWhile, tap } from 'rxjs/operators';
 import { Position } from './../../common/core/graphics/position';
 import { DejaMouseDragDropService, IDragCursorInfos, IDropCursorInfos } from './mouse-dragdrop.service';
 &nbsp;
@@ -357,44 +342,44 @@ export class DejaMouseDragDropCursorComponent implements OnDestroy {
     constructor(elementRef: ElementRef, private dragDropService: DejaMouseDragDropService) {
         const element = elementRef.nativeElement as HTMLElement;
 &nbsp;
-        Observable.from(this.position$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableFrom(this.position$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((pos) =&gt; {
                 element.style.left = pos ? `${<span class="branch-0 cbranch-no" title="branch not covered" >pos.left}px` </span>: '-1000px';
                 element.style.top = pos ? `${<span class="branch-0 cbranch-no" title="branch not covered" >pos.top}px` </span>: '-1000px';
             });
 &nbsp;
-        const cursor$ = Observable.from(this.cursor$);
+        const cursor$ = observableFrom(this.cursor$);
 &nbsp;
         // Hide
-        cursor$
-            .takeWhile(() =&gt; this.isAlive)
-            .filter((dragCursor) =&gt; !dragCursor)
-            .do((dragCursor) =&gt; {
+        cursor$.pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter((dragCursor) =&gt; !dragCursor),
+            tap((dragCursor) =&gt; {
                 if (this._currentCursor) {
                     this.contentElement.style.opacity = '0';
                     this.iconElement.style.opacity = '0';
                 }
                 this._currentCursor = dragCursor;
-            })
-            .delay(300)
+            }),
+            delay(300))
             .subscribe(() =&gt; {
                 this.position$.next(null);
                 element.style.display = 'none';
             });
 &nbsp;
         // Show
-        cursor$
-            .takeWhile(() =&gt; this.isAlive)
-            .filter((dragCursor) =&gt; !!dragCursor)
-            .do((dragCursor) =&gt; {
+        cursor$.pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter((dragCursor) =&gt; !!dragCursor),
+            tap((dragCursor) =&gt; {
                 element.style.display = '';
                 this.contentElement.style.opacity = '0';
                 this.iconElement.style.opacity = '0';
                 this._currentCursor = dragCursor;
-            })
-            .filter((dragCursor) =&gt; !dragCursor.className || dragCursor.className !== 'hidden')
-            .do((dragCursor) =&gt; {
+            }),
+            filter((dragCursor) =&gt; !dragCursor.className || dragCursor.className !== 'hidden'),
+            tap((dragCursor) =&gt; {
                 if (!!dragCursor.html) {
                     this.contentElement.innerHTML = dragCursor.html;
                     element.className = dragCursor.className;
@@ -403,16 +388,16 @@ export class DejaMouseDragDropCursorComponent implements OnDestroy {
                 } else {
                     this.iconElement.style.opacity = '1';
                 }
-            })
-            .delay(1)
+            }),
+            delay(1))
             .subscribe((dragCursor) =&gt; {
                 if (!!dragCursor.html) {
                     this.contentElement.style.opacity = '1';
                 }
             });
 &nbsp;
-        Observable.from(this.dragDropService.dragCursor$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableFrom(this.dragDropService.dragCursor$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((dragCursor) =&gt; {
                 if (!!dragCursor !== !!this._dragCursor) {
                     this._dragCursor = dragCursor;
@@ -434,8 +419,8 @@ export class DejaMouseDragDropCursorComponent implements OnDestroy {
                 }
             });
 &nbsp;
-        Observable.from(this.dragDropService.dropCursor$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableFrom(this.dragDropService.dropCursor$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((dropCursor) =&gt; {
                 this._dropCursor = dropCursor;
             });
@@ -460,7 +445,7 @@ export class DejaMouseDragDropCursorComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

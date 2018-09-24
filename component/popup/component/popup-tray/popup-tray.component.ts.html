@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">32.26% </span>
+        <span class="strong">28.81% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/62</span>
+        <span class='fraction'>17/59</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.58% </span>
+        <span class="strong">27.78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/57</span>
+        <span class='fraction'>15/54</span>
       </div>
     </div>
   </div>
@@ -153,20 +153,16 @@
 108
 109
 110
-111
-112
-113</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+111</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -274,13 +270,11 @@
  *  Use of this source code is governed by an Apache-2.0 license that can be
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
+&nbsp;
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/merge';
-import { Observable } from 'rxjs/Observable';
+import { from as observableFrom, Observable } from 'rxjs';
+import { debounceTime, filter, map, merge } from 'rxjs/operators';
 import { DejaPopupAction } from '../../model/popup-action.model';
 import { DejaPopupBase } from '../../model/popup-base.class';
 import { DejaPopupService } from '../../service/popup.service';
@@ -301,23 +295,23 @@ export class DejaPopupTrayComponent implements OnInit {
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngOnInit() {</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.dialogs$ = Observable.from(this.dialogSrv.afterOpen)</span>
-            .merge(this.dialogSrv.dejaPopupCom$
-                .filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!!action &amp;&amp; action.target === 'popup-tray')</span></span>
-                .map((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.dialogs$ = observableFrom(this.dialogSrv.afterOpen).pipe(</span>
+            merge(this.dialogSrv.dejaPopupCom$.pipe(
+                filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!!action &amp;&amp; action.target === 'popup-tray')</span></span>,
+                map((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                    if (action.name === 'do-minify') {</span>
 <span class="cstat-no" title="statement not covered" >                        this.minify(action);</span>
 <span class="cstat-no" title="statement not covered" >                        action.refreshDrawer = false;</span>
                     }
 <span class="cstat-no" title="statement not covered" >                    return action;</span>
-                })
-                .filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >action.refreshDrawer)</span></span>
-            )
-            .debounceTime(500)
-            .map(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+                }),
+                filter((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >action.refreshDrawer)</span></span>)
+            ),
+            debounceTime(500),
+            map(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
                 const dialogs = <span class="cstat-no" title="statement not covered" >this.dialogSrv.openDialogs;</span>
 <span class="cstat-no" title="statement not covered" >                return dialogs;</span>
-            });
+            }));
 &nbsp;
     }
 &nbsp;
@@ -385,7 +379,7 @@ export class DejaPopupTrayComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.78% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/36</span>
+        <span class='fraction'>24/32</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.65% </span>
+        <span class="strong">77.78% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/31</span>
+        <span class='fraction'>21/27</span>
       </div>
     </div>
   </div>
@@ -162,11 +162,7 @@
 117
 118
 119
-120
-121
-122
-123
-124</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+120</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,35 +238,31 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-yes">88×</span>
-<span class="cline-any cline-yes">88×</span>
-<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">31×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-yes">35×</span>
-<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -363,12 +355,8 @@ export const DEFAULT_BREAKPOINTS = [
 */
 &nbsp;
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/takeWhile';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, from as observableFrom, Observable } from 'rxjs';
+import { distinctUntilChanged, map, takeWhile } from 'rxjs/operators';
 &nbsp;
 @Injectable()
 export class MediaService implements OnDestroy {
@@ -391,10 +379,10 @@ export class MediaService implements OnDestroy {
             }
         });
 &nbsp;
-        this.isMobile$ = Observable.from(this.mediaChanged$)
-            .takeWhile(() =&gt; this.isAlive)
-            .map(() =&gt; this.mql.xs.matches || this.mql.sm.matches)
-            .distinctUntilChanged();
+        this.isMobile$ = observableFrom(this.mediaChanged$).pipe(
+            takeWhile(() =&gt; this.isAlive),
+            map(() =&gt; this.mql.xs.matches || this.mql.sm.matches),
+            distinctUntilChanged());
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngOnDestroy() {</span></span>
@@ -418,7 +406,7 @@ export class MediaService implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

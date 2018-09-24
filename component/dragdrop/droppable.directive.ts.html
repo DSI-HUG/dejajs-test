@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.17% </span>
+        <span class="strong">91.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>106/115</span>
+        <span class='fraction'>101/110</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">58.54% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>20/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.89% </span>
+        <span class="strong">91.51% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>102/111</span>
+        <span class='fraction'>97/106</span>
       </div>
     </div>
   </div>
@@ -242,12 +242,7 @@
 197
 198
 199
-200
-201
-202
-203
-204
-205</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+200</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,11 +250,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -461,13 +451,8 @@
 &nbsp;
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, HostBinding, Input, OnDestroy, Optional } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/takeWhile';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { from as observableFrom, fromEvent as observableFromEvent, Subject } from 'rxjs';
+import { filter, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { DejaClipboardService } from '../../common/core/clipboard/clipboard.service';
 import { IDejaDragEvent } from './draggable.directive';
 &nbsp;
@@ -511,12 +496,12 @@ export class DejaDroppableDirective implements OnDestroy {
         const dragDrop$ = new Subject&lt;DragEvent&gt;();
         const kill$ = new Subject();
 &nbsp;
-        const dragEnd$ = Observable.from(kill$)
-            .do(() =&gt; inDrag = false)
-            .filter((value) =&gt; !value);
+        const dragEnd$ = observableFrom(kill$).pipe(
+            tap(() =&gt; inDrag = false),
+            filter((value) =&gt; !value));
 &nbsp;
-        Observable.from(dragDrop$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableFrom(dragDrop$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((dragEvent) =&gt; {
                 if (dragEvent.type === 'dragenter') {
                     if (inDrag) {
@@ -540,8 +525,8 @@ export class DejaDroppableDirective implements OnDestroy {
                             dragEvent.dataTransfer.dropEffect = 'none';
                         }
 &nbsp;
-                        Observable.fromEvent(element, 'drop')
-                            .takeUntil(dragEnd$)
+                        observableFromEvent(element, 'drop').pipe(
+                            takeUntil(dragEnd$))
                             .subscribe((dropEvent: DragEvent) =&gt; {
                                 // console.log('DejaDrop');
                                 <span class="missing-if-branch" title="else path not taken" >E</span>if (this.context.dropcallback) {
@@ -566,8 +551,8 @@ export class DejaDroppableDirective implements OnDestroy {
                                 return;
                             });
 &nbsp;
-                        Observable.fromEvent(element, 'dragover')
-                            .takeUntil(dragEnd$)
+                        observableFromEvent(element, 'dragover').pipe(
+                            takeUntil(dragEnd$))
                             .subscribe((overEvent: DragEvent) =&gt; {
                                 // console.log('DejaDragOver');
                                 <span class="missing-if-branch" title="if path not taken" >I</span>if (!this._allEvents &amp;&amp; this.lastTarget &amp;&amp; this.lastTarget === overEvent.target) {
@@ -614,10 +599,10 @@ export class DejaDroppableDirective implements OnDestroy {
                 }
             });
 &nbsp;
-        Observable.fromEvent(element, 'dragenter')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter(() =&gt; !!this.context)
-            .filter(() =&gt; !!this.clipboardService.get(this.draginfokey))
+        observableFromEvent(element, 'dragenter').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter(() =&gt; !!this.context),
+            filter(() =&gt; !!this.clipboardService.get(this.draginfokey)))
             .subscribe((event: DragEvent) =&gt; {
                 <span class="missing-if-branch" title="if path not taken" >I</span>if (!clipboardService) {
 <span class="cstat-no" title="statement not covered" >                    throw new Error('To use the DejaDroppableDirective, please import and provide the DejaClipboardService in your application.');</span>
@@ -625,10 +610,10 @@ export class DejaDroppableDirective implements OnDestroy {
                 dragDrop$.next(event);
             });
 &nbsp;
-        Observable.fromEvent(element, 'dragleave')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter(() =&gt; !!this.context)
-            .filter(() =&gt; !!this.clipboardService.get(this.draginfokey))
+        observableFromEvent(element, 'dragleave').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter(() =&gt; !!this.context),
+            filter(() =&gt; !!this.clipboardService.get(this.draginfokey)))
             .subscribe((leaveEvent: DragEvent) =&gt; {
                 // console.log('dragleave ' + (leaveEvent.target as HTMLElement).tagName);
                 const bounds = element.getBoundingClientRect();
@@ -661,7 +646,7 @@ export interface IDejaDropContext {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

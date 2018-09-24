@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.11% </span>
+        <span class="strong">91.53% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>175/190</span>
+        <span class='fraction'>162/177</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">65.38% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>54/59</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.64% </span>
+        <span class="strong">93.13% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>162/173</span>
+        <span class='fraction'>149/160</span>
       </div>
     </div>
   </div>
@@ -363,20 +363,7 @@
 318
 319
 320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+321</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -384,19 +371,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -720,21 +694,8 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/debounce';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/takeWhile';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import {BehaviorSubject, combineLatest as observableCombineLatest, from as observableFrom, fromEvent as observableFromEvent, merge as observableMerge,  Observable ,  Subject ,  timer as observableTimer } from 'rxjs';
+import {debounce, debounceTime, distinctUntilChanged, filter, first, map, takeWhile, tap} from 'rxjs/operators';
 import { Color } from '../../common/core/graphics/color';
 import { MaterialColor } from '../../common/core/style/material-color';
 import { DejaColorFab } from './color-fab.class';
@@ -816,12 +777,12 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
             this._control.valueAccessor = this;
         }
 &nbsp;
-        this._colorFabs$ = Observable.from(this._colors$)
-            .map((colors) =&gt; colors.map((color, index) =&gt; new DejaColorFab(color, this._disabled, index === this._selectedBaseIndex)))
-            .do((colorFabs) =&gt; this._colorFabs = colorFabs);
+        this._colorFabs$ = observableFrom(this._colors$).pipe(
+            map((colors) =&gt; colors.map((color, index) =&gt; new DejaColorFab(color, this._disabled, index === this._selectedBaseIndex))),
+            tap((colorFabs) =&gt; this._colorFabs = colorFabs));
 &nbsp;
-        Observable.combineLatest(this._colors$, this._resetcolor$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableCombineLatest(this._colors$, this._resetcolor$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe(([colors, resetcolor]) =&gt; {
                 if (!colors || !colors.length || !resetcolor) {
                     this._resetcolor = undefined;
@@ -852,64 +813,64 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
                 this._resetcolor = bestColor;
             });
 &nbsp;
-        const hilightedBaseIndex$ = Observable.from(this.hilightedBaseIndex$)
-            .distinctUntilChanged()
-            .debounce((colorIndex) =&gt; Observable.timer(colorIndex !== undefined ? 100 : <span class="branch-1 cbranch-no" title="branch not covered" >1000)</span>)
-            .do((colorIndex) =&gt; {
+        const hilightedBaseIndex$ = observableFrom(this.hilightedBaseIndex$).pipe(
+            distinctUntilChanged(),
+            debounce((colorIndex) =&gt; observableTimer(colorIndex !== undefined ? 100 : <span class="branch-1 cbranch-no" title="branch not covered" >1000)</span>),
+            tap((colorIndex) =&gt; {
                 this.hilightedBaseIndex = colorIndex;
                 const event = new CustomEvent('ColorEvent', {}) as IColorEvent;
                 event.color = colorIndex ? this._colorFabs &amp;&amp; this._colorFabs[colorIndex] &amp;&amp; this._colorFabs[colorIndex].color : <span class="branch-1 cbranch-no" title="branch not covered" >this.value;</span>
                 this.colorhover.emit(event);
-            })
-            .map((colorIndex) =&gt; colorIndex !== undefined ? colorIndex : <span class="branch-1 cbranch-no" title="branch not covered" >this._selectedBaseIndex || 0)</span>;
+            }),
+            map((colorIndex) =&gt; colorIndex !== undefined ? colorIndex : <span class="branch-1 cbranch-no" title="branch not covered" >this._selectedBaseIndex || 0)</span>);
 &nbsp;
-        const selectedBaseIndex$ = Observable.from(this.selectedBaseIndex$)
-            .do((colorIndex) =&gt; this._selectedBaseIndex = colorIndex);
+        const selectedBaseIndex$ = observableFrom(this.selectedBaseIndex$).pipe(
+            tap((colorIndex) =&gt; this._selectedBaseIndex = colorIndex));
 &nbsp;
-        this._subColorFabs$ = Observable.merge(hilightedBaseIndex$, selectedBaseIndex$)
-            .distinctUntilChanged()
-            .do((colorIndex) =&gt; {
+        this._subColorFabs$ = observableMerge(hilightedBaseIndex$, selectedBaseIndex$).pipe(
+            distinctUntilChanged(),
+            tap((colorIndex) =&gt; {
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (this._colorFabs) {
                     this._colorFabs.forEach((colorFab, index) =&gt; colorFab.active = index === colorIndex);
                 }
-            })
-            .debounceTime(100)
-            .do(() =&gt; element.setAttribute('sub-tr', ''))
-            .map((baseIndex) =&gt; this._colorFabs &amp;&amp; this._colorFabs[baseIndex] &amp;&amp; (this._colorFabs[baseIndex].color as MaterialColor).subColors)
-            .map((colors) =&gt; colors &amp;&amp; colors.map((color, index) =&gt; new DejaColorFab(color, this._disabled, index === this._selectedSubIndex)))
-            .do((subColorFabs) =&gt; {
+            }),
+            debounceTime(100),
+            tap(() =&gt; element.setAttribute('sub-tr', '')),
+            map((baseIndex) =&gt; this._colorFabs &amp;&amp; this._colorFabs[baseIndex] &amp;&amp; (this._colorFabs[baseIndex].color as MaterialColor).subColors),
+            map((colors) =&gt; colors &amp;&amp; colors.map((color, index) =&gt; new DejaColorFab(color, this._disabled, index === this._selectedSubIndex))),
+            tap((subColorFabs) =&gt; {
                 this._subColorFabs = subColorFabs;
-                Observable.timer(100).first().subscribe(() =&gt; {
+                observableTimer(100).pipe(first()).subscribe(() =&gt; {
                     element.removeAttribute('sub-tr');
                 });
-            });
+            }));
 &nbsp;
-        const hilightedSubIndex$ = Observable.from(this.hilightedSubIndex$)
-            .distinctUntilChanged()
-            .debounce((subColorIndex) =&gt; Observable.timer(subColorIndex !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >200 </span>: 1100))
-            .do((subColorIndex) =&gt; {
+        const hilightedSubIndex$ = observableFrom(this.hilightedSubIndex$).pipe(
+            distinctUntilChanged(),
+            debounce((subColorIndex) =&gt; observableTimer(subColorIndex !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >200 </span>: 1100)),
+            tap((subColorIndex) =&gt; {
                 this.hilightedSubIndex = subColorIndex;
                 const event = new CustomEvent('ColorEvent', {}) as IColorEvent;
                 event.color = subColorIndex !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >this._subColorFabs &amp;&amp; this._subColorFabs[subColorIndex] &amp;&amp; this._subColorFabs[subColorIndex].color </span>: this.value;
                 this.colorhover.emit(event);
-            })
-            .map((subColorIndex) =&gt; subColorIndex !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >subColorIndex </span>: this._selectedSubIndex || 0);
+            }),
+            map((subColorIndex) =&gt; subColorIndex !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >subColorIndex </span>: this._selectedSubIndex || 0));
 &nbsp;
-        const selectedSubIndex$ = Observable.from(this.selectedSubIndex$)
-            .distinctUntilChanged()
-            .do((subColorIndex) =&gt; this._selectedSubIndex = subColorIndex);
+        const selectedSubIndex$ = observableFrom(this.selectedSubIndex$).pipe(
+            distinctUntilChanged(),
+            tap((subColorIndex) =&gt; this._selectedSubIndex = subColorIndex));
 &nbsp;
-        Observable.merge(hilightedSubIndex$, selectedSubIndex$)
-            .takeWhile(() =&gt; this.isAlive)
+        observableMerge(hilightedSubIndex$, selectedSubIndex$).pipe(
+            takeWhile(() =&gt; this.isAlive))
             .subscribe((subColorIndex) =&gt; {
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (this._subColorFabs) {
                     this._subColorFabs.forEach((colorFab, index) =&gt; colorFab.active = index === subColorIndex);
                 }
             });
 &nbsp;
-        Observable.fromEvent(element, 'mousemove')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter((_event) =&gt; !this._disabled)
+        observableFromEvent(element, 'mousemove').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter((_event) =&gt; !this._disabled), )
             .subscribe((event: Event) =&gt; {
                 const target = event.target as HTMLElement;
                 const targetIndex = (&lt;any&gt;target.attributes)[DejaColorSelectorComponent.indexAttribute];
@@ -925,9 +886,9 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
                 }
             });
 &nbsp;
-        Observable.fromEvent(element, 'click')
-            .takeWhile(() =&gt; this.isAlive)
-            .filter((_event) =&gt; !this._disabled)
+        observableFromEvent(element, 'click').pipe(
+            takeWhile(() =&gt; this.isAlive),
+            filter((_event) =&gt; !this._disabled), )
             .subscribe((event: Event) =&gt; {
                 const target = event.target as HTMLElement;
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (target.hasAttribute('basecolor') || <span class="branch-1 cbranch-no" title="branch not covered" >target.hasAttribute('subcolor'))</span> {
@@ -983,12 +944,12 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
                 const subIndex = baseColor.subColors &amp;&amp; baseColor.subColors.findIndex((subColor) =&gt; Color.equals(subColor, color));
                 if (subIndex !== undefined &amp;&amp; subIndex &gt;= 0) {
                     this.selectedBaseIndex$.next(index);
-                    Observable.timer(1).first().subscribe(() =&gt; this.selectedSubIndex$.next(subIndex));
+                    observableTimer(1).pipe(first()).subscribe(() =&gt; this.selectedSubIndex$.next(subIndex));
                     // Break
                     return true;
                 } else <span class="missing-if-branch" title="if path not taken" >I</span>if (Color.equals(baseColor, color)) {
 <span class="cstat-no" title="statement not covered" >                    this.selectedBaseIndex$.next(index);</span>
-<span class="cstat-no" title="statement not covered" >                    Observable.timer(1).first().subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.selectedSubIndex$.next(0))</span></span>;</span>
+<span class="cstat-no" title="statement not covered" >                    observableTimer(1).pipe(first()).subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.selectedSubIndex$.next(0))</span></span>;</span>
                     // Break
 <span class="cstat-no" title="statement not covered" >                    return true;</span>
                 }
@@ -997,7 +958,7 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
             });
             if (!find) {
                 this.selectedBaseIndex$.next(0);
-                Observable.timer(1).first().subscribe(() =&gt; this.selectedSubIndex$.next(0));
+                observableTimer(1).pipe(first()).subscribe(() =&gt; this.selectedSubIndex$.next(0));
             }
         }
     }
@@ -1048,7 +1009,7 @@ export class DejaColorSelectorComponent implements ControlValueAccessor, OnDestr
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

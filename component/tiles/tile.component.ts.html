@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">89.32% </span>
+        <span class="strong">88.66% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>92/103</span>
+        <span class='fraction'>86/97</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">82.35% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>40/47</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">88.17% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>88/99</span>
+        <span class='fraction'>82/93</span>
       </div>
     </div>
   </div>
@@ -204,13 +204,7 @@
 159
 160
 161
-162
-163
-164
-165
-166
-167
-168</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+162</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -218,12 +212,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -386,14 +374,8 @@
  */
 &nbsp;
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/takeWhile';
-import { Observable } from 'rxjs/Observable';
+import { from as observableFrom } from 'rxjs';
+import { debounceTime, delay, filter, first, takeWhile, tap } from 'rxjs/operators';
 import { DejaTile } from './tile.class';
 &nbsp;
 @Component({
@@ -439,24 +421,24 @@ export class DejaTileComponent implements OnDestroy {
 <span class="cstat-no" title="statement not covered" >                this.changeDetectorRef.markForCheck();</span>
             }
 &nbsp;
-            Observable.from(tile.pixelBounds$)
-                .filter((bounds) =&gt; !!bounds)
-                .first()
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .filter(() =&gt; tile.fading)
-                .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+            observableFrom(tile.pixelBounds$).pipe(
+                filter((bounds) =&gt; !!bounds),
+                first(),
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                filter(() =&gt; tile.fading),
+                tap(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                    this.element.setAttribute('fading', '1');</span>
 <span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
-                })
-                .delay(200)
+                }),
+                delay(200))
                 .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                    this.element.removeAttribute('fading');</span>
 <span class="cstat-no" title="statement not covered" >                    this.changeDetectorRef.markForCheck();</span>
                 });
 &nbsp;
-            Observable.from(tile.pixelBounds$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .filter((bounds) =&gt; !!bounds)
+            observableFrom(tile.pixelBounds$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                filter((bounds) =&gt; !!bounds))
                 .subscribe((bounds) =&gt; {
                     <span class="missing-if-branch" title="else path not taken" >E</span>if (!tile.isHidden) {
                         this.element.removeAttribute('hidden');
@@ -469,64 +451,64 @@ export class DejaTileComponent implements OnDestroy {
                     this.changeDetectorRef.markForCheck();
                 });
 &nbsp;
-            Observable.from(tile.pressed$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('pressed', value))
+            observableFrom(tile.pressed$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('pressed', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.selected$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('selected', value))
+            observableFrom(tile.selected$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('selected', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.dragging$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('drag', value))
+            observableFrom(tile.dragging$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('drag', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.dropping$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('drop', value))
+            observableFrom(tile.dropping$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('drop', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.cutted$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('cutted', value))
+            observableFrom(tile.cutted$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('cutted', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.expanded$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do((value) =&gt; toogleAttribute('expanded', value))
+            observableFrom(tile.expanded$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap((value) =&gt; toogleAttribute('expanded', value)))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            Observable.from(tile.deleted$)
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .do(() =&gt; this.element.remove())
+            observableFrom(tile.deleted$).pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                tap(() =&gt; this.element.remove()))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
-            const tooogleHide$ = Observable.from(tile.hidden$)
-                .do((value) =&gt; toogleAttribute('hidden', value ? '1' : <span class="branch-1 cbranch-no" title="branch not covered" >'2')</span>);
+            const tooogleHide$ = observableFrom(tile.hidden$).pipe(
+                tap((value) =&gt; toogleAttribute('hidden', value ? '1' : <span class="branch-1 cbranch-no" title="branch not covered" >'2')</span>));
 &nbsp;
             // Hide
-            tooogleHide$
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .debounceTime(1000)
-                .filter((value) =&gt; value)
-                .do(() =&gt; this.element.setAttribute('hidden', '0'))
+            tooogleHide$.pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                debounceTime(1000),
+                filter((value) =&gt; value),
+                tap(() =&gt; this.element.setAttribute('hidden', '0')))
                 .subscribe(() =&gt; this.changeDetectorRef.markForCheck());
 &nbsp;
             // Show
-            tooogleHide$
-                .takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile)
-                .debounceTime(1)
-                .filter((value) =&gt; !value)
-                .do(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.element.removeAttribute('hidden'))</span></span>
+            tooogleHide$.pipe(
+                takeWhile(() =&gt; this.isAlive &amp;&amp; !!this._tile),
+                debounceTime(1),
+                filter((value) =&gt; !value),
+                tap(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.element.removeAttribute('hidden'))</span></span>)
                 .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.changeDetectorRef.markForCheck())</span></span>;
 &nbsp;
             // Refresh
-            Observable.from(tile.refresh$)
-                .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive &amp;&amp; !!this._tile)</span></span>
-                .debounceTime(1)
+            observableFrom(tile.refresh$).pipe(
+                takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive &amp;&amp; !!this._tile)</span></span>,
+                debounceTime(1))
                 .subscribe(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.changeDetectorRef.markForCheck())</span></span>;
         }
     }
@@ -550,7 +532,7 @@ export class DejaTileComponent implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.48% </span>
+        <span class="strong">81.4% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>113/137</span>
+        <span class='fraction'>105/129</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">53.66% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>31/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.82% </span>
+        <span class="strong">80.65% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>108/132</span>
+        <span class='fraction'>100/124</span>
       </div>
     </div>
   </div>
@@ -300,15 +300,7 @@
 255
 256
 257
-258
-259
-260
-261
-262
-263
-264
-265
-266</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+258</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -316,14 +308,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -584,16 +568,8 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, HostBinding, Input, OnDestroy, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/takeWhile';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, from as observableFrom, fromEvent as observableFromEvent, timer as observableTimer } from 'rxjs';
+import { filter, first, map, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { KeyCodes } from '../../common/core/keycodes.enum';
 &nbsp;
 const noop = <span class="fstat-no" title="function not covered" >() =&gt; { };</span>
@@ -622,8 +598,8 @@ export class DejaEditableDirective implements ControlValueAccessor, OnDestroy {
 &nbsp;
         this.element = elementRef.nativeElement as HTMLElement;
 &nbsp;
-        Observable.fromEvent(this.element, 'mousedown')
-            .takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive)</span></span>
+        observableFromEvent(this.element, 'mousedown').pipe(
+            takeWhile(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >this.isAlive)</span></span>)
             .subscribe((e: MouseEvent<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                if (this.inEdition || this.disabled) {</span>
 <span class="cstat-no" title="statement not covered" >                    e.cancelBubble = true;</span>
@@ -635,36 +611,36 @@ export class DejaEditableDirective implements ControlValueAccessor, OnDestroy {
                 }
             });
 &nbsp;
-        const inEdition$ = Observable.from(this.edit$)
-            .map(([value, selectOnFocus]) =&gt; {
+        const inEdition$ = observableFrom(this.edit$).pipe(
+            map(([value, selectOnFocus]) =&gt; {
                 if (selectOnFocus !== false) {
-                    Observable.timer(10)
-                        .first()
+                    observableTimer(10).pipe(
+                        first())
                         .subscribe(() =&gt; {
                             this.selectAll();
                             this.focus();
                         });
                 }
                 return value;
-            })
-            .do((value) =&gt; {
+            }),
+            tap((value) =&gt; {
                 this._inEdition = value;
                 if (value) {
                     this.element.setAttribute('contenteditable', 'true');
                 } else {
                     this.element.removeAttribute('contenteditable');
                 }
-            });
+            }));
 &nbsp;
-        const kill$ = inEdition$
-            .filter((value) =&gt; !value);
+        const kill$ = inEdition$.pipe(
+            filter((value) =&gt; !value));
 &nbsp;
-        inEdition$
-            .filter((value) =&gt; value)
+        inEdition$.pipe(
+            filter((value) =&gt; value))
             .subscribe(() =&gt; {
-                Observable.fromEvent(this.element.ownerDocument, 'mousedown')
-                    .takeUntil(kill$)
-                    .filter((event: MouseEvent) =&gt; !this.isChildElement(event.target as HTMLElement))
+                observableFromEvent(this.element.ownerDocument, 'mousedown').pipe(
+                    takeUntil(kill$),
+                    filter((event: MouseEvent) =&gt; !this.isChildElement(event.target as HTMLElement)))
                     .subscribe(() =&gt; {
                         const text = this.element.innerText;
                         this.onTouchedCallback();
@@ -677,8 +653,8 @@ export class DejaEditableDirective implements ControlValueAccessor, OnDestroy {
                         this.inEdition = false;
                     });
 &nbsp;
-                Observable.fromEvent(this.element, 'keydown')
-                    .takeUntil(kill$)
+                observableFromEvent(this.element, 'keydown').pipe(
+                    takeUntil(kill$))
                     .subscribe((e: KeyboardEvent<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                        e.cancelBubble = true;</span>
 <span class="cstat-no" title="statement not covered" >                        e.stopPropagation();</span>
@@ -844,7 +820,7 @@ export class DejaEditableDirective implements ControlValueAccessor, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

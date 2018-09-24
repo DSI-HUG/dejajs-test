@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.78% </span>
+        <span class="strong">25.71% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/36</span>
+        <span class='fraction'>9/35</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/33</span>
+        <span class='fraction'>8/32</span>
       </div>
     </div>
   </div>
@@ -140,12 +140,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,12 +230,12 @@
  *  Use of this source code is governed by an Apache-2.0 license that can be
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
+&nbsp;
 import { ComponentPortal, Portal } from '@angular/cdk/portal';
 import { ElementRef, Injector, OnInit, Renderer2 } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/first';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
+import { filter, first, tap } from 'rxjs/operators';
 import { DejaPopupAction } from './popup-action.model';
 import { DejaPopupConfig } from './popup-config.model';
 &nbsp;
@@ -259,9 +259,9 @@ import { DejaPopupConfig } from './popup-config.model';
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public ngOnInit() {</span></span>
 <span class="cstat-no" title="statement not covered" >        this.aSub = [];</span>
-<span class="cstat-no" title="statement not covered" >        this.dialogRef.beforeClose()</span>
-            .first()
-            .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.dialogRef.beforeClose().pipe(</span>
+            first(),
+            tap(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                if (this.unlisten) {</span>
 <span class="cstat-no" title="statement not covered" >                    this.unlisten();</span>
                 }
@@ -272,7 +272,7 @@ import { DejaPopupConfig } from './popup-config.model';
                     const action = <span class="cstat-no" title="statement not covered" >new DejaPopupAction('dialog-close', 'popup-tray');</span>
 <span class="cstat-no" title="statement not covered" >                    this.config.dejaPopupCom$.next(action);</span>
                 }
-            })
+            }))
             .subscribe();
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (this.config.actionComponentRef) {</span>
@@ -281,15 +281,15 @@ import { DejaPopupConfig } from './popup-config.model';
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (this.config.dejaPopupCom$) {</span>
 <span class="cstat-no" title="statement not covered" >            this.aSub.push(</span>
-                this.config.dejaPopupCom$
-                    .filter((a: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!!a &amp;&amp; !!a.target &amp;&amp; a.target === this.config.id)</span></span>
-                    .do((a: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.doAction(a))</span></span>
-                    .do((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; {</span>
+                this.config.dejaPopupCom$.pipe(
+                    filter((a: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >!!a &amp;&amp; !!a.target &amp;&amp; a.target === this.config.id)</span></span>,
+                    tap((a: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >this.doAction(a))</span></span>,
+                    tap((action: DejaPopupAction<span class="fstat-no" title="function not covered" >) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                        this.actionSelected = action;</span>
 <span class="cstat-no" title="statement not covered" >                        if (action.isFinalAction) {</span>
 <span class="cstat-no" title="statement not covered" >                            this.dialogRef.close(action);</span>
                         }
-                    })
+                    }))
                     .subscribe()
             );
         }
@@ -319,7 +319,7 @@ import { DejaPopupConfig } from './popup-config.model';
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

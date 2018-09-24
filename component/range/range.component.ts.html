@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.46% </span>
+        <span class="strong">16.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>36/195</span>
+        <span class='fraction'>32/191</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.13% </span>
+        <span class="strong">16.29% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>33/182</span>
+        <span class='fraction'>29/178</span>
       </div>
     </div>
   </div>
@@ -382,14 +382,7 @@
 337
 338
 339
-340
-341
-342
-343
-344
-345
-346
-347</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+340</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -397,10 +390,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -617,21 +606,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -746,12 +732,8 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/takeUntil';
-import { Observable } from 'rxjs/Observable';
+import { fromEvent as observableFromEvent, merge as observableMerge } from 'rxjs';
+import { first, takeUntil, tap } from 'rxjs/operators';
 import { IRange, IRangeEvent, IStepRangeEvent, Range } from './range.interface';
 &nbsp;
 const noop = <span class="fstat-no" title="function not covered" >() =&gt; { };</span>
@@ -961,24 +943,21 @@ export class DejaRangeComponent implements ControlValueAccessor {
 <span class="cstat-no" title="statement not covered" >                parentElement = parentElement.parentElement;</span>
             }
 &nbsp;
-            const up$ = <span class="cstat-no" title="statement not covered" >Observable</span>
-                .fromEvent(document, 'mouseup');
+            const up$ = <span class="cstat-no" title="statement not covered" >observableFromEvent(document, 'mouseup');</span>
 &nbsp;
-            const leave$ = <span class="cstat-no" title="statement not covered" >Observable</span>
-                .fromEvent(document.body, 'mouseleave');
+            const leave$ = <span class="cstat-no" title="statement not covered" >observableFromEvent(document.body, 'mouseleave');</span>
 &nbsp;
-            const kill$ = <span class="cstat-no" title="statement not covered" >Observable.merge(up$, leave$)</span>
-                .first()
-                .do(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+            const kill$ = <span class="cstat-no" title="statement not covered" >observableMerge(up$, leave$).pipe(</span>
+                first(),
+                tap(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
                     const host = <span class="cstat-no" title="statement not covered" >this.elementRef.nativeElement.firstElementChild as HTMLElement;</span>
 <span class="cstat-no" title="statement not covered" >                    host.ownerDocument.body.classList.remove('noselect');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                    this._onChangeCallback(this._ranges);</span>
-                });
+                }));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            Observable</span>
-                .fromEvent(document, 'mousemove')
-                .takeUntil(kill$)
+<span class="cstat-no" title="statement not covered" >            observableFromEvent(document, 'mousemove').pipe(</span>
+                takeUntil(kill$))
                 .subscribe((event: MouseEvent<span class="fstat-no" title="function not covered" >) =&gt; {</span>
                     const x = <span class="cstat-no" title="statement not covered" >event.pageX;</span>
                     const xDifference = <span class="cstat-no" title="statement not covered" >-(xStart - x);</span>
@@ -1087,7 +1066,7 @@ export class DejaRangeComponent implements ControlValueAccessor {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 11:34:35 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 24 2018 12:55:21 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
