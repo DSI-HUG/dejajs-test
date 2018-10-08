@@ -25,9 +25,9 @@
         <span class='fraction'>146/271</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">26.56% </span>
+        <span class="strong">27.34% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>34/128</span>
+        <span class='fraction'>35/128</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -884,36 +884,36 @@
 <span class="cline-any cline-yes">21×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">105×</span>
-<span class="cline-any cline-yes">105×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">105×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">630×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">630×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">630×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">651×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">651×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">651×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84×</span>
+<span class="cline-any cline-yes">84×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -930,7 +930,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">651×</span>
+<span class="cline-any cline-yes">672×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -1442,12 +1442,12 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
         let date = new Date(year, month, day);
 &nbsp;
         while (date.getDay() !== this.startDay) {
-            date = new Date(year, month, --day);
-            const dateSelectorItem: IDateSelectorItem = {
+<span class="cstat-no" title="statement not covered" >            date = new Date(year, month, --day);</span>
+            const dateSelectorItem: IDateSelectorItem = <span class="cstat-no" title="statement not covered" >{</span>
                 background: true,
                 date: date,
             };
-            days.splice(0, 0, dateSelectorItem);
+<span class="cstat-no" title="statement not covered" >            days.splice(0, 0, dateSelectorItem);</span>
         }
 &nbsp;
         let d = 0;
@@ -1463,15 +1463,15 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 &nbsp;
         while (true) {
             date = new Date(year, month, d);
-            <span class="missing-if-branch" title="else path not taken" >E</span>if (date.getDay() === this.startDay) {
+            if (date.getDay() === this.startDay) {
                 break;
             } else {
-                const dateSelectorItem = <span class="cstat-no" title="statement not covered" >{</span>
+                const dateSelectorItem = {
                     background: true,
                     date: date,
                 };
-<span class="cstat-no" title="statement not covered" >                days.push(dateSelectorItem);</span>
-<span class="cstat-no" title="statement not covered" >                d++;</span>
+                days.push(dateSelectorItem);
+                d++;
             }
         }
 &nbsp;
@@ -1723,7 +1723,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 27 2018 12:46:24 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 08 2018 09:30:13 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

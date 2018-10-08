@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.84% </span>
+        <span class="strong">86.36% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>65/74</span>
+        <span class='fraction'>57/66</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">56.25% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>9/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>15/18</span>
+        <span class='fraction'>12/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.96% </span>
+        <span class="strong">85.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/69</span>
+        <span class='fraction'>52/61</span>
       </div>
     </div>
   </div>
@@ -222,27 +222,13 @@
 177
 178
 179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+180</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -275,9 +261,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -348,12 +332,6 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
@@ -420,10 +398,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -434,12 +408,11 @@
  *  Use of this source code is governed by an Apache-2.0 license that can be
  *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
  */
-import { Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { from as observableFrom, fromEvent as observableFromEvent, Observable } from 'rxjs';
-import { debounceTime, delay, filter, map, takeUntil, takeWhile, tap } from 'rxjs/operators';
+import { debounceTime, delay, filter, map, takeUntil, tap } from 'rxjs/operators';
 import { Position } from '../../common/core/graphics/position';
 import { Rect } from '../../common/core/graphics/rect';
-import { MediaService } from '../../common/core/media/media.service';
 import { DejaConnectionPositionPair } from '../../common/core/overlay/connection-position-pair';
 import { DejaTooltipService, ITooltipParams } from './tooltip.service';
 &nbsp;
@@ -454,7 +427,7 @@ import { DejaTooltipService, ITooltipParams } from './tooltip.service';
         require('./tooltip.component.scss'),
     ],
 })
-export class DejaTooltipComponent implements OnInit, OnDestroy {
+export class DejaTooltipComponent implements OnInit {
     /** Tooltip name. Mandatory, and need to be unic */
     @Input() public name: string;
     /** Event Emmited when hide action is called */
@@ -467,9 +440,7 @@ export class DejaTooltipComponent implements OnInit, OnDestroy {
     public params: ITooltipParams;
     public overlayVisible = false;
     public ownerElement: HTMLElement;
-    public isMobile = false;
     private _model: any;
-    private isAlive = true;
 &nbsp;
     /**
      * This position config ensures that the top "start" corner of the overlay
@@ -533,17 +504,11 @@ export class DejaTooltipComponent implements OnInit, OnDestroy {
      * Constructor
      * Subscribe to mouseover to know when tooltip must disappear.
      */
-    constructor(elementRef: ElementRef, private tooltipService: DejaTooltipService, mediaService: MediaService) {
+    constructor(elementRef: ElementRef, private tooltipService: DejaTooltipService) {
         const element = elementRef.nativeElement as HTMLElement;
 &nbsp;
         const hide$ = observableFrom(this.hide).pipe(
             tap(() =&gt; this._model = undefined));
-&nbsp;
-        mediaService.isMobile$.pipe(
-            takeWhile(() =&gt; this.isAlive))
-            .subscribe((value) =&gt; {
-                this.isMobile = value;
-            });
 &nbsp;
         observableFromEvent(element.ownerDocument, 'mousemove').pipe(
             takeUntil(hide$),
@@ -613,10 +578,6 @@ export class DejaTooltipComponent implements OnInit, OnDestroy {
             }
         }
     }
-&nbsp;
-    public ngOnDestroy() {
-        this.isAlive = false;
-    }
 }
 &nbsp;
 &nbsp;</pre></td></tr>
@@ -625,7 +586,7 @@ export class DejaTooltipComponent implements OnInit, OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 27 2018 12:46:24 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 08 2018 09:30:13 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
