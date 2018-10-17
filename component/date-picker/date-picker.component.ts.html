@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.44% </span>
+        <span class="strong">61.04% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>188/306</span>
+        <span class='fraction'>188/308</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">35.71% </span>
+        <span class="strong">35.62% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>50/140</span>
+        <span class='fraction'>52/146</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.86% </span>
+        <span class="strong">54.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>37/70</span>
+        <span class='fraction'>38/70</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.67% </span>
+        <span class="strong">61.11% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>177/287</span>
+        <span class='fraction'>176/288</span>
       </div>
     </div>
   </div>
@@ -650,7 +650,17 @@
 605
 606
 607
-608</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -831,14 +841,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9×</span>
-<span class="cline-any cline-yes">9×</span>
-<span class="cline-any cline-yes">9×</span>
-<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -859,6 +871,9 @@
 <span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1001,6 +1016,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1238,10 +1262,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1267,9 +1287,9 @@
 &nbsp;
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material';
+import { _MatInputMixinBase, CanUpdateErrorState, ErrorStateMatcher, MatFormFieldControl } from '@angular/material';
 import * as moment_ from 'moment';
 import { combineLatest as observableCombineLatest, from as observableFrom, fromEvent as observableFromEvent, merge as observableMerge, ReplaySubject, Subject } from 'rxjs';
 import { delay, filter, first, map, switchMap, takeWhile, tap } from 'rxjs/operators';
@@ -1294,7 +1314,7 @@ const noop = () =&gt; { };
     styles: [require('./date-picker.component.scss')],
     template: require('./date-picker.component.html'),
 })
-export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, AfterContentInit, OnDestroy, MatFormFieldControl&lt;Date | string&gt; {
+export class DejaDatePickerComponent extends _MatInputMixinBase implements OnInit, ControlValueAccessor, AfterContentInit, DoCheck, OnDestroy, MatFormFieldControl&lt;Date | string&gt;, CanUpdateErrorState {
     public static nextId = 0;
     private static formattingTokens = new RegExp(`(\\[[^\\[]*\\])|(\\\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)`, 'g');
 &nbsp;
@@ -1442,10 +1462,12 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
         private elementRef: ElementRef,
         private changeDetectorRef: ChangeDetectorRef,
         @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() _parentForm: NgForm,
+        @Optional() _parentFormGroup: FormGroupDirective,
+        _defaultErrorStateMatcher: ErrorStateMatcher,
         private fm: FocusMonitor,
     ) {
+        super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl)<span class="branch-1 cbranch-no" title="branch not covered" >;</span>
         <span class="missing-if-branch" title="if path not taken" >I</span>if (this.ngControl) {
 <span class="cstat-no" title="statement not covered" >            this.ngControl.valueAccessor = this;</span>
         }
@@ -1466,6 +1488,9 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
         fm.monitor(this.elementRef.nativeElement, true)
             .subscribe(origin<span class="fstat-no" title="function not covered" > =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                this.focused = !!origin;</span>
+<span class="cstat-no" title="statement not covered" >                if (!this.focused) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.onTouchedCallback();</span>
+                }
 <span class="cstat-no" title="statement not covered" >                this.stateChanges.next();</span>
             });
 &nbsp;
@@ -1608,6 +1633,15 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
             } else {
 <span class="cstat-no" title="statement not covered" >                this.format = 'YYYY-MM-DD';</span>
             }
+        }
+    }
+&nbsp;
+    public ngDoCheck() {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.ngControl) {
+            // We need to re-evaluate this on every change detection cycle, because there are some
+            // error triggers that we can't subscribe to (e.g. parent form submissions). This means
+            // that whatever logic is in here has to be super lean or we risk destroying the performance.
+<span class="cstat-no" title="statement not covered" >            this.updateErrorState();</span>
         }
     }
 &nbsp;
@@ -1842,10 +1876,6 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 <span class="cstat-no" title="statement not covered" >        this.close();</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    public onBlur() {</span>
-<span class="cstat-no" title="statement not covered" >        this.onTouchedCallback();</span>
-    }
-&nbsp;
 <span class="fstat-no" title="function not covered" >    public setToCurrentDate(): void {</span>
 <span class="cstat-no" title="statement not covered" >        this.value = new Date();</span>
 &nbsp;
@@ -1870,7 +1900,7 @@ export class DejaDatePickerComponent implements OnInit, ControlValueAccessor, Af
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 12 2018 07:21:59 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 17 2018 06:46:27 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
