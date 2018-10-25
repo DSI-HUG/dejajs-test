@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.88% </span>
+        <span class="strong">75.7% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>81/104</span>
+        <span class='fraction'>81/107</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.14% </span>
+        <span class="strong">23.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/29</span>
+        <span class='fraction'>7/30</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">51.72% </span>
+        <span class="strong">45.16% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>15/29</span>
+        <span class='fraction'>14/31</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.29% </span>
+        <span class="strong">74% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>74/97</span>
+        <span class='fraction'>74/100</span>
       </div>
     </div>
   </div>
@@ -249,7 +249,16 @@
 204
 205
 206
-207</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -322,10 +331,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -420,7 +438,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -498,7 +516,7 @@ export class DejaNumericStepperComponent implements OnChanges, OnDestroy, Contro
     public static nextId = 0;
     @HostBinding() public id = `deja-numeric-stepper-${DejaNumericStepperComponent.nextId++}`;
     @HostBinding('class.floating') public get shouldLabelFloat() {
-        return this.focused || !this.empty;
+        return this.focused || !this.empty || <span class="branch-2 cbranch-no" title="branch not covered" >this.alwaysDisplayUnit;</span>
     }
 &nbsp;
     @HostBinding('attr.aria-describedby') public describedBy = '';
@@ -527,14 +545,23 @@ export class DejaNumericStepperComponent implements OnChanges, OnDestroy, Contro
     /**
      * Placeholder of the input
      */
-    @Input() public get placeholder() {
-        return this._placeholder;
+    @Input() <span class="fstat-no" title="function not covered" >public get placeholder() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._placeholder;</span>
     }
     public set placeholder(plh<span class="fstat-no" title="function not covered" >) {</span>
 <span class="cstat-no" title="statement not covered" >        this._placeholder = plh;</span>
 <span class="cstat-no" title="statement not covered" >        this.stateChanges.next();</span>
     }
     private _placeholder: string;
+&nbsp;
+    /** unit always visible */
+    @Input() <span class="fstat-no" title="function not covered" >public get alwaysDisplayUnit() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._alwaysDisplayUnit;</span>
+    }
+    public set alwaysDisplayUnit(value<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._alwaysDisplayUnit = coerceBooleanProperty(value);</span>
+    }
+    private _alwaysDisplayUnit: boolean;
 &nbsp;
     public get empty() {
         return !this._value;
@@ -667,7 +694,7 @@ export class DejaNumericStepperComponent implements OnChanges, OnDestroy, Contro
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 17 2018 06:46:27 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 25 2018 14:27:01 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
