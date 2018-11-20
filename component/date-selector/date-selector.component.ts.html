@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">53.87% </span>
+        <span class="strong">54.98% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>146/271</span>
+        <span class='fraction'>149/271</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">27.34% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>23/46</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.11% </span>
+        <span class="strong">53.26% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>136/261</span>
+        <span class='fraction'>139/261</span>
       </div>
     </div>
   </div>
@@ -884,36 +884,36 @@
 <span class="cline-any cline-yes">21×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">651×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">651×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">651×</span>
+<span class="cline-any cline-yes">63×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">105×</span>
-<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">630×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">630×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">630×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
 <span class="cline-any cline-yes">21×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">84×</span>
+<span class="cline-any cline-yes">42×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">84×</span>
-<span class="cline-any cline-yes">84×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -930,7 +930,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">672×</span>
+<span class="cline-any cline-yes">651×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -1442,12 +1442,12 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
         let date = new Date(year, month, day);
 &nbsp;
         while (date.getDay() !== this.startDay) {
-<span class="cstat-no" title="statement not covered" >            date = new Date(year, month, --day);</span>
-            const dateSelectorItem: IDateSelectorItem = <span class="cstat-no" title="statement not covered" >{</span>
+            date = new Date(year, month, --day);
+            const dateSelectorItem: IDateSelectorItem = {
                 background: true,
                 date: date,
             };
-<span class="cstat-no" title="statement not covered" >            days.splice(0, 0, dateSelectorItem);</span>
+            days.splice(0, 0, dateSelectorItem);
         }
 &nbsp;
         let d = 0;
@@ -1723,7 +1723,7 @@ export class DejaDateSelectorComponent implements OnInit, ControlValueAccessor, 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 31 2018 14:37:45 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 15:00:18 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>
