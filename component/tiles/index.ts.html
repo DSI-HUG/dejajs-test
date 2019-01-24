@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>21/21</span>
+        <span class='fraction'>27/27</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/18</span>
+        <span class='fraction'>24/24</span>
       </div>
     </div>
   </div>
@@ -89,7 +89,29 @@
 44
 45
 46
-47</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -101,6 +123,12 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -108,6 +136,22 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,29 +190,51 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule, MatProgressSpinnerModule } from '@angular/material';
-import { DejaEditableModule } from '../content-editable/index';
-import { DejaMouseDragDropModule } from './../mouse-dragdrop/index';
-import { DejaMouseDragDropService } from './../mouse-dragdrop/mouse-dragdrop.service';
+import {
+    MatButtonModule, MatButtonToggleModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatProgressSpinnerModule
+} from '@angular/material';
+import { DejaPipeModule } from '../../common/core/pipes/index';
+import { DejaColorSelectorModule } from '../color-selector/index';
+import { DejaEditorModule } from '../editor/index';
+import { DejaMouseDragDropModule } from '../mouse-dragdrop/index';
+import { DejaMouseDragDropService } from '../mouse-dragdrop/mouse-dragdrop.service';
+import { DejaNumericStepperModule } from '../numeric-stepper/index';
+import { DejaOverlayModule } from '../overlay/index';
+import { DejaPopupModule } from '../popup/index';
+import { TileGroupStyleEditorComponent } from './tile-group-style-editor.component';
 import { DejaTileGroupComponent } from './tile-group.component';
 import { DejaTilePositionDirective } from './tile-position.directive';
 import { DejaTileComponent } from './tile.component';
 import { DejaTilesComponent } from './tiles.component';
 &nbsp;
 @NgModule({
-    declarations: [DejaTileComponent, DejaTilesComponent, DejaTileGroupComponent, DejaTilePositionDirective],
+    declarations: [DejaTileComponent, DejaTilesComponent, DejaTileGroupComponent, DejaTilePositionDirective, TileGroupStyleEditorComponent],
     exports: [DejaTileComponent, DejaTilesComponent, DejaTileGroupComponent],
     imports: [
         CommonModule,
         FormsModule,
         MatProgressSpinnerModule,
+        MatButtonModule,
+        MatFormFieldModule,
         MatIconModule,
+        MatCheckboxModule,
+        MatButtonToggleModule,
+        DejaColorSelectorModule,
         DejaMouseDragDropModule,
-        DejaEditableModule,
+        DejaNumericStepperModule,
+        DejaEditorModule,
+        DejaOverlayModule,
+        DejaPipeModule,
+        DejaPopupModule
     ],
     providers: [
         DejaMouseDragDropService,
-    ]
+    ],
+    entryComponents: [TileGroupStyleEditorComponent]
 })
 export class DejaTilesModule { }
 &nbsp;
@@ -187,7 +253,7 @@ export * from './tiles.component';
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 15:00:18 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 24 2019 11:00:55 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

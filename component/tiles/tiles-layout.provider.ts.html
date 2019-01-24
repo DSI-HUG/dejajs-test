@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.03% </span>
+        <span class="strong">86.04% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>868/1009</span>
+        <span class='fraction'>875/1017</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">74.95% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>350/467</span>
+        <span class='fraction'>353/471</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.02% </span>
+        <span class="strong">86.17% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>160/186</span>
+        <span class='fraction'>162/188</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.81% </span>
+        <span class="strong">85.82% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>810/944</span>
+        <span class='fraction'>817/952</span>
       </div>
     </div>
   </div>
@@ -1761,7 +1761,21 @@
 1716
 1717
 1718
-1719</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1872,11 +1886,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">69×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">58×</span>
-<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">56×</span>
+<span class="cline-any cline-yes">56×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">56×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">53×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2152,6 +2166,7 @@
 <span class="cline-any cline-yes">11×</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11×</span>
@@ -2223,7 +2238,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">313×</span>
+<span class="cline-any cline-yes">328×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -2388,6 +2403,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -3869,6 +3897,7 @@ export class DejaTilesLayoutProvider implements OnDestroy {
 &nbsp;
                     const mouseDown$ = observableFromEvent(container, 'mousedown').pipe(
                         filter((event: MouseEvent) =&gt; event.buttons === 1),
+                        filter((event: MouseEvent) =&gt; !this.isElementInsideDejaEditor(event.target as HTMLElement)),
                         map((event: MouseEvent) =&gt; ({ event: event, target: event.target as HTMLElement, clickedTile: this.getTileComponentFromHTMLElement(event.target as HTMLElement) })));
 &nbsp;
                     // Pressed and selected tile observers
@@ -4106,6 +4135,19 @@ export class DejaTilesLayoutProvider implements OnDestroy {
         }
 &nbsp;
         return tileElement;
+    }
+&nbsp;
+    public isElementInsideDejaEditor(element: HTMLElement) {
+        let tileElement = element;
+&nbsp;
+        while (tileElement &amp;&amp; tileElement !== this.container) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (tileElement.tagName === 'DEJA-EDITOR') {
+<span class="cstat-no" title="statement not covered" >                return true;</span>
+            }
+            tileElement = tileElement.parentElement;
+        }
+&nbsp;
+        return false;
     }
 &nbsp;
     public getTileComponentFromHTMLElement(element: HTMLElement): DejaTile {
@@ -5203,7 +5245,7 @@ export class DejaTilesLayoutProvider implements OnDestroy {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 15:00:18 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 24 2019 11:00:55 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../prettify.js"></script>

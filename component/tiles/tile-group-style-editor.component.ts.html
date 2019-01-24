@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for component/tiles/tile-group-style-editor.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">component/tiles/</a> tile-group-style-editor.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>16/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.55% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.7% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ *  @license
+ *  Copyright Hôpitaux Universitaires de Genève. All Rights Reserved.
+ *
+ *  Use of this source code is governed by an Apache-2.0 license that can be
+ *  found in the LICENSE file at https://github.com/DSI-HUG/dejajs-components/blob/master/LICENSE
+ */
+&nbsp;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Color } from '../../common/core/graphics/color';
+import { MaterialColors } from '../../common/core/style/material-colors';
+import { DejaPopupComponent } from '../popup/component/popup/popup.component';
+import { DejaTileGroupComponent } from './tile-group.component';
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >@Component({</span></span>
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    selector: 'deja-tile-group-style-editor',
+    styles: [require('./tile-group-style-editor.component.scss'),
+    ],
+    template: require('./tile-group-style-editor.component.html'),
+})
+export class TileGroupStyleEditorComponent extends DejaPopupComponent implements OnInit {
+    public materialColors: MaterialColors;
+    public <span class="cstat-no" title="statement not covered" >min = 1;</span>
+    public <span class="cstat-no" title="statement not covered" >max = 5;</span>
+    public <span class="cstat-no" title="statement not covered" >borderPositions = [{value: 'top', label: 'Haut'}, {value: 'right', label: 'Droite'}, {value: 'bottom', label: 'Bas'}, {value: 'left', label: 'Gauche'}];</span>
+    public <span class="cstat-no" title="statement not covered" >selectedBorderPositions = ['top', 'right', 'bottom', 'left'];</span>
+    private tileGroup: DejaTileGroupComponent;
+    private changeDetectorRef: ChangeDetectorRef;
+    private <span class="cstat-no" title="statement not covered" >widthStep = 3;</span>
+&nbsp;
+    private _borderDisplayed: boolean;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get borderDisplayed(): boolean {</span>
+<span class="cstat-no" title="statement not covered" >        return this._borderDisplayed;</span>
+    }
+&nbsp;
+    public set borderDisplayed(value: boolean<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._borderDisplayed = value;</span>
+<span class="cstat-no" title="statement not covered" >        this.borderWidth = value ? 1 : 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.borderColor = this.borderColor; </span>// restore old value
+<span class="cstat-no" title="statement not covered" >        if (!value) {</span>
+<span class="cstat-no" title="statement not covered" >            this.tileGroup.deleteBorder();</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef.markForCheck();</span>
+    }
+&nbsp;
+    private _borderColor: Color;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get borderColor(): Color {</span>
+<span class="cstat-no" title="statement not covered" >        return this._borderColor;</span>
+    }
+&nbsp;
+    public set borderColor(value: Color<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._borderColor = value;</span>
+<span class="cstat-no" title="statement not covered" >        this.updateBorderColorOnTileGroup();</span>
+    }
+&nbsp;
+    private _borderWidth: number;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public get borderWidth(): number {</span>
+<span class="cstat-no" title="statement not covered" >        return this._borderWidth;</span>
+    }
+&nbsp;
+    public set borderWidth(value: number<span class="fstat-no" title="function not covered" >) {</span>
+<span class="cstat-no" title="statement not covered" >        this._borderWidth = value;</span>
+<span class="cstat-no" title="statement not covered" >        if (value &gt;= this.min &amp;&amp; value &lt;= this.max) {</span>
+<span class="cstat-no" title="statement not covered" >            this.updateBorderDimensions();</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    public ngOnInit() {</span>
+<span class="cstat-no" title="statement not covered" >        this.materialColors = this.injector.get(MaterialColors);</span>
+<span class="cstat-no" title="statement not covered" >        this.changeDetectorRef = this.injector.get(ChangeDetectorRef);</span>
+<span class="cstat-no" title="statement not covered" >        this.tileGroup = this.config.data;</span>
+        const borderDimensions = <span class="cstat-no" title="statement not covered" >this.computeBorderDimensions();</span>
+<span class="cstat-no" title="statement not covered" >        this._borderWidth = borderDimensions.borderWidth;</span>
+<span class="cstat-no" title="statement not covered" >        this.selectedBorderPositions = borderDimensions.borderPositions;</span>
+<span class="cstat-no" title="statement not covered" >        this._borderColor = this.tileGroup.borderColor ? Color.parse(this.tileGroup.borderColor) : Color.parse('black');</span>
+<span class="cstat-no" title="statement not covered" >        this._borderDisplayed = !!this._borderWidth;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private computeBorderDimensions(): { borderWidth: number; borderPositions: string[] } {</span>
+        let paddingParts = <span class="cstat-no" title="statement not covered" >this.tileGroup.borderWidth &amp;&amp; this.tileGroup.borderWidth</span>
+            .split(' ')
+            .map(value<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >+value.replace('px', ''))</span></span>
+            .filter(value<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >!isNaN(value))</span></span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (!paddingParts || paddingParts.filter(value<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >!!value)</span></span>.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            return {borderWidth: 0, borderPositions: this.borderPositions.map(pos<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >pos.value)</span></span>};</span>
+        } else <span class="cstat-no" title="statement not covered" >if (paddingParts.length === 1) {</span>
+<span class="cstat-no" title="statement not covered" >            return {</span>
+                borderWidth: (paddingParts[0] / this.widthStep),
+                borderPositions: this.borderPositions.map(pos<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >pos.value)</span></span>
+            };
+        } else {
+<span class="cstat-no" title="statement not covered" >            if (paddingParts.length === 2) {</span>
+<span class="cstat-no" title="statement not covered" >                paddingParts = [...paddingParts, ...paddingParts];</span>
+            }
+            const indexPositions: number[] = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >            paddingParts.forEach((value, index<span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (value) {</span>
+<span class="cstat-no" title="statement not covered" >                    indexPositions.push(index);</span>
+                }
+            });
+            // @ts-ignore
+            const positions = <span class="cstat-no" title="statement not covered" >this.borderPositions.filter((pos, index<span class="fstat-no" title="function not covered" >) =&gt; <span class="cstat-no" title="statement not covered" >indexPositions.indexOf(index) &gt; -1)</span></span>.map(pos<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >pos.value)</span></span>;</span>
+            const width = <span class="cstat-no" title="statement not covered" >paddingParts.filter(value<span class="fstat-no" title="function not covered" > =&gt; <span class="cstat-no" title="statement not covered" >!!value)</span></span>[0];</span>
+<span class="cstat-no" title="statement not covered" >            return {borderWidth: (width / this.widthStep), borderPositions: positions};</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    private updateBorderColorOnTileGroup() {</span>
+<span class="cstat-no" title="statement not covered" >        this.tileGroup.updateBorderColor(this._borderColor &amp;&amp; this._borderColor.toHex());</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    public updateBorderDimensions() {</span></span>
+        let padding = `${<span class="cstat-no" title="statement not covered" >this.borderWidth * this.widthStep}px`;</span>
+<span class="cstat-no" title="statement not covered" >        if (this.selectedBorderPositions.length !== 0 &amp;&amp; this.selectedBorderPositions.length !== 4) {</span>
+<span class="cstat-no" title="statement not covered" >            padding = this.borderPositions.map(pos<span class="fstat-no" title="function not covered" > =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (this.selectedBorderPositions.indexOf(pos.value) &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered" >                    return padding;</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    return '0';</span>
+                }
+            }).join(' ');
+        }
+<span class="cstat-no" title="statement not covered" >        this.tileGroup.updateBorderWidth(padding);</span>
+    }
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 24 2019 11:00:55 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
